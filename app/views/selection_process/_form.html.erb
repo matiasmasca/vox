@@ -1,0 +1,45 @@
+<%= form_for(@selection_processes) do |f| %>
+  <% if @selection_processes.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@selection_processes.errors.count, "error") %> prohibited this selection_processes from being saved:</h2>
+
+      <ul>
+      <% @selection_processes.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_process %><br>
+    <%= f.text_field :name_process %>
+  </div>
+  <div class="field">
+    <%= f.label :place %><br>
+    <%= f.text_field :place %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.text_field :duration %> days.
+  </div>  
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date, start_year: 2013, last_year: 2050 %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date, start_year: 2013, last_year: 2050 %>
+  </div>
+    <div class="field">
+       <%= f.label :process_type_id %><br>
+     <%= f.select :process_type_id, options_for_select([['premio', 1], ['certamen', 2], ['votación', 3]], :selected => :process_type_id) %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+     <%= f.select :state, options_for_select([['nuevo'], ['abierto'], ['cerrado']], :selected => :state) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

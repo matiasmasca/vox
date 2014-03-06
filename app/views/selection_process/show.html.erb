@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name process:</strong>
+  <%= @selection_processes.name_process %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @selection_processes.place %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @selection_processes.duration %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @selection_processes.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @selection_processes.end_date %>
+</p>
+<p>
+  <strong>Process type:</strong>
+  <%= @selection_processes.process_type_id %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @selection_processes.state %>
+</p>
+
+<%= link_to 'Edit', edit_selection_processes_path(@selection_processes) %> |
+<%= link_to 'Back', selection_process_path %>

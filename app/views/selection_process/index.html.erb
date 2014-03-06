@@ -1,0 +1,39 @@
+<h1>Listing selection_process</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name process</th>
+      <th>Place</th>
+      <th>Duration</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Process type</th>
+      <th>State</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @selection_process.each do |selection_processes| %>
+      <tr>
+        <td><%= selection_processes.name_process %></td>
+        <td><%= selection_processes.place %></td>
+        <td><%= selection_processes.duration %></td>
+        <td><%= selection_processes.start_date %></td>
+        <td><%= selection_processes.end_date %></td>
+        <td><%= selection_processes.process_type_id %></td>
+        <td><%= selection_processes.state %></td>
+        <td><%= link_to 'Show', selection_processes %></td>
+        <td><%= link_to 'Edit', edit_selection_processes_path(selection_processes) %></td>
+        <td><%= link_to 'Destroy', selection_processes, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Selection processes', new_selection_processes_path %>
