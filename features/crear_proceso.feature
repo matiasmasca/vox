@@ -2,7 +2,7 @@
 Característica: crear un premio
   Con la finalidad de elegir el ganador de una categoría
   como un usuario registrado de una organización
-  Quiero poder Create Selection processes un premio en el sistema
+  Quiero poder crear un premio en el sistema
 
 #Camino feliz
 Escenario: crear premio
@@ -67,7 +67,8 @@ Escenario: Premio repetido, Oscar y oscar.
 # Pasan para otra iteración.
 #Escenario: calcula fecha cierre automaticamente
 #  Dado que selecciono "2014/08/13" en Fecha Inicio
-#  Entonces me sugiere autocompletando "12/09/2014" en Fecha Cierre
+#  Y la duración es de "30" días.
+#  Entonces me sugiere la fecha de cierre, autocompletando "12/09/2014" en Fecha Cierre
 
 # Escenario:
 # Organizador: entidad a la que pertenece el usuario. El premio debe estar asociado a la Organización a la que pertenece el usuario.
