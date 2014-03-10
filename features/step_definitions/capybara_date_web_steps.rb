@@ -1,3 +1,4 @@
+# encoding: utf-8
 When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" date$/ do |date, date_label|
   select_date(date, :from => date_label)
 end

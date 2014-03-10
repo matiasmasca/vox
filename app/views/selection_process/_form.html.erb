@@ -1,7 +1,7 @@
 <%= form_for(@selection_processes) do |f| %>
   <% if @selection_processes.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@selection_processes.errors.count, "error") %> prohibited this selection_processes from being saved:</h2>
+      <h2><%= pluralize(@selection_processes.errors.count, "error") %> prohiben que los datos sean guardados:</h2>
 
       <ul>
       <% @selection_processes.errors.full_messages.each do |msg| %>
@@ -12,32 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name_process %><br>
+    <%= f.label :name_process, "Nombre del proceso" %><br>
     <%= f.text_field :name_process %>
   </div>
   <div class="field">
-    <%= f.label :place %><br>
+    <%= f.label :place, "Lugar" %><br>
     <%= f.text_field :place %>
   </div>
   <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.text_field :duration %> days.
+    <%= f.label :duration, "Duración" %><br>
+    <%= f.text_field :duration, placeholder: "ingrese la cantidad de dias", onchange: "alert('cambio la duraccion');"  %> days.
   </div>  
   <div class="field">
-    <%= f.label :start_date %><br>
+    <%= f.label :start_date, "Fecha de inicio" %><br>
     <%= f.date_select :start_date, start_year: 2013, last_year: 2050 %>
   </div>
   <div class="field">
-    <%= f.label :end_date %><br>
+    <%= f.label :end_date, "Fecha cierre" %><br>
     <%= f.date_select :end_date, start_year: 2013, last_year: 2050 %>
   </div>
     <div class="field">
-       <%= f.label :process_type_id %><br>
-     <%= f.select :process_type_id, options_for_select([['premio', 1], ['certamen', 2], ['votación', 3]], :selected => :process_type_id) %>
+     <% tipos_de_procesos = {'premio'=> 1, 'certamen'=> 2, 'votación'=> 3} %>
+     <%= f.label :process_type_id, "Tipo" %><br>
+     <%= f.select :process_type_id, tipos_de_procesos, selected: @selection_processes.process_type_id %>
   </div>
   <div class="field">
-    <%= f.label :state %><br>
-     <%= f.select :state, options_for_select([['nuevo'], ['abierto'], ['cerrado']], :selected => :state) %>
+    <% estados_del_proceso = {'nuevo'=> 'nuevo', 'abierto'=> 'abierto', 'cerrado'=> 'cerrado'} %>
+    <%= f.label :state, "Estado" %><br>
+    <%= f.select :state, estados_del_proceso, selected: @selection_processes.state %>
   </div>
   <div class="actions">
     <%= f.submit %>

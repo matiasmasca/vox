@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Be sure to restart your server when you modify this file.
 
 # Add new inflection rules using the following format. Inflections
@@ -30,5 +31,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
    inflect.plural 'nominees', 'nominee'
    inflect.singular 'nominee', 'nominees'
    inflect.plural 'seats', 'seat'
-   inflect.singular 'seat', 'seats' 
+   inflect.singular 'seat', 'seats'
+   inflect.irregular 'error', 'errores'
  end
