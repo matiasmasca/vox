@@ -1,7 +1,8 @@
 # encoding: utf-8
 
 Cuando(/^yo edito el premio$/) do
-  visit edit_selection_processes_path(@selection_process)
+  #visit edit_selection_processes_path(@selection_process)
+  click_on('Editar')
 end
 
 Cuando(/^cambio el nombre por "(.*?)" y el lugar por "(.*?)"$/) do |name_process, place|

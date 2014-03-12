@@ -4,7 +4,8 @@ Cuando(/^hago click en Mostrar para "(.*?)"$/) do |process_name|
 end
 
 Entonces(/^veo toda la información del premio\.$/) do
-  visit selection_processes_path(@selection_process)
+  #visit selection_processes_path(@selection_process)
+  click_on('Mostrar')
   #Aca debo comprobar que se muestra la info que quiero.
    	expect(page).to have_content(@selection_process.name_process)
 	expect(page).to have_content(@selection_process.place)
