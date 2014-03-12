@@ -1,5 +1,5 @@
 # encoding: utf-8
-Dado(/^que estoy en la pantalla de mis procesos electorales y hago click en "New Selection processes"$/) do
+Dado(/^que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"$/) do
   visit("/selection_process")
   click_on "Nuevo proceso de selección"
 end

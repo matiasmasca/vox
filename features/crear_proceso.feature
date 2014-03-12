@@ -6,7 +6,7 @@ Característica: crear un premio
 
 #Camino feliz
 Escenario: crear premio
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "New Selection processes"
+  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Y escribo "30" en Duracion
@@ -18,21 +18,21 @@ Escenario: crear premio
 
 #Casos extremos
 Escenario: se olvido un dato
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "New Selection processes"
+  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y dejo en blanco Nombre
   Y dejo en blanco Lugar
   Cuando presiono el boton "Create Selection processes"
   Entonces me muestra el mensaje de error que "faltan esos datos"
 
 Escenario: datos muy cortos
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "New Selection processes"
+  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Prem" en Nombre
   Y escribo "Av. " en Lugar,
   Cuando presiono el boton "Create Selection processes"
   Entonces me muestra el mensaje de error que "esos datos son muy cortos"
 
 Escenario: muchos dias, más de 366.
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "New Selection processes"
+  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Y escribo "366" en Duracion
@@ -41,7 +41,7 @@ Escenario: muchos dias, más de 366.
 
 
 Escenario: dias es solo numeros
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "New Selection processes"
+  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Y escribo "366yy" en Duracion
@@ -49,7 +49,7 @@ Escenario: dias es solo numeros
   Entonces me muestra el mensaje de error que "dias es solo numerico"
 
 Escenario: nombre premio repetido.
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "New Selection processes"
+  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Pero como ya existe un premio con ese nombre "Premios ACME" y lugar "Av. Siempre Viva 742"
@@ -57,7 +57,7 @@ Escenario: nombre premio repetido.
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
 Escenario: Premio repetido, Oscar y oscar.
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "New Selection processes"
+  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Pero como ya existe un premio con ese nombre "premios acme" y lugar "Av. Siempre Viva 742"

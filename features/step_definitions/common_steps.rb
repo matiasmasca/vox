@@ -6,3 +6,8 @@ end
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_process, place|
   @selection_process = SelectionProcesses.create!({ :name_process => name_process, :place => place })
 end
+
+Cuando(/^hago click en "(.*?)"$/) do |button|
+  #click_on button
+  find_button(button).click
+end

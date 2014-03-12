@@ -2,11 +2,10 @@
 
 Cuando(/^yo edito el premio$/) do
   visit edit_selection_processes_path(@selection_process)
-  #visit edit_selection_processes_path(@selection_processes)
 end
 
 Cuando(/^cambio el nombre por "(.*?)" y el lugar por "(.*?)"$/) do |name_process, place|
-  	@update_name_process = name_process
+  @update_name_process = name_process
 	@update_pace = place
 	@selection_process.update_attributes!({ :name_process => @update_name_process,:place => @update_pace })
 end
@@ -25,7 +24,6 @@ Cuando(/^cambio el duracion por "(.*?)"$/) do |duration|
   	@update_duration = duration
 	@selection_process.update_attributes!({ :duration => @update_duration})
 end
-
 
 Entonces(/^veo que la duración cambio, sin afectar a nombre o lugar\.$/) do
   step %{que estoy en la pantalla de mis procesos electorales}
