@@ -28,7 +28,7 @@
         <td><%= selection_processes.state %></td>
         <td><%= link_to 'Mostrar', selection_processes %></td>
         <td><%= link_to 'Editar', edit_selection_processes_path(selection_processes) %></td>
-        <td id="delete_link"><%= link_to 'Borrar', selection_processes, :method => :delete, confirm: "Esta seguro que desea borrar este proceso: #{selection_processes.name_process} ?" %></td>
+        <td><%= link_to 'Borrar', selection_processes, :method => :delete, data: { confirm: "Esta seguro que desea borrar este proceso: #{selection_processes.name_process}?"} %></td>
       </tr>
     <% end %>
   </tbody>

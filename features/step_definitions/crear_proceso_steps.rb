@@ -54,3 +54,5 @@ end
 Cuando(/^como ya existe un premio con ese nombre "(.*?)" y lugar "(.*?)"$/) do |nombre, lugar|
   @selection_process = SelectionProcesses.create!({ :name_process => nombre, :place => lugar })
 end
+
+#Podrias probar más fino cada error comprobando que sea el error que buscas.

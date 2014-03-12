@@ -6,7 +6,13 @@ Característica: mostrar información de un premio
 
 #Camino feliz
 Escenario: mostrar premio
+  Dado existe un premio llamado "Premios ACME43" que se realizara en "Av. Siempre Viva 742"
   Dado que estoy en la pantalla de mis procesos electorales
-  Y existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
-  Cuando hago click en Mostrar para "Premios ACME"
+  Cuando hago click en Mostrar para "Premios ACME43"
   Entonces veo toda la información del premio.
+
+#Casos extremos.
+#El proceso no existe.
+#por ejemplo Ingresa un ID que no existe en la url.
+
+#Trata de ver detalles de un proceso que el no creo.

@@ -6,10 +6,9 @@ Característica: borrar un premio
 
 #Camino feliz
 # Borrar desde listado
-@wip
 Escenario: borrar premio
-  Dado que estoy en la pantalla de mis procesos electorales
-  Y existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
+  Dado existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
+  Y que estoy en la pantalla de mis procesos electorales
   Cuando hago click en Borrar para "Premios ACME"
   Entonces se borra el premio
 

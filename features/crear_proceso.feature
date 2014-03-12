@@ -74,4 +74,4 @@ Escenario: Premio repetido, Oscar y oscar.
 # Organizador: entidad a la que pertenece el usuario. El premio debe estar asociado a la Organización a la que pertenece el usuario.
 
 #-- Sobre este archivo.--
-#Esta fue mi Primera experiencia de llevar a la practica lo estudiado sobre Cucumber y BDD sobre un caso real e independiente a los estudiadios. Son muchas las mejoras que se pueden hacer a los mismos.
+#Esta fue mi Primera experiencia de llevar a la practica lo estudiado sobre Cucumber y BDD sobre un caso real e independiente a los estudiadios. Son muchas las mejoras que se pueden hacer a los mismos, sobre todo DRY.
