@@ -17,6 +17,14 @@
   </thead>
 
   <tbody>
+    <% if @selection_process.length == 0 %>
+      <tr>
+        <td><h2>Ud. no tiene procesos de selección.</h2></td>
+      </tr>
+      <tr>
+        <td>Cuando los haya creado se listarán aquí.</td>
+      </tr>
+    <% end %>
     <% @selection_process.each do |selection_processes| %>
       <tr>
         <td><%= selection_processes.name_process %></td>

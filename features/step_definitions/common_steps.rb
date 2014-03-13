@@ -23,3 +23,7 @@ end
 Cuando(/^selecciono el link con el texto "(.*?)"$/) do |button|
   first("", :text => button) #Esto no hace click!
 end
+
+Dado(/^se lee el texto "(.*?)"$/) do |texto|
+   page.should have_content(texto)
+end
