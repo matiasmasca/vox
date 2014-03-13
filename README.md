@@ -1,10 +1,14 @@
 vox
 ===
 
-Repositorio para la edición comunitaria (software libre) de Vox.
+Repositorio para la edición comunitaria (software libre) de Vox, un sistema gestor de contenidos para procesos de selección.
 
-En escencia es un experimento de aplicación practica de los conceptos de BDD y TDD utilizando el lenguaje de programción Ruby y el framework Ruby on Rails.
+En escencia es un experimento de aplicación y practica de los conceptos de BDD y TDD utilizando el lenguaje de programción Ruby y el framework Ruby on Rails.
+Algunos de los archivos no siguen exactamente las buenas practicas, en algunos casos por desconocimiento y en otros como parte del experimento.
+Toda contribución, consejo, critica constructiva, consultas son bienvenidas.
 
+
+Para las Historias de Usuario se ulizará: PivotalTracker
 Para BDD, se utiliza: Cucumber, Capybara.
 Para TDD, se utiliza: RSpec.
 
@@ -17,8 +21,8 @@ Things you may want to cover:
 * Rails version:
   rails 4.0.1
 
-
-* System dependencies
+* System dependencies:
+ mirar el archivo gemfile
 
 * Configuration:
   Nada especial por ahora.
