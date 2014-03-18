@@ -3,10 +3,10 @@ require 'spec_helper'
 describe "selection_process/new" do
   before(:each) do
     assign(:selection_processes, stub_model(SelectionProcesses,
-      :name_process => "MyString",
-      :place => "MyString",
-      :duration => "MyString",
-      :state => "MyString"
+      :name_process => "Premios ACME",
+      :place => "Los Angeles, CA, USA",
+      :duration => "90",
+      :state => "nuevo"
     ).as_new_record)
   end
 

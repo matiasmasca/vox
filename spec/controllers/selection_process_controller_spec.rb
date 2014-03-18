@@ -23,7 +23,7 @@ describe SelectionProcessController do
   # This should return the minimal set of attributes required to create a valid
   # SelectionProcesses. As you add validations to SelectionProcesses, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name_process" => "MyString" } }
+  let(:valid_attributes) { { "name_process" => "MyString" , "place" => "MyString"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -106,8 +106,8 @@ describe SelectionProcessController do
         # specifies that the SelectionProcesses created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        SelectionProcesses.any_instance.should_receive(:update).with({ "name_process" => "MyString" })
-        put :update, {:id => selection_processes.to_param, :selection_processes => { "name_process" => "MyString" }}, valid_session
+        SelectionProcesses.any_instance.should_receive(:update).with({ "name_process" => "MyString", "place" => "MyString" })
+        put :update, {:id => selection_processes.to_param, :selection_processes => { "name_process" => "MyString", "place" => "MyString" }}, valid_session
       end
 
       it "assigns the requested selection_processes as @selection_processes" do

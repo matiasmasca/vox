@@ -32,5 +32,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
    inflect.singular 'nominee', 'nominees'
    inflect.plural 'seats', 'seat'
    inflect.singular 'seat', 'seats'
+   
    inflect.irregular 'error', 'errores'
  end

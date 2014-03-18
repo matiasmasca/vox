@@ -7,11 +7,12 @@ Característica: crear un entidad organizadora
 #Camino feliz
 @wip
 Escenario: crear organización
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Registrar Organización"
+  Dado que estoy en la pantalla de administración y hago click en "Registrar Organización"
   Y completo los datos de la organización: Nombre, Dirección, Sitio Web, email
   Y subo una imagen que se utilizará como logo de la organización.
   Cuando presiono el boton "Dar de alta"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
+  Y me muestra los datos recien creados junto a la imagen
 
 #Casos Extremos.
 

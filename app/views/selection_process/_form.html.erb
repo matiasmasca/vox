@@ -1,3 +1,4 @@
+<div class="form-group">
 <%= form_for(@selection_processes) do |f| %>
   <% if @selection_processes.errors.any? %>
     <div id="error_explanation">
@@ -41,7 +42,9 @@
     <%= f.label :state, "Estado" %><br>
     <%= f.select :state, estados_del_proceso, selected: @selection_processes.state %>
   </div>
-  <div class="actions">
+  <div><br></div>
+  <div class="actions" >
     <%= f.submit %>
   </div>
 <% end %>
+</div>
