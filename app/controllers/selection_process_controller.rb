@@ -56,7 +56,7 @@ class SelectionProcessController < ApplicationController
   def destroy
     @selection_processes.destroy
     respond_to do |format|
-      format.html { redirect_to selection_process_url }
+      format.html { redirect_to selection_process_url, notice: 'Proceso borrado correctamente.' }
       format.json { head :no_content }
     end
   end

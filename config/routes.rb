@@ -1,4 +1,10 @@
 Vox::Application.routes.draw do
+  #paginas estaticas
+  get "paginas/home"
+  get "paginas/about"
+  get "paginas/contact"
+  
+  #Resource, crea los routes a 7 acciones por defecto.
   resources :selection_process
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,7 +12,7 @@ Vox::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-
+  root to: "paginas#home"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -24,15 +24,16 @@
 	  </div>
 	  <div class="navbar-collapse collapse">
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Inicio</a></li>
-	      <li><a href="#about">Acerca de</a></li>
-	      <li><a href="#contact">Contacto</a></li>
+	      <li class="active"><%= link_to 'Inicio',  paginas_home_path %></li>
+	      <li><%= link_to 'Acerca de',  paginas_about_path %></li>
+	      <li><%= link_to 'Contacto',  paginas_contact_path %>/li>
 	    </ul>
 	  </div><!--/.nav-collapse -->
 	</div>
    </div>
-
-  <div class="container">
+   <div class="container">
+  <%= flash_messages %> 
+ 
     <%= yield %>
   </div>
 

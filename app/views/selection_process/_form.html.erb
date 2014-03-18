@@ -1,8 +1,9 @@
 <div class="form-group">
-<%= form_for(@selection_processes) do |f| %>
+<%= form_for @selection_processes, :html => { :class => 'form-horizontal' } do  |f| %>
   <% if @selection_processes.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@selection_processes.errors.count, "error") %> prohiben que los datos sean guardados:</h2>
+    
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@selection_processes.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
 
       <ul>
       <% @selection_processes.errors.full_messages.each do |msg| %>
@@ -13,38 +14,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name_process, "Nombre del proceso" %><br>
-    <%= f.text_field :name_process %>
+    <%= f.label :name_process, "Nombre del proceso", class: 'control-label' %><br>
+    <%= f.text_field :name_process, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :place, "Lugar" %><br>
-    <%= f.text_field :place %>
+    <%= f.label :place, "Lugar", class: 'control-label' %><br>
+    <%= f.text_field :place, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :duration, "Duración" %><br>
-    <%= f.text_field :duration, placeholder: "ingrese la cantidad de dias", onchange: "alert('cambio la duraccion');"  %> days.
+    <%= f.label :duration, "Duración", class: 'control-label' %><br>
+    <%= f.text_field :duration, placeholder: "ingrese la cantidad de dias", onchange: "alert('cambio la duraccion');" , class: 'form-control' %> días.
   </div>  
   <div class="field">
-    <%= f.label :start_date, "Fecha de inicio" %><br>
-    <%= f.date_select :start_date, start_year: 2013, last_year: 2050 %>
+    <%= f.label :start_date, "Fecha de inicio", class: 'control-label' %><br>
+    <%= f.date_select :start_date, start_year: 2013, last_year: 2050, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :end_date, "Fecha cierre" %><br>
-    <%= f.date_select :end_date, start_year: 2013, last_year: 2050 %>
+    <%= f.label :end_date, "Fecha cierre", class: 'control-label' %><br>
+    <%= f.date_select :end_date, start_year: 2013, last_year: 2050, class: 'form-control' %>
   </div>
     <div class="field">
      <% tipos_de_procesos = {'premio'=> 1, 'certamen'=> 2, 'votación'=> 3} %>
-     <%= f.label :process_type_id, "Tipo" %><br>
-     <%= f.select :process_type_id, tipos_de_procesos, selected: @selection_processes.process_type_id %>
+     <%= f.label :process_type_id, "Tipo", class: 'control-label' %><br>
+     <%= f.select :process_type_id, tipos_de_procesos, selected: @selection_processes.process_type_id, class: 'form-control' %>
   </div>
   <div class="field">
     <% estados_del_proceso = {'nuevo'=> 'nuevo', 'abierto'=> 'abierto', 'cerrado'=> 'cerrado'} %>
-    <%= f.label :state, "Estado" %><br>
-    <%= f.select :state, estados_del_proceso, selected: @selection_processes.state %>
+    <%= f.label :state, "Estado" , class: 'control-label' %><br>
+    <%= f.select :state, estados_del_proceso, selected: @selection_processes.state, class: 'form-control' %>
   </div>
   <div><br></div>
   <div class="actions" >
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
 </div>
