@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+
+#Para modificar lo que aparece en los botones y demás yerbas.
+  helpers:
+    submit:
+      create: "Crear"

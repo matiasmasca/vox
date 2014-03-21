@@ -24,8 +24,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
    inflect.singular 'jury', 'juries'
    inflect.plural 'selection_processes', 'selection_process'
    inflect.singular 'selection_process', 'selection_processes'
-   inflect.plural 'organizers', 'organizer'
-   inflect.singular 'organizer', 'organizers'
    inflect.plural 'categories', 'category'
    inflect.singular 'category', 'categories'
    inflect.plural 'nominees', 'nominee'

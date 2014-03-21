@@ -22,7 +22,7 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)", sin duraciÃ
 end
 
 Cuando(/^cambio el duracion por "(.*?)"$/) do |duration|
-  	@update_duration = duration
+ 	@update_duration = duration
 	@selection_process.update_attributes!({ :duration => @update_duration})
 end
 

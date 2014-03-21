@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305193052) do
+ActiveRecord::Schema.define(version: 20140319232222) do
+
+  create_table "organizers", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "web"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "selection_process", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration", limit: 255 #Este limite tendria que ser 3
+    t.integer  "duration",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"

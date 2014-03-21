@@ -1,0 +1,38 @@
+<div class= "form-group">
+  <%= form_for @organizer, :html => { :class => 'form-horizontal' } do  |f| %>
+    <% if @organizer.errors.any? %>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(@organizer.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
+        <ul>
+         <% @organizer.errors.full_messages.each do |msg| %>
+             <li><%= msg %></li>
+          <% end %>
+        </ul>
+     </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :name, "Nombre de la Organización", class: 'control-label' %><br>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address, "Dirección", class: 'control-label' %><br>
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :web, "Sitio web", class: 'control-label' %><br>
+      <%= f.text_field :web, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, "corre electrónico", class: 'control-label' %><br>
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+      <div><br></div>
+  <div class="actions" >
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+
+  <% end %>
+</div>

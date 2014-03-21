@@ -15,9 +15,22 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_
   	})
 end
 
+Dado(/^existe un Organización llamada "(.*?)" con domicilio en "(.*?)"$/) do |name_entity, address|
+  @organizer = Organizer.create!({ 
+    :name => name_entity, 
+    :address => address,
+    :web => 'www.acme.org',
+    :email => 'contact@acme.org'
+    })
+end
+
 Cuando(/^hago click en "(.*?)"$/) do |button|
   #click_on button
   find_button(button).click
+end
+
+Cuando(/^presiono el boton "(.*?)"$/) do |botton|
+  click_button botton #"Create Selection processes"
 end
 
 Cuando(/^selecciono el link con el texto "(.*?)"$/) do |button|

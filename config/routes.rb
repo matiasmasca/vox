@@ -6,7 +6,7 @@ Vox::Application.routes.draw do
   
   #Resource, crea los routes a 7 acciones por defecto.
   resources :selection_process
-
+  resources :organizers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -15,7 +15,8 @@ Vox::Application.routes.draw do
   root to: "paginas#home"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+  #   get 'oganizers' => 'organizers#index'
+  #   get 'organizers/new' => 'organizers#new' 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

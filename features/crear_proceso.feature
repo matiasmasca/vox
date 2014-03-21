@@ -13,7 +13,7 @@ Escenario: crear premio
   Y selecciono "2014/08/13" en Fecha Inicio
   Y selecciono "2014/09/2" en Fecha Cierre
   Y en Tipo de Proceso selecciono "premio"
-  Cuando presiono el boton "Create Selection processes"
+  Cuando presiono el boton "Crear"
   Entonces se crea el premio y me muestra el mensaje "Premio creado correctamente"
 
 #Casos extremos

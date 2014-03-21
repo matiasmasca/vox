@@ -28,10 +28,6 @@ Dado(/^en Tipo de Proceso selecciono "(.*?)"$/) do |tipo|
  select tipo, :from => "Tipo"
 end
 
-Cuando(/^presiono el boton "(.*?)"$/) do |botton|
-  click_button botton #"Create Selection processes"
-end
-
 Entonces(/^se crea el premio y me muestra el mensaje "(.*?)"$/) do |msg|
   #Elemento: notice
   page.should have_content("Selection processes was successfully created.")

@@ -1,0 +1,23 @@
+
+<p>
+  <strong>Nombre de la Organización:</strong>
+  <%= @organizer.name %>
+</p>
+
+<p>
+  <strong>Lugar:</strong>
+  <%= @organizer.address %>
+</p>
+
+<p>
+  <strong>Web:</strong>
+  <%= @organizer.web %>
+</p>
+
+<p>
+  <strong>e-mail:</strong>
+  <%= @organizer.email %>
+</p>
+<br>
+<%= link_to 'Editar', edit_organizer_path(@organizer), :class => 'btn btn-default' %> |
+<%= link_to 'Atras', organizers_path, :class => 'btn btn-default' %>

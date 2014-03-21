@@ -9,10 +9,12 @@ Característica: crear un entidad organizadora
 Escenario: crear organización
   Dado que estoy en la pantalla de administración y hago click en "Registrar Organización"
   Y completo los datos de la organización: Nombre, Dirección, Sitio Web, email
-  Y subo una imagen que se utilizará como logo de la organización.
-  Cuando presiono el boton "Dar de alta"
+  Cuando presiono el boton "Crear"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
-  Y me muestra los datos recien creados junto a la imagen
+  Y me muestra los datos recien creados
 
 #Casos Extremos.
 
+#Escenario: crear organización con foto
+#  Y subo una imagen que se utilizará como logo de la organización.
+#  Y me muestra los datos recien creados junto a la imagen

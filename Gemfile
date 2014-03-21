@@ -52,7 +52,7 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails' #, require: false
+  gem 'cucumber-rails' , require: false
 # gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions. web_steps.rb
   gem 'database_cleaner' # to clear Cucumber's test database between runs
   gem 'capybara'         # lets Cucumber pretend to be a web browser
@@ -61,5 +61,12 @@ group :test do
 end
 
 group :test, :development do
-  gem "rspec-rails"
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-rails'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-cucumber'
 end
