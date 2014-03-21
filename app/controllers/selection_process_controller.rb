@@ -28,7 +28,7 @@ class SelectionProcessController < ApplicationController
 
     respond_to do |format|
       if @selection_processes.save
-        format.html { redirect_to @selection_processes, notice: 'Selection processes was successfully created.' }
+        format.html { redirect_to @selection_processes, notice: 'Premio creado correctamente.' }
         format.json { render action: 'show', status: :created, location: @selection_processes }
       else
         format.html { render action: 'new' }

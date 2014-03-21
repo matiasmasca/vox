@@ -30,7 +30,7 @@ end
 
 Entonces(/^se crea el premio y me muestra el mensaje "(.*?)"$/) do |msg|
   #Elemento: notice
-  page.should have_content("Selection processes was successfully created.")
+  page.should have_content(msg)
 end
 
 #Casos extremos

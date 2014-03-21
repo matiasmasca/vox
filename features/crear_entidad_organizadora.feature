@@ -5,7 +5,7 @@ Característica: crear un entidad organizadora
   Quiero poder crear una organización en el sistema
 
 #Camino feliz
-@wip
+
 Escenario: crear organización
   Dado que estoy en la pantalla de administración y hago click en "Registrar Organización"
   Y completo los datos de la organización: Nombre, Dirección, Sitio Web, email
@@ -14,7 +14,7 @@ Escenario: crear organización
   Y me muestra los datos recien creados
 
 #Casos Extremos.
-
-#Escenario: crear organización con foto
+@wip
+Escenario: crear organización con foto
 #  Y subo una imagen que se utilizará como logo de la organización.
 #  Y me muestra los datos recien creados junto a la imagen
