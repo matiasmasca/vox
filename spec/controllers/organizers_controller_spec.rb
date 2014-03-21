@@ -38,7 +38,14 @@ describe OrganizersController do
         response.should redirect_to(Organizer.last)
       end
     end
-   end 
+   end
 
+   describe "GET index" do
+      it "asigna todos los registros a @organizers" do
+        organizers = Organizer.create! valid_attributes
+        get :index, {}, valid_session
+        assigns(:organizers).should eq([organizers])
+      end
+   end
 
 end

@@ -1,0 +1,42 @@
+<h1>Lista de Organizaciones</h1>
+
+<div class="table-responsive">
+  <table id="selection-processes-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre Organización</th>
+      <th>Domicilio</th>
+      <th>Sitio web</th>
+      <th>Correo electrónico</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <% if @organizers.length == 0 %>
+      <tr>
+        <td><h2>No hay organizaciones registradas.</h2></td>
+      </tr>
+      <tr>
+        <td>Cuando las hayan creado se listarán aquí.</td>
+      </tr>
+    <% end %>
+    <% @organizers.each do |organizer| %>
+      <tr>
+        <td><%= organizer.name%></td>
+        <td><%= organizer.address %></td>
+        <td><%= organizer.web %></td>
+        <td><%= organizer.email %></td>
+        <td><%= link_to 'Mostrar', organizer, :class => 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Editar', edit_organizer_path(organizer), :class => 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Borrar', organizer, :class => 'btn btn-danger btn-xs', :method => :delete, data: { confirm: "Esta seguro que desea borrar esta Organización: #{organizer.name}?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+<br>
+
+<%= link_to 'Crear nueva Organización', new_organizer_path, :class => 'btn btn-primary' %>
