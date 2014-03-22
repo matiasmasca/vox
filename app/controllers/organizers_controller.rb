@@ -17,6 +17,10 @@ class OrganizersController < ApplicationController
     @organizer = Organizer.new
   end
 
+  # GET /organizers/1/edit
+  def edit
+  end
+
   # POST /organizer
   # POST /organizer.json
   def create
@@ -31,6 +35,21 @@ class OrganizersController < ApplicationController
         format.json { render json: @organizer.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # PATCH/PUT /selection_process/1
+  # PATCH/PUT /selection_process/1.json
+  def update
+    respond_to do |format|
+      if @organizer.update(organizer_params)
+        format.html { redirect_to @organizer, notice: 'Proceso actualizado correctamente.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @organizer.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # DELETE /selection_process/1

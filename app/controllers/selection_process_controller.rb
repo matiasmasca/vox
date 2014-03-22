@@ -42,7 +42,7 @@ class SelectionProcessController < ApplicationController
   def update
     respond_to do |format|
       if @selection_processes.update(selection_processes_params)
-        format.html { redirect_to @selection_processes, notice: 'Selection processes was successfully updated.' }
+        format.html { redirect_to @selection_processes, notice: 'Proceso actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
