@@ -1,29 +1,35 @@
 # encoding: utf-8
 Dado(/^existe una organización llamada "(.*?)" con domicilio en "(.*?)"$/) do |name, address|
-  @organizer = Organizer.new({:name => name, :address => address}) 
+  @organizer = Organizer.create!({:name => name, :address => address}) 
 end
 
 Cuando(/^yo edito una Organización$/) do
-   visit edit_organizer_path
+   click_on('Editar')
 end
 
-Cuando(/^cambio el nombre por "(.*?)", la diereción por "(.*?)"$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Cuando(/^cambio el nombre por "(.*?)", la domicilio por "(.*?)"$/) do |name, address|
+  @update_name = name
+  @update_address = address
+  @organizer.update_attributes!({ :name => @update_name,:address => @update_address })
 end
 
-Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)", sin web definida$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Entonces(/^veo que el nombre cambio y la domicilio cambio\.$/) do
+ step %{que estoy en la pantalla de Administración de Organizaciones}
+ find("table#organizers-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should 	have_content(@update_name)
+ find("table#organizers-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)").should	have_content(@update_address)
 end
 
-Cuando(/^yo edito la Organización$/) do
-  pending # express the regexp above with the code you wish you had
+Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)", sin web definida$/) do |name, address|
+    @organizer = Organizer.create!({ :name => name, :address => address, :web => nil })
 end
 
-Cuando(/^cambio web por "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Cuando(/^cambio web por "(.*?)"$/) do |web|
+  @update_web = web
+  @organizer.update_attributes!({ :web => @update_web})
 end
 
 Entonces(/^veo que la web cambio, sin afectar a nombre o dirección\.$/) do
-  pending # express the regexp above with the code you wish you had
+  step %{que estoy en la pantalla de Administración de Organizaciones}
+  find("table#organizers-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should have_content(@update_web)
 end
 

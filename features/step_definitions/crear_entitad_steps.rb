@@ -23,14 +23,11 @@ Dado(/^subo una imagen que se utilizará como logo de la organización\.$/) do
 end
 
 Entonces(/^se crea la organización y me muestra el mensaje "(.*?)"$/) do |mensaje|
-
-
   #Elemento: notice
   page.should have_content(mensaje)
 end
 
 Entonces(/^me muestra los datos recien creados$/) do
-
   #Aca debo comprobar que se muestra la info que quiero.
   expect(page).to have_content(@organizer.name)
   expect(page).to have_content(@organizer.address)

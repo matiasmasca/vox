@@ -5,11 +5,12 @@ Dado(/^que he creado (\d+) organización:$/) do |count, table|
 end
 
 Dado(/^que estoy en la pantalla de Administración de Organizaciones$/) do
-  visit organizers_path
+  #visit organizers_path
+  visit("/organizers/")
 end
 
 Entonces(/^veo una lista de las Organizaciones con (\d+) de ellas\.$/) do |count|
-  page.should have_selector("table#selection-processes-list>tbody:nth-child(2)>tr:eq(#{count})")
+  page.should have_selector("table#organizers-list>tbody:nth-child(2)>tr:eq(#{count})")
 end
 
 Dado(/^que he creado (\d+) organizaciones:$/) do |count, table|
@@ -19,7 +20,7 @@ end
 
 Entonces(/^veo una lista con exactamente la información de las (\d+) Organizaciones\.$/) do |count, expected_table|
   # table is a Cucumber::Ast::Table
-  rows = find("table#selection-processes-list").all('tr')
+  rows = find("table#organizers-list").all('tr')
   table = rows.map { |r| r.all('th,td').map { |c| c.text.strip } }
   expected_table.diff!(table)
 end
