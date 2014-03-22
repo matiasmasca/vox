@@ -15,7 +15,7 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_
   	})
 end
 
-Dado(/^existe un Organización llamada "(.*?)" con domicilio en "(.*?)"$/) do |name_entity, address|
+Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)"$/) do |name_entity, address|
   @organizer = Organizer.create!({ 
     :name => name_entity, 
     :address => address,

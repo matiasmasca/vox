@@ -33,6 +33,17 @@ class OrganizersController < ApplicationController
     end
   end
 
+  # DELETE /selection_process/1
+  # DELETE /selection_process/1.json
+  def destroy
+    @organizer.destroy
+    respond_to do |format|
+      format.html { redirect_to organizers_url, notice: 'Organización borrada correctamente.' }
+      format.json { head :no_content }
+    end
+  end
+
+
    private
     # Use callbacks to share common setup or constraints between actions.
     def set_organizer

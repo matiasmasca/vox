@@ -15,7 +15,7 @@ Dado(/^completo los datos de la organización: Nombre, Dirección, Sitio Web, em
   fill_in "organizer_email", :with => "contact@acme.org"
 
   #Crear mock.
-  step %{existe un Organización llamada "#{"ACME"}" con domicilio en "#{"Av. Siempre Viva 742"}"}
+  step %{existe una Organización llamada "#{"ACME"}" con domicilio en "#{"Av. Siempre Viva 742"}"}
 end
 
 Dado(/^subo una imagen que se utilizará como logo de la organización\.$/) do
