@@ -12,5 +12,4 @@ class AddProcessTypeToSelectionProcess < ActiveRecord::Migration
       remove_index :selection_process, :process_type_id
     end
   end
-
 end

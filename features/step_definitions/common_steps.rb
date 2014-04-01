@@ -16,12 +16,18 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_
 end
 
 Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)"$/) do |name_entity, address|
+
+imagen_path = "/public/uploads/logos/no_borrar.jpg"
   @organizer = Organizer.create!({ 
     :name => name_entity, 
     :address => address,
     :web => 'www.acme.org',
     :email => 'contact@acme.org'
     })
+
+   #@organizer.update_attributes!({ :logo =>  Rack::Test::UploadedFile.new(File.join(Rails.root, imagen_path), "image/jpeg")
+   #@organizer.logo = Rack::Test::UploadedFile.new(File.join(Rails.root, imagen_path), "image/jpeg") 
+
 end
 
 Cuando(/^hago click en "(.*?)"$/) do |button|

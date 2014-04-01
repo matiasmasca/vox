@@ -7,8 +7,8 @@ class OrganizersController < ApplicationController
     @organizers = Organizer.all
   end
 
-  # GET /selection_process/1
-  # GET /selection_process/1.json
+  # GET /organizers/1
+  # GET /organizers/1.json
   def show
   end
   
@@ -49,11 +49,20 @@ class OrganizersController < ApplicationController
         format.json { render json: @organizer.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
-  # DELETE /selection_process/1
-  # DELETE /selection_process/1.json
+  #def upload
+   #unless params[:organizer][:logo].blank?   
+    #uploaded_io = params[:organizer][:logo]
+    #Dir.mkdir '/uploads/isologos' unless File.directory? '/uploads/isologos'
+    #File.open(Rails.root.join('public', 'uploads', 'isologos', uploaded_io.original_filename), 'wb') do |file|
+    #  file.write(uploaded_io.read)
+    #end
+    #@organizer.logo = (uploaded_io.original_filename).split('.').last.downcase
+   #end
+
+  # DELETE /organizers/1
+  # DELETE /organizers/1.json
   def destroy
     @organizer.destroy
     respond_to do |format|
@@ -63,7 +72,7 @@ class OrganizersController < ApplicationController
   end
 
 
-   private
+ private
     # Use callbacks to share common setup or constraints between actions.
     def set_organizer
       @organizer = Organizer.find(params[:id])
@@ -71,7 +80,7 @@ class OrganizersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organizer_params
-      params.require(:organizer).permit(:name, :address, :web, :email)
+      params.require(:organizer).permit(:name, :address, :web, :email, :image)
     end
 
 end

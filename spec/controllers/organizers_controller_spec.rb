@@ -39,17 +39,28 @@ describe OrganizersController do
         response.should redirect_to(Organizer.last)
       end
     end
+
+    describe "POST create con foto" do
+        before :each do
+         @file = fixture_file_upload('/files/acme.jpg', 'image/jpg')
+        end
+        it "crear con logo de la organización" do
+          post :upload, :upload => @file
+          response.should be_success
+        end
+    end
    end
 
-   describe "GET index" do
+
+  describe "GET index" do
       it "asigna todos los registros a @organizers" do
         organizers = Organizer.create! valid_attributes
         get :index, {}, valid_session
         assigns(:organizers).should eq([organizers])
       end
-   end
+  end
 
-   describe "DELETE Destroy" do
+  describe "DELETE Destroy" do
       it "borra el registro organizer solicitado" do
         organizer = Organizer.create! valid_attributes
         expect {
@@ -61,15 +72,15 @@ describe OrganizersController do
         delete :destroy, {:id => organizer.to_param}, valid_session
         response.should redirect_to(organizers_url)
       end
-   end
+  end
 
-   describe "GED Edit" do
-    it "guardar los cambios que recibe sobre una Organización." do
-      organizer = Organizer.create! valid_attributes
-      get :edit, {:id => organizer.to_param}, valid_session
-      assigns(:organizer).should eq(organizer)
-    end
-   end
+  describe "GED Edit" do
+      it "guardar los cambios que recibe sobre una Organización." do
+        organizer = Organizer.create! valid_attributes
+        get :edit, {:id => organizer.to_param}, valid_session
+        assigns(:organizer).should eq(organizer)
+      end
+  end
 
   describe "PUT update" do
     describe "with valid params" do
@@ -114,6 +125,5 @@ describe OrganizersController do
       end
     end
   end
-
 
 end

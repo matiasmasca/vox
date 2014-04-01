@@ -11,13 +11,26 @@
 
 <p>
   <strong>Web:</strong>
-  <%= @organizer.web %>
+  <%= link_to @organizer.web %>
 </p>
 
 <p>
   <strong>e-mail:</strong>
   <%= @organizer.email %>
 </p>
+
+<p>
+  <strong>imagen (isologotipo):</strong></p>
+<p>
+ <%= link_to(image_tag(@organizer.image_path,
+        alt: "Logo #{@organizer.id}",
+        id: "imgLogo-#{@organizer.id}",
+        class: "imgLogo", 
+        size: "200x200"), 
+        @organizer.image_path) %>
+</p>
+
+
 <br>
 <%= link_to 'Editar', edit_organizer_path(@organizer), :class => 'btn btn-default' %> |
 <%= link_to 'Atras', organizers_path, :class => 'btn btn-default' %>

@@ -1,5 +1,5 @@
 <div class= "form-group">
-  <%= form_for @organizer, :html => { :class => 'form-horizontal' } do  |f| %>
+  <%= form_for @organizer, :html => { :class => 'form-horizontal' }, :multipart => true do  |f| %>
     <% if @organizer.errors.any? %>
       <div class="alert alert-danger">
         <h2><%= pluralize(@organizer.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
@@ -28,6 +28,10 @@
     <div class="field">
       <%= f.label :email, "corre electrónico", class: 'control-label' %><br>
       <%= f.email_field :email, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :image, "Isologotipo:", class: 'control-label' %><br>
+      <%= f.file_field :image , accept: 'image/png,image/gif,image/jpeg' %>
     </div>
       <div><br></div>
   <div class="actions" >
