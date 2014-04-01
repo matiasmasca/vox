@@ -18,12 +18,8 @@ class Organizer < ActiveRecord::Base
   end
 
   def image_path
-    #Ojo que usas image_tag
+    #Ojo que usas image_tag, entonces busca en Public
     "/images/uploads/isologos/#{self.id}.#{self.logo}"
-    
-    #"/public/images/uploads/isologos"
-    #"images/uploads/logos/#{id}.jpg"
-    #TO-DO: Falta que lea la extension correta.
   end
 
   def has_logo?
@@ -34,7 +30,7 @@ class Organizer < ActiveRecord::Base
   def guardar_imagen
     #logger.debug ("LOGOS es: #{LOGOS}")
   	if @file_data
-  		FileUtils.mkdir_p LOGOS
+  		#FileUtils.mkdir_p LOGOS
   		Dir.mkdir LOGOS unless File.directory? LOGOS
   		File.open(logo_filename, 'wb') do |f|
   			f.write(@file_data.read)

@@ -11,12 +11,15 @@
 
 <p>
   <strong>Web:</strong>
-  <%= link_to @organizer.web %>
+  <%= link_to @organizer.web, @organizer.web, :target => "_blank" %>
 </p>
 
 <p>
   <strong>e-mail:</strong>
-  <%= @organizer.email %>
+
+<% mail_to @organizer.email, "My email", cc: "organizer@vox.com",
+         subject: "[VOX] Consulta sobre" %>
+<%= mail_to @organizer.email %>
 </p>
 
 <p>

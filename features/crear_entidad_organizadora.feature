@@ -13,7 +13,6 @@ Escenario: crear organización
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
   Y me muestra los datos recien creados
 
-@wip
 Escenario: crear organización con foto
   Dado que estoy en la pantalla de administración y hago click en "Registrar Organización"
   Y completo los datos de la organización: Nombre, Dirección, Sitio Web, email
