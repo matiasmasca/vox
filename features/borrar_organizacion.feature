@@ -6,7 +6,7 @@ Característica: borrar una organización
 
 #Camino feliz
 # Borrar desde listado
-@wip
+@to-do
 Escenario: borrar premio
   Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742"
   Y que estoy en la pantalla de Administración de Organizaciones

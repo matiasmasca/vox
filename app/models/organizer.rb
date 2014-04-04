@@ -10,6 +10,7 @@ class Organizer < ActiveRecord::Base
       @file_data = file_data
       #extension = "nombre.jpg".split('.').last.downcase
       self.logo = extension
+       puts("MODEL-image: #{self.inspect}") 
     end    
   end
 
@@ -19,7 +20,11 @@ class Organizer < ActiveRecord::Base
 
   def image_path
     #Ojo que usas image_tag, entonces busca en Public
-    "/images/uploads/isologos/#{self.id}.#{self.logo}"
+    if self.logo
+       "/images/uploads/isologos/#{self.id}.#{self.logo}"
+     else
+       "/images/uploads/isologos/no-borrar.jpg" #nil
+    end
   end
 
   def has_logo?
@@ -29,6 +34,7 @@ class Organizer < ActiveRecord::Base
   private
   def guardar_imagen
     #logger.debug ("LOGOS es: #{LOGOS}")
+    #To do: borrar imagen anterior o cambiarle el nombre. 
   	if @file_data
   		#FileUtils.mkdir_p LOGOS
   		Dir.mkdir LOGOS unless File.directory? LOGOS
