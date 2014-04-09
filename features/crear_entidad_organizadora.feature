@@ -22,13 +22,23 @@ Escenario: crear organización con foto
   Y me muestra la imagen recién subida
 
 #Casos Extremos.
-@to-do
 Escenario: si no hay foto
   #si no hay foto no tiene que mostrar nada, o una foto generica tipo silueta.
+  Cuando presiono el boton "Crear"
+  Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
+  Y me muestra los datos recien creados
+  Y me muestra la imagen de logo generica
 
-@to-do
+@wip
 Escenario: faltan datos obligatorios
-#Cuales son obligatorios? 
+#Cuales son obligatorios? el PO, dijo que son: Nombre, Dirección y email. 
+  Y dejo en blanco Nombre o Dirección o corre electrónico
+   | name | address              | email            | 
+   |      | Av. Siempre Viva 742 | contact@acme.org |
+   | ACME |                      | contact@acme.org |
+   | ACME | Av. Siempre Viva 742 |                  |
+  Cuando presiono el boton "Crear"
+  Entonces me muestra el mensaje de error que "faltan esos datos"
 
 @to-do
 Escenario: datos muy cortos

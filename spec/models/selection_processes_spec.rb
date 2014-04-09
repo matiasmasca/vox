@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe SelectionProcesses do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "falta agregar ejemplos al modelo SelectionProcesses (o borrar el spec #{__FILE__})"
 end

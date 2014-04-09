@@ -29,19 +29,34 @@ end
 Entonces(/^me muestra la imagen recién subida$/) do 
   #la pagina muestra 1 imagen. Se podria mejorar con un Scope.
   page.should have_selector(:xpath, '//img[1]') #hay 1 imagen.
-  puts("Muestra: #{@organizer.inspect}") 
+  
   
   #le saque el public a esta url
   file = "#{@organizer.id + 1}.jpg"
   puts("#{Rails.root}/public/images/uploads/isologos/#{file}")
-  File.exist?("#{Rails.root}/public/images/uploads/isologos/#{file}").should == true
+  # esta el archivo en su lugar.
+  File.exist?("#{Rails.root}/public/images/uploads/isologos/#{file}").should be_true
   
+  # esta la imagen en la pagina
+  img_src="/images/uploads/isologos/#{file}"
+  puts("Muestra: #{@organizer.inspect}") 
+save_and_open_page 
+
+  page.find('img')['src'].include?(img_src).should be_true
   #ojo en producción podría chocar con nombres de archivos ya creados.
   #ojo, dejaba el archivo despues de la prueba, lo borro con esto:
-  if File.exist?("#{Rails.root}//public/images/uploads/isologos/#{file}")
+  if File.exist?("#{Rails.root}/public/images/uploads/isologos/#{file}")
     File.delete("#{Rails.root}/public/images/uploads/isologos/#{file}") 
   end
 
+end
+
+Entonces(/^me muestra la imagen de logo generica$/) do
+  #la pagina muestra 1 imagen. Se podria mejorar con un Scope.
+  page.should have_selector(:xpath, '//img[1]') #hay 1 imagen.
+  #la pagina muestra la imagen correcta.
+  img_src="/images/uploads/isologos/escudo-generico.jpg"
+  page.find('img')['src'].include?(img_src).should be_true
 end
 
 Entonces(/^se crea la organización y me muestra el mensaje "(.*?)"$/) do |mensaje|
@@ -56,5 +71,13 @@ Entonces(/^me muestra los datos recien creados$/) do
   expect(page).to have_content(@organizer.web)
   expect(page).to have_content(@organizer.email)
 end
+
+#Casos extremos.
+Dado(/^dejo en blanco Nombre o Dirección o corre electrónico$/) do |table|
+  # table is a Cucumber::Ast::Table
+  @Organizers = Organizer.create!(table.hashes)
+end
+
+
 
 #Falta agregar un paso que chequee si estoy en la URL correcta.

@@ -10,7 +10,7 @@ class Organizer < ActiveRecord::Base
       @file_data = file_data
       #extension = "nombre.jpg".split('.').last.downcase
       self.logo = extension
-       puts("MODEL-image: #{self.inspect}") 
+      #puts("MODEL-image: #{self.inspect}") 
     end    
   end
 
@@ -23,7 +23,7 @@ class Organizer < ActiveRecord::Base
     if self.logo
        "/images/uploads/isologos/#{self.id}.#{self.logo}"
      else
-       "/images/uploads/isologos/no-borrar.jpg" #nil
+       "/images/uploads/isologos/escudo-generico.jpg" #nil
     end
   end
 

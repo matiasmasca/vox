@@ -42,7 +42,7 @@ describe OrganizersController do
 
     describe "POST create con foto" do
         before :each do
-         @file = fixture_file_upload('/files/acme.jpg', 'image/jpg')
+          @file = fixture_file_upload('images/uploads/isologos/no-borrar.jpg', 'image/jpg')
         end
         it "crear con logo de la organización" do
           post :upload, :upload => @file
