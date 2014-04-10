@@ -42,11 +42,6 @@ Dado(/^dejo en blanco Lugar$/) do
   fill_in "Lugar", :with => nil
 end
 
-Entonces(/^me muestra el mensaje de error que "([^"]*)"$/) do |mensaje|
-  page.should have_content("error")
-end
-
-
 Cuando(/^como ya existe un premio con ese nombre "(.*?)" y lugar "(.*?)"$/) do |nombre, lugar|
   @selection_process = SelectionProcesses.create!({ :name_process => nombre, :place => lugar })
 end

@@ -50,3 +50,8 @@ end
 Dado(/^se lee el texto "(.*?)"$/) do |texto|
    page.should have_content(texto)
 end
+
+#Casos extremos, errores y problemas.
+Entonces(/^me muestra el mensaje de error que "([^"]*)"$/) do |mensaje|
+  page.should have_content("error")
+end

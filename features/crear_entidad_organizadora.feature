@@ -22,6 +22,34 @@ Escenario: crear organización con foto
   Y me muestra la imagen recién subida
 
 #Casos Extremos.
+Esquema del escenario: problemas con datos obligatorios
+  #Cuales son obligatorios? el PO, dijo que son: Nombre, Dirección y email. 
+  Y completo los datos de la organización con "<name>", "<address>", "<web>" y "<email>"  
+  Cuando presiono el botón "Crear"
+  Entonces me muestra el mensaje de error que "faltan esos datos"
+
+  Ejemplos: faltan datos
+   | name | address              | web         | email            | 
+   |      | Av. Siempre Viva 742 | www.web.com | contact@acme.org |
+   | ACME |                      | www.web.com | contact@acme.org |
+   | ACME | Av. Siempre Viva 742 | www.web.com |                  |
+  
+
+  Ejemplos: datos muy cortos
+   | name | address              | web         | email            | 
+   | A    | Av. Siempre Viva 742 | www.web.com | contact@acme.org |
+   | AC   | Av. Sie              | www.web.com | contact@acme.org |
+   | AC   | Av. Siempre Viva 742 | www.web.com | me@g.ws          |
+   | AC   | Av. Siempre Viva 742 | g.ws        | me@g.ws          |
+
+#Cuales son los tamaños minimos y maximos? el PO, dijo que:
+# Nombre: mínimo 2, máximo 255. 
+#8 minimo y 255 máximo, address y email. 
+#Web puede ser más lago.
+# minimo 4
+#- 63 es lo maximo de un dominio, entre www.[63c].com. El record lo tiene un escoces de 81c.
+#- el más corto  g.cn
+
 Escenario: si no hay foto
   #si no hay foto no tiene que mostrar nada, o una foto generica tipo silueta.
   Cuando presiono el botón "Crear"
@@ -29,22 +57,7 @@ Escenario: si no hay foto
   Y me muestra los datos recien creados
   Y me muestra la imagen de logo generica
 
-Esquema del escenario: faltan datos obligatorios
-  #Cuales son obligatorios? el PO, dijo que son: Nombre, Dirección y email. 
-  Y completo los datos de la organización con "<name>", "<address>", "<web>" y "<email>"  
-  Cuando presiono el botón "Crear"
-  Entonces me muestra el mensaje de error que "faltan esos datos"
 
-  Ejemplos: 
-   | name | address              | web         | email            | 
-   |      | Av. Siempre Viva 742 | www.web.com | contact@acme.org |
-   | ACME |                      | www.web.com | contact@acme.org |
-   | ACME | Av. Siempre Viva 742 | www.web.com |                  |
-  
-@wip
-Escenario: datos muy cortos
-#Cuales son los tamaños minimos y maximos? el PO, dijo que:
-#
 
 @to-do
 Escenario: archivo de foto incorrecto

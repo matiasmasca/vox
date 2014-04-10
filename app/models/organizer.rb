@@ -2,6 +2,13 @@ class Organizer < ActiveRecord::Base
   LOGOS = File.join Rails.root, 'public','images','uploads', 'isologos'
 
   validates :name, :address, :email, presence: { message: "es un dato obligatorio."}
+  validates :name, length: { in: 2..250, message: "debe ser entre 2 y 250 caracteres" }
+  #validates :place, length: { in: 8..250, message: "debe ser entre 8 y 250 caracteres" }
+  # validates :duration, inclusion: { in: 1..365, message: "%{value} debe ser entre 1 y 365" }, :allow_blank => true, numericality: { only_integer: true }
+  
+  #datos unicos.
+  #validates :name_process, uniqueness: { message: "ya esta ciendo utilizado.", :case_sensitive => false }
+
 
   after_save :guardar_imagen
   
