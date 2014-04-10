@@ -40,15 +40,23 @@ Esquema del escenario: problemas con datos obligatorios
    | A    | Av. Siempre Viva 742 | www.web.com | contact@acme.org |
    | AC   | Av. Sie              | www.web.com | contact@acme.org |
    | AC   | Av. Siempre Viva 742 | www.web.com | me@g.ws          |
-   | AC   | Av. Siempre Viva 742 | g.ws        | me@g.ws          |
+   | AC   | Av. Siempre Viva 742 | .ws         | contact@acme.org |
 
+  Ejemplos: datos muy largos
+   | name                                                                                                                                                                                                                                                        | address              | web         | email            | 
+   | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | Av. Siempre Viva 742 | www.web.com | contact@acme.org |
+   | ACME  | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA              | www.web.com | contact@acme.org |
+   | AC   | Av. Siempre Viva 742 | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | contact@g.ws          |
+   | AC   | Av. Siempre Viva 742 | www.web.com | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA          |
+ 
 #Cuales son los tamaños minimos y maximos? el PO, dijo que:
-# Nombre: mínimo 2, máximo 250. 
-#8 minimo y 250 máximo, address y email. 
-#Web puede ser más lago.
-# minimo 4
-#- 63 es lo maximo de un dominio, entre www.[63c].com. El record lo tiene un escoces de 81c.
-#- el más corto  g.cn
+#   Nombre: mínimo 2, máximo 250. 
+#   8 minimo y 250 máximo, address y email. 
+#   Web:
+#     - minimo 4
+#     - 63 es lo maximo de un dominio, entre www.[63c].com. El record lo tiene un escoces de 81c.
+#     - el más corto  g.cn
+#     - permitir dejar en blanco
 
 Escenario: si no hay foto
   #si no hay foto no tiene que mostrar nada, o una foto generica tipo silueta.
@@ -57,7 +65,12 @@ Escenario: si no hay foto
   Y me muestra los datos recien creados
   Y me muestra la imagen de logo generica
 
-
+@to-do
+Escenario: cambiar la imagen
+#  Dado que ya tiene una imagen
+#  Y quiero subir una nueva
+#  Entonces le cambia el nombre a la anterior
+#  Y sube actualiza a la nueva
 
 @to-do
 Escenario: archivo de foto incorrecto
@@ -65,10 +78,3 @@ Escenario: archivo de foto incorrecto
 #muy grande, muy chico.
 #no es una foto.
 #no tiene adentro una foto, por más que tiene extensión jpg, png.
-
-@to-do
-Escenario: cambiar la imagen
-#  Dado que ya tiene una imagen
-#  Y quiero subir una nueva
-#  Entonces le cambia el nombre a la anterior
-#  Y sube actualiza a la nueva
