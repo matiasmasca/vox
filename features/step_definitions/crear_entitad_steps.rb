@@ -8,17 +8,20 @@ Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do
   #visit("/organizers/new")
 end
 
-Dado(/^completo los datos de la organización: Nombre, Dirección, Sitio Web, email$/) do
-  fill_in "organizer_name", :with => "ACME"
-  fill_in "organizer_address", :with => "Av. Siempre Viva 742"
-  fill_in "organizer_web", :with => "www.acme.org"
-  fill_in "organizer_email", :with => "contact@acme.org"
+Dado(/^completo los datos de la organización con "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, direccion, url, correo|
+  fill_in "organizer_name", :with => nombre
+  fill_in "organizer_address", :with => direccion
+  fill_in "organizer_web", :with => url
+  fill_in "organizer_email", :with => correo
+
   #Crear mock
-  step %{existe una Organización llamada "#{"ACME"}" con domicilio en "#{"Av. Siempre Viva 742"}"}
+  @Entidad = {"name" => nombre, "address" => direccion, "web" => url, "email" => correo}
+
 end
 
+
 Dado(/^subo una imagen que se utilizará como logo de la organización\.$/) do 
-  #step %{existe una Organización llamada "#{"ACME"}" con domicilio en "#{"Av. Siempre Viva 742"}"}
+  step %{existe una Organización: "#{@Entidad["name"]}", "#{@Entidad["address"]}", "" y "#{@Entidad["email"]}"}
   imagen_path = "/public/images/uploads/isologos/no-borrar.jpg"
   page.attach_file('organizer_image', File.join(Rails.root, imagen_path), visible: false)
    #imagen_path = "/public/images/uploads/isologos/no-borrar.jpg"
@@ -39,8 +42,8 @@ Entonces(/^me muestra la imagen recién subida$/) do
   
   # esta la imagen en la pagina
   img_src="/images/uploads/isologos/#{file}"
-  puts("Muestra: #{@organizer.inspect}") 
-save_and_open_page 
+  #puts("Muestra: #{@organizer.inspect}") 
+  #save_and_open_page 
 
   page.find('img')['src'].include?(img_src).should be_true
   #ojo en producción podría chocar con nombres de archivos ya creados.
@@ -66,17 +69,14 @@ end
 
 Entonces(/^me muestra los datos recien creados$/) do
   #Aca debo comprobar que se muestra la info que quiero.
-  expect(page).to have_content(@organizer.name)
-  expect(page).to have_content(@organizer.address)
-  expect(page).to have_content(@organizer.web)
-  expect(page).to have_content(@organizer.email)
+  expect(page).to have_content(@Entidad["name"])
+  expect(page).to have_content(@Entidad["address"])
+  expect(page).to have_content(@Entidad["web"])
+  expect(page).to have_content(@Entidad["email"])
 end
 
 #Casos extremos.
-Dado(/^dejo en blanco Nombre o Dirección o corre electrónico$/) do |table|
-  # table is a Cucumber::Ast::Table
-  @Organizers = Organizer.create!(table.hashes)
-end
+
 
 
 

@@ -1,8 +1,4 @@
 # encoding: utf-8
-Dado(/^existe una organización llamada "(.*?)" con domicilio en "(.*?)"$/) do |name, address|
-  @organizer = Organizer.create!({:name => name, :address => address}) 
-end
-
 Cuando(/^yo edito una Organización$/) do
    click_on('Editar')
 end
@@ -20,7 +16,8 @@ Entonces(/^veo que el nombre cambio y la domicilio cambio\.$/) do
 end
 
 Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)", sin web definida$/) do |name, address|
-    @organizer = Organizer.create!({ :name => name, :address => address, :web => nil })
+    email = "unemail@test.com"
+    @organizer = Organizer.create!({ :name => name, :address => address, :email => email, :web => nil })
 end
 
 Cuando(/^cambio web por "(.*?)"$/) do |web|

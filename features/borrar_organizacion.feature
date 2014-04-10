@@ -8,7 +8,7 @@ Característica: borrar una organización
 # Borrar desde listado
 @to-do
 Escenario: borrar premio
-  Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742"
+  Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742" y email "info@email.com"
   Y que estoy en la pantalla de Administración de Organizaciones
   Cuando hago click en Borrar para "ACME"
   Entonces se borra la Organización "ACME"

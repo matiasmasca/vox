@@ -18,7 +18,9 @@ describe "selection_process/new" do
       assert_select "input#selection_processes_name_process[name=?]", "selection_processes[name_process]"
       assert_select "input#selection_processes_place[name=?]", "selection_processes[place]"
       assert_select "input#selection_processes_duration[name=?]", "selection_processes[duration]"
-      assert_select "input#selection_processes_state[name=?]", "selection_processes[state]"
+      #assert_select "input#selection_processes_state[name=?]", "selection_processes[state]"
     end
   end
+  
+  it "que se vean los Select Option"
 end

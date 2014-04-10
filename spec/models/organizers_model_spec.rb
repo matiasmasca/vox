@@ -1,9 +1,14 @@
 require 'spec_helper'
 
 describe Organizer do 
-	pending "falta agregar ejemplos al modelo Organizer (o borrar el spec #{__FILE__})"
+    it "es invalido sin name, address o email" do
+        organizer = Organizer.new
+        organizer.should_not be_valid
+    end
+
 	#deberia testear el Modelo.
-	#Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
+	#it "Guarda el archivo que recibe" 
+    #Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
 	# describe "POST create con foto" do
     #    before :each do
     #      @file = fixture_file_upload('images/uploads/isologos/no-borrar.jpg', 'image/jpg')

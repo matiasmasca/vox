@@ -7,7 +7,7 @@ Característica: editar una organización
 #Camino feliz
 Escenario: editar una organización
   
-  Dado existe una organización llamada "ACME43" con domicilio en "Av. Siempre Viva 742"
+  Dado existe una Organización llamada "ACME43" con domicilio en "Av. Siempre Viva 742" y email "info@email.com"
   Y que estoy en la pantalla de Administración de Organizaciones
   Cuando yo edito una Organización
   Y cambio el nombre por "ACME", la domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"

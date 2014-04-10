@@ -5,7 +5,7 @@ describe OrganizersController do
   # This should return the minimal set of attributes required to create a valid
   # Organizer. As you add validations to Organizer, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "ACME" , "address" => "UnaDireccionCualquiera"} }
+  let(:valid_attributes) { { "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "UnaDireccionCualquiera@test.com"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -123,6 +123,7 @@ describe OrganizersController do
         put :update, {:id => organizer.to_param, :organizer => { "name_process" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
+
     end
   end
 

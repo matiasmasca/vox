@@ -1,7 +1,7 @@
 class SelectionProcesses < ActiveRecord::Base
 	#datos obligatorios
-	validates :name_process, presence: { message: "es un dato obligatorio."}
-	validates :place, presence: { message: "es un dato obligatorio"}
+	validates :name_process, :place, presence: { message: "es un dato obligatorio."}
+
 	#longitud de datos
 	validates :name_process, length: { in: 8..250, message: "debe ser entre 8 y 250 caracteres" }
 	validates :place, length: { in: 8..250, message: "debe ser entre 8 y 250 caracteres" }

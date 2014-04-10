@@ -15,15 +15,20 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_
   	})
 end
 
-Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)"$/) do |name_entity, address|
+Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |name_entity, address, web, email|
   @organizer = Organizer.create!({ 
     :name => name_entity, 
     :address => address,
-    :web => 'www.acme.org',
-    :email => 'contact@acme.org',
+    :web => web,
+    :email => email,
     :logo => nil
     })
 end
+
+Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)" y email "(.*?)"$/) do |name, address, email|
+  step %{existe una Organización: "#{name}", "#{address}", "" y "#{email}"}
+end
+
 
 Cuando(/^hago click en "(.*?)"$/) do |button|
   #click_on button
@@ -31,6 +36,10 @@ Cuando(/^hago click en "(.*?)"$/) do |button|
 end
 
 Cuando(/^presiono el boton "(.*?)"$/) do |botton|
+  click_button botton #"Create Selection processes"
+end
+
+Cuando(/^presiono el botón "(.*?)"$/) do |botton|
   click_button botton #"Create Selection processes"
 end
 

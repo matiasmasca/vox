@@ -1,6 +1,8 @@
 class Organizer < ActiveRecord::Base
   LOGOS = File.join Rails.root, 'public','images','uploads', 'isologos'
 
+  validates :name, :address, :email, presence: { message: "es un dato obligatorio."}
+
   after_save :guardar_imagen
   
   def image=(file_data)

@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe SelectionProcesses do
-  pending "falta agregar ejemplos al modelo SelectionProcesses (o borrar el spec #{__FILE__})"
+      it "is invalid without name_process, place" do
+        process = SelectionProcesses.new
+        process.should_not be_valid
+    end
 end

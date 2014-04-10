@@ -6,17 +6,17 @@ Característica: crear un entidad organizadora
 
 Antecedentes:
   Dado que estoy en la pantalla de administración y hago click en "Registrar Organización"
-  Y completo los datos de la organización: Nombre, Dirección, Sitio Web, email  
+  Y completo los datos de la organización con "Nombre", "Dirección", "Sitio Web" y "contacto@email.com"  
 
 #Camino feliz
 Escenario: crear organización
-  Cuando presiono el boton "Crear"
+  Cuando presiono el botón "Crear"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
   Y me muestra los datos recien creados
 
 Escenario: crear organización con foto
   Y subo una imagen que se utilizará como logo de la organización.
-  Cuando presiono el boton "Crear"
+  Cuando presiono el botón "Crear"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
   Y me muestra los datos recien creados  
   Y me muestra la imagen recién subida
@@ -24,25 +24,27 @@ Escenario: crear organización con foto
 #Casos Extremos.
 Escenario: si no hay foto
   #si no hay foto no tiene que mostrar nada, o una foto generica tipo silueta.
-  Cuando presiono el boton "Crear"
+  Cuando presiono el botón "Crear"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
   Y me muestra los datos recien creados
   Y me muestra la imagen de logo generica
 
-@wip
-Escenario: faltan datos obligatorios
-#Cuales son obligatorios? el PO, dijo que son: Nombre, Dirección y email. 
-  Y dejo en blanco Nombre o Dirección o corre electrónico
-   | name | address              | email            | 
-   |      | Av. Siempre Viva 742 | contact@acme.org |
-   | ACME |                      | contact@acme.org |
-   | ACME | Av. Siempre Viva 742 |                  |
-  Cuando presiono el boton "Crear"
+Esquema del escenario: faltan datos obligatorios
+  #Cuales son obligatorios? el PO, dijo que son: Nombre, Dirección y email. 
+  Y completo los datos de la organización con "<name>", "<address>", "<web>" y "<email>"  
+  Cuando presiono el botón "Crear"
   Entonces me muestra el mensaje de error que "faltan esos datos"
 
-@to-do
+  Ejemplos: 
+   | name | address              | web         | email            | 
+   |      | Av. Siempre Viva 742 | www.web.com | contact@acme.org |
+   | ACME |                      | www.web.com | contact@acme.org |
+   | ACME | Av. Siempre Viva 742 | www.web.com |                  |
+  
+@wip
 Escenario: datos muy cortos
-#Cuales son los tamaños minimos y maximos.
+#Cuales son los tamaños minimos y maximos? el PO, dijo que:
+#
 
 @to-do
 Escenario: archivo de foto incorrecto
