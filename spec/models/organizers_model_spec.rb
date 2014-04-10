@@ -6,10 +6,22 @@ describe Organizer do
         organizer.should_not be_valid
     end
 
-    it "es invalido sin name: entre 2 y 250, address o email" do
+    it "es invalido, name debe ser mayor que 1" do
         organizer = Organizer.new({ "name" => "A" , "address" => "UnaDireccionCualquiera", "email" => "UnaDireccionCualquiera@test.com"})
         organizer.should_not be_valid
     end
+
+    it "es invalido, address debe ser mayor que 8" do
+        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDire", "email" => "UnaDireccionCualquiera@test.com"})
+        organizer.should_not be_valid
+    end
+
+    it "es invalido, email debe ser mayor que 8" do
+        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "me@g.ws"})
+        organizer.should_not be_valid
+    end
+
+    it "maximo es 250"
 
 	#deberia testear el Modelo.
 	#it "Guarda el archivo que recibe" 

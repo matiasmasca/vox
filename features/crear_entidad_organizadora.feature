@@ -43,8 +43,8 @@ Esquema del escenario: problemas con datos obligatorios
    | AC   | Av. Siempre Viva 742 | g.ws        | me@g.ws          |
 
 #Cuales son los tamaños minimos y maximos? el PO, dijo que:
-# Nombre: mínimo 2, máximo 255. 
-#8 minimo y 255 máximo, address y email. 
+# Nombre: mínimo 2, máximo 250. 
+#8 minimo y 250 máximo, address y email. 
 #Web puede ser más lago.
 # minimo 4
 #- 63 es lo maximo de un dominio, entre www.[63c].com. El record lo tiene un escoces de 81c.
