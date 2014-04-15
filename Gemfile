@@ -45,7 +45,7 @@ end
   gem 'sass-rails', '~> 4.0.0'
 
 # Esta me pidio el Travis-ci.org
-gem 'thread_safe', '~> 0.3.3'
+gem 'thread_safe', '~> 0.3.0'
 
 group :assets do
   #Agrega Bootstrap-saas
