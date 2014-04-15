@@ -2,13 +2,11 @@
 language: ruby
 rvm:
   - 1.9.3
-env:
-  - DB=sqlite
+install: gem install rails
+bundler_args: --without production
 script:
   - RAILS_ENV=test 
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rake
   - xvfb-run bundle exec rspec spec/features/*.rb 
-before_script:
-  - cp config/database.travis.yml config/database.yml
