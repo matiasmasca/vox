@@ -56,13 +56,3 @@ Escenario: cambiar la imagen
 #  Y sube actualiza a la nueva
 
 # si la foto tiene una extensión distinta, entonces hay que borrar la que tiene la vieja extensión, porque no la pisa.
-
-
-@to-do
-Escenario: cambiar la imagen
-#  Dado que ya tiene una imagen
-#  Y quiero subir una nueva
-#  Entonces le cambia el nombre a la anterior
-#  Y sube actualiza a la nueva
-
-# si la foto tiene una extensión distinta, entonces hay que borrar la que tiene la vieja extensión, porque no la pisa.

@@ -29,3 +29,19 @@ Entonces(/^veo que la duración cambio, sin afectar a nombre o lugar\.$/) do
   step %{que estoy en la pantalla de mis procesos electorales}
   find("table#selection-processes-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should 	have_content(@update_duration)
 end
+
+Cuando(/^cambio "(.*?)", "(.*?)" o "(.*?)"$/) do |nombre, place, duration|
+  if nombre
+    fill_in "selection_processes_name_process", :with => nombre
+  end
+
+  if place
+    fill_in "selection_processes_place", :with => place
+  end
+
+  if duration
+    fill_in "selection_processes_duration", :with => duration
+  end
+
+  click_on("Update Selection processes")
+end

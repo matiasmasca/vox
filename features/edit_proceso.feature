@@ -20,8 +20,31 @@ Escenario: agrego dato que faltaba
   Entonces veo que la duración cambio, sin afectar a nombre o lugar.
 
 #Casos extremos
-@to-do
+Esquema del escenario: problemas con datos obligatorios
+  Dado existe un premio llamado "Premios ACME43" que se realizara en "Av. Siempre Viva 742"
+  Y que estoy en la pantalla de mis procesos electorales
+  Cuando yo edito el premio
+  Y cambio "<name_process>", "<place>" o "<duration>"  
+  Entonces me muestra el mensaje de error que "faltan esos datos"
 
-#En la versión futura, debería de cambiar las fechas de inicio y cierre cuando cambia la duración.
+  Ejemplos: datos incorrectos
+   | name_process | place                | duration   | 
+   |              | Av. Siempre Viva 742 | 90         |
+   | Moncho 2014  | Av. Siempre Viva 742 | varios días|
+  
+  Ejemplos: longitudes incorrectos
+   | name_process | place                | duration | 
+   | Monchos      | Av. Siempre Viva 742 | 90       |
+   | Monchito     | MiDirec              | 90       |
+   | Monchito     | Av. Siempre Viva 742 | 0        |
+   | Monchito     | Av. Siempre Viva 742 | 366      |
+   | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      | Av. Siempre Viva 742 | 360      |
+   | Monchito     | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  | 360      |
+ 
+# Nombre de premio, debe ser unico.
+#
+
+
+# En la versión futura, debería de cambiar las fechas de inicio y cierre cuando cambia la duración.
 
 #Esto se puede refactorizar para aplicar DRY, con background.
