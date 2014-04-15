@@ -19,7 +19,6 @@ CodeClimate
 Integración Continua: Travis-ci.org
 [![Build Status](https://travis-ci.org/matiasmasca/vox.svg?branch=master)](https://travis-ci.org/matiasmasca/vox)
 
-Things you may want to cover:
 
 * Ruby version:
   ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]
@@ -34,7 +33,7 @@ Things you may want to cover:
   Nada especial por ahora.
 
 * Instalación para Dev:
-* bundle install
+ bundle install
 
 * Database creation:
   rake db:migrate
@@ -43,11 +42,11 @@ Things you may want to cover:
   rake db:seed 
 
 * How to run the test suite:
-* cucumber
-* cucumber --profile wip (para trabajar sobre algo en particular)
+  cucumber
+  cucumber --profile wip (para trabajar sobre algo en particular)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* 
+* Services (job queues, cache servers, search engines, etc.):
+  nada especial.
+* Deployment instructions:
+  nada especial.
+ 
