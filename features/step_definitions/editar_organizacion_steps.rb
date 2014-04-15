@@ -16,8 +16,9 @@ Entonces(/^veo que el nombre cambio y la domicilio cambio\.$/) do
 end
 
 Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)", sin web definida$/) do |name, address|
-    email = "unemail@test.com"
-    @organizer = Organizer.create!({ :name => name, :address => address, :email => email, :web => nil })
+    #email = "unemail@test.com"
+    #@organizer = Organizer.create!({ :name => name, :address => address, :email => email, :web => nil })
+    @organizer.update_attributes!({ :web => nil})
 end
 
 Cuando(/^cambio web por "(.*?)"$/) do |web|
@@ -30,3 +31,22 @@ Entonces(/^veo que la web cambio, sin afectar a nombre o dirección\.$/) do
   find("table#organizers-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should have_content(@update_web)
 end
 
+Cuando(/^cambio "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, direccion, url, correo|
+  if nombre
+    fill_in "organizer_name", :with => nombre
+  end
+
+  if direccion
+    fill_in "organizer_address", :with => direccion
+  end
+
+  if url
+    fill_in "organizer_web", :with => url
+  end
+
+  if correo
+    fill_in "organizer_email", :with => correo
+  end
+
+  click_on("Update Organizer")
+end

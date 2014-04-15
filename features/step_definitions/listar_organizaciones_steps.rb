@@ -4,11 +4,6 @@ Dado(/^que he creado (\d+) organización:$/) do |count, table|
     @Organizers = Organizer.create!(table.hashes)
 end
 
-Dado(/^que estoy en la pantalla de Administración de Organizaciones$/) do
-  #visit organizers_path
-  visit("/organizers/")
-end
-
 Entonces(/^veo una lista de las Organizaciones con (\d+) de ellas\.$/) do |count|
   page.should have_selector("table#organizers-list>tbody:nth-child(2)>tr:eq(#{count})")
 end

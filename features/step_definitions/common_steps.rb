@@ -15,6 +15,11 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_
   	})
 end
 
+Dado(/^que estoy en la pantalla de Administración de Organizaciones$/) do
+  #visit organizers_path
+  visit("/organizers/")
+end
+
 Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |name_entity, address, web, email|
   @organizer = Organizer.create!({ 
     :name => name_entity, 

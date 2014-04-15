@@ -18,9 +18,10 @@ Escenario: agrego dato que faltaba
   Cuando yo edito el premio
   Y cambio el duracion por "30"
   Entonces veo que la duración cambio, sin afectar a nombre o lugar.
-  
 
 #Casos extremos
+@to-do
+
 #En la versión futura, debería de cambiar las fechas de inicio y cierre cuando cambia la duración.
 
 #Esto se puede refactorizar para aplicar DRY, con background.

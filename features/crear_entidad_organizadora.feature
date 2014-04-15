@@ -65,12 +65,6 @@ Escenario: si no hay foto
   Y me muestra los datos recien creados
   Y me muestra la imagen de logo generica
 
-@to-do
-Escenario: cambiar la imagen
-#  Dado que ya tiene una imagen
-#  Y quiero subir una nueva
-#  Entonces le cambia el nombre a la anterior
-#  Y sube actualiza a la nueva
 
 @to-do
 Escenario: archivo de foto incorrecto
