@@ -13,6 +13,10 @@ Para BDD, se utiliza: Cucumber, Capybara.
 Para TDD, se utiliza: RSpec.
 
 
+CodeClimate
+[![Code Climate](https://codeclimate.com/github/matiasmasca/vox.png)](https://codeclimate.com/github/matiasmasca/vox)
+
+
 Things you may want to cover:
 
 * Ruby version:
