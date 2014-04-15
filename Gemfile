@@ -69,3 +69,6 @@ group :development do
   gem 'guard'
   gem 'guard-cucumber'
 end
+
+# Esta me pidio el Travis-ci.org
+gem 'thread_safe', '0.2.0'
