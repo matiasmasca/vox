@@ -2,6 +2,8 @@
 language: ruby
 rvm:
   - 1.9.3
+before_install: 
+  - bundle exec gem update
 bundler_args: --without production
 script:
 #  - RAILS_ENV=test 
