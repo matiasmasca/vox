@@ -71,4 +71,4 @@ group :development do
 end
 
 # Esta me pidio el Travis-ci.org
-gem 'thread_safe', '0.2.0'
+gem 'thread_safe'

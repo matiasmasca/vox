@@ -16,6 +16,8 @@ Para TDD, se utiliza: RSpec.
 CodeClimate
 [![Code Climate](https://codeclimate.com/github/matiasmasca/vox.png)](https://codeclimate.com/github/matiasmasca/vox)
 
+Integración Continua: Travis-ci.org
+[![Build Status](https://travis-ci.org/matiasmasca/vox.svg?branch=master)](https://travis-ci.org/matiasmasca/vox)
 
 Things you may want to cover:
 
