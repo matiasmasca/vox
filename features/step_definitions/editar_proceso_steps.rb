@@ -45,3 +45,7 @@ Cuando(/^cambio "(.*?)", "(.*?)" o "(.*?)"$/) do |nombre, place, duration|
 
   click_on("Update Selection processes")
 end
+
+Cuando(/^yo edito otro premio$/) do
+  find("table#selection-processes-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(9)").click_on('Editar')
+end
