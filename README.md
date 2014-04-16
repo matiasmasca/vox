@@ -13,10 +13,13 @@ Para BDD, se utiliza: Cucumber, Capybara.
 Para TDD, se utiliza: RSpec.
 
 
-CodeClimate
+Calidad del Código, seǵun CodeClimate
 [![Code Climate](https://codeclimate.com/github/matiasmasca/vox.png)](https://codeclimate.com/github/matiasmasca/vox)
 
-Integración Continua: Travis-ci.org
+Covertura de código con pruebas, según Coveralls.io
+[![Coverage Status](https://coveralls.io/repos/matiasmasca/vox/badge.png)](https://coveralls.io/r/matiasmasca/vox)
+
+Integración Continua: con Travis-ci.org
 [![Build Status](https://travis-ci.org/matiasmasca/vox.svg?branch=master)](https://travis-ci.org/matiasmasca/vox)
 
 
@@ -33,20 +36,24 @@ Integración Continua: Travis-ci.org
   Nada especial por ahora.
 
 * Instalación para Dev:
- bundle install
+ bundler install
 
 * Database creation:
   rake db:migrate
 
 * Database initialization:
   rake db:seed 
+  rake db:test:prepare
 
 * How to run the test suite:
   cucumber
   cucumber --profile wip (para trabajar sobre algo en particular)
+  rspec
 
 * Services (job queues, cache servers, search engines, etc.):
   nada especial.
+
 * Deployment instructions:
-  nada especial.
- 
+  nada especial, por ahora.
+  - cambiar el token con: rake secret
+  - cambiar los .yml de Travis y Coveralls. 
