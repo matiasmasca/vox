@@ -14,12 +14,14 @@ Escenario: listar un organizaciones
 
 Escenario: más de un proceso, mantien el contenido de cada uno
   Dado que he creado 2 organizaciones:
-   | name | address              | web			| email			   | 
-   | ACME | Av. Siempre Viva 742 | www.acme.org | contact@acme.org |
+   | name | address                 | web			     | email			      | 
+   | ACME | Av. Siempre Viva 742    | www.acme.org | contact@acme.org |
+   | MECA | Av. Siempre Zombies 742 | www.meca.org | contact@meca.org |
   Y que estoy en la pantalla de Administración de Organizaciones
   Entonces veo una lista con exactamente la información de las 2 Organizaciones.
-   | Nombre Organización | Domicilio 			| Sitio web 	| Correo electrónico |  
-   | ACME 				 | Av. Siempre Viva 742 | www.acme.org 	| contact@acme.org 	 |
+   | Nombre Organización | Domicilio 			         | Sitio web 	  | Correo electrónico |  
+   | ACME 				       | Av. Siempre Viva 742    | www.acme.org | contact@acme.org 	 |
+   | MECA                | Av. Siempre Zombies 742 | www.meca.org | contact@meca.org   |
 
 #Casos Extremos.
 Escenario: no tiene procesos creados.

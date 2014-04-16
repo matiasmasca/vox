@@ -18,29 +18,6 @@ Escenario: borrar organización con foto
 	#y borrar su imagen Avatar asociada.
 	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # IceBox
 # Borrar desde otro lugar?
 # Un usuario solo puede borrar sus propios procesos.

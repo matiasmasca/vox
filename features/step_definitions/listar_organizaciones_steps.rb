@@ -1,7 +1,7 @@
 # encoding: utf-8
 Dado(/^que he creado (\d+) organización:$/) do |count, table|
   # table is a Cucumber::Ast::Table
-    @Organizers = Organizer.create!(table.hashes)
+  @Organizers = Organizer.create!(table.hashes)
 end
 
 Entonces(/^veo una lista de las Organizaciones con (\d+) de ellas\.$/) do |count|

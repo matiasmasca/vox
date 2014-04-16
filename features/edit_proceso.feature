@@ -49,6 +49,8 @@ Escenario: Nombre de premio, debe ser unico.
   Y cambio "Premios ACME", "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos" o "30"
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
 
+@to-do
+Escenario: cambia las fechas de inicio, cuando cambia duracción.
 # En la versión futura, debería de cambiar las fechas de inicio y cierre cuando cambia la duración.
 
 #Esto se puede refactorizar para aplicar DRY, con background.
