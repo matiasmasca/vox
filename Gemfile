@@ -44,9 +44,9 @@ end
   # Use SCSS for stylesheets
   gem 'sass-rails', '~> 4.0.0'
 
-# Esta me pidio el Travis-ci.org
-# gem 'thread_safe', '~> 0.3.0'
-
+  # Servicio de covertura de test y estadisticas.
+  gem 'coveralls', require: false
+  
 group :assets do
   #Agrega Bootstrap-saas
   #gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2

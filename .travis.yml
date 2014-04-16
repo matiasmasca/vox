@@ -11,4 +11,4 @@ script:
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rake
-#  - xvfb-run bundle exec rspec spec/*.rb 
+  - xvfb-run bundle exec rspec spec/*.rb 

@@ -4,6 +4,11 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
+#Servicio Coveralls.io
+# mide covertura de pruebas y toma estadisticas de cambios
+require 'coveralls'
+Coveralls.wear!
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
