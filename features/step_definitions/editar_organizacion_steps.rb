@@ -50,3 +50,7 @@ Cuando(/^cambio "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, direccion, ur
 
   click_on("Update Organizer")
 end
+
+Cuando(/^yo edito otra Organización$/) do
+  find("table#organizers-list > tbody:nth-child(2) > tr:nth-child(3) > td:nth-child(6)").click_on('Editar')
+end

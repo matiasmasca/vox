@@ -46,6 +46,12 @@ describe Organizer do
        organizer.should_not be_valid
     end
 
+    it "nombre debe ser unico" do
+      organizer = Organizer.create!({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "UnaDireccionCualquiera@test.com"})
+      organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera2", "email" => "UnaDireccionCualquiera2@test.com"})
+      organizer.should_not be_valid
+    end
+
 	#it "Guarda el archivo que recibe" 
     #Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
 	# describe "POST create con foto" do
