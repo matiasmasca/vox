@@ -11,15 +11,17 @@ script:
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rspec  
-# - xvfb-run bundle exec rspec spec/*.rb 
 
-<<<<<<< HEAD
 #Deploy en Heroku
+#Esto es un mix de lo que genero Travis, con otras opciones.
 deploy:
   provider: heroku
   buildpack: ruby
-  api_key: 
+  api_key:
+    secure: M+tLL8qNPShe6y80hXAf9dDE5YQXpWWdpXZZiWAUktppL0QFyqZM7jpyf8zzVTDRKRhTO8g7ToYvszgsUF1L1qJef1UicVuyEuKXXGhOU2peD2zYh2eo+ns/k0Yo8PiP3zrkWIt9qK72dnRFQ9YUwSuSoGmErRyHLnmyovdcI0k=
   app: tfa-vox
+  on:
+    repo: matiasmasca/vox
   run:
     - "rake db:migrate"
     - restart
@@ -43,12 +45,3 @@ deploy:
 #  - yes | heroku keys:add
 #  # Push to Heroku!
 #  - yes | git push heroku master
-=======
-deploy:
-  provider: heroku
-  api_key:
-    secure: M+tLL8qNPShe6y80hXAf9dDE5YQXpWWdpXZZiWAUktppL0QFyqZM7jpyf8zzVTDRKRhTO8g7ToYvszgsUF1L1qJef1UicVuyEuKXXGhOU2peD2zYh2eo+ns/k0Yo8PiP3zrkWIt9qK72dnRFQ9YUwSuSoGmErRyHLnmyovdcI0k=
-  app: tfa-vox
-  on:
-    repo: matiasmasca/vox
->>>>>>> 78067da3c2cf88517d13bff41abdae24449881de
