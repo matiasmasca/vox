@@ -1,18 +1,13 @@
 login: &login
   adapter: postgresql
-  host: localhost
-  username: root
-  password:
-
-
-development:
-  database: db_vox_production
-  <<: *login
-
-test:
-  database: db_vox_production
-  <<: *login
+  encoding: unicode
+  pool: 5
+  database: dakorcvqte90bc
+  username: clrnemxgshgjjg
+  password: Zo3VdCa5TQF5Y-03YUElPAauOf
+  host: ec2-54-197-238-242.compute-1.amazonaws.com
+  port: 5432
 
 production:
-  database: db_vox_production
+  database: dakorcvqte90bc
   <<: *login
