@@ -11,7 +11,6 @@ script:
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rspec  
-
 #Deploy en Heroku
 #Esto es un mix de lo que genero Travis, con otras opciones.
 deploy:
@@ -29,7 +28,6 @@ deploy:
     - "rake db:test:prepare"
     - restart
     - "rake cleanup"
-
 #after_script:
 #  # Install the Heroku gem (or the Heroku toolbelt)
 #  - gem install heroku
