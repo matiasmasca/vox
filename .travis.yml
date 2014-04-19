@@ -13,6 +13,7 @@ script:
   - bundle exec rspec  
 # - xvfb-run bundle exec rspec spec/*.rb 
 
+<<<<<<< HEAD
 #Deploy en Heroku
 deploy:
   provider: heroku
@@ -42,3 +43,12 @@ deploy:
 #  - yes | heroku keys:add
 #  # Push to Heroku!
 #  - yes | git push heroku master
+=======
+deploy:
+  provider: heroku
+  api_key:
+    secure: M+tLL8qNPShe6y80hXAf9dDE5YQXpWWdpXZZiWAUktppL0QFyqZM7jpyf8zzVTDRKRhTO8g7ToYvszgsUF1L1qJef1UicVuyEuKXXGhOU2peD2zYh2eo+ns/k0Yo8PiP3zrkWIt9qK72dnRFQ9YUwSuSoGmErRyHLnmyovdcI0k=
+  app: tfa-vox
+  on:
+    repo: matiasmasca/vox
+>>>>>>> 78067da3c2cf88517d13bff41abdae24449881de
