@@ -22,10 +22,12 @@ deploy:
   on:
     repo: matiasmasca/vox
   run:
-#    - "heroku addons:add heroku-postgresql"
-    - "rake db:create:all"
-    - "rake db:migrate"
+    - "rake db:setup"
     - restart
+
+#db:schema:load #creates tables and columns within the (existing) database following schema.rb
+#db:setup #does db:create, db:schema:load, db:seed
+
 #after_script:
 #  # Install the Heroku gem (or the Heroku toolbelt)
 #  - gem install heroku
