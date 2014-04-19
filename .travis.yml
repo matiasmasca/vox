@@ -22,7 +22,8 @@ deploy:
   on:
     repo: matiasmasca/vox
   run:
-    - "rake db:setup"
+    - "rake db:drop"
+    - "rake db:schema:load"
     - restart
 
 #db:schema:load #creates tables and columns within the (existing) database following schema.rb
