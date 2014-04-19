@@ -26,7 +26,6 @@ deploy:
 #    - "rake db:create"
     - "rake db:migrate"
     - restart
-    - "rake cleanup"
 #after_script:
 #  # Install the Heroku gem (or the Heroku toolbelt)
 #  - gem install heroku
