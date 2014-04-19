@@ -42,7 +42,7 @@ class Organizer < ActiveRecord::Base
   private
   def guardar_imagen
     #logger.debug ("LOGOS es: #{LOGOS}")
-    #To do: borrar imagen anterior o cambiarle el nombre. 
+    #@to-do: borrar imagen anterior. 
   	if @file_data
   		#FileUtils.mkdir_p LOGOS
   		Dir.mkdir LOGOS unless File.directory? LOGOS
@@ -54,3 +54,13 @@ class Organizer < ActiveRecord::Base
   end
 
 end
+
+  #
+  # Set the filename for versioned files
+  #def filename
+  #  random_token = Digest::SHA2.hexdigest("#{Time.now.utc}--#{model.id.to_s}").first(20)
+  #  ivar = "@#{mounted_as}_secure_token"    
+  #  token = model.instance_variable_get(ivar)
+  #  token ||= model.instance_variable_set(ivar, random_token)
+  #  "#{model.id}_#{token}.jpg" if original_filename
+  #end

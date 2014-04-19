@@ -12,3 +12,33 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec  
 # - xvfb-run bundle exec rspec spec/*.rb 
+
+#Deploy en Heroku
+deploy:
+  provider: heroku
+  buildpack: ruby
+  api_key: 
+  app: tfa-vox
+  run:
+    - "rake db:migrate"
+    - restart
+    - "rake cleanup"
+
+#after_script:
+#  # Install the Heroku gem (or the Heroku toolbelt)
+#  - gem install heroku
+#  # Add your Heroku git repo:
+#  - git remote add heroku git@heroku.com:YOUR_HEROKU_APP.git
+#  # Add your Heroku API key:
+#  - export HEROKU_API_KEY=YOUR_HEROKU_API_KEY_HERE
+#  # Turn off warnings about SSH keys:
+#  - echo "Host heroku.com" >> ~/.ssh/config
+#  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+#  - echo "   CheckHostIP no" >> ~/.ssh/config
+#  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+#  # Clear your current Heroku SSH keys:
+#  - heroku keys:clear
+#  # Add a new SSH key to Heroku
+#  - yes | heroku keys:add
+#  # Push to Heroku!
+#  - yes | git push heroku master

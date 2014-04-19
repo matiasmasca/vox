@@ -68,7 +68,7 @@ Escenario: si no hay foto
 
 @to-do
 Escenario: archivo de foto incorrecto
-# Que archivo se permitirá?
+# Que archivo se permitirá? jpg, png
 #muy grande, muy chico.
 #no es una foto.
 #no tiene adentro una foto, por más que tiene extensión jpg, png.

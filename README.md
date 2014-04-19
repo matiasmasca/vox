@@ -24,6 +24,8 @@ Covertura de código con pruebas, según Coveralls.io
 Integración Continua: con Travis-ci.org
     [![Build Status](https://travis-ci.org/matiasmasca/vox.svg?branch=master)](https://travis-ci.org/matiasmasca/vox)
 
+Dependency Status:
+    [![Dependency Status](https://gemnasium.com/matiasmasca/vox.svg)](https://gemnasium.com/matiasmasca/vox)
 
 * Ruby version:
     ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]
