@@ -72,3 +72,7 @@ group :development do
   gem 'guard'
   gem 'guard-cucumber'
 end
+
+group :production do
+  gem 'pg'
+end
