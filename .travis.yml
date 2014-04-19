@@ -23,7 +23,7 @@ deploy:
     repo: matiasmasca/vox
   run:
 #    - "heroku addons:add heroku-postgresql"
-#    - "rake db:create"
+    - "rake db:create:all"
     - "rake db:migrate"
     - restart
 #after_script:

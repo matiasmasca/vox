@@ -6,10 +6,8 @@ gem 'rails', '4.0.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -73,5 +71,9 @@ group :development do
 end
 
 group :production do
+  #heroku pide esto.
+  ruby '1.9.3'
+
   gem 'pg'
+  gem 'rails_12factor'
 end
