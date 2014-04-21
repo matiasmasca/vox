@@ -5,8 +5,8 @@ Característica: crear un entidad organizadora
   Quiero poder crear una organización en el sistema
 
 Antecedentes:
-  Dado que estoy en la pantalla de administración y hago click en "Registrar Organización"
-  Y completo los datos de la organización con "Nombre", "Dirección", "Sitio Web" y "contacto@email.com"  
+  Dado que estoy en la pantalla de administración y hago click en "Registrar Organización"  
+  Y completo los datos de la organización con "Nombre A", "Dirección", "Sitio Web" y "contacto@email.com"
 
 #Camino feliz
 Escenario: crear organización
@@ -59,7 +59,8 @@ Esquema del escenario: problemas con datos obligatorios
 #     - permitir dejar en blanco
 
 Escenario: si no hay foto
-  #si no hay foto no tiene que mostrar nada, o una foto generica tipo silueta.
+  #PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
+  Y completo los datos de la organización con "Nombre B", "Dirección", "Sitio Web" y "contacto@email.com"
   Cuando presiono el botón "Crear"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
   Y me muestra los datos recien creados

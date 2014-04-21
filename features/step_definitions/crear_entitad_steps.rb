@@ -1,9 +1,12 @@
 # encoding: utf-8
 #Crear la entidad: Nombre, Dirección, Sitio Web, email, logo.
 #"ABSTRACT", Av. 9 de Julio Nro. 220, www.abstract.org.ar, /organizadores/logos/logoXXX.jpg
+
 Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do |boton|
   visit(paginas_home_path)
   click_on boton
+  
+  #@to-do: chequear uri correcta
   #Aca deberia estar en /organizers/new falta algo que cheque la URL.
   #visit("/organizers/new")
 end
@@ -16,12 +19,10 @@ Dado(/^completo los datos de la organización con "(.*?)", "(.*?)", "(.*?)" y "(
 
   #Crear mock
   @Entidad = {"name" => nombre, "address" => direccion, "web" => url, "email" => correo}
-
 end
 
-
 Dado(/^subo una imagen que se utilizará como logo de la organización\.$/) do 
-  step %{existe una Organización: "#{@Entidad["name"]}", "#{@Entidad["address"]}", "" y "#{@Entidad["email"]}"}
+  step %{existe una Organización: "#{@Entidad["name"]}-con-logo", "#{@Entidad["address"]}", "" y "#{@Entidad["email"]}"}
   imagen_path = "/public/images/uploads/isologos/no-borrar.jpg"
   page.attach_file('organizer_image', File.join(Rails.root, imagen_path), visible: false)
    #imagen_path = "/public/images/uploads/isologos/no-borrar.jpg"
@@ -31,8 +32,7 @@ end
 
 Entonces(/^me muestra la imagen recién subida$/) do 
   #la pagina muestra 1 imagen. Se podria mejorar con un Scope.
-  page.should have_selector(:xpath, '//img[1]') #hay 1 imagen.
-  
+  page.should have_selector(:xpath, '//img[1]') #hay 1 imagen.  
   
   #le saque el public a esta url
   file = "#{@organizer.id + 1}.jpg"
@@ -76,8 +76,6 @@ Entonces(/^me muestra los datos recien creados$/) do
 end
 
 #Casos extremos.
+# se controlan con las tablas de datos en el feature.
 
-
-
-
-#Falta agregar un paso que chequee si estoy en la URL correcta.
+#@to-do: Falta agregar un paso que chequee si estoy en la URL correcta.
