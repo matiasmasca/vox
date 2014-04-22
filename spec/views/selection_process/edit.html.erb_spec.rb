@@ -18,6 +18,8 @@ describe "selection_process/edit" do
       assert_select "input#selection_processes_place[name=?]", "selection_processes[place]"
       assert_select "input#selection_processes_duration[name=?]", "selection_processes[duration]"
       #assert_select "input#selection_processes_state[name=?]", "selection_processes[state]"
+      assert_select "select#selection_processes_state option[selected]", text: "nuevo"
+
     end
   end
 

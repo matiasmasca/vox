@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324203124) do
+ActiveRecord::Schema.define(version: 20140422214855) do
 
   create_table "organizers", force: true do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140324203124) do
   create_table "selection_process", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration" #, limit: 3 #Limit da error en Postgress
+    t.integer  "duration",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
@@ -36,5 +36,18 @@ ActiveRecord::Schema.define(version: 20140324203124) do
   end
 
   add_index "selection_process", ["process_type_id"], name: "index_selection_process_on_process_type_id"
+
+  create_table "users", force: true do |t|
+    t.string   "usuario"
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "email"
+    t.string   "clave"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.integer  "tipo_usuario_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

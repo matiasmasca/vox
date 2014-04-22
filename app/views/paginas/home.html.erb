@@ -18,7 +18,8 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
         <td><%= link_to 'Registrar Organización', new_organizer_path, :class => 'btn btn-default' %>
       </tr>
       <tr>
-        <td><p class = 'btn btn-default'>Usuarios</td>
+        <td><%= link_to 'Usuarios', users_path, :class => 'btn btn-default' %>
+        <td><%= link_to 'Registrar Usuario', new_user_path, :class => 'btn btn-default' %>
       </tr>
 
   </tbody>

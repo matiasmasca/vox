@@ -1,4 +1,6 @@
 Vox::Application.routes.draw do
+  resources :users
+
   #paginas estaticas
   get "paginas/home"
   get "paginas/about"
