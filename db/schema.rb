@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20140422214855) do
     t.string   "address"
     t.string   "web"
     t.string   "email"
+    t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "logo"
   end
 
   create_table "selection_process", force: true do |t|
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20140422214855) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
+    t.integer  "process_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "process_type_id"
   end
 
   add_index "selection_process", ["process_type_id"], name: "index_selection_process_on_process_type_id"

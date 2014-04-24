@@ -52,7 +52,8 @@ describe Organizer do
       organizer.should_not be_valid
     end
 
-	#it "Guarda el archivo que recibe" 
+	#@to-do
+  #it "Guarda el archivo que recibe" 
     #Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
 	# describe "POST create con foto" do
     #    before :each do

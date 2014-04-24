@@ -22,6 +22,14 @@ Entonces(/^se crea el usuario y me muestra el mensaje "(.*?)"$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end
 
-Entonces(/^me muestra la imagen de "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Dado(/^como ya existe un usuario con ese "(.*?)"$/) do |arg1|
+  if arg1 == "correo electrónico" 
+   #Crear registro en la db
+   @Usuario = User.new({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email", "clave" => "clave1234", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 }) 
+  end
+
+  if arg1 == "nombre de usuairo"
+   #Crear registro en la db
+   @Usuario = User.new({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email", "clave" => "clave1234", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3})   end
 end
+

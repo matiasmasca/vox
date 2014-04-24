@@ -65,11 +65,12 @@ Escenario: Premio repetido, Oscar y oscar.
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
 # Pasan para otra iteración.
+#@to-do
 #Escenario: calcula fecha cierre automaticamente
 #  Dado que selecciono "2014/08/13" en Fecha Inicio
 #  Y la duración es de "30" días.
 #  Entonces me sugiere la fecha de cierre, autocompletando "12/09/2014" en Fecha Cierre
-
+#@to-do
 # Escenario:
 # Organizador: entidad a la que pertenece el usuario. El premio debe estar asociado a la Organización a la que pertenece el usuario.
 

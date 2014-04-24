@@ -1,7 +1,8 @@
-<%= form_for(@user) do |f| %>
+<div class="form-group">
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
@@ -12,31 +13,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :usuario %><br>
+    <%= f.label :usuario, "Nombre de Usuario", class: 'control-label' %><br>
     <%= f.text_field :usuario %>
   </div>
   <div class="field">
-    <%= f.label :nombre %><br>
+    <%= f.label :nombre, "Nombre/s", class: 'control-label' %><br>
     <%= f.text_field :nombre %>
   </div>
   <div class="field">
-    <%= f.label :apellido %><br>
+    <%= f.label :apellido, "Apellido", class: 'control-label' %><br>
     <%= f.text_field :apellido %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email, "Dirección de correo electrónico", class: 'control-label' %><br>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :clave %><br>
-    <%= f.text_field :clave %>
+    <%= f.label :clave, "Clave de acceso", class: 'control-label' %><br>
+    <%= f.password_field :clave %>
   </div>
   <div class="field">
-    <%= f.label :facebook %><br>
+    <%= f.label :facebook, "Usuario en Facebook", class: 'control-label' %><br>
     <%= f.text_field :facebook %>
   </div>
   <div class="field">
-    <%= f.label :twitter %><br>
+    <%= f.label :twitter, "Usuario en Twitter", class: 'control-label' %><br>
     <%= f.text_field :twitter %>
   </div>
   <div class="field">
@@ -45,6 +46,7 @@
     <%= f.select :tipo_usuario_id, tipos_usuarios, selected: @user.tipo_usuario_id, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Guardar cambios', class: 'btn btn-primary' %>
   </div>
 <% end %>
+</div>
