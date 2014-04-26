@@ -21,6 +21,16 @@ class User < ActiveRecord::Base
 
   #datos unicos.
   validates :usuario, :email, uniqueness: { message: "ya está siendo utilizado.", :case_sensitive => false }
+  
   #formato email valido
-  validates :email, format: /@/
+  validates :email, format: /\A[\w+\-.]+@[a-z\d\-.]{2,}+\.[a-z]{2,3}\Z/i #{ message: "Direccion de correo electronico invalida." }﻿ 
+  #\A inicio con cadena.
+  # [\w+\-.] caracter de palabra, un guio o un punto.
+  # @ un arroba
+  # [a-z\d\-.] almenos una letra, un guion
+  # {2,} minimo 2 caracteres.
+  # \. que haya al menos 1 punto "."
+  # [a-z]{2,3} que haya entre 2 y 3 letras seguidas: ar, com, etc.
+  # /i pueden ser letras mayusculas o minusculas.
+  
 end
