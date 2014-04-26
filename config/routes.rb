@@ -9,6 +9,7 @@ Vox::Application.routes.draw do
   #Resource, crea los routes a 7 acciones por defecto.
   resources :selection_process
   resources :organizers
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
