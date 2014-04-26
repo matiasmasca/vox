@@ -16,7 +16,7 @@ Antecedentes:
 Esquema del escenario: datos usuario
   #Cual será el nombre de usuario en el sistema? Product Owner: un nombre de usuario o el correo
   Y completo los datos del usuario con "<usuario>", "<nombre>", "<apellido>", "<email>", "<clave>", "<facebook>", "<twiter>" y "<tipo_usuario_id>"  
-  Cuando presiono el botón "Crear"
+  Cuando presiono el botón "Guardar cambios"
   Entonces se lee el texto "Usuario registrado correctamente."
 
   Ejemplos: camino feliz
@@ -33,7 +33,7 @@ Esquema del escenario: datos usuario
 Esquema del escenario: datos usuario
   #Cual será el nombre de usuario en el sistema? Product Owner: 
   Y completo los datos del usuario con "<usuario>", "<nombre>", "<apellido>", "<email>", "<clave>", "<facebook>", "<twiter>" y "<tipo_usuario_id>"
-  Cuando presiono el botón "Crear"
+  Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "faltan datos."
 
   #Cuales son obligatorios? el PO, dijo que son: usuario, email, clave, tipo usuario. 
@@ -75,12 +75,12 @@ Esquema del escenario: datos usuario
 
 Escenario: nombre de usuario debe ser unico.
   Pero como ya existe un usuario con ese "nombre de usuario"
-  Cuando presiono el botón "Crear"
+  Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "ese nombre de usuario ya está siendo utilizado."
 
 Escenario: email del usuario debe ser unico.
   Pero como ya existe un usuario con ese "correo electrónico"
-  Cuando presiono el botón "Crear"
+  Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "ese email ya está siendo utilizado por otro usuario."
 
 
@@ -90,20 +90,20 @@ Escenario: email del usuario debe ser unico.
 #  Y escribo "Premios ACME" en Nombre
 #  Y escribo "Av. Siempre Viva 742" en Lugar,
 #  Pero como ya existe un premio con ese nombre "premios acme" y lugar "Av. Siempre Viva 742"
-#  Cuando presiono el boton "Crear"
+#  Cuando presiono el boton "Guardar cambios"
 #  Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
 #@to-do para otra iteración.
 #Escenario: crear usuario con avatar
 #  Y subo una imagen que se utilizará como "Avatar".
-#  Cuando presiono el botón "Crear"
+#  Cuando presiono el botón "Guardar cambios"
 #  Entonces se crea el usuario y me muestra el mensaje "Usuario registrado correctamente."
 #  Y me muestra los datos recien creados  
 #  Y me muestra la imagen recién subida
 
 #Escenario: si no hay foto
   #PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
-#  Cuando presiono el botón "Crear"
+#  Cuando presiono el botón "Guardar cambios"
 #  Entonces se crea el usuario y me muestra el mensaje "Usuario registrado correctamente."  
 #  Y me muestra los datos recien creados
 #  Y me muestra la imagen de "avatar generica"

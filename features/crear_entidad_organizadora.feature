@@ -10,13 +10,13 @@ Antecedentes:
 
 #Camino feliz
 Escenario: crear organización
-  Cuando presiono el botón "Crear"
+  Cuando presiono el botón "Guardar cambios"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
   Y me muestra los datos recien creados
 
 Escenario: crear organización con foto
   Y subo una imagen que se utilizará como logo de la organización.
-  Cuando presiono el botón "Crear"
+  Cuando presiono el botón "Guardar cambios"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
   Y me muestra los datos recien creados  
   Y me muestra la imagen recién subida
@@ -25,7 +25,7 @@ Escenario: crear organización con foto
 Esquema del escenario: problemas con datos obligatorios
   #Cuales son obligatorios? el PO, dijo que son: Nombre, Dirección y email. 
   Y completo los datos de la organización con "<name>", "<address>", "<web>" y "<email>"  
-  Cuando presiono el botón "Crear"
+  Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "faltan esos datos"
 
   Ejemplos: faltan datos
@@ -61,7 +61,7 @@ Esquema del escenario: problemas con datos obligatorios
 Escenario: si no hay foto
   #PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
   Y completo los datos de la organización con "Nombre B", "Dirección", "Sitio Web" y "contacto@email.com"
-  Cuando presiono el botón "Crear"
+  Cuando presiono el botón "Guardar cambios"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
   Y me muestra los datos recien creados
   Y me muestra la imagen de logo generica
@@ -82,7 +82,7 @@ Escenario: nombre de organización unico.
 #  Y escribo "Premios ACME" en Nombre
 #  Y escribo "Av. Siempre Viva 742" en Lugar,
 #  Pero como ya existe un premio con ese nombre "Premios ACME" y lugar "Av. Siempre Viva 742"
-#  Cuando presiono el boton "Crear"
+#  Cuando presiono el boton "Guardar cambios"
 #  Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
 #Escenario: Premio repetido, Oscar y oscar.
@@ -90,5 +90,5 @@ Escenario: nombre de organización unico.
 #  Y escribo "Premios ACME" en Nombre
 #  Y escribo "Av. Siempre Viva 742" en Lugar,
 #  Pero como ya existe un premio con ese nombre "premios acme" y lugar "Av. Siempre Viva 742"
-#  Cuando presiono el boton "Crear"
+#  Cuando presiono el boton "Guardar cambios"
 #  Entonces me muestra el mensaje de error que "el nombre del premio ya existe"

@@ -48,7 +48,7 @@ Cuando(/^cambio "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, direccion, ur
     fill_in "organizer_email", :with => correo
   end
 
-  click_on("Update Organizer")
+  click_on("Guardar cambios")
 end
 
 Cuando(/^yo edito otra Organización$/) do

@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
+ruby '1.9.3' #Versión de Ruby.
+#ruby-gemset=GemasVox
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -20,32 +18,24 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0' 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-  # Use CoffeeScript for .js.coffee assets and views
-  gem 'coffee-rails', '~> 4.0.0' 
-  # Use jquery as the JavaScript library
-  gem 'jquery-rails'
-  # Use SCSS for stylesheets
-  gem 'sass-rails', '~> 4.0.0'
-
-  # Servicio de covertura de test y estadisticas.
-  gem 'coveralls', require: false
-  
 group :assets do
   #Agrega Bootstrap-saas
   #gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
   gem 'bootstrap-sass', '~> 3.1.1'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-cucumber'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :test do
@@ -57,23 +47,18 @@ group :test do
   gem 'rspec-expectations' # Para usar rspec en cucumber y que entienda .should
 end
 
+# Servicio de covertura de test y estadisticas.
+gem 'coveralls', require: false
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'guard-rails'
 end
 
-group :development do
-  gem 'guard'
-  gem 'guard-cucumber'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-end
-
 group :production do
   #heroku pide esto.
-  ruby '1.9.3'
-
-  gem 'pg'
-  gem 'rails_12factor'
+  #ruby '1.9.3'
+  gem 'pg' #base de datos
+  gem 'rails_12factor' #algo de heroku para archivos estaticos.
 end

@@ -13,7 +13,7 @@ Escenario: crear premio
   Y selecciono "2014/08/13" en Fecha Inicio
   Y selecciono "2014/09/2" en Fecha Cierre
   Y en Tipo de Proceso selecciono "premio"
-  Cuando presiono el boton "Crear"
+  Cuando presiono el boton "Guardar cambios"
   Entonces se crea el premio y me muestra el mensaje "Premio creado correctamente"
 
 #Casos extremos
@@ -21,14 +21,14 @@ Escenario: se olvido un dato
   Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y dejo en blanco Nombre
   Y dejo en blanco Lugar
-  Cuando presiono el boton "Crear"
+  Cuando presiono el boton "Guardar cambios"
   Entonces me muestra el mensaje de error que "faltan esos datos"
 
 Escenario: datos muy cortos
   Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Prem" en Nombre
   Y escribo "Av. " en Lugar,
-  Cuando presiono el boton "Crear"
+  Cuando presiono el boton "Guardar cambios"
   Entonces me muestra el mensaje de error que "esos datos son muy cortos"
 
 Escenario: muchos dias, más de 366.
@@ -36,7 +36,7 @@ Escenario: muchos dias, más de 366.
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Y escribo "366" en Duracion
-  Cuando presiono el boton "Crear"
+  Cuando presiono el boton "Guardar cambios"
   Entonces me muestra el mensaje de error que "son muchos dias"
 
 
@@ -45,7 +45,7 @@ Escenario: dias es solo numeros
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Y escribo "366yy" en Duracion
-  Cuando presiono el boton "Crear"
+  Cuando presiono el boton "Guardar cambios"
   Entonces me muestra el mensaje de error que "dias es solo numerico"
 
 Escenario: nombre premio repetido.
@@ -53,7 +53,7 @@ Escenario: nombre premio repetido.
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Pero como ya existe un premio con ese nombre "Premios ACME" y lugar "Av. Siempre Viva 742"
-  Cuando presiono el boton "Crear"
+  Cuando presiono el boton "Guardar cambios"
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
 Escenario: Premio repetido, Oscar y oscar.
@@ -61,7 +61,7 @@ Escenario: Premio repetido, Oscar y oscar.
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Pero como ya existe un premio con ese nombre "premios acme" y lugar "Av. Siempre Viva 742"
-  Cuando presiono el boton "Crear"
+  Cuando presiono el boton "Guardar cambios"
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
 # Pasan para otra iteración.

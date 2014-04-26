@@ -43,7 +43,7 @@ Cuando(/^cambio "(.*?)", "(.*?)" o "(.*?)"$/) do |nombre, place, duration|
     fill_in "selection_processes_duration", :with => duration
   end
 
-  click_on("Update Selection processes")
+  click_on("Guardar cambios")
 end
 
 Cuando(/^yo edito otro premio$/) do
