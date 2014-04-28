@@ -73,7 +73,7 @@ class OrganizersController < ApplicationController
 
 
  private
-    # Use callbacks to share common setup or constraints between actions.
+    # Para evitar repetir este código en cada acción.
     def set_organizer
       @organizer = Organizer.find(params[:id])
     end
