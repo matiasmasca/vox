@@ -12,35 +12,35 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :usuario, "Nombre de Usuario", class: 'control-label' %><br>
-    <%= f.text_field :usuario %>
+    <%= f.text_field :usuario,  class: "form-control", size: "10", maxlength: "110" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :nombre, "Nombre/s", class: 'control-label' %><br>
-    <%= f.text_field :nombre %>
+    <%= f.text_field :nombre,  class: "form-control", size: "10", maxlength: "110" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :apellido, "Apellido", class: 'control-label' %><br>
-    <%= f.text_field :apellido %>
+    <%= f.text_field :apellido,  class: "form-control", size: "10", maxlength: "110" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email, "Dirección de correo electrónico", class: 'control-label' %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email,  class: "form-control", size: "10", maxlength: "110" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :clave, "Clave de acceso", class: 'control-label' %><br>
-    <%= f.password_field :clave %>
+    <%= f.password_field :clave,  class: "form-control", size: "10", maxlength: "110" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :facebook, "Usuario en Facebook", class: 'control-label' %><br>
-    <%= f.text_field :facebook %>
+    <%= f.text_field :facebook,  class: "form-control", size: "10", maxlength: "110" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :twitter, "Usuario en Twitter", class: 'control-label' %><br>
-    <%= f.text_field :twitter %>
+    <%= f.text_field :twitter,  class: "form-control", size: "20", maxlength: "15" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <% tipos_usuarios = {'Admin'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'} %>
     <%= f.label :tipo_usuario_id, "Tipo Usuario" , class: 'control-label' %><br>
     <%= f.select :tipo_usuario_id, tipos_usuarios, selected: @user.tipo_usuario_id, class: 'form-control' %>

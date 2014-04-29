@@ -11,17 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422214855) do
+ActiveRecord::Schema.define(version: 20140428223031) do
 
   create_table "organizers", force: true do |t|
     t.string   "name"
     t.string   "address"
     t.string   "web"
     t.string   "email"
-    t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo"
+    t.integer  "user_id"
   end
+
+  add_index "organizers", ["user_id"], name: "index_organizers_on_user_id"
 
   create_table "selection_process", force: true do |t|
     t.string   "name_process"
@@ -30,9 +33,9 @@ ActiveRecord::Schema.define(version: 20140422214855) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
-    t.integer  "process_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "process_type_id"
   end
 
   add_index "selection_process", ["process_type_id"], name: "index_selection_process_on_process_type_id"
