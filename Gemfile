@@ -34,6 +34,8 @@ end
 group :development do
   gem 'guard'
   gem 'guard-cucumber'
+  gem 'guard-rspec'
+  gem 'guard-rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
@@ -44,17 +46,12 @@ group :test do
   gem 'database_cleaner' # to clear Cucumber's test database between runs
   gem 'capybara'         # lets Cucumber pretend to be a web browser
   gem 'launchy'          # a useful debugging aid for user stories
+  gem 'rspec-rails'
   gem 'rspec-expectations' # Para usar rspec en cucumber y que entienda .should
 end
 
 # Servicio de covertura de test y estadisticas.
 gem 'coveralls', require: false
-
-group :test, :development do
-  gem 'rspec-rails'
-  gem 'guard-rspec'
-  gem 'guard-rails'
-end
 
 group :production do
   #heroku pide esto.

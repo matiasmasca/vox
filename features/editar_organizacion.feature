@@ -38,7 +38,7 @@ Esquema del escenario: problemas con datos obligatorios
    | name | address              | web         | email            | 
    | A    | Av. Siempre Viva 742 | www.web.com | contact@acme.org |
    | AC   | Av. Sie              | www.web.com | contact@acme.org |
-   | AC   | Av. Siempre Viva 742 | www.web.com | me@g.ws          |
+   | AC   | Av. Siempre Viva 742 | www.web.com | m@g.ar           |
    | AC   | Av. Siempre Viva 742 | .ws         | contact@acme.org |
 
   Ejemplos: datos muy largos

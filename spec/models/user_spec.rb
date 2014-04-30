@@ -38,8 +38,8 @@ describe User do
         user.should_not be_valid
     end
 
-  	it "es invalido, email debe ser mayor que 5" do
-        user = User.new({ "usuario" => "MyStrin" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "M@.c", "clave" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 })
+  	it "es invalido, email debe ser mayor que 6" do
+        user = User.new({ "usuario" => "MyStrin" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "M@g.ar", "clave" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 })
         user.should_not be_valid
     end
 

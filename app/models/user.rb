@@ -7,14 +7,14 @@ class User < ActiveRecord::Base
   #- usuario: 8 chr ~ 110
   #- nombre: 2 chr ~ 110, allow blank
   #- apellido: 2 chr ~ 110, allow blank
-  #- email: 5 chr ~ 110
+  #- email: 6 chr ~ 110
   #- clave: 9 chr ~ 110
   #- facebook: 2 chr ~ 110, allow blank
   #- twitter: 2 chr ~ 15, allow blank (incluido el arroba)
   #- tipo_usuario_id: 1 (por ahora solo habrá 3 tipos de usuarios: 1,2,3)
   validates :usuario, length: { in: 8..110, message: "debe ser entre 9 y 110 caracteres" }
   validates :nombre, :apellido, :facebook, length: { in: 2..110, message: "debe ser entre 2 y 110 caracteres" }, :allow_blank => true
-  validates :email, length: { in: 5..110, message: "debe ser entre 5 y 110 caracteres" }
+  validates :email, length: { in: 6..110, message: "debe ser entre 5 y 110 caracteres" }
   
   # Mensaje de error personalizado, value.length se genera de forma dinamica. Podría mejorarse creando un validador en lib/initializer/validator.rb
   validates :clave, length: { 

@@ -6,8 +6,13 @@ guard 'rails' do
   watch(%r{^(config|lib)/.*})
 end
 
+guard 'cucumber' do
+  watch(%r{^features/.+\.feature$})
+  watch(%r{^features/support/.+$}){ 'features' }
+  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
+end
 
-guard :rspec do
+guard :rspec, cmd: 'rspec --color --format documentation --fail-fast' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -26,11 +31,29 @@ guard :rspec do
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
+
+  # Vigilar todo el tiempo...
+  # watch /lib/ files
+  watch(%r{^lib/(.+).rb$}) do |m|
+    "spec/#{m[1]}_spec.rb"
+  end
+ 
+  # watch /spec/ files
+  watch(%r{^spec/(.+).rb$}) do |m|
+    "spec/#{m[1]}.rb"
+  end
 end
 
+guard :cucumber do
+  #Para vigilar continuamente... 
+  # parece que crea un loop y ya no se ejecutan los pasos que le siguan...
+  watch(%r{^features/.+\.feature$}) do |m|
+    "features/#{m[1]}.feature"
+  end
+  
+  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) do |m|
+    "features/step_definitions/#{m[1]}_steps\.rb" #que ejecute toda la feature
+  end
 
-guard 'cucumber' do
-  watch(%r{^features/.+\.feature$})
-  watch(%r{^features/support/.+$})          { 'features' }
-  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
 end
+

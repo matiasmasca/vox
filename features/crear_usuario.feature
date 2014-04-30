@@ -25,9 +25,9 @@ Esquema del escenario: datos usuario
 
   Ejemplos: tipos de usuario
     | usuario     | nombre | apellido | email                         | clave     | facebook  | twiter | tipo_usuario_id |
-    | pepearge    | Li     | Zi       | li@wz                         | moni12345 | myfac      | @p    | Admin           |
-    | pepearge    | Li     | Zi       | li@wz                         | moni12345 | myfac      | @p    | Jurado          |
-    | pepearge    | Li     | Zi       | li@wz                         | moni12345 | myfac      | @p    | Organizador     |
+    | pepearge    | Li     | Zi       | li@mail.wz                         | moni12345 | myfac      | @p    | Admin           |
+    | pepearge    | Li     | Zi       | li@mail.wz                         | moni12345 | myfac      | @p    | Jurado          |
+    | pepearge    | Li     | Zi       | li@mail.wz                         | moni12345 | myfac      | @p    | Organizador     |
 
 #Casos extremos
 Esquema del escenario: datos usuario
@@ -59,19 +59,20 @@ Esquema del escenario: datos usuario
     | pepearge    | 6      | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
     | pepearge    | Li     | Z        | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
     | pepearge    | Li     | Zi       | l@wz                          | moni12345 | myfacebook | @pepe | Organizador     |
-    | pepearge    | Li     | Zi       | li@wz                         | moni1234  | myfacebook | @pepe | Organizador     |
-    | pepearge    | Li     | Zi       | li@wz                         | moni12345 | m          | @pepe | Organizador     |
-    | pepearge    | Li     | Zi       | li@wz                         | moni12345 | myfac      | @     | Organizador     |
+    | pepearge    | Li     | Zi       | li@mail.wz                    | moni1234  | myfacebook | @pepe | Organizador     |
+    | pepearge    | Li     | Zi       | li@mail.wz                    | moni12345 | m          | @pepe | Organizador     |
+    | pepearge    | Li     | Zi       | li@mail.wz                    | moni12345 | myfac      | @     | Organizador     |
 
-  Ejemplos: longitud maxima incorrecta
-    | usuario     | nombre | apellido | email                         | clave     | facebook   | twiter| tipo_usuario_id |
-    |   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   | pepe   | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
-    | pepearge    | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
-    | pepearge    | Li     | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA        | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
-    | pepearge    | Li     | Zi       | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA                          | moni12345 | myfacebook | @pepe | Organizador     |
-    | pepearge    | Li     | Zi       | li@wz                         | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  | myfacebook | @pepe | Organizador     |
-    | pepearge    | Li     | Zi       | li@wz                         | moni12345 | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA          | @pepe | Organizador     |
-    | pepearge    | Li     | Zi       | li@wz                         | moni12345 | myfac      | @1234567890123456    | Organizador     |
+  # Deprecado: probar a bajo nivel, porque se impide por Vista con maxlength.
+  #Ejemplos: longitud maxima incorrecta
+  #  | usuario     | nombre | apellido | email                         | clave     | facebook   | twiter| tipo_usuario_id |
+  #      | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   | pepe   | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
+  #   | pepearge    | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
+  #  | pepearge    | Li     | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA        | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
+  #  | pepearge    | Li     | Zi       | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@AAA.AAA | moni12345 | myfacebook | @pepe | Organizador     |
+  #  | pepearge    | Li     | Zi       | li@mail.wz                    | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  | myfacebook | @pepe | Organizador     |
+  #  | pepearge    | Li     | Zi       | li@mail.wz                    | moni12345 | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA          | @pepe | Organizador     |
+  # | pepearge    | Li     | Zi       | li@mail.wz                    | moni12345 | myfac      | @1234567890123456    | Organizador     |
 
 Escenario: nombre de usuario debe ser unico.
   Pero como ya existe un usuario con ese "nombre de usuario"
