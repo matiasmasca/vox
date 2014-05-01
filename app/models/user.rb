@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   #Asociaciones
   has_many :organizer
 
-
   #obligatorios: usuario, email, clave, tipo_usuario_id. 
 	validates :usuario, :email, :clave, :tipo_usuario_id, presence: { message: "es un dato obligatorio."}
 
@@ -43,5 +42,4 @@ class User < ActiveRecord::Base
   # \. que haya al menos 1 punto "."
   # [a-z]{2,3} que haya entre 2 y 3 letras seguidas: ar, com, etc.
   # /i pueden ser letras mayusculas o minusculas.
-
 end

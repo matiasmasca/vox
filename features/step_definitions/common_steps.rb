@@ -56,6 +56,18 @@ Dado(/^se lee el texto "(.*?)"$/) do |texto|
    page.should have_content(texto)
 end
 
+Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
+  case pantalla
+  when "administración de usuarios"
+    visit("/users")
+  else
+    "¿A donde queres ir?"
+  end
+
+end
+
+
+
 #Casos extremos, errores y problemas.
 Entonces(/^me muestra el mensaje de error que "([^"]*)"$/) do |mensaje|
   page.should have_content("error")

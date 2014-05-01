@@ -1,7 +1,8 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe SelectionProcesses do
-    it "is invalid without name_process, place" do
+    it "es invalido sin nombre de proceso y lugar" do
         process = SelectionProcesses.new
         process.should_not be_valid
     end
