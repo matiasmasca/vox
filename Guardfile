@@ -34,26 +34,25 @@ guard :rspec, cmd: 'rspec --color --format documentation --fail-fast' do
 
   # Vigilar todo el tiempo...
   # watch /lib/ files
-  watch(%r{^lib/(.+).rb$}) do |m|
-    "spec/#{m[1]}_spec.rb"
-  end
- 
+  #watch(%r{^lib/(.+).rb$}) do |m|
+  #  "spec/#{m[1]}_spec.rb"
+  #end
   # watch /spec/ files
-  watch(%r{^spec/(.+).rb$}) do |m|
-    "spec/#{m[1]}.rb"
-  end
+  #watch(%r{^spec/(.+).rb$}) do |m|
+  #  "spec/#{m[1]}.rb"
+  #end
 end
 
-guard :cucumber do
+#guard :cucumber do
   #Para vigilar continuamente... 
   # parece que crea un loop y ya no se ejecutan los pasos que le siguan...
-  watch(%r{^features/.+\.feature$}) do |m|
-    "features/#{m[1]}.feature"
-  end
+#  watch(%r{^features/.+\.feature$}) do |m|
+#    "features/#{m[1]}.feature"
+#  end
   
-  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) do |m|
-    "features/step_definitions/#{m[1]}_steps\.rb" #que ejecute toda la feature
-  end
+#  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) do |m|
+ #   "features/step_definitions/#{m[1]}_steps\.rb" #que ejecute toda la feature
+#  end
 
 end
 

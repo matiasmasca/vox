@@ -48,6 +48,7 @@ group :test do
   gem 'launchy'          # a useful debugging aid for user stories
   gem 'rspec-rails'
   gem 'rspec-expectations' # Para usar rspec en cucumber y que entienda .should
+  gem 'shoulda-matchers' #para rspec use should extras como has_many
 end
 
 # Servicio de covertura de test y estadisticas.

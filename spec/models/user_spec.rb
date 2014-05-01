@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe User do
@@ -115,4 +116,13 @@ describe User do
       user = User.new({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "clave" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 })
       user.should_not be_valid
     end
+
+    it "puede estar asociado a una Organización para editar procesos" do
+        user = User.create!({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "clave" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 }) 
+        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "Una@test.com", "user_id" => user.id })
+        puts(user.inspect) 
+        user.should have_many(:organizer)
+        organizer.should belong_to(:user)
+    end
+
 end

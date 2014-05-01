@@ -26,7 +26,6 @@ describe Organizer do
         organizer.should_not be_valid
     end
 
-
     it "maximo es 250" do
        nombre = "A" * 251
        direccion = "A" * 251
@@ -52,8 +51,15 @@ describe Organizer do
       organizer.should_not be_valid
     end
 
+    it "tiene asignada un Usuario del sistema." do
+      user = User.create!({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "clave" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 }) 
+      organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "Una@test.com", "user_id" => user.id })
+      organizer.should belong_to(:user)
+    end
+
+
 	#@to-do
-  #it "Guarda el archivo que recibe" 
+  it "Guarda el archivo que recibe" 
     #Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
 	# describe "POST create con foto" do
     #    before :each do

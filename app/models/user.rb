@@ -1,5 +1,9 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
+  #Asociaciones
+  has_many :organizer
+
+
   #obligatorios: usuario, email, clave, tipo_usuario_id. 
 	validates :usuario, :email, :clave, :tipo_usuario_id, presence: { message: "es un dato obligatorio."}
 
