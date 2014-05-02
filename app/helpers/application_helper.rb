@@ -1,3 +1,4 @@
+# encoding: utf-8
 module ApplicationHelper
 
 #Mensajes de Error con Bootstrap 
@@ -17,5 +18,12 @@ module ApplicationHelper
 #--
 #-- Poner  <%= flash_messages %> en el layout.
 
+  #Muestra un mensaje se que aun no hay registros cargados en una tabla.
+  def tabla_sin_registros(modelo)
+    nombre = modelo.to_s
+    if modelo.length == 0
+      flash[:notice] = "Ud. no tiene registros creados.\n \n Cuando los haya creado se listaran aqui." 
+    end
+  end
 
 end
