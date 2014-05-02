@@ -15,14 +15,7 @@
   </thead>
 
   <tbody >
-    <% if @organizers.length == 0 %>
-      <tr>
-        <td><h2>Ud. no ha registrado ninguna Organización.</h2></td>
-      </tr>
-      <tr>
-        <td>Cuando las hayan creado se listarán aquí.</td>
-      </tr>
-    <% end %>
+    <%= tabla_sin_registros @organizers %>
     <% @organizers.each do |organizer| %>
       <tr>
         <td><%= organizer.name%></td>

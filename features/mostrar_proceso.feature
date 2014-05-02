@@ -12,6 +12,7 @@ Escenario: mostrar premio
   Entonces veo toda la información del premio.
 
 #Casos extremos.
+#@to-do
 #El proceso no existe.
 #por ejemplo Ingresa un ID que no existe en la url.
 
