@@ -10,8 +10,17 @@ require 'spec_helper'
 #     end
 #   end
 # end
+
+class DummyModel < ActiveRecord::Base
+end
+
 describe ApplicationHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "bootstrap_class_for, flash_type"
+  it "flash_messages, opts"
+
+  it "tabla_sin_registros devuelve mensaje" do
+    pending "probe algunas cosas pero no me salieron"
+  end
 
   #Acta tenes que probar lo de boostrap.
   #Aca tenes que probar tu metodo tabla_sin_registros

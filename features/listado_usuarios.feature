@@ -35,6 +35,8 @@ Escenario: tiene el mismo contenido
     | pepeargento  | pepe   | argento  | pepeargento@argentina.com.ar  | moni12345  |           | @pepe   | 1            |
     | coquiargento | coqui  | argento  | coquiargento@argentina.com.ar | fatiga123  |           | @coqui  | 3            |
 
+
+
 #Casos Extremos.
 Escenario: no tiene usuarios creados.
   Dado que no he creado ningún usuario

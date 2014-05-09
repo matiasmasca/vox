@@ -1,0 +1,8 @@
+<% @organizer.each do |organizer| %>
+<li>
+  <h3><span ><%= organizer.name %></span></h3>
+  <span ><%= organizer.address %></span>
+  <%= link_to 'Más información', organizer_path(organizer) %>
+  <p>
+</li>
+<% end %>
