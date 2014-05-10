@@ -29,6 +29,7 @@ Esquema del escenario: datos usuario
     | pepearge    | Li     | Zi       | li@mail.wz                         | moni12345 | myfac      | @p    | Jurado          |
     | pepearge    | Li     | Zi       | li@mail.wz                         | moni12345 | myfac      | @p    | Organizador     |
 
+
 #Casos extremos
 Esquema del escenario: datos usuario
   #Cual será el nombre de usuario en el sistema? Product Owner: 
