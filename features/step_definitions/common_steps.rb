@@ -30,6 +30,15 @@ Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |name
     })
 end
 
+Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, email, clave, tipo|
+    @user = User.create!({ 
+    :usuario => usuario, 
+    :email => email,
+    :clave => clave,
+    :tipo_usuario_id => tipo
+    })
+end
+
 Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)" y email "(.*?)"$/) do |name, address, email|
   step %{existe una Organización: "#{name}", "#{address}", "" y "#{email}"}
 end
@@ -65,8 +74,6 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
   end
 
 end
-
-
 
 #Casos extremos, errores y problemas.
 Entonces(/^me muestra el mensaje de error que "([^"]*)"$/) do |mensaje|

@@ -40,12 +40,13 @@
   <%= @user.tipo_usuario_id %>
 </p>
 
-<%= link_to 'Editar', edit_user_path(@user), :class => 'btn btn-link' %> |
-<%= link_to 'Atrás', users_path, :class => 'btn btn-link' %>
-
 <% if @user.organizer.any? %>
       <h3>Organizaciones (<%= @user.organizer.count %>)</h3>
       <ol class="organizer">
         <%= render 'misorganizaciones' %>
       </ol>
 <% end %>
+
+<%= link_to 'Editar', edit_user_path(@user), :class => 'btn btn-link' %> |
+<%= link_to 'Atrás', users_path, :class => 'btn btn-link' %>
+

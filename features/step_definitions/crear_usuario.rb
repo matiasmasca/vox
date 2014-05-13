@@ -14,14 +14,6 @@ Dado(/^completo los datos del usuario con "(.*?)", "(.*?)", "(.*?)", "(.*?)", "(
   @Usuario = {"usuario" => usuario,"nombre" => nombre,"apellido" => apellido, "email" => email, "clave" => clave, "facebook" => facebook, "twitter" => twitter, "tipo_usuario_id" => tipo}  
 end
 
-Dado(/^subo una imagen que se utilizará como "(.*?)"\.$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Entonces(/^se crea el usuario y me muestra el mensaje "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
 Dado(/^como ya existe un usuario con ese "(.*?)"$/) do |arg1|
   if arg1 == "correo electrónico" 
    #Crear registro en la db

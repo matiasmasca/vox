@@ -76,11 +76,12 @@ class OrganizersController < ApplicationController
     # Para evitar repetir este código en cada acción.
     def set_organizer
       @organizer = Organizer.find(params[:id])
+      @user = @organizer.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organizer_params
-      params.require(:organizer).permit(:name, :address, :web, :email, :image)
+      params.require(:organizer).permit(:name, :address, :web, :email, :image, :user)
     end
 
 end
