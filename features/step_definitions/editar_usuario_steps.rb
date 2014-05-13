@@ -44,7 +44,7 @@ Entonces(/^veo que el nombre y apellido cambio, sin afectar a nombre de usuario 
 end
 
 Cuando(/^yo edito otro Usuario$/) do
-  pending # express the regexp above with the code you wish you had
+   find("table#users-list > tbody:nth-child(2) > tr:nth-child(3) > td:nth-child(10)").click_on('Editar')
 end
 
 Cuando(/^modifico "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, email, clave, tipo|
@@ -62,6 +62,26 @@ Cuando(/^modifico "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, email, cla
 
   if tipo
     select tipo, :from => "Tipo Usuario"
+  end
+
+  click_on("Guardar cambios")
+end
+
+Cuando(/^modifico datos "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, apellido, facebook, twitter|
+  if nombre
+    fill_in "user_nombre", :with => nombre
+  end
+
+  if apellido
+    fill_in "user_apellido", :with => apellido
+  end
+
+  if facebook
+    fill_in "user_facebook", :with => facebook
+  end
+
+  if twitter
+    fill_in "user_twitter", :with => twitter
   end
 
   click_on("Guardar cambios")

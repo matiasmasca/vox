@@ -24,15 +24,15 @@ Escenario: agrego dato que faltaba
 #Casos extremos
 Esquema del escenario: problemas con datos obligatorios
   Y modifico "<usuario>", "<email>", "<clave>" y "<tipo>"  
-  Entonces me muestra el mensaje de error que "faltan esos datos"
+  Entonces me muestra el mensaje de error que "faltan o estan mal esos datos"
 
-  Ejemplos: faltan datos
+  Ejemplos: faltan datos obligatorios
    | usuario 	 | email               | clave      | tipo        | 
    |         	 | pepe@argento.com.ar | clave12345 | Organizador |
    | pepeargento |                     | clave12345 | Organizador |
    | pepeargento | pepe@argento.com.ar |            | Organizador |
   
-  Ejemplos: datos muy cortos
+  Ejemplos: datos obligatorios muy cortos
    | usuario 	 | email               | clave      | tipo        | 
    | pepearg     | pepe@argento.com.ar | clave12345 | Organizador | 
    | pepeargento | @g.ws               | clave12345 | Organizador |
@@ -48,10 +48,23 @@ Esquema del escenario: problemas con datos obligatorios
 #- twitter: 2 chr ~ 15, allow blank (incluido el arroba)
 #- tipo_usuario_id: 1 (por ahora solo habrá 3 tipos de usuarios: 1,2,3)
 
+Esquema del escenario: problemas con datos no-obligatorios
+  Y modifico datos "<nombre>", "<apellido>", "<facebook>" y "<twitter>"  
+  Entonces me muestra el mensaje de error que "estan mal esos datos"
+
+  Ejemplos: datos obligatorios muy cortos
+   | nombre | apellido | facebook   						   | twitter | 
+   | p      | Argento  | https://www.facebook.com/Comunidadtic | @pepe   | 
+   | pepe   | A        | https://www.facebook.com/Comunidadtic | @pepe   |
+   | pepe   | Argento  | ht                                    | @pepe   |
+   | pepe   | Argento  | https://www.facebook.com/Comunidadtic | @       |
+
+# PO: las longitudes maximas, se limitan desde el formulario, con length.
+
 Escenario: nombre unico
-  Dado existe un Usuario: "pepeargento", "pepe@argento.com.ar", "ong.org.ar" y "info@email.com"
-  Y existe un Usuario: "pepeargento-ARGENTINA", "pepe@argento.com.ar", "ong.org.ar" y "info@email.com"
+  Dado existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"
+  Y existe un Usuario: "pepeargentino", "pepito@argentos.com.ar", "sevieneeltiburon" y "3"
   Y que estoy en la pantalla de "administración de usuarios"
   Cuando yo edito otro Usuario
-  Y cambio "pepeargento", "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos", "ong.org.ar" y "info@email.com" 
+  Y modifico "shinji ikari", "pepe@argentos.com.ar", "sevieneeltiburon" y "Organizador" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
