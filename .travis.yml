@@ -24,6 +24,7 @@ deploy:
   run:
     - "rake db:drop"
     - "rake db:schema:load --trace"
+    - "rake db:seed"
     - restart
 
 #db:schema:load #creates tables and columns within the (existing) database following schema.rb
