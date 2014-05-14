@@ -58,12 +58,12 @@ Dependency Status:
     nada especial.
 
 * Deployment instructions:
-    nada especial, por ahora.
   - cambiar el token ejecutando: rake secret
   - Crear las variables de entorno: 
-  -- DATABASE_NAME
-  -- DATABASE_USER
-  -- DATABASE_PASS
-  -- secret token: SECRET_KEY_BASE
-  - cambiar los .yml de Travis y Coveralls.
+    * DATABASE_NAME
+    * DATABASE_USER
+    * DATABASE_PASS
+    * SECRET_KEY_BASE para el secret token
+ - cambiar los .yml de Travis y de Coveralls.
+
 
