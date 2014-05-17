@@ -1,19 +1,19 @@
 # encoding: utf-8
 Dado(/^que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"$/) do
-  visit("/selection_process")
+  visit("/selection_processes")
   click_on "Nuevo proceso de selección"
 end
 
 Dado(/^escribo "(.*?)" en Nombre$/) do |nombre|
-	fill_in "selection_processes_name_process", :with => nombre
+	fill_in "selection_process_name_process", :with => nombre
 end
 
 Dado(/^escribo "(.*?)" en Lugar,$/) do |lugar|
-  fill_in "selection_processes_place", :with => lugar
+  fill_in "selection_process_place", :with => lugar
 end
 
 Dado(/^escribo "(.*?)" en Duracion$/) do |duration|
-  fill_in "selection_processes_duration", :with => duration
+  fill_in "selection_process_duration", :with => duration
 end
 
 Dado(/^selecciono "(.*?)" en Fecha Inicio$/) do |start_date|
@@ -43,7 +43,7 @@ Dado(/^dejo en blanco Lugar$/) do
 end
 
 Cuando(/^como ya existe un premio con ese nombre "(.*?)" y lugar "(.*?)"$/) do |nombre, lugar|
-  @selection_process = SelectionProcesses.create!({ :name_process => nombre, :place => lugar })
+  @selection_process = SelectionProcess.create!({ :name_process => nombre, :place => lugar })
 end
 
 #Podrias probar más fino cada error comprobando que sea el error que buscas.

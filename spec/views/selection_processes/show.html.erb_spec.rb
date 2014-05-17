@@ -1,9 +1,9 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe "selection_process/show" do
+describe "selection_processes/show" do
   before(:each) do
-    @selection_processes = assign(:selection_processes, stub_model(SelectionProcesses,
+    @selection_process = assign(:selection_process, stub_model(SelectionProcess,
       :name_process => "Nombre del Proceso",
       :place => "Lugar",
       :duration => "Duración",

@@ -1,6 +1,6 @@
-class CreateSelectionProcess < ActiveRecord::Migration
+class CreateSelectionProcesses < ActiveRecord::Migration
   def change
-    create_table :selection_process do |t|
+    create_table :selection_processes do |t|
       t.string :name_process
       t.string :place
       t.string :duration

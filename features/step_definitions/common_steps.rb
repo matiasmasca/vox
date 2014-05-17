@@ -1,10 +1,10 @@
 # encoding: utf-8
 Dado(/^que estoy en la pantalla de mis procesos electorales$/) do
-  visit("/selection_process")
+  visit("/selection_processes")
 end
 
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_process, place|
-  @selection_process = SelectionProcesses.create!({ 
+  @selection_process = SelectionProcess.create!({ 
   	:name_process => name_process, 
   	:place => place,
   	:duration => 30,
@@ -26,7 +26,8 @@ Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |name
     :address => address,
     :web => web,
     :email => email,
-    :logo => nil
+    :logo => nil,
+    :user_id => 1
     })
 end
 

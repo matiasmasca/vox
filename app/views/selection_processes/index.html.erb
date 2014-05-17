@@ -1,0 +1,41 @@
+<h1>Lista de procesos de selección</h1>
+
+<div class="table-responsive">
+  <table id="selection-processes-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre del Proceso</th>
+      <th>Lugar</th>
+      <th>Duración</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Cierre</th>
+      <th>Tipo</th>
+      <th>Estado</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <%= tabla_sin_registros @selection_processes %>    
+    <% @selection_processes.each do |selection_process| %>
+      <tr>
+        <td><%= selection_process.name_process %></td>
+        <td><%= selection_process.place %></td>
+        <td><%= selection_process.duration %></td>
+        <td><%= selection_process.start_date %></td>
+        <td><%= selection_process.end_date %></td>
+        <td><%= selection_process.process_type_id %></td>
+        <td><%= selection_process.state %></td>
+        <td><%= link_to 'Mostrar', selection_process, :class => 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Editar', edit_selection_process_path(selection_process), :class => 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Borrar', selection_process, :class => 'btn btn-danger btn-xs', :method => :delete, data: { confirm: "Esta seguro que desea borrar este proceso: #{selection_process.name_process}?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+<br>
+
+<%= link_to 'Nuevo proceso de selección', new_selection_process_path, :class => 'btn btn-primary' %>

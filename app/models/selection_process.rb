@@ -1,5 +1,8 @@
 # encoding: utf-8
-class SelectionProcesses < ActiveRecord::Base
+class SelectionProcess < ActiveRecord::Base
+    #Asociaciones
+    belongs_to :organizer
+
 	#datos obligatorios
 	validates :name_process, :place, presence: { message: "es un dato obligatorio."}
 

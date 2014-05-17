@@ -21,5 +21,5 @@ Entonces(/^veo una lista con exactamente la información de las (\d+) Organizaci
 end
 
 Dado(/^que no he creado ningúna Organización$/) do
-  @Organizers = nil  #SelectionProcesses
+  @Organizers = nil 
 end

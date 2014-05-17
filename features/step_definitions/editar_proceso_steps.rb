@@ -1,6 +1,6 @@
 # encoding: utf-8
 Cuando(/^yo edito el premio$/) do
-  #visit edit_selection_processes_path(@selection_process)
+  #visit edit_selection_process_path(@selection_process)
   click_on('Editar')
 end
 
@@ -17,7 +17,7 @@ Entonces(/^veo que el nombre cambio y la dirección cambio\.$/) do
 end
 
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)", sin duración definida$/) do |name_process, place|
-  @selection_process = SelectionProcesses.create!({ :name_process => name_process, :place => place, :duration => nil })
+  @selection_process = SelectionProcess.create!({ :name_process => name_process, :place => place, :duration => nil })
 end
 
 Cuando(/^cambio el duracion por "(.*?)"$/) do |duration|
@@ -32,15 +32,15 @@ end
 
 Cuando(/^cambio "(.*?)", "(.*?)" o "(.*?)"$/) do |nombre, place, duration|
   if nombre
-    fill_in "selection_processes_name_process", :with => nombre
+    fill_in "selection_process_name_process", :with => nombre
   end
 
   if place
-    fill_in "selection_processes_place", :with => place
+    fill_in "selection_process_place", :with => place
   end
 
   if duration
-    fill_in "selection_processes_duration", :with => duration
+    fill_in "selection_process_duration", :with => duration
   end
 
   click_on("Guardar cambios")

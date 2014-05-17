@@ -1,7 +1,11 @@
 # encoding: utf-8
 class Organizer < ActiveRecord::Base
+  #Asociaciones
   belongs_to :user
-
+  has_many :selection_process, dependent: :nullify
+  
+  #debe borrar todo los procesos asociados con :dependent=> :delete_all
+  
   LOGOS = File.join Rails.root, 'public','images','uploads', 'isologos'
 
   validates :name, :address, :email, presence: { message: "es un dato obligatorio."}

@@ -20,7 +20,7 @@ Entonces(/^veo una lista con exactamente la información de los (\d+) usuarios\.
 end
 
 Dado(/^que no he creado ningún usuario$/) do
-  @Users = nil  #SelectionProcesses
+  @Users = nil
 end
 
 Dado(/^que he creado (\d+) usuarios:$/) do |count, table|

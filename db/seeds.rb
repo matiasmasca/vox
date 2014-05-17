@@ -50,6 +50,6 @@ selection_processes = [{:name_process => 'ACME Prize', :place => 'Desierto de Ar
   	 ]
 
 selection_processes.each do |process|
-  SelectionProcesses.create!(process)
+  SelectionProcess.create!(process)
 end
 

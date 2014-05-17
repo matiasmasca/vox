@@ -1,12 +1,12 @@
 <div class="form-group">
-<%= form_for @selection_processes, :html => { :class => 'form-horizontal' } do  |f| %>
-  <% if @selection_processes.errors.any? %>
+<%= form_for @selection_process, :html => { :class => 'form-horizontal' } do  |f| %>
+  <% if @selection_process.errors.any? %>
     
     <div class="alert alert-danger">
-      <h2><%= pluralize(@selection_processes.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
+      <h2><%= pluralize(@selection_process.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
 
       <ul>
-      <% @selection_processes.errors.full_messages.each do |msg| %>
+      <% @selection_process.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -36,12 +36,12 @@
     <div class="field">
      <% tipos_de_procesos = {'premio'=> 1, 'certamen'=> 2, 'votación'=> 3} %>
      <%= f.label :process_type_id, "Tipo", class: 'control-label' %><br>
-     <%= f.select :process_type_id, tipos_de_procesos, selected: @selection_processes.process_type_id, class: 'form-control' %>
+     <%= f.select :process_type_id, tipos_de_procesos, selected: @selection_process.process_type_id, class: 'form-control' %>
   </div>
   <div class="field">
     <% estados_del_proceso = {'nuevo'=> 'nuevo', 'abierto'=> 'abierto', 'cerrado'=> 'cerrado'} %>
     <%= f.label :state, "Estado" , class: 'control-label' %><br>
-    <%= f.select :state, estados_del_proceso, selected: @selection_processes.state, class: 'form-control' %>
+    <%= f.select :state, estados_del_proceso, selected: @selection_process.state, class: 'form-control' %>
   </div>
   <div><br></div>
   <div class="actions" >

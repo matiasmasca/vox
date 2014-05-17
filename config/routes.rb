@@ -1,15 +1,14 @@
 Vox::Application.routes.draw do
-  resources :users
-
   #paginas estaticas
   get "paginas/home"
   get "paginas/about"
   get "paginas/contact"
   
   #Resource, crea los routes a 7 acciones por defecto.
-  resources :selection_process
+  resources :selection_processes
   resources :organizers
   resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

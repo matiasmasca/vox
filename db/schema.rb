@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428223031) do
+ActiveRecord::Schema.define(version: 20140516193728) do
 
   create_table "organizers", force: true do |t|
     t.string   "name"
@@ -26,19 +26,21 @@ ActiveRecord::Schema.define(version: 20140428223031) do
 
   add_index "organizers", ["user_id"], name: "index_organizers_on_user_id"
 
-  create_table "selection_process", force: true do |t|
+  create_table "selection_processes", force: true do |t|
     t.string   "name_process"
     t.string   "place"
     t.integer  "duration"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
+    t.integer  "process_type_id"
+    t.integer  "organizer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "process_type_id"
   end
 
-  add_index "selection_process", ["process_type_id"], name: "index_selection_process_on_process_type_id"
+  add_index "selection_processes", ["organizer_id"], name: "index_selection_processes_on_organizer_id"
+  add_index "selection_processes", ["process_type_id"], name: "index_selection_processes_on_process_type_id"
 
   create_table "users", force: true do |t|
     t.string   "usuario"

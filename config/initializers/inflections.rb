@@ -22,8 +22,8 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
    inflect.singular 'process_type', 'process_types'
    inflect.plural 'juries', 'jury'
    inflect.singular 'jury', 'juries'
-   inflect.plural 'selection_processes', 'selection_process'
-   inflect.singular 'selection_process', 'selection_processes'
+   #inflect.plural 'selection_processes', 'selection_process'
+   #inflect.singular 'selection_process', 'selection_processes'
    inflect.plural 'categories', 'category'
    inflect.singular 'category', 'categories'
    inflect.plural 'nominees', 'nominee'
@@ -32,4 +32,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
    inflect.singular 'seat', 'seats'
    
    inflect.irregular 'error', 'errores'
+
+   inflect.irregular 'selection_process', 'selection_processes'
  end

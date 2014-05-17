@@ -16,8 +16,9 @@ module ApplicationHelper
     nil
   end
 #--
-#-- Poner  <%= flash_messages %> en el layout.
+#-- Boostrap: Poner  <%= flash_messages %> en el layout.
 
+  # tabla sin registros:
   #Muestra un mensaje se que aun no hay registros cargados en una tabla.
   #@to-do: es recomendable refactorizar este helper y llevarlo a un un metodo de instancia para un Controller. El helper se usa para formatear la vista.
   def tabla_sin_registros(modelo)

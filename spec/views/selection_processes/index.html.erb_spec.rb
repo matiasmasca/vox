@@ -1,16 +1,16 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe "selection_process/index" do
+describe "selection_processes/index" do
   before(:each) do
-    assign(:selection_process, [
-      stub_model(SelectionProcesses,
+    assign(:selection_processes, [
+      stub_model(SelectionProcess,
         :name_process => "Premio ACME",
         :place => "Los Angeles, CA, USA",
         :duration => "180",
         :state => "nuevo"
       ),
-      stub_model(SelectionProcesses,
+      stub_model(SelectionProcess,
         :name_process => "Premio ACME",
         :place => "Los Angeles, CA, USA",
         :duration => "180",

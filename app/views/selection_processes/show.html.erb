@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre del Proceso:</strong>
+  <%= @selection_process.name_process %>
+</p>
+
+<p>
+  <strong>Lugar:</strong>
+  <%= @selection_process.place %>
+</p>
+
+<p>
+  <strong>Duración:</strong>
+  <%= @selection_process.duration %>
+</p>
+
+<p>
+  <strong>Fecha inicio:</strong>
+  <%= @selection_process.start_date %>
+</p>
+
+<p>
+  <strong>Fecha cierre:</strong>
+  <%= @selection_process.end_date %>
+</p>
+<p>
+  <strong>Tipo:</strong>
+  <%= @selection_process.process_type_id %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @selection_process.state %>
+</p>
+
+<%= link_to 'Editar', edit_selection_process_path(@selection_process), :class => 'btn btn-link' %> |
+<%= link_to 'Atrás', selection_processes_path, :class => 'btn btn-link' %>

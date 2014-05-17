@@ -1,7 +1,7 @@
 # encoding: utf-8
 Dado(/^que he creado (\d+) proceso de selección:$/) do |arg1, table|
   # table is a Cucumber::Ast::Table
-  @selection_process = SelectionProcesses.create!(table.hashes)
+  @selection_process = SelectionProcess.create!(table.hashes)
 end
 
 Entonces(/^veo una lista de los procesos con (\d+) de ellos\.$/) do |count|
@@ -17,7 +17,7 @@ end
 
 
 Dado(/^que no he creado ningún proceso de selección$/) do
-  @selection_process = nil  #SelectionProcesses
+  @selection_process = nil
 end
 
 Entonces(/^veo una una tabla vacia, con el mensaje "(.*?)"$/) do |mensaje|
