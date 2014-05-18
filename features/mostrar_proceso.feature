@@ -6,9 +6,9 @@ Característica: mostrar información de un premio
 
 #Camino feliz
 Escenario: mostrar premio
-  Dado existe un premio llamado "Premios ACME43" que se realizara en "Av. Siempre Viva 742"
+  Dado existe un premio llamado "Premios ACME 2014" que se realizara en "Av. Siempre Viva 742"
   Dado que estoy en la pantalla de mis procesos electorales
-  Cuando hago click en Mostrar para "Premios ACME43"
+  Cuando hago click en Mostrar para "Premios ACME 2014"
   Entonces veo toda la información del premio.
 
 #Casos extremos.

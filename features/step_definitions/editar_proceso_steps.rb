@@ -43,6 +43,7 @@ Cuando(/^cambio "(.*?)", "(.*?)" o "(.*?)"$/) do |nombre, place, duration|
     fill_in "selection_process_duration", :with => duration
   end
 
+  #save_and_open_page
   click_on("Guardar cambios")
 end
 

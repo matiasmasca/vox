@@ -42,11 +42,11 @@ Esquema del escenario: problemas con datos obligatorios
    | Monchito     | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  | 360      |
  
 Escenario: Nombre de premio, debe ser unico.
-  Dado existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
+  Dado existe un premio llamado "Premios ACME 1st. Edition" que se realizara en "Av. Siempre Viva 742"
   Y existe un premio llamado "Premios ACME 2nd. Edition" que se realizara en "Av. Siempre Viva 742 2"
   Y que estoy en la pantalla de mis procesos electorales
   Cuando yo edito otro premio
-  Y cambio "Premios ACME", "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos" o "30"
+  Y cambio "Premios ACME 1st. Edition", "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos" o "30"
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
 
 @to-do
