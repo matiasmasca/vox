@@ -4,7 +4,7 @@ Dado(/^que estoy en la pantalla de mis procesos electorales$/) do
 end
 
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_process, place|
-  #step %{existe una Organización: "Comunidad TIC", "Internet, La Plata, Buenos Aires, Argentina", "" y "contacto@comunidadtic.com.ar"}
+  step %{existe una Organización: "ComunidadTIC", "Internet, La Plata, Buenos Aires, Argentina", "" y "contacto@comunidadtic.com.ar"} if @organizer == nil
   
   @selection_process = SelectionProcess.create!({ 
   	:name_process => name_process, 
@@ -14,7 +14,7 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_
   	:end_date => '2014-09-01',
     :process_type_id => '1',
     :state => 'nuevo',
-    :organizer_id => 1
+    :organizer_id => @organizer.id.to_i
   	})
 end
 
