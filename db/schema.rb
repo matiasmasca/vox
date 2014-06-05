@@ -29,14 +29,14 @@ ActiveRecord::Schema.define(version: 20140516193728) do
   create_table "selection_processes", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration"
+    t.integer  "duration",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
-    t.integer  "process_type_id"
-    t.integer  "organizer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "process_type_id"
+    t.integer  "organizer_id"
   end
 
   add_index "selection_processes", ["organizer_id"], name: "index_selection_processes_on_organizer_id"

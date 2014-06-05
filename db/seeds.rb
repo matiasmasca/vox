@@ -40,13 +40,13 @@ organizers.each do |organizer|
   Organizer.create!(organizer)
 end
 
-selection_processes = [{:name_process => 'ACME Prize', :place => 'Desierto de Arizona', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1 },
-  {:name_process => 'Fake Oscar 2014', :place => '8949 Wilshire Boulevard Beverly Hills, California 90211', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1},
-  {:name_process => 'Grammy 2014', :place => 'Av. Siempre Viva 742', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1},
-  {:name_process => 'Premios TIC', :place => 'Corrientes, Argentina', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1},
-  {:name_process => 'Miss Multiverso 2014', :place => 'Los Angeles, CA, USA', :duration => '364', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 2},
-  {:name_process => 'Nombre B', :place => 'Una dirección cualquiera', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1},
-  {:name_process => 'Nombre F', :place => 'Una dirección cualquiera', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1}
+selection_processes = [{:name_process => 'ACME Prize', :place => 'Desierto de Arizona', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1, :organizer_id => 1 },
+  {:name_process => 'Fake Oscar 2014', :place => '8949 Wilshire Boulevard Beverly Hills, California 90211', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1, :organizer_id => 2},
+  {:name_process => 'Grammy 2014', :place => 'Av. Siempre Viva 742', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1, :organizer_id => 1},
+  {:name_process => 'Premios TIC', :place => 'Corrientes, Argentina', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1, :organizer_id => 1},
+  {:name_process => 'Miss Multiverso 2014', :place => 'Los Angeles, CA, USA', :duration => '364', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 2, :organizer_id => 2},
+  {:name_process => 'Nombre B', :place => 'Una dirección cualquiera', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1, :organizer_id => 1},
+  {:name_process => 'Nombre F', :place => 'Una dirección cualquiera', :duration => '180', start_date: "2014-03-13", end_date: "2014-12-13", state: "nuevo", :process_type_id => 1, :organizer_id => 1}
   	 ]
 
 selection_processes.each do |process|
