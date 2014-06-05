@@ -1,42 +1,5 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
-guard 'cucumber' do
-  watch(%r{^features/.+\.feature$})
-  watch(%r{^features/support/.+$}){ 'features' }
-  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
-end
-
-guard :rspec, cmd: 'rspec --color --format documentation --fail-fast' do
-  watch(%r{^spec/.+_spec\.rb$})
-  watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
-  watch('spec/spec_helper.rb')  { "spec" }
-
-  # Rails example
-  watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
-  watch(%r{^app/(.*)(\.erb|\.haml|\.slim)$})          { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
-  watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
-  watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
-  watch('config/routes.rb')                           { "spec/routing" }
-  watch('app/controllers/application_controller.rb')  { "spec/controllers" }
-
-  # Capybara features specs
-  watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})     { |m| "spec/features/#{m[1]}_spec.rb" }
-
-  # Turnip features and steps
-  watch(%r{^spec/acceptance/(.+)\.feature$})
-  watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
-
-  # Vigilar todo el tiempo...
-  # watch /lib/ files
-  #watch(%r{^lib/(.+).rb$}) do |m|
-  #  "spec/#{m[1]}_spec.rb"
-  #end
-  # watch /spec/ files
-  #watch(%r{^spec/(.+).rb$}) do |m|
-  #  "spec/#{m[1]}.rb"
-  #end
-end
-
 guard :rspec, run_all: { message: 'Corriendo todos los ejemplos/specs' }, cmd: 'rspec --color --format documentation --fail-fast' do
   watch('spec/spec_helper.rb')                        { "spec" }
   watch('config/routes.rb')                           { "spec/routing" }
@@ -46,6 +9,27 @@ guard :rspec, run_all: { message: 'Corriendo todos los ejemplos/specs' }, cmd: '
   watch(%r{^app/(.*)(\.erb|\.haml|\.slim)$})          { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
   watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
+end
+
+guard :rspec, run_all: { message: 'Corriendo RSpec optimiazado' }, cmd: 'rspec --drb --format documentation --color' do
+  # run every updated spec file
+  watch(%r{^spec/.+_spec\.rb$})
+  # run the lib specs when a file in lib/ changes
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  # run the model specs related to the changed model
+  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+  # run the view specs related to the changed view
+  watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
+  # run the integration specs related to the changed controller
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
+  # run all integration tests when application controller change
+  watch('app/controllers/application_controller.rb') { "spec/requests" }
+end
+
+guard 'cucumber' do
+  watch(%r{^features/.+\.feature$})
+  watch(%r{^features/support/.+$}){ 'features' }
+  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
 end
 
 #guard :cucumber do
@@ -60,8 +44,8 @@ end
 #  end
 #end
 
+#guard 'rails' do
+#  watch('Gemfile.lock')
+#  watch(%r{^(config|lib)/.*})
+#end
 
-guard 'rails' do
-  watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*})
-end
