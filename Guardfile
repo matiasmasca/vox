@@ -44,8 +44,13 @@ end
 #  end
 #end
 
-#guard 'rails' do
-#  watch('Gemfile.lock')
-#  watch(%r{^(config|lib)/.*})
-#end
+#Prende el rails...
+guard 'rails' do
+    watch('Gemfile.lock')
+  watch(%r{^config/(initializers|environments)/.*})
+  watch('config/application.rb')
+  watch(%r{^lib/.*})
+  watch(%r{^(config|lib)/.*})
+end
+
 
