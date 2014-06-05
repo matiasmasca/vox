@@ -21,7 +21,7 @@ users = [{:usuario => 'Aladdin12', :nombre => 'Gregorio', :apellido => 'Martinez
   	 ]
 
 users.each do |user|
-  User.create!(user)
+   User.create!(user)
 end
 
 organizers = [{:name => 'ACME', :address => 'Desierto de Arizona', :web => 'http://www.acme.org', :email => 'contact@acme.org', :logo => 'jpg', :user_id => 1 },
