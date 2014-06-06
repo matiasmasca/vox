@@ -2,6 +2,7 @@
 class SelectionProcess < ActiveRecord::Base
     #Asociaciones
     belongs_to :organizer
+    has_many :category
 
 	#datos obligatorios
 	validates :name_process, :place, presence: { message: "es un dato obligatorio."}

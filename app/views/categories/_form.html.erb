@@ -1,0 +1,35 @@
+<div class="form-group">
+<%= form_for @category, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @category.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :selection_process_id, "Cod. Proceso", class: 'control-label' %><br>
+    <%= f.text_field :selection_process_id,  class: "form-control", size: "10", maxlength: "255"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, "Nombre categoria", class: 'control-label' %><br>
+    <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "255"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "Descripción", class: 'control-label' %><br>
+    <%= f.text_field :description,  class: "form-control", size: "10", maxlength: "255"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :bench, "Nro. de plazas", class: 'control-label' %><br>
+    <%= f.number_field :bench, class: "form-control", size: "5", maxlength: "255"  %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Guardar cambios', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>

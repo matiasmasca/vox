@@ -1,0 +1,32 @@
+<h1>Listing categories</h1>
+
+<div class="table-responsive">
+  <table id="users-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Bench</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= category.description %></td>
+        <td><%= category.bench %></td>
+        <td><%= link_to 'Mostrar', category, :class => 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Editar', edit_category_path(category), :class => 'btn btn-default btn-xs'  %></td>
+        <td><%= link_to 'Eliminar', category, :class => 'btn btn-danger btn-xs', :method => :delete, data: { confirm: "Esta seguro que desea borrar este usuario: #{category.name}?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Agregar Categoria', new_category_path, :class => 'btn btn-primary'  %>

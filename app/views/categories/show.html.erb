@@ -1,0 +1,22 @@
+<p>
+  <strong>Selection Process:</strong>
+  <%= @category.selection_process_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @category.description %>
+</p>
+
+<p>
+  <strong>Bench:</strong>
+  <%= @category.bench %>
+</p>
+
+<%= link_to 'Editar', edit_category_path(@category), :class => 'btn btn-link' %> |
+<%= link_to 'Ir a categorias', categories_path, :class => 'btn btn-link' %>
