@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140606131839) do
   create_table "selection_processes", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration",             limit: 255
+    t.integer  "duration",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
@@ -48,12 +48,10 @@ ActiveRecord::Schema.define(version: 20140606131839) do
     t.datetime "updated_at"
     t.integer  "process_type_id"
     t.integer  "organizer_id"
-    t.integer  "selection_process_id"
   end
 
   add_index "selection_processes", ["organizer_id"], name: "index_selection_processes_on_organizer_id"
   add_index "selection_processes", ["process_type_id"], name: "index_selection_processes_on_process_type_id"
-  add_index "selection_processes", ["selection_process_id"], name: "index_selection_processes_on_selection_process_id"
 
   create_table "users", force: true do |t|
     t.string   "usuario"

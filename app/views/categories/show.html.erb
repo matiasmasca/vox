@@ -1,22 +1,23 @@
 <p>
-  <strong>Selection Process:</strong>
-  <%= @category.selection_process_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @category.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descripción:</strong>
   <%= @category.description %>
 </p>
 
 <p>
-  <strong>Bench:</strong>
+  <strong>Nro. de plazas:</strong>
   <%= @category.bench %>
 </p>
+
+<p class: 'control-label'>
+  <strong>Proceso de selección:</strong>
+  <%= @category.selection_process_id %>
+</p>
+
 
 <%= link_to 'Editar', edit_category_path(@category), :class => 'btn btn-link' %> |
 <%= link_to 'Ir a categorias', categories_path, :class => 'btn btn-link' %>
