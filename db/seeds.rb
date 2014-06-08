@@ -59,9 +59,37 @@ categories = [
     {:name => 'Mejor Trampa', :description => 'TOP 10. Participan las trampas utilizadas por el coyote para atrapar al correcaminos', :bench => '10', selection_process_id: '1'},
     {:name => 'Mejor caida', :description => 'TOP100. Caidas del coyote en sus persecuciones por el desierto de Arizona', :bench => '100', selection_process_id: '1'},
     {:name => 'Mejor idea', :description => 'TOP500. Mejores ideas para aplicar en el desierto de Arizona', :bench => '500', selection_process_id: '1'},
+    {:name => 'Mejor actor', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor actor de reparto', :description => 'desde 1936', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor actriz', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor actriz de reparto', :description => 'desde 1936', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor banda sonora', :description => 'desde 1934', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor canción original', :description => 'desde 1934', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor cortometraje animado', :description => 'desde 1931', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor cortometraje de ficción', :description => 'desde 1931', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor director', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor diseño de producción', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor diseño de vestuario', :description => 'desde 1948', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor documental corto', :description => 'desde 1941', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor documental largo', :description => 'desde 1943', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor edición de sonido', :description => 'desde 1963', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejores efectos visuales', :description => 'desde 1939', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor fotografía', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor guion adaptado', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor guion original', :description => 'desde 1940', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor maquillaje y peinado', :description => 'desde 1981', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor montaje', :description => 'desde 1934', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor película', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor película de animación', :description => 'desde 2001', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor película de habla no inglesa', :description => 'desde 1956', :bench => '5', :selection_process_id => '2'},
+    {:name => 'Mejor sonido', :description => 'desde 1930', :bench => '5', :selection_process_id => '2'}
 ]
 
 categories.each do |category|
   Category.create!(category)
 end
+
+
+
+
 

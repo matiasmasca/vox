@@ -23,3 +23,7 @@ Entonces(/^me muestra los datos de la categoria recien creada$/) do
   expect(page).to have_content(@categoria["bench"])
   expect(page).to have_content(@categoria["selection_process_id"])
 end
+
+Dado(/^completo los datos de la categoria con "(.*?)", "(.*?)", "(.*?)", "(.*?)"$/) do |arg1, arg2, arg3, arg4|
+  pending # express the regexp above with the code you wish you had
+end

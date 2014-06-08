@@ -15,9 +15,8 @@
 
 <p class: 'control-label'>
   <strong>Proceso de selección:</strong>
-  <%= @category.selection_process_id %>
+  <%= @category.selection_process.name_process %>
 </p>
 
-
-<%= link_to 'Editar', edit_category_path(@category), :class => 'btn btn-link' %> |
-<%= link_to 'Ir a categorias', categories_path, :class => 'btn btn-link' %>
+<%= link_to ' Editar', edit_category_path(@category), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
+<%= link_to ' Ir a categorias', categories_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %>

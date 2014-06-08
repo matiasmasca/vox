@@ -19,9 +19,9 @@
         <td><%= category.name %></td>
         <td><%= category.description %></td>
         <td><%= category.bench %></td>
-        <td><%= link_to 'Mostrar', category, :class => 'btn btn-default btn-xs' %></td>
-        <td><%= link_to 'Editar', edit_category_path(category), :class => 'btn btn-default btn-xs'  %></td>
-        <td><%= link_to 'Eliminar', category, :class => 'btn btn-danger btn-xs', :method => :delete, data: { confirm: "Esta seguro que desea borrar este usuario: #{category.name}?"} %></td>
+        <td><%= link_to ' Mostrar', category, :class => 'btn btn-default btn-xs btn glyphicon glyphicon-eye-open' %></td>
+        <td><%= link_to ' Editar', edit_category_path(category), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-pencil'  %></td>
+        <td><%= link_to ' Eliminar', category, :class => 'btn btn-danger btn-xs btn glyphicon glyphicon-trash active', :method => :delete, data: { confirm: "Esta seguro que desea borrar este usuario: #{category.name}?"} %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'Agregar Categoria', new_category_path, :class => 'btn btn-primary'  %>
+<%= link_to ' Agregar Categoria', new_category_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
