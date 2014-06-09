@@ -24,7 +24,6 @@ deploy:
   run:
     - "rake db:drop"
     - "rake db:schema:load --trace"
-    - "rake db:migrate"
     - "rake db:seed"
     - restart
 
