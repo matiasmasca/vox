@@ -24,4 +24,9 @@ Entonces(/^me muestra los datos de la categoria recien creada$/) do
   expect(page).to have_content(@selection_process["name_process"])
 end
 
+Dado(/^como ya existe una categoria con ese nombre "(.*?)"$/) do |nombre|
+ @categoria = Category.create!({"selection_process_id" => @selection_process.id, "name" => nombre, "description" => "una descripción", "bench" => "5"})   
+end
+
+
 

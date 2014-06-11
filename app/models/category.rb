@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Category < ActiveRecord::Base
 	belongs_to :selection_process
 
@@ -11,4 +12,9 @@ class Category < ActiveRecord::Base
 	validates :name, length: { in: 5..250, message: "debe tener entre 4 y 250 caracteres" }
 	validates :description, length: { in: 5..250, message: "debe tener entre 4 y 250 caracteres" }, :allow_blank => true
 	validates :bench, length: { in: 1..3, message: "debe ser entre 1 y 3 digitos" }
+	
+	#Unico
+	validates :name, uniqueness: { scope: :selection_process_id, message: "ese nombre ya está siendo utilizado." }
+
+
 end

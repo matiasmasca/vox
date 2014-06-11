@@ -27,5 +27,33 @@ describe Category do
         category.should_not be_valid 
     end
 
+    it "el maximo es 250 para nombre, 999 para bench y 16 digitos para el id." do
+       nombre = "A" * 251
+       bench = 9999
+       proceso_id = 9999999999999999999
+       
+       category = Category.new({ "name" => nombre ,"description" => "Una descripción", "bench" => "1", "selection_process_id" => "1"})
+       category.should_not be_valid
+
+       category = Category.new({ "name" => "Categoria" ,"description" => "Una descripción", "bench" => bench, "selection_process_id" => "1"})
+       category.should_not be_valid
+
+       category = Category.new({ "name" => "Categoria" ,"description" => "Una descripción", "bench" => "1", "selection_process_id" => proceso_id})
+       category.should_not be_valid
+    end
+
+    it "nombre debe ser unico, dentro del proceso" do
+      category = Category.create!({ "name" => "Categoria" ,"description" => "Una descripción", "bench" => "5", "selection_process_id" => "1"})
+      category = Category.new({ "name" => "Categoria" ,"description" => "Una descripción", "bench" => "5", "selection_process_id" => "1"})
+      category.should_not be_valid
+    end
+
+    it "tiene asignado una selection_process_id" do
+      selection_process = SelectionProcess.create!({ "name_process" => "MyString" , "place" => "MyString", "organizer_id" => 1}) 
+      category = Category.new({ "name" => "Categoria" ,"description" => "Una descripción", "bench" => "5", "selection_process_id" => selection_process.id})
+      selection_process.should have_many(:category)
+      category.should belong_to(:selection_process)
+    end
+
 end
 

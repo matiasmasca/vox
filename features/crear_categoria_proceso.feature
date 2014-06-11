@@ -1,16 +1,16 @@
-#language: es
+# language: es
 Característica: crear una categoria para un premio.
   Con la finalidad de agrupar los candidatos en n-tuplas, para su posterior elección, a petición de algun usuario en particular.
   Como usuario administrador
   Quiero poder crear categorias para cualquier proceso de selección en el sistema.
 
 Antecedentes:
-  Dado que estoy en la pantalla de administración y hago click en "Añadir categoria" 
+  Dado que estoy en la pantalla de administración y hago click en "Agregar Categoria" 
   Y existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
 
 #Camino feliz.
 Escenario: crear categoria.
-  Dado que estoy en la pantalla de administración y hago click en "Añadir categoria"
+  Dado que estoy en la pantalla de administración y hago click en "Agregar Categoria"
   Y completo los datos de la categoria con "Nombre C", "Una descripción", "3", "1"
   Cuando presiono el botón "Guardar Cambios"
   Entonces se crea la categoria y me muestra el mensaje "Categoria creada correctamente."
@@ -56,7 +56,12 @@ Esquema del escenario: faltan datos
   Ejemplos: datos largos
     | name   | description | bench  | selection_process_id |
     | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   | prueba      | 5      | 1                    |
-#    | Nombre | Aca una descripción muy larga. Hasta infinito.        | 5      | 1                    |
+#   | Nombre | Aca una descripción muy larga. Hasta infinito.        | 5      | 1                    |
     | Nombre | descripción      | 1000   | 1                    |  
     | Nombre | descripción  | 5      | 99999999999999999   | 
 
+Escenario: nombre de categoria debe ser unico para el proceso.
+  Y completo los datos de la categoria con "Nombre C", "Una descripción", "3", "1"
+  Pero como ya existe una categoria con ese nombre "Nombre C"
+  Cuando presiono el botón "Guardar Cambios"
+  Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado."
