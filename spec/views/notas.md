@@ -1,0 +1,1 @@
+Como se esta utilizando Cucumber y Capybara para las pruebas de comportamiento, no tiene mucho sentido probar las vistas con RSpec, ya que es un esfuerzo doble.
