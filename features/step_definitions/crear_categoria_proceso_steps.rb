@@ -1,13 +1,13 @@
 # encoding: utf-8
-
-Dado(/^completo los datos de la categoria con "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, descripcion, plazas, id|
+Dado(/^completo los datos de la categoria con "(.*?)", "(.*?)", "(.*?)", "(.*?)"$/) do |nombre, descripcion, plazas, id|
   fill_in "category_name", :with => nombre
   fill_in "category_description", :with => descripcion
   fill_in "category_bench", :with => plazas
-  fill_in "category_selection_process_id", :with => id.to_i
+  fill_in "category_selection_process_id", :with => id
 
   #Crear mock
-  @categoria = {"selection_process_id" => id, "name" => nombre,"description" => descripcion, "bench" => plazas}
+  # el proceso ya esta mokeado.
+  @categoria = {"selection_process_id" => @selection_process.id, "name" => nombre,"description" => descripcion, "bench" => plazas}
 end
 
 Entonces(/^se crea la categoria y me muestra el mensaje "(.*?)"$/) do |mensaje|
@@ -21,9 +21,7 @@ Entonces(/^me muestra los datos de la categoria recien creada$/) do
   expect(page).to have_content(@categoria["name"])
   expect(page).to have_content(@categoria["description"])
   expect(page).to have_content(@categoria["bench"])
-  expect(page).to have_content(@categoria["selection_process_id"])
+  expect(page).to have_content(@selection_process["name_process"])
 end
 
-Dado(/^completo los datos de la categoria con "(.*?)", "(.*?)", "(.*?)", "(.*?)"$/) do |arg1, arg2, arg3, arg4|
-  pending # express the regexp above with the code you wish you had
-end
+
