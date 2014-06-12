@@ -4,10 +4,6 @@ Dado(/^que he creado (\d+) usuario:$/) do |count, table|
   @Users = User.create!(table.hashes)
 end
 
-Dado(/^que estoy en la pantalla de administración de usuarios$/) do
-
-end
-
 Entonces(/^veo una lista de los usuarios con (\d+) de ellos\.$/) do |count|
   page.should have_selector("table#users-list>tbody:nth-child(2)>tr:eq(#{count})")
 end

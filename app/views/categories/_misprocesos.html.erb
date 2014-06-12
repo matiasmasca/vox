@@ -1,0 +1,8 @@
+<% @selection_processes.each do |selection_process| %>
+<li>
+  <h3><span ><%= selection_process.name %></span></h3>
+  <span ><%= selection_process.address %></span>
+  <%= link_to 'Más información', selection_process_path(selection_process) %>
+  <p>
+</li>
+<% end %>

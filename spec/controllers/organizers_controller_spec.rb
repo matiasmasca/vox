@@ -84,7 +84,7 @@ describe OrganizersController do
     describe "with valid params" do
       it "updates the requested organizer" do
         organizer = Organizer.create! valid_attributes
-        # Assuming there are no other selection_process in the database, this
+        # Assuming there are no other organizer in the database, this
         # specifies that the Organizer created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
