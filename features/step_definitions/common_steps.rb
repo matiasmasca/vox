@@ -73,8 +73,10 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
   case pantalla
   when "administración de usuarios"
     visit("/users")
+  when "administración de Categorías"
+    visit("/categories")
   else
-    "¿A donde queres ir?"
+    visit("/¿A donde queres ir?")
   end
 
 end
