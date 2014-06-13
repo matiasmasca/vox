@@ -20,3 +20,10 @@
 
 <%= link_to ' Editar', edit_category_path(@category), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
 <%= link_to ' Ir a categorias', categories_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %>
+
+<% if @category.selection_process %>
+      <h3>Procesos de selección:</h3>
+      <ol class="user">    
+         <%= render partial: "misprocesos"  %>
+      </ol>
+<% end %>

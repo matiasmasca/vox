@@ -11,8 +11,13 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
 
   <tbody >
       <tr>
-        <td><%= link_to ' Procesos de Selección', selection_processes_path, :class => 'btn btn-default btn glyphicon glyphicon-star' %></td>
+        <td>  <%= link_to ' Categorias', categories_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %></td>
         <td><%= link_to ' Agregar Categoria', new_category_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+      </tr>
+
+      <tr>
+        <td><%= link_to ' Procesos de Selección', selection_processes_path, :class => 'btn btn-default btn glyphicon glyphicon-star' %></td>
+        <td><%= link_to ' Agregar Procesos de Selección', new_selection_process_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
       </tr>
       <tr>
         <td><%= link_to ' Organizaciones', organizers_path, :class => 'btn btn-default btn glyphicon glyphicon-list-alt' %></td>
