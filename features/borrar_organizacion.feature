@@ -6,7 +6,6 @@ Característica: borrar una organización
 
 #Camino feliz
 # Borrar desde listado
-@to-do
 Escenario: borrar organización
   Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742" y email "info@email.com"
   Y que estoy en la pantalla de Administración de Organizaciones

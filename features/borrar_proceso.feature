@@ -13,10 +13,11 @@ Escenario: borrar premio
   Entonces se borra el premio
 
 
+# IceBox
 # Borrar desde otro lugar?
 # Un usuario solo puede borrar sus propios procesos.
 
 # Testear la ventana de confirmación:
 #  Y me muestra una pantalla de confirmación
 
-# Mensaje el premio fue borrado.
+# Mensaje la organización fue borrado.

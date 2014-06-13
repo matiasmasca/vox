@@ -54,11 +54,11 @@ Cuando(/^hago click en "(.*?)"$/) do |button|
 end
 
 Cuando(/^presiono el boton "(.*?)"$/) do |botton|
-  click_button botton #"Create Selection processes"
+  click_button botton 
 end
 
 Cuando(/^presiono el botón "(.*?)"$/) do |botton|
-  click_button botton #"Create Selection processes"
+  click_button botton 
 end
 
 Cuando(/^selecciono el link con el texto "(.*?)"$/) do |button|
@@ -75,6 +75,7 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
     visit("/users")
   when "administración de Categorías"
     visit("/categories")
+    #save_and_open_page
   else
     visit("/¿A donde queres ir?")
   end
