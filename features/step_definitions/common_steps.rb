@@ -59,6 +59,7 @@ end
 
 Cuando(/^presiono el botón "(.*?)"$/) do |botton|
   click_button botton 
+  save_and_open_page  
 end
 
 Cuando(/^selecciono el link con el texto "(.*?)"$/) do |button|
@@ -71,7 +72,7 @@ end
 
 Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
   case pantalla
-  when "administración de usuarios"
+  when "administración de Usuarios"
     visit("/users")
   when "administración de Categorías"
     visit("/categories")
@@ -80,6 +81,15 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
     visit("/¿A donde queres ir?")
   end
 
+end
+
+Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do |boton|
+  visit(paginas_home_path)
+  click_on boton
+  
+  #@to-do: chequear uri correcta
+  #Aca deberia estar en /organizers/new falta algo que cheque la URL.
+  #visit("/organizers/new")
 end
 
 #Casos extremos, errores y problemas.

@@ -8,7 +8,7 @@ class CreateCandidates < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_reference :candidates, :categories, index: true
+    add_reference :candidates, :category, index: true
   
     create_table :categories_candidates, id: false do |t|
       t.belongs_to :categories

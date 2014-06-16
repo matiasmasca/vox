@@ -6,7 +6,7 @@ Característica: editar un Usuario
 
 Antecedentes:
   Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
-  Y que estoy en la pantalla de "administración de usuarios"
+  Y que estoy en la pantalla de "administración de Usuarios"
   Cuando yo edito un Usuario 
 
 #Camino feliz
@@ -16,7 +16,7 @@ Escenario: editar un Usuario
 
 Escenario: agrego dato que faltaba
   Dado existe un Usuario llamado "pepeargento" con correo electrónico en "pepe@argento.com.ar", sin nombre y apellido definido
-  Y que estoy en la pantalla de "administración de usuarios"
+  Y que estoy en la pantalla de "administración de Usuarios"
   Cuando yo edito un Usuario
   Y cambio el nombre por "Monica" y el apellido por "de Argento"
   Entonces veo que el nombre y apellido cambio, sin afectar a nombre de usuario o el correo electrónico.
@@ -64,7 +64,7 @@ Esquema del escenario: problemas con datos no-obligatorios
 Escenario: nombre unico
   Dado existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"
   Y existe un Usuario: "pepeargentino", "pepito@argentos.com.ar", "sevieneeltiburon" y "3"
-  Y que estoy en la pantalla de "administración de usuarios"
+  Y que estoy en la pantalla de "administración de Usuarios"
   Cuando yo edito otro Usuario
   Y modifico "shinji ikari", "pepe@argentos.com.ar", "sevieneeltiburon" y "Organizador" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"

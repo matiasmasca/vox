@@ -21,7 +21,7 @@ Cuando(/^cambio el nombre por "(.*?)", el correo electrónico por "(.*?)"$/) do 
 end
 
 Entonces(/^veo que el nombre cambio y el correo electrónico cambio\.$/) do
- step %{que estoy en la pantalla de "administración de usuarios"}
+ step %{que estoy en la pantalla de "administración de Usuarios"}
  find("table#users-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should 	have_content(@update_name)
  find("table#users-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(4)").should	have_content(@update_email)
 
@@ -38,7 +38,7 @@ Cuando(/^cambio el nombre por "(.*?)" y el apellido por "(.*?)"$/) do |nombre, a
 end
 
 Entonces(/^veo que el nombre y apellido cambio, sin afectar a nombre de usuario o el correo electrónico\.$/) do
-  step %{que estoy en la pantalla de "administración de usuarios"}
+  step %{que estoy en la pantalla de "administración de Usuarios"}
   find("table#users-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)").should have_content(@update_name)
   find("table#users-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should have_content(@update_apellido)         
 end

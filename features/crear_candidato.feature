@@ -16,7 +16,6 @@ Escenario: crear candidatos.
   Entonces se crea el candidato y me muestra el mensaje "Candidato creado correctamente."
   Y me muestra los datos del candidato recien creado
 
-@wip
 Escenario: crear candidatos con foto.
   Y completo los datos del candidato con "Nombre Candidato", "bios"
   Y subo una imagen que se utilizará como avatar del candidato.
@@ -27,13 +26,12 @@ Escenario: crear candidatos con foto.
 
 
 #Casos extremos.
-@wip
 Escenario: crear candidatos sin foto
   #PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
   Y completo los datos del candidato con "Nombre C", "bios"
   Cuando presiono el botón "Guardar Cambios"
   Entonces se crea el candidato y me muestra el mensaje "Candidato creado correctamente."
-  Y me muestra los datos del candidato recien creados
+  Y me muestra los datos del candidato recien creado
   Y me muestra la imagen de logo generica
 
 Esquema del escenario: faltan datos

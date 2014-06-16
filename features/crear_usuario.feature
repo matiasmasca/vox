@@ -4,13 +4,10 @@ Característica: crear un premio
   como un usuario administrador
   Quiero poder crear un usuario del sistema
 
-#Ejemplo de datos:
-#| usuario    | nombre | apellido | email							| clave 	| facebook	| twiter| tipo_usuario_id |
-#|pepeargento | pepe   | argento  | pepeargento@argentina.com.ar 	| moni123 	| 			| @pepe | 1				  |
-
 Antecedentes:
-  Dado que estoy en la pantalla de administración y hago click en "Registrar Usuario"  
+  Dado que estoy en la pantalla de administración y hago click en "Registrar Usuario"
   Y completo los datos del usuario con "usuario01", "nombre", "apellido", "email", "clave1234", "facebook", "twiter" y "Organizador"
+
 
 #Camino feliz
 Esquema del escenario: datos usuario
@@ -24,10 +21,10 @@ Esquema del escenario: datos usuario
     | pepeargento | pepe   | argento  | pepeargento@argentina.com.ar  | moni12345 |           | @pepe | Organizador     |
 
   Ejemplos: tipos de usuario
-    | usuario     | nombre | apellido | email                         | clave     | facebook  | twiter | tipo_usuario_id |
-    | pepearge    | Li     | Zi       | li@mail.wz                         | moni12345 | myfac      | @p    | Admin           |
-    | pepearge    | Li     | Zi       | li@mail.wz                         | moni12345 | myfac      | @p    | Jurado          |
-    | pepearge    | Li     | Zi       | li@mail.wz                         | moni12345 | myfac      | @p    | Organizador     |
+    | usuario     | nombre | apellido | email      | clave     | facebook   | twiter | tipo_usuario_id |
+    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Admin           |
+    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Jurado          |
+    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Organizador     |
 
 
 #Casos extremos
@@ -109,3 +106,7 @@ Escenario: email del usuario debe ser unico.
 #  Entonces se crea el usuario y me muestra el mensaje "Usuario registrado correctamente."  
 #  Y me muestra los datos recien creados
 #  Y me muestra la imagen de "avatar generica"
+
+#Ejemplo de datos:
+#| usuario    | nombre | apellido | email                         | clave     | facebook  | twiter| tipo_usuario_id |
+#|pepeargento | pepe   | argento  | pepeargento@argentina.com.ar  | moni123   |           | @pepe | 1               |

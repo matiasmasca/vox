@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 20140616130128) do
     t.string   "url_image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "categories_id"
+    t.integer  "category_id"
   end
 
-  add_index "candidates", ["categories_id"], name: "index_candidates_on_categories_id"
+  add_index "candidates", ["category_id"], name: "index_candidates_on_category_id"
 
   create_table "categories", force: true do |t|
     t.string   "name"

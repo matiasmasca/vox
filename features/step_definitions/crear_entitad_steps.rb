@@ -1,15 +1,7 @@
 # encoding: utf-8
-#Crear la entidad: Nombre, Dirección, Sitio Web, email, logo.
-#"ABSTRACT", Av. 9 de Julio Nro. 220, www.abstract.org.ar, /organizadores/logos/logoXXX.jpg
 
-Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do |boton|
-  visit(paginas_home_path)
-  click_on boton
-  
-  #@to-do: chequear uri correcta
-  #Aca deberia estar en /organizers/new falta algo que cheque la URL.
-  #visit("/organizers/new")
-end
+# Crear la entidad: Nombre, Dirección, Sitio Web, email, logo.
+# "ABSTRACT", Av. 9 de Julio Nro. 220, www.abstract.org.ar, /organizadores/logos/logoXXX.jpg
 
 Dado(/^completo los datos de la organización con "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, direccion, url, correo|
   fill_in "organizer_name", :with => nombre
