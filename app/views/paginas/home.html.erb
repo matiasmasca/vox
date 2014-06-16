@@ -11,6 +11,10 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
 
   <tbody >
       <tr>
+        <td>  <%= link_to ' Candidatos', candidates_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %></td>
+        <td><%= link_to ' Agregar Candidato', new_candidate_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+      </tr>
+      <tr>
         <td>  <%= link_to ' Categorias', categories_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %></td>
         <td><%= link_to ' Agregar Categoria', new_category_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
       </tr>

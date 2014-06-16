@@ -42,7 +42,7 @@ class OrganizersController < ApplicationController
   def update
     respond_to do |format|
       if @organizer.update(organizer_params)
-        format.html { redirect_to @organizer, notice: 'Proceso actualizado correctamente.' }
+        format.html { redirect_to @organizer, notice: 'Oraganización actualizada correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

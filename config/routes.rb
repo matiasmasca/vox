@@ -1,4 +1,6 @@
 Vox::Application.routes.draw do
+  resources :candidates
+
   resources :categories
 
   #paginas estaticas

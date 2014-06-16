@@ -1,0 +1,28 @@
+<%= form_for @candidate, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @candidate.errors.any? %>
+    <div id="alert alert-danger">
+      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
+
+      <ul>
+      <% @candidate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name, "Nombre y Apellido", class: 'control-label' %><br>
+    <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "255"  %>
+  </div>
+  <div class="field">
+    <%= f.label :bios, "BIOS", class: 'control-label' %><br>
+    <%= f.text_area :bios, class: "form-control", :cols => "30", :rows => "10" %>
+  </div>
+  <div class="field">
+      <%= f.label :url_image, "Avatar usuario:", class: 'control-label' %><br>
+      <%= f.file_field :url_image , accept: 'image/png,image/gif,image/jpeg' %>
+    </div>
+  <div class="actions">
+   <%= button_tag ' Guardar Cambios', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>
+  </div>
+<% end %>

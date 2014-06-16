@@ -1,0 +1,32 @@
+<h1>Lista de Candidatos</h1>
+
+<div class="table-responsive">
+  <table id="candidates-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Bios</th>
+      <th>Url Avatar</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= candidate.name %></td>
+        <td><%= candidate.bios %></td>
+        <td><%= candidate.url_image %></td>
+        <td><%= link_to ' Mostrar', candidate, :class => 'btn btn-default btn-xs btn glyphicon glyphicon-eye-open' %></td>
+        <td><%= link_to ' Editar', edit_candidate_path(candidate), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-pencil'  %></td>
+        <td><%= link_to ' Eliminar', candidate, :class => 'btn btn-danger btn-xs btn glyphicon glyphicon-trash active', :method => :delete, data: { confirm: "Esta seguro que desea borrar este candidato: #{candidate.name}?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Agregar Candidato', new_candidate_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
