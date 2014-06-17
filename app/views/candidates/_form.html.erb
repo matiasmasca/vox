@@ -10,17 +10,28 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name, "Nombre y Apellido", class: 'control-label' %><br>
-    <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "255"  %>
+
+  <p> ID Proceso y ID Categoria. solo en Back-end del Admin.</p>
+  <p>
+    <strong>ID Proceso:</strong>
+    <%= @candidate.category_id %>
+  </p>
+    <div class="form-group">
+    <%= f.label :category_id, "Cod. Categoría", class: 'control-label' %><br>
+    <%= f.text_field :category_id,  class: "form-control", size: "10"  %>
   </div>
-  <div class="field">
+
+  <div class="form-group">
+    <%= f.label :name, "Nombre y Apellido", class: 'control-label' %><br>
+    <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "110"  %>
+  </div>
+  <div class="form-group">
     <%= f.label :bios, "BIOS", class: 'control-label' %><br>
     <%= f.text_area :bios, class: "form-control", :cols => "30", :rows => "10" %>
   </div>
-  <div class="field">
-      <%= f.label :url_image, "Avatar usuario:", class: 'control-label' %><br>
-      <%= f.file_field :url_image , accept: 'image/png,image/gif,image/jpeg' %>
+  <div class="form-group">
+      <%= f.label :avatar_file, "Avatar usuario:", class: 'control-label' %><br>
+      <%= f.file_field :avatar_file , accept: 'image/png,image/gif,image/jpeg' %>
     </div>
   <div class="actions">
    <%= button_tag ' Guardar Cambios', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>

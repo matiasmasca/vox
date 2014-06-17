@@ -57,8 +57,8 @@ Esquema del escenario: faltan datos
     | name   | description | bench  | selection_process_id |
     | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   | prueba      | 5      | 1                    |
 #   | Nombre | Aca una descripción muy larga. Hasta infinito.        | 5      | 1                    |
-    | Nombre | descripción      | 1000   | 1                    |  
-    | Nombre | descripción  | 5      | 99999999999999999   | 
+    | Nombre | descripción | 1000   | 1                    |  
+    | Nombre | descripción | 5      | 9223372036854775809    | 
 
 Escenario: nombre de categoria debe ser unico para el proceso.
   Y completo los datos de la categoria con "Nombre C", "Una descripción", "3", "1"

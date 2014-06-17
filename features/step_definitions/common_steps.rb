@@ -59,7 +59,6 @@ end
 
 Cuando(/^presiono el botón "(.*?)"$/) do |botton|
   click_button botton 
-  save_and_open_page  
 end
 
 Cuando(/^selecciono el link con el texto "(.*?)"$/) do |button|

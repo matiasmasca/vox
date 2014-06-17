@@ -30,7 +30,7 @@ describe Category do
     it "el maximo es 250 para nombre, 999 para bench y 16 digitos para el id." do
        nombre = "A" * 251
        bench = 9999
-       proceso_id = 9999999999999999999
+       proceso_id = 9223372036854775809
        
        category = Category.new({ "name" => nombre ,"description" => "Una descripción", "bench" => "1", "selection_process_id" => "1"})
        category.should_not be_valid

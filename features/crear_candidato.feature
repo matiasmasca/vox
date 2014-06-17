@@ -11,28 +11,28 @@ Antecedentes:
 
 #Camino feliz.
 Escenario: crear candidatos.
-  Y completo los datos del candidato con "Nombre Candidato", "bios"
+  Y completo los datos del candidato con "Nombre Candidato", "la bios"
   Cuando presiono el botón "Guardar Cambios"
   Entonces se crea el candidato y me muestra el mensaje "Candidato creado correctamente."
   Y me muestra los datos del candidato recien creado
 
 Escenario: crear candidatos con foto.
-  Y completo los datos del candidato con "Nombre Candidato", "bios"
+  Y completo los datos del candidato con "Nombre Candidato", "la bios"
   Y subo una imagen que se utilizará como avatar del candidato.
   Cuando presiono el botón "Guardar Cambios"
   Entonces se crea el candidato y me muestra el mensaje "Candidato creado correctamente."
   Y me muestra los datos del candidato recien creado
-  Y me muestra la imagen recién subida
+  Y me muestra la imagen del "candidato" recién subida
 
 
 #Casos extremos.
 Escenario: crear candidatos sin foto
   #PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
-  Y completo los datos del candidato con "Nombre C", "bios"
+  Y completo los datos del candidato con "Nombre C", "la bios"
   Cuando presiono el botón "Guardar Cambios"
   Entonces se crea el candidato y me muestra el mensaje "Candidato creado correctamente."
   Y me muestra los datos del candidato recien creado
-  Y me muestra la imagen de logo generica
+  Y me muestra un avatar generico
 
 Esquema del escenario: faltan datos
   # s/ PO obligatorios son: id, nombre y bench.
@@ -41,34 +41,24 @@ Esquema del escenario: faltan datos
   Entonces me muestra el mensaje de error que "faltan datos."
 
   Ejemplos: faltan datos
-    | name | bios   | categories_id |
-    | 	   | prueba | 1             |
-    | name | prueba |               |
+    | name | bios   | 
+    | 	   | prueba | 
 
 # Datos cortos.
 # s/ PO longitudes mínimas
 #- id 1 int, solo numeros.
 #- nombre: 2 letras.
 #- bios: blank o 5.
-#- categories_id: numero de 1 digito entero, mayor que 0.
+#- category_id: numero de 1 digito entero, mayor que 0.
   Ejemplos: datos cortos
-    | name | bios   | categories_id |
-    |      | prueba |               |
-    | name | prueba |               |
+    | name | bios   | 
+    | N    | prueba |
 
 # Datos largos.
-# s/ PO longitudes máximas
-#- id 1 int, solo numeros. (16 digitos maximo)
-#- name: 110 (varchar)
-#- bios: sin limite. [En postgresql es posible no tener limites en text ]
-#- categories_id: numero 16 digitos.
-  Ejemplos: datos largos
-    | name | bios   | categories_id     |
-    | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA     | prueba | 1                 |
-    | name | prueba | 99999999999999999 |
+# Se validan en TDD.
 
 Escenario: nombre de candidatos debe ser unico para el proceso.
-  Y completo los datos del candidato con "Nombre C", "bios"
+  Y completo los datos del candidato con "Nombre C", "la bios"
   Pero como ya existe un candidato con ese nombre "Nombre C"
   Cuando presiono el botón "Guardar Cambios"
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado."

@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe CandidatesController do
-	let(:valid_attributes) { { "name" => "Corre caminos" , "bios" => "UnaDireccionCualquiera", "categories_id" => "1"} }
+	let(:valid_attributes) { { "name" => "Corre caminos" , "bios" => "UnaDireccionCualquiera", "category_id" => "1"} }
 	let(:valid_session) { {} }
 
 	describe "GET new" do

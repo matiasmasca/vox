@@ -10,14 +10,12 @@
 
 <p>
   <strong>Url Avatar:</strong>
-  <%= @candidate.url_image %>
-</p>
- <%= link_to(image_tag(@candidate.url_image,
-        alt: "Logo #{@candidate.id}",
-        id: "imgLogo-#{@candidate.id}",
-        class: "imgLogo", 
+ <%= link_to(image_tag(@candidate.image_path,
+        alt: "Avatar #{@candidate.id}",
+        id: "imgAvatar-#{@candidate.id}",
+        class: "imgAvatar", 
         size: "200x200"), 
-        @candidate.url_image) %>
+        @candidate.image_path) %>
 </p>
 
 <%= link_to ' Editar', edit_candidate_path(@candidate), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
