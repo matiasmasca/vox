@@ -47,18 +47,25 @@ Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)" y email
   step %{existe una Organización: "#{name}", "#{address}", "" y "#{email}"}
 end
 
-
 Cuando(/^hago click en "(.*?)"$/) do |button|
   #click_on button
   find_button(button).click
 end
-
-Cuando(/^presiono el boton "(.*?)"$/) do |botton|
-  click_button botton 
+Cuando(/^(?:presiono|que presione) el botón "(.*?)"$/) do |button|
+  #save_and_open_page
+  #click_button button #me da problemas con Capybara.
+  #find_button(button).click #me da problemas con Capybara.
+  click_on(button)
+  
 end
 
-Cuando(/^presiono el botón "(.*?)"$/) do |botton|
-  click_button botton 
+Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do |botton|
+  visit(paginas_home_path)
+  click_on botton
+  
+  #@to-do: chequear uri correcta
+  #Aca deberia estar en /organizers/new falta algo que cheque la URL.
+  #visit("/organizers/new")
 end
 
 Cuando(/^selecciono el link con el texto "(.*?)"$/) do |button|
@@ -71,10 +78,14 @@ end
 
 Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
   case pantalla
+  when "mis procesos electorales"
+    visit("/selection_processes")
   when "administración de Usuarios"
     visit("/users")
   when "administración de Categorías"
     visit("/categories")
+  when "administración de Candidatos"
+    visit("/candidates")
     #save_and_open_page
   else
     visit("/¿A donde queres ir?")
@@ -82,13 +93,8 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
 
 end
 
-Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do |boton|
-  visit(paginas_home_path)
-  click_on boton
-  
-  #@to-do: chequear uri correcta
-  #Aca deberia estar en /organizers/new falta algo que cheque la URL.
-  #visit("/organizers/new")
+Entonces(/^veo el mensaje "(.*?)"$/) do |mensaje|
+  page.should have_content(mensaje)
 end
 
 #Casos extremos, errores y problemas.

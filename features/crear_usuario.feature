@@ -89,7 +89,7 @@ Escenario: email del usuario debe ser unico.
 #  Y escribo "Premios ACME" en Nombre
 #  Y escribo "Av. Siempre Viva 742" en Lugar,
 #  Pero como ya existe un premio con ese nombre "premios acme" y lugar "Av. Siempre Viva 742"
-#  Cuando presiono el boton "Guardar cambios"
+#  Cuando presiono el botón "Guardar cambios"
 #  Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
 #@to-do para otra iteración.
