@@ -21,6 +21,8 @@ deploy:
   app: tfa-vox
   on:
     repo: matiasmasca/vox
+    all_branches: true
+    
   run:
     - "rake db:drop"
     - "rake db:schema:load --trace"
