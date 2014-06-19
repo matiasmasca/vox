@@ -9,15 +9,29 @@ Dado(/^que existe un candidato: "(.*?)", "(.*?)"\.$/) do |nombre, bios|
 end
 
 Dado(/^modifico del candidato los datos "(.*?)", "(.*?)"$/) do |nombre, bios|
-  @update_name = nombre
-  @update_bios = bios
-  @candidato.update_attributes!({ :name => @update_name,:bios => @update_bios })
-
   if nombre
     fill_in "candidate_name", :with => nombre
   end
 
-  if plazas
+  if bios
+    fill_in "candidate_bios", :with => bios
+  end
+
+  click_on("Guardar Cambios")
+  
+  @update_name = nombre
+  @update_bios = bios
+  @candidato.update_attributes!({:name => @update_name,:bios => @update_bios })
+  #save_and_open_page 
+end
+
+Dado(/^modifico del candidato: "(.*?)", "(.*?)"$/) do |nombre, bios|
+  #Esto esta como repetido, porque daba error en las validaciones, cuando le ponemos el update.
+  if nombre
+    fill_in "candidate_name", :with => nombre
+  end
+
+  if bios
     fill_in "candidate_bios", :with => bios
   end
 
@@ -29,16 +43,14 @@ Dado(/^cambio el nombre$/) do
 end
 
 Entonces(/^veo que el "(.*?)" cambio\.$/) do |atributo|
-  pending # express the regexp above with the code you wish you had
-  #step %{que estoy en la pantalla de "administración de Categorías"}
+  #step %{que estoy en la pantalla de "administración de Candidatos"}
   #save_and_open_page
-  step %{que estoy en la pantalla de "administración de Candidatos"}
-  #save_and_open_page
-  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should have_content(@category.name)
-  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)").should have_content(@update_description)
-  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should have_content(@category.bench)
+  find("div.container:nth-child(2) > p:nth-child(2)").should have_content(@update_name) if atributo == "nombre"
+  find("div.container:nth-child(2) > p:nth-child(3)").should have_content(@update_bios) if atributo == "bios"
 
-
+  #find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should have_content(@category.name)
+  #find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)").should have_content(@update_description)
+  #find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should have_content(@category.bench)
 end
 
 Dado(/^que existe un candidato, sin foto\.$/) do
@@ -50,13 +62,13 @@ Dado(/^que existe un candidato, con foto\.$/) do
 end
 
 Cuando(/^yo edito un (\d+)do\. Candidato$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-    #save_and_open_page 
-  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(5)").click_on('Editar')
-             #categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(5) > a:nth-child(1)
-
+  steps %{Y que existe un candidato: "Manolillo", "Es un tipazo".}
+  steps %{Y que estoy en la pantalla de "administración de Candidatos"}
+  find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(5)").click_on('Editar')
 end
 
-Cuando(/^modifico del (\d+)do\. candidato los datos "(.*?)", "(.*?)"$/) do |arg1, arg2, arg3|
-  pending # express the regexp above with the code you wish you had
+Cuando(/^modifico del (\d+)do\. candidato los datos "(.*?)", "(.*?)"$/) do |arg1, nombre, bios|
+ steps %{Y modifico del candidato los datos "#{nombre}", "#{bios}"
+         Cuando presiono el botón "Guardar Cambios"
+         me muestra el mensaje de error que "ese nombre ya está siendo utilizado" }
 end

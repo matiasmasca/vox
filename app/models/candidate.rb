@@ -11,13 +11,16 @@ class Candidate < ActiveRecord::Base
    #Nombre Unico.
    validates :name, uniqueness: { scope: :category_id, message: "ese nombre ya está siendo utilizado." }
    
+   #Controlar Candidatos por Categoria.
+   #TO-DO: si el count de candidatos = bench de la categoria, tiene que dar un error de que ya esta completo el cupo.
+
+
    #Gestión de avatars de candidatos.
    AVATAR = File.join Rails.root, 'public','images','uploads', 'avatars', 'candidatos'
    
    after_save :guardar_imagen 
    
-   #TO-DO: si el count de candidatos = bench de la categoria, tiene que dar un error de que ya esta completo el cupo.
-
+   
    #TO-DO: refactorizar para cumplir con DRY
    def avatar_file=(file_data)
     unless file_data.blank?
