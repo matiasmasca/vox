@@ -64,7 +64,7 @@ end
 Cuando(/^yo edito un (\d+)do\. Candidato$/) do |arg1|
   steps %{Y que existe un candidato: "Manolillo", "Es un tipazo".}
   steps %{Y que estoy en la pantalla de "administración de Candidatos"}
-  find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(5)").click_on('Editar')
+  find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6)").click_on('Editar')
 end
 
 Cuando(/^modifico del (\d+)do\. candidato los datos "(.*?)", "(.*?)"$/) do |arg1, nombre, bios|
