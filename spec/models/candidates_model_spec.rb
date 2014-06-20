@@ -42,6 +42,20 @@ describe Candidate do
     end
 
   end
+
+  it "nombre debe ser unico, dentro de la categoria" do
+    candidate = Candidate.create!({ "name" => "peperoni" , "bios" => "la bios del tipo", "category_id" => "1"})
+    candidate = Candidate.new({ "name" => "peperoni" , "bios" => "la bios del tipo", "category_id" => "1"})
+    candidate.should_not be_valid
+  end
+
+  it "tiene asignado una category_id" do
+    category = Category.create!({"name" => "La gran categoria" ,"description" => "Una descripción", "bench" => "1", "selection_process_id" => "1"}) 
+    candidate = Candidate.new({  "name" => "Pepe Argento" , "bios" => "la bios del tipo", "category_id" => category.id})
+    candidate.should have_and_belong_to_many(:categories)
+    # esto se hace distinto porque es una colección.
+
+  end
   
   #@to-do
   it "Guarda el archivo que recibe" 

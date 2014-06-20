@@ -40,10 +40,16 @@ Escenario: nombre unico
   Y modifico del candidato: "Manolito", "es otro buen tipo" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
 
-@to-do
 Escenario: agregar foto
   Dado que existe un candidato, sin foto.
+  Y subo una imagen que se utilizará como avatar del candidato.
+  Cuando presiono el botón "Guardar Cambios"
+  Y veo el mensaje "Información actualizada correctamente."
+  Y me muestra la imagen del "candidato" recién subida
 
-@to-do
 Escenario: modificar foto
-  Dado que existe un candidato, con foto.
+  #Dado que existe un candidato, con foto.
+  Y subo una imagen que se utilizará como avatar del candidato.
+  Cuando presiono el botón "Guardar Cambios"
+  Y veo el mensaje "Información actualizada correctamente."
+  Y me muestra la imagen del "candidato" recién subida

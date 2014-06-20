@@ -10,9 +10,11 @@ class CreateCandidates < ActiveRecord::Migration
     
     add_reference :candidates, :category, index: true
   
-    create_table :categories_candidates, id: false do |t|
-      t.belongs_to :categories
-      t.belongs_to :candidates
+    create_table :candidates_categories, id: false do |t|
+      t.integer :category_id
+      t.integer :candidate_id
     end
+
+
   end
 end

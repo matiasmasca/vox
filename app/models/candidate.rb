@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Candidate < ActiveRecord::Base
-	 has_and_belongs_to_many :categories
+	 has_and_belongs_to_many :categories, autosave: true
    #obligatoriedad
 	 validates :name, presence: { message: "es un dato obligatorio."}
    #Longitudes.

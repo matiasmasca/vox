@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 20140616130128) do
 
   add_index "candidates", ["category_id"], name: "index_candidates_on_category_id"
 
+  create_table "candidates_categories", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "candidate_id"
+  end
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -34,11 +39,6 @@ ActiveRecord::Schema.define(version: 20140616130128) do
   end
 
   add_index "categories", ["selection_process_id"], name: "index_categories_on_selection_process_id"
-
-  create_table "categories_candidates", id: false, force: true do |t|
-    t.integer "categories_id"
-    t.integer "candidates_id"
-  end
 
   create_table "organizers", force: true do |t|
     t.string   "name"

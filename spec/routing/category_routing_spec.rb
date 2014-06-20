@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe SelectionProcessesController do
+describe CategoriesController do
   describe "routing" do
 
     it "routes to #index" do

@@ -54,7 +54,7 @@ Entonces(/^veo que el "(.*?)" cambio\.$/) do |atributo|
 end
 
 Dado(/^que existe un candidato, sin foto\.$/) do
-  pending # express the regexp above with the code you wish you had
+  @candidato.update_attributes!({:url_image => nil  })
 end
 
 Dado(/^que existe un candidato, con foto\.$/) do
