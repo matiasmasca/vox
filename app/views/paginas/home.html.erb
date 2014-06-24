@@ -41,7 +41,7 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
   <table id="selection-processes-list" class="table table-striped">
   <thead>
     <tr>
-      <th>Usuario registrado</th>
+      <th>Usuario Organizador</th>
     </tr>
   </thead>
 
@@ -50,7 +50,7 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
         <td><p class = 'btn btn-default'>Mis procesos</td>
       </tr>
       <tr>
-        <td><p class = 'btn btn-default'>Mi Empresa</td>
+        <td><%= link_to 'Modificar Organización', edit_organizer_path(1), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
       </tr>
       <tr>
         <td><p class = 'btn btn-default'>Mi perfil</td>
@@ -60,3 +60,4 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
   </table>
 </div>
 
+[]

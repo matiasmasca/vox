@@ -89,7 +89,19 @@ categories.each do |category|
   Category.create!(category)
 end
 
+candidates = [
+    {:name => "Famishus Vulgarus" , :bios => "Del capitulo Boas Manerias", :category_id => "1"},
+    {:name => "Famishius Fantasticus" , :bios => "Del capitulo Fast and Furry-ous", :category_id => "1"},
+    {:name => "Carnivorous Vulgaris" , :bios => "Del capitulo Beep, Beep", :category_id => "1"},
+    {:name => "Road-Runnerus Digestus" , :bios => "Del capitulo Zipping Along", :category_id => "1"},
+    {:name => "Poultrius Devourius" , :bios => "Del capitulo Wild Kingdumb", :category_id => "1"},
+    {:name => "Arturo García Buhr" , :bios => "Pelicula Los chicos crecen 1943", :category_id => "6"},
+    {:name => "Francisco Petrone" , :bios => "Pelicula Todo un hombre 1944", :category_id => "6"},
+    {:name => "Enrique Muiño" , :bios => "Pelicula Su mejor alumno 1945", :category_id => "6"},
+    {:name => "Pedro López Lagar" , :bios => "Pelicula Celos 1967", :category_id => "6"}
+]
 
-
-
+candidates.each do |candidate|
+  Candidate.create!(candidate)
+end
 

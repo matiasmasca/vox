@@ -51,16 +51,6 @@ class OrganizersController < ApplicationController
     end
   end
 
-  #def upload
-   #unless params[:organizer][:logo].blank?   
-    #uploaded_io = params[:organizer][:logo]
-    #Dir.mkdir '/uploads/isologos' unless File.directory? '/uploads/isologos'
-    #File.open(Rails.root.join('public', 'uploads', 'isologos', uploaded_io.original_filename), 'wb') do |file|
-    #  file.write(uploaded_io.read)
-    #end
-    #@organizer.logo = (uploaded_io.original_filename).split('.').last.downcase
-   #end
-
   # DELETE /organizers/1
   # DELETE /organizers/1.json
   def destroy

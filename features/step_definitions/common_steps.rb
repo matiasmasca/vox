@@ -86,6 +86,8 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
     visit("/categories")
   when "administración de Candidatos"
     visit("/candidates")
+  when "Modificar Organización"
+    visit("/paginas/home")
     #save_and_open_page
   else
     visit("/¿A donde queres ir?")
