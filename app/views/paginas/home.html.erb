@@ -36,6 +36,7 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
   </table>
 </div>
 <br>
+<hr>
 <br>
 <div class="table-responsive">
   <table id="selection-processes-list" class="table table-striped">
@@ -47,17 +48,22 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
 
   <tbody >
       <tr>
-        <td><p class = 'btn btn-default'>Mis procesos</td>
+        <td><p class = 'btn btn-default btn glyphicon glyphicon-film'> Mis procesos</td>
       </tr>
       <tr>
-        <td><%= link_to 'Modificar Organización', edit_organizer_path(1), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
+        <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(1,1), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
       </tr>
       <tr>
-        <td><p class = 'btn btn-default'>Mi perfil</td>
+        <td><%=   %></td>        
+      </tr>
+      <tr>
+      
+        <td><%= link_to ' Mi Perfil',  edit_user_path(1), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
+      </tr>
+            <tr>
+        <td><%= link_to ' Iniciar sesión', '/', :class => 'btn btn-default btn glyphicon glyphicon-log-in' %>
       </tr>
 
   </tbody>
   </table>
 </div>
-
-[]

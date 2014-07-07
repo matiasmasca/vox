@@ -1,4 +1,5 @@
 # encoding: utf-8
+# Ojo con los before y after action que se ejecutaran en cada acción, en cada llamada a los metodos.
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
 
@@ -57,7 +58,7 @@ class CandidatesController < ApplicationController
   def destroy
     @candidate.destroy
     respond_to do |format|
-      format.html { redirect_to candidates_url }
+      format.html { redirect_to candidates_url, notice: 'Candidato borrado correctamente.' }
       format.json { head :no_content }
     end
   end

@@ -6,17 +6,16 @@ Característica: editar perfil organización
   Quiero poder editar el perfil de mi Organización en el sistema
 
 Antecedentes:
+  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
   Dado existe una Organización: "ACME43", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
   Y que estoy en la pantalla de "Modificar Organización"
   Cuando yo edito mi Organización 
 
 #Camino feliz
-@wip
 Escenario: editar una organización 
   Y cambio el nombre por "ACME", la domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
   Entonces veo que el nombre cambio y la domicilio cambio.
 
-@wip
 Escenario: agrego dato que faltaba
   Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742", sin web definida
   Y que estoy en la pantalla de Administración de Organizaciones

@@ -38,6 +38,7 @@ group :development do
   gem 'guard-rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem "better_errors" #Personaliza los mensajes de error de Rails.
 end
 
 group :test do

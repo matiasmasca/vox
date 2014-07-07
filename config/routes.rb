@@ -13,6 +13,10 @@ Vox::Application.routes.draw do
   resources :organizers
   resources :users
 
+  resources :users do 
+    resources :organizers, only: [:show, :edit]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

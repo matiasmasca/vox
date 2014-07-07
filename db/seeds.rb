@@ -25,15 +25,15 @@ users.each do |user|
 end
 
 organizers = [{:name => 'ACME', :address => 'Desierto de Arizona', :web => 'http://www.acme.org', :email => 'contact@acme.org', :logo => 'jpg', :user_id => 1 },
-  {:name => 'FAMPAS (Fake Academy of Motion Picture Arts and Sciences)', :address => '8949 Wilshire Boulevard Beverly Hills, California 90211', :web => 'http://www.fakeoscars.org/', :email => 'fakecontact@oscars.org', :logo => 'jpg',:user_id => 1},
-  {:name => 'test13245', :address => 'Dirección de la ORG', :web => 'http://test.com', :email => 'contact@oscars.org', :logo => 'jpg',:user_id => 1},
-  {:name => 'Comunidad TIC', :address => 'Corrientes, Argentina', :web => 'http://www.comunidadtic.com.ar', :email => 'contacto@comunidadtic.com.ar', :logo => 'jpg',:user_id => 1},
-  {:name => 'Nombre A', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesA@mail.ws',:user_id => 1},
-  {:name => 'Nombre B', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesB@mail.ws',:user_id => 1},
-  {:name => 'Nombre C', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesC@mail.ws',:user_id => 1},
-  {:name => 'Nombre D', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesD@mail.ws',:user_id => 1},
-  {:name => 'Nombre E', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesE@mail.ws',:user_id => 1},
-  {:name => 'Nombre F', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesF@mail.ws',:user_id => 1}
+  {:name => 'FAMPAS (Fake Academy of Motion Picture Arts and Sciences)', :address => '8949 Wilshire Boulevard Beverly Hills, California 90211', :web => 'http://www.fakeoscars.org/', :email => 'fakecontact@oscars.org', :logo => 'jpg',:user_id => 2},
+  {:name => 'test13245', :address => 'Dirección de la ORG', :web => 'http://test.com', :email => 'contact@oscars.org', :logo => 'jpg',:user_id => 3},
+  {:name => 'Comunidad TIC', :address => 'Corrientes, Argentina', :web => 'http://www.comunidadtic.com.ar', :email => 'contacto@comunidadtic.com.ar', :logo => 'jpg',:user_id => 4},
+  {:name => 'Nombre A', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesA@mail.ws',:user_id => 5},
+  {:name => 'Nombre B', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesB@mail.ws',:user_id => 6},
+  {:name => 'Nombre C', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesC@mail.ws',:user_id => 7},
+  {:name => 'Nombre D', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesD@mail.ws',:user_id => 8},
+  {:name => 'Nombre E', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesE@mail.ws',:user_id => 9},
+  {:name => 'Nombre F', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesF@mail.ws',:user_id => 10}
   	 ]
 
 organizers.each do |organizer|

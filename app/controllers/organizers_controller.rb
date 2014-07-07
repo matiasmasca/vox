@@ -19,6 +19,16 @@ class OrganizersController < ApplicationController
 
   # GET /organizers/1/edit
   def edit
+    if !params[:user_id].blank? #|| ADMIN
+      @user = User.find(params[:user_id])
+      respond_to do |format|
+        format.html do
+          unless @user.organizer == @organizer
+            redirect_to(edit_user_organizer_path(@user,@user.organizer), alert: "Solo puedes editar tu organización.")
+          end
+        end
+      end
+    end         
   end
 
   # POST /organizer
@@ -71,7 +81,7 @@ class OrganizersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organizer_params
-      params.require(:organizer).permit(:name, :address, :web, :email, :image, :user)
+      params.require(:organizer).permit(:name, :address, :web, :email, :image, :user, :user_id)
     end
 
 end

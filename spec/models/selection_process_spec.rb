@@ -43,10 +43,30 @@ describe SelectionProcess do
     end
 
     it "debe estar asociado a una Organización" do
-        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "Una@test.com", "user_id" => 1 })
-        selection_process = SelectionProcess.create!({  "name_process" => "MyString" , "place" => "MyString", "organizer_id" => organizer.id }) 
+        user = User.create({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "clave" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 })
+        organizer = Organizer.create!({ "name" => "ACME-test" , "address" => "UnaDireccionCualquiera", "email" => "Una@test.com", "user_id" => user.id })
+        selection_process = SelectionProcess.create!({  "name_process" => "MyString" , "place" => "MyString", "organizer_id" => user.organizer.id }) 
         #puts(selection_process.inspect) 
         organizer.should have_many(:selection_process)
         selection_process.should belong_to(:organizer)
     end
+
+    it "debe quedar null cuando borran un organizer" 
+    #   @organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "Una@test.com", "user_id" => 1 })
+    #   @selection_process = SelectionProcess.create!({  "name_process" => "MyString" , "place" => "MyString", "organizer_id" => organizer.id }) 
+    #   selection_process_id = @selection_process.id
+    #   @organizer.destroy
+    #   lambda { SelectionProcess.find(selection_process_id) }.should
+    #       raise_error(ActiveRecord::RecordNotFound)
 end
+
+
+# Cuando borran la asociacion.
+#it "should nuke reviews when movie deleted" do
+#   @movie = @movie.create!(...)
+#   @review = @movie.reviews.create!(...)
+#   review_id = @review.id
+#   @movie.destroy
+#   lambda { Review.find(review_id) }.should
+#       raise_error(ActiveRecord::RecordNotFound)
+#end
