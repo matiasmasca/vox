@@ -34,7 +34,6 @@ Escenario: agrego foto que faltaba
 
 
 #Casos extremos
-@wip
 Esquema del escenario: problemas con datos obligatorios
   Y cambio "<name>", "<address>", "<web>" y "<email>"  
   Entonces me muestra el mensaje de error que "faltan esos datos"
@@ -67,7 +66,14 @@ Escenario: nombre unico
   Cuando yo edito otra Organización
   Y cambio "ACME", "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos", "ong.org.ar" y "info@email.com" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
-  
+
+Escenario: modificar la organizacion de otro usuario
+  Dado existen 2 usuarios A y B
+  Y existe una Organización: "ACME-B", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
+  Cuando B trata de modificar la organizacion de A
+  Entonces me muestra el mensaje "Solo puedes editar tu organización."
+
+
 @to-do
 Escenario: cambiar la imagen
 #  Dado que ya tiene una imagen
@@ -77,6 +83,5 @@ Escenario: cambiar la imagen
 
 # si la foto tiene una extensión distinta, entonces hay que borrar la que tiene la vieja extensión, porque no la pisa.
 
-Escenario: modificar la organizacion de otro usuario
-# Modificar una organización asociada a otro usuario.
+
 
