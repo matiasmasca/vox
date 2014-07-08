@@ -5,7 +5,8 @@ Característica: crear un entidad organizadora
   Quiero poder crear una organización en el sistema
 
 Antecedentes:
-  Dado que estoy en la pantalla de administración y hago click en "Registrar Organización"  
+  Dado que estoy en la pantalla de "Administración de Organizaciones" 
+  Y que presione el botón "Crear nueva Organización"  
   Y completo los datos de la organización con "Nombre A", "Dirección", "Sitio Web" y "contacto@email.com"
 
 #Camino feliz
@@ -66,6 +67,15 @@ Escenario: si no hay foto
   Y me muestra los datos recien creados
   Y me muestra la imagen de logo generica
 
+Escenario: nombre de organización unico.
+  Dado presiono el botón "Guardar cambios"
+  Dado existe una Organización: "ACME", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
+  Y que estoy en la pantalla de Administración de Organizaciones
+  Y presiono el botón "Crear nueva Organización"
+  Y completo los datos de la organización con "ACME", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
+  Cuando presiono el botón "Guardar cambios"
+  Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
+
 
 @to-do
 Escenario: archivo de foto incorrecto
@@ -73,22 +83,3 @@ Escenario: archivo de foto incorrecto
 #muy grande, muy chico.
 #no es una foto.
 #no tiene adentro una foto, por más que tiene extensión jpg, png.
-
-@to-do
-Escenario: nombre de organización unico.
-
-#Escenario: nombre premio repetido.
-#  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
-#  Y escribo "Premios ACME" en Nombre
-#  Y escribo "Av. Siempre Viva 742" en Lugar,
-#  Pero como ya existe un premio con ese nombre "Premios ACME" y lugar "Av. Siempre Viva 742"
-#  Cuando presiono el botón "Guardar cambios"
-#  Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
-
-#Escenario: Premio repetido, Oscar y oscar.
-#  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
-#  Y escribo "Premios ACME" en Nombre
-#  Y escribo "Av. Siempre Viva 742" en Lugar,
-#  Pero como ya existe un premio con ese nombre "premios acme" y lugar "Av. Siempre Viva 742"
-#  Cuando presiono el botón "Guardar cambios"
-#  Entonces me muestra el mensaje de error que "el nombre del premio ya existe"

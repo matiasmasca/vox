@@ -68,3 +68,6 @@ Escenario: nombre unico
   Cuando yo edito otro Usuario
   Y modifico "shinji ikari", "pepe@argentos.com.ar", "sevieneeltiburon" y "Organizador" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
+
+  @to-do
+Escenario: agregar imagen que faltaba

@@ -1,8 +1,4 @@
 # encoding: utf-8
-Dado(/^que estoy en la pantalla de mis procesos electorales$/) do
-  visit("/selection_processes")
-end
-
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_process, place|
   step %{existe una Organización: "ComunidadTIC", "Internet, La Plata, Buenos Aires, Argentina", "" y "contacto@comunidadtic.com.ar"} if @organizer == nil
   
@@ -18,11 +14,6 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_
   	})
 end
 
-Dado(/^que estoy en la pantalla de Administración de Organizaciones$/) do
-  #visit organizers_path
-  visit("/organizers/")
-end
-
 Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |name_entity, address, web, email|
   @organizer = Organizer.create!({ 
     :name => name_entity, 
@@ -32,6 +23,7 @@ Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |name
     :logo => nil,
     :user_id => 1
     })
+
 end
 
 Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, email, clave, tipo|
@@ -49,6 +41,7 @@ end
 
 Cuando(/^hago click en "(.*?)"$/) do |button|
   #click_on button
+  #save_and_open_page
   find_button(button).click
 end
 Cuando(/^(?:presiono|que presione) el botón "(.*?)"$/) do |button|
@@ -78,10 +71,12 @@ end
 
 Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
   case pantalla
-  when "mis procesos electorales"
-    visit("/selection_processes")
   when "administración de Usuarios"
     visit("/users")
+  when "Administración de Organizaciones"
+    visit("/organizers")
+  when "mis procesos electorales"
+    visit("/selection_processes")
   when "administración de Categorías"
     visit("/categories")
   when "administración de Candidatos"
@@ -95,9 +90,27 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
 
 end
 
+#TO-Do: refactorizar estos 2 en el Case de arriba.
+Dado(/^que estoy en la pantalla de mis procesos electorales$/) do
+  visit("/selection_processes")
+end
+
+Dado(/^que estoy en la pantalla de Administración de Organizaciones$/) do
+  #visit organizers_path
+  visit("/organizers/")
+end
+#---
+
+
+#To-do: refactorizar estos pasos en 1.
 Entonces(/^veo el mensaje "(.*?)"$/) do |mensaje|
   page.should have_content(mensaje)
 end
+
+Entonces(/^me muestra el mensaje "(.*?)"$/) do |mensaje|
+  page.should have_content(mensaje)
+end
+
 
 #Casos extremos, errores y problemas.
 Entonces(/^me muestra el mensaje de error que "([^"]*)"$/) do |mensaje|

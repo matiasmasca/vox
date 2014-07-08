@@ -55,7 +55,9 @@ Escenario: nombre unico
   Cuando yo edito otra Organización
   Y cambio "ACME", "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos", "ong.org.ar" y "info@email.com" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
-  
+
+@to-do
+Escenario: agregar imagen que faltaba
 
 @to-do
 Escenario: cambiar la imagen

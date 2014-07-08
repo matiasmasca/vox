@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 # Crear la entidad: Nombre, Dirección, Sitio Web, email, logo.
 # "ABSTRACT", Av. 9 de Julio Nro. 220, www.abstract.org.ar, /organizadores/logos/logoXXX.jpg
 
@@ -10,24 +9,29 @@ Dado(/^completo los datos de la organización con "(.*?)", "(.*?)", "(.*?)" y "(
   fill_in "organizer_email", :with => correo
 
   #Crear mock
-  @Entidad = {"name" => nombre, "address" => direccion, "web" => url, "email" => correo}
+  @organizer = {"name" => nombre, "address" => direccion, "web" => url, "email" => correo}
 end
 
 Dado(/^subo una imagen que se utilizará como logo de la organización\.$/) do 
-  step %{existe una Organización: "#{@Entidad["name"]}-con-logo", "#{@Entidad["address"]}", "" y "#{@Entidad["email"]}"}
+  step %{completo los datos de la organización con "Nombre A", "Dirección", "Sitio Web" y "contacto@email.com"}
+  #step %{existe una Organización: "#{@organizer["name"]}", "#{@organizer["address"]}", "" y "#{@organizer["email"]}"}
   imagen_path = "/public/images/uploads/isologos/no-borrar.jpg"
   page.attach_file('organizer_image', File.join(Rails.root, imagen_path), visible: false)
-   #imagen_path = "/public/images/uploads/isologos/no-borrar.jpg"
-   #@organizer.update_attributes!({ :logo => Rack::Test::UploadedFile.new(File.join(Rails.root, imagen_path), "image/jpeg")})
-   #@organizer.logo = Rack::Test::UploadedFile.new(File.join(Rails.root, imagen_path), "image/jpeg")
+
+  #imagen_path = "/public/images/uploads/isologos/no-borrar.jpg"
+  #@organizer.update_attributes!({ :logo => Rack::Test::UploadedFile.new(File.join(Rails.root, imagen_path), "image/jpeg")})
+  #@organizer.logo = Rack::Test::UploadedFile.new(File.join(Rails.root, imagen_path), "image/jpeg")
 end
 
 Entonces(/^me muestra la imagen recién subida$/) do 
+  @organizer = Organizer.find_by_name(@organizer["name"]) #"#{@organizer["address"]}", "" y "#{@organizer["email"]}"}
+  #puts(@organizer.inspect)
+
   #la pagina muestra 1 imagen. Se podria mejorar con un Scope.
   page.should have_selector(:xpath, '//img[1]') #hay 1 imagen.  
   
   #le saque el public a esta url
-  file = "#{@organizer.id + 1}.jpg"
+  file = "#{@organizer.id}.jpg"
   puts("#{Rails.root}/public/images/uploads/isologos/#{file}")
   # esta el archivo en su lugar.
   File.exist?("#{Rails.root}/public/images/uploads/isologos/#{file}").should be_true
@@ -61,10 +65,11 @@ end
 
 Entonces(/^me muestra los datos recien creados$/) do
   #Aca debo comprobar que se muestra la info que quiero.
-  expect(page).to have_content(@Entidad["name"])
-  expect(page).to have_content(@Entidad["address"])
-  expect(page).to have_content(@Entidad["web"])
-  expect(page).to have_content(@Entidad["email"])
+  #save_and_open_page 
+  expect(page).to have_content(@organizer["name"])
+  expect(page).to have_content(@organizer["address"])
+  expect(page).to have_content(@organizer["web"])
+  expect(page).to have_content(@organizer["email"])
 end
 
 #Casos extremos.

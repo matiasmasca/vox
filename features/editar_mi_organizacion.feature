@@ -23,6 +23,15 @@ Escenario: agrego dato que faltaba
   Y cambio web por "www.acme.org"
   Entonces veo que la web cambio, sin afectar a nombre o dirección.
 
+Escenario: agrego foto que faltaba
+  Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742", sin web definida
+  Y que estoy en la pantalla de Administración de Organizaciones
+  Y yo edito una Organización
+  Y subo una imagen que se utilizará como logo de la organización.
+  Cuando presiono el botón "Guardar cambios"
+  Entonces me muestra el mensaje "Organización actualizada correctamente."
+  Y me muestra la imagen recién subida
+
 
 #Casos extremos
 @wip
@@ -51,7 +60,6 @@ Esquema del escenario: problemas con datos obligatorios
    | AC   | Av. Siempre Viva 742 | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | contact@g.ws          |
    | AC   | Av. Siempre Viva 742 | www.web.com | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA          |
  
-@wip
 Escenario: nombre unico
   Dado existe una Organización: "ACME", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
   Y existe una Organización: "ACME-ARGENTINA", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
@@ -68,3 +76,7 @@ Escenario: cambiar la imagen
 #  Y sube actualiza a la nueva
 
 # si la foto tiene una extensión distinta, entonces hay que borrar la que tiene la vieja extensión, porque no la pisa.
+
+Escenario: modificar la organizacion de otro usuario
+# Modificar una organización asociada a otro usuario.
+

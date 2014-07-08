@@ -64,6 +64,9 @@ Escenario: Premio repetido, Oscar y oscar.
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
+#@to-do
+#Escenario: agregar imagen que faltaba
+
 # Pasan para otra iteración.
 #@to-do
 #Escenario: calcula fecha cierre automaticamente
