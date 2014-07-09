@@ -1,0 +1,66 @@
+/* En este documento se van agregando las herramientas utilizadas en el transcurso del proyecto */
+
+
+- Editor Sublime Text 3.
+	- Agregado para correr pruebas RubyTest.
+	- Agregado para resaltar sintaxis de Ghering.
+
+- PivotalTracker.
+
+- Cucumber.
+	- Capybara.
+
+- RSpec 2.
+
+- Rails. (4.0.1)
+	- Gemas (ver achivo Gemfile)
+	- JavaScript, CoffeScript, jQuery.	
+	- Servidor web de desarrollo y prueba: WEBrick
+	- Base de datos en desarrollo y prueba: SQLite.
+
+- Bootstrap (Sass).
+	- Para Diseño de interfaces.
+	- Para Diseño responsivo, compatibilidad con cualquier tamaño de pantalla.
+
+- Navegador: FireFox.
+
+- Ruby 1.9 (compatible con Rails 4)
+
+- Google Docs.
+
+- Worckbeench.
+
+- Libre Office.
+
+- GitHub.
+	- Formato Markdown (para readme)
+	- Travis-ci
+	- Coveralls.io
+	- CodeClimate.
+
+- Evaluar cobertura de pruebas: Coveralls.io
+
+- Integración continua: Travis-ci
+
+- Deploy: www.heroku.com
+
+- Guard, para automatizar la ejecución de las pruebas en desarrollo.
+ https://github.com/guard/guard // http://guardgem.org/ (guard init rspec, guard inic rails)
+
+- Pizarron y fibra.
+- PostIt.
+
+
+================
+Esta faltando:
+- Vagrant y la maquina virtual que usemos, para montar el ecosistema de prueba.
+
+
+- Wetrait o Selenium, algo para simular el navegador.
+- Algun medidor de estadisticas de cobertura de las pruebas. [Coveralls.io & Simplecov]
+- Rack https://github.com/rkh/rack-protection protección contra ataques web comunes.
+
+- Para el Usuario Admin, se podría usar el agregado: Active Admin
+que crea un backend automatico en base a los modelos del sistema.
+http://batsov.com/articles/2011/11/20/admin-interfaces-for-rails-apps-railsadmin-vs-activeadmin/
+

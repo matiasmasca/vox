@@ -1,0 +1,85 @@
+<% @user = User.first %>
+<h2>Bienvenido a Usuario </h2>
+esta es una pagina de usarios registrado temporal, hasta tener un diseño definitivo.
+
+<hr>
+<br>
+<div class="table-responsive">
+  <table id="user-option-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Usuario Organizador</th>
+    </tr>
+  </thead>
+
+  <tbody >
+      <% unless @user.organizer(true).nil? %>
+      <tr>
+        <td><p class = 'btn btn-default btn glyphicon glyphicon-film'> Mis procesos</td>
+        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+      </tr>      
+      <tr>
+        <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
+      </tr>
+	  <% end %>
+
+      <tr>      
+        <td><%= link_to ' Mi Perfil',  edit_user_path(@user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
+      </tr>
+            <tr>
+        <td><%= link_to ' Cerrar sesión', '/', :class => 'btn btn-default btn glyphicon glyphicon-log-out' %>
+      </tr>
+  </tbody>
+  </table>
+</div>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @user.usuario %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @user.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @user.apellido %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Clave:</strong>
+  <%= @user.clave %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @user.facebook %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @user.twitter %>
+</p>
+
+<p>
+  <strong>Tipo usuario:</strong>
+  <%= @user.tipo_usuario_id %>
+</p>
+
+<% unless @user.organizer(true).nil? %>
+ <h3>Organizaciones </h3>
+      <ol class="organizer">
+        <%= render 'users/misorganizaciones' %>
+      </ol>
+<% end %>
+
+<%= link_to 'Editar', edit_user_path(@user), :class => 'btn btn-link' %> |
+<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>

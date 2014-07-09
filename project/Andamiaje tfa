@@ -1,0 +1,55 @@
+/* En este documento se documentan algunos de los comandos utilizados para crear el proyecto */
+
+#Andamios 2013 (No utilizar!)
+Para separar las palabras NO se usa _ sino mayusculación tipo CamelCase.
+#rails generate scaffold [NombreEntidadSingular] content:string user_id:integer
+
+rails generate scaffold User_Types description:string
+
+rails generate scaffold User name:string lastname:string email:string password:string facebook:string twitter:string --force-plural
+
+rails generate scaffold Organizer name:string address:string email:string description:string url_logo:string --force-plural
+
+rails generate scaffold ProcessTypes description:string --force-plural
+
+rails generate scaffold SelectionProcess name_process:string place:string duration:string start_date:date end_date:date state:string --force-plural
+
+rails generate scaffold Jury jury_id:integer --force-plural
+
+rails generate scaffold Category description:string --force-plural
+rails generate scaffold Category name:string description:string bench:integer
+
+
+rails generate scaffold Nominee name:string bios:string url_image:string --force-plural
+
+rails generate scaffold Seat description:string  --force-plural
+
+====================
+Infletion a agregar
+   inflect.plural 'user_types', 'user_type'
+   inflect.singular 'user_type', 'user_types'
+   inflect.plural 'process_types', 'process_type'
+   inflect.singular 'process_type', 'process_types'
+   inflect.plural 'juries', 'jury'
+   inflect.singular 'jury', 'juries'
+   inflect.plural 'selection_processes', 'selection_process'
+   inflect.singular 'selection_process', 'selection_processes'
+   inflect.plural 'organizers', 'organizer'
+   inflect.singular 'organizer', 'organizers'
+   inflect.plural 'categories', 'category'
+   inflect.singular 'category', 'categories'
+   inflect.plural 'nominees', 'nominee'
+   inflect.singular 'nominee', 'nominees'
+   inflect.plural 'seats', 'seat'
+   inflect.singular 'seat', 'seats' 
+
+// Para sacarle los RSpec
+rails g scaffold Foobar name:string --no-helper-specs --no-view-specs
+
+// Version 2014
+rails g scaffold User usuario:string nombre:string apellido:string email:string clave:string facebook:string twetter:string tipo_usuario_id:integer 
+
+
+Los inflection se utiliza Irregular.
+   inflect.irregular 'error', 'errores'
+   inflect.irregular 'selection_process', 'selection_processes'

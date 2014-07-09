@@ -1,0 +1,85 @@
+/* En este documento voy agregando algunas notas mentales, pensamientos y conclusiones preliminares en el camino de este proyecto.
+*/
+
+- Hay que aprender a leer los errores e identificar de que tipo son. Uno termina aprendiendo a leerlos más tranquilo. La tranquilidad al leer un mensaje de error se incrementa a medida que uno se acostumbra a la forma de trabajar.
+
+- Es dificil pensar primero en la prueba, es dificil imaginarse como van a ser las cosas en una nueva tecnología o herramienta.
+
+- Es como tejer una red de seguridad, nodo por nodo, pero al final te queda una red donde uno se siente muy seguro modificando el codigo, saltando al vacio.
+
+- Falsos positivos desde BDD, uno no sabe si realmente esta probando bien, puede tener falso positivos. Por ejemplo tenia que hacer Click para borrar, pero no hacia el click y borraba el registro entonces daba Verde el siguiente paso.
+
+- Con el desconocimiento de la tecnologia la estimación del esfuerzo en Scrum, se sobre evalua, algunas tareas se pensaban a priori que iban a ser más dificiles de lo que fueron en la primera vez que se aplico la tecnica. Y otras a posteriori llevaron el triple de lo que se pensaba. 1 semana de trabajo para poder subir la una imagen y hacer la prueba.
+
+- Se siguio un enfoque de Afuera hacia Adentro (empezando por las pantallas, el comportamiento).
+- Es mejor refactorizar un código que tiene un comportamiento esperado, a un que no sabemos si tiene el comportamiento esperado pero que funciona bien.
+
+- Al no usar el framework se percibe el incremento de trabajo en tiempo y esfuerzo.
+
+- Si se utiliza el framework, creando el scaffold, al momento de hacer las pruebas en unitarias, se enfoca el esfuerzo en los cambios que se realicen sobre el funcionamiento habitual. Se entiende que el framework hace bien su trabajo y no es necesario testearlo, es un esfuerzo extra que no se justifica.
+
+- Si bien hay pruebas, los errores pueden permanecer ocultos, ya que la metodologia es un proceso de diseño y no de prueba. Pero al avanzar uno puede detectar errores o detalles del comportamiento que se podian estar escapado. Por ejemplo el nombre de una clase de una tabla en html de una de las vistas, no es un error que el usuario pueda observar a simple vista, pero podría generar errores internos, errores de personalización que pasen desapersividos a simple vista.
+- Las herramientas te ayudan a encontrar exactamente el lugar donde esta fallando el código o la prueba. 
+
+- El proceso va guiando el trabajo del programador, de modo que se tiene la respuesta a "Y ahora que sigue?"
+- El framework libera de pensar, y consumir energia, en algunas decisiones tribiales o que estan fuera del alcance del desarrollador promedio, e incluso que estan fuera de los alcances economicos de un proyecto normal. La comunicación con la BD, la comunicación entre capas, la seguridad, los helpers, validaciones, etc. etc.
+
+- Es cuestionable la sobre carga mental de tener que programar el comportamiento y las pruebas antes que el código.
+
+- Hay una carga extra, de tener que programar acciones de forma distinta a las del código de producción. Por ejemplo para probar la subida de un archivo. El framework proporciona herramientas para hacer de esta tarea sencilla, parametrizando una llamda. Pero la prueba desde Cucumber/Capybara y luego RSpec, para probar este comportamiento resultado complicada y un consumo de tiempo excesivo. 
+
+- Con Cucumber, cuando se empieza a usar los "Esquemas de Escenarios" para probar los casos extremos, se aprecia el poder de la herramienta, para probar comportamiento deseado sobre muchos casos. Se ahorra tiempo y código repetitivo.
+
+- Las pruebas por defecto en Rspec, que genera Rails, son realmente fragiles.
+
+- La fragilidad de las pruebas se hace notar a medida que uno avanza con la técnica, e incluye nuevas funcionalidades. Por momentos se nota ese esfuerzo doble que genera un malestar entre los desarrolladores; no se ve el avance en funsionalidades para el usuario.
+
+- Agregar la "Integración Continua" (CI en Ingles) una vez se tenia un conjunto de pruebas fue una tareá bastante sencilla, sólo hubo que dar de alta una cuenta en el servicio travis-ci.org y configurar un archivo "travis.yml". Luego se configuro una cuenta en el servidor de aplicaciones Heroku.com y se agrego algunos datos al archivo "travis.yml". Llevo 2 tardes.
+
+- Si bien a primera vista se aprecia una Sobre Carga de Trabajo, cuando se repite el tipo de pruebas en Cucumber y RSpec, que evaluan el mismo comportamiento. En el caso de TDD (RSpec) también se deberían evaluar con pruebas otro tipo de interacciones y alternativas que no tienen que ver con el Comportamiento Observado por el usuario; como ser interacciones entre clases, intefaces entre capaz y utilización de sistemas de terceros. 
+
+- Refactorizando, realmente ayuda a encontrar errores más rapido. Ejemplo: estaba refactorizando un mensaje de error en la vista y cree un helper; cuando estaba aplicando el helper a Organzadores, escribi mal el nombre del modelo @organizer y al correr las pruebas aparecieron los errores y al revisar en exactamente ese punto se notaba que estaba mal esa variable y que lo correcto era @organizers. En el mismo caso aparecieron errores en las pruebas por el cambio de Texto en el mesanje que se motraba, ya que paso de un mensaje especifico a uno general.
+
+- Al tratar de hacer un test sobre algo que no estoy entendiendo bien, y se vuelve muy dificultoso, no encuentro ejemplos de casos similares. Es probable que este encarando mal la solución. 
+Por ejemplo cree un application_helper para mostrar un mensaje en una tabla, y 
+
+- Con la existencias de estas herramientas, y su facilidad de integración en el flujo de trabajo, se puede decir que la existencias de pruebas creadas por el mismo Desarrollador se vuelven una condición exigible. Por lo tanto su enseñaza formal debería empezar a conciderarse también; pensando en la forma de enseñar TDD: http://blog.testdouble.com/posts/2014-01-25-the-failures-of-intro-to-tdd.html
+
+# Rails y BDD/TDD.
+- En el caso del framework, es condición necesaria conocer el MVC y su funsionamiento, para entender como deberían funcionar las cosas. Cuando uno entiende como fusionan las cosas o como debería funcionar es más facil crear las pruebas primero antes que el código, porque uno sabe a donde quiere llegar, donde se van a estar presentando los errores y el código que uno le gustaría tener (concepto: "Code we wish we had" o CWWWH); uno sabe en que pasos intermedios uno puede ir definiendo cosas que aun no existe. Por ejemplo al crear una acción en un modelo, uno puede ir partiendo de la vista, el controlador y llegar con pruebas hasta el método del modelo.
+
+# Sobre Errores.
+- Algunas probuebas ayudaron a encontrar errores en etapas tempranas. Por ejemplo un error de ortografia que no se habia localizado, en un mensaje, hasta avanzado el proyecto. (error sistematico)
+
+// Errores ante cambio.
+Al crear los Procesos de Selección (selection_process), me habia equivocado en la creación y puse en plural: selection_processes, lo cual impacto en todo lo relasionado a esa entidad, en las 3 capas: modelo, controlador y vista. Y las pruebas asociadas. 
+Para unificar criterios tuve que cambiar a sigular el nombre y los errores empezaron a brotar, saber que pruebas fallaban ayudo a medir el impacto del cambio y a solucionar problemas en otras partes del sistema asociadas, como ser la configuración de las rutas. Se evidencio la fragilidad de las pruebas ante cambios en el codigo: en cucumber fueron 25 pruebas rotas y en TDD (Rspec) fueron más de 46. Afecto a otros modelos asociados por ejemplo Organizer.
+Lo interesante de este caso es encontrar 1 a 1 los puntos de fallo en la aplicación, cuando los errores informados por el interprete no lo hacen de una forma tan clara y precisa.
+
+
+#Falsos Positivos.
+- Daba verde pero no estaba probando lo que tenia que probar.
+Por ejemplo: en la features "listado_entidades_organizadoras.feature" tenia una tabla con 1 sola entrada en lugar de 2 entradas, entonces todo estaba en verde, pero en realidad no estaba probando que tenia que tener 2 registros en la tabla. Estaba probado que las tablas coincidan en contenidos, entre la tabla de ejemplos y la tabla creaba. Si bien estaba bien la funcionalidad, la prueba era un falso positivo porque en caso de 1 registro sólo la prueba tendria que fallar.
+
+- en Travis, CI, una prueba daba Rojo y no hacia el deploy; pero la prueba fallaba por un error en ella misma y el sistema andaba bien.
+
+# Dificultades
+- Se hace dificil elegir una Gema, que solucione un problema particular, sin conocer la tecnologia. Por ejemplo una gema que maneje lo relasionado con las imagenes que subiran los usuarios del sistema.
+
+- Donde poner el foco en los test? testear absolutamente todo? con el uso de Framewokr ¿vale la pena testear lo que hace el framework?
+
+- Es muy dificil, al no conocer y es más facil cuando ya se conoce. [[De una discusión de Ágiles: Esta conclusión fue prevista por Watts S. Humphrey en su método PSP, donde advierte que dicho método no se debe usar para hacer cosas nuevas y que solo se debe usar cuando se hacen cosas conocidas. Al parecer se puede generalizar a todo método de construcción de software.]]
+
+# BDD vs. TDD.
+- Las pruebas de integración, de comportamiento con Cucumber, me dan la posibilidad de comprobar el funsionamiento del sistema si surgen cambios en el framework de una manera muy simple y presica. En lenguajes como Ruby donde hay problemas de compatibilidad hacia atras, esto resulta muy útil.
+- Como regla, debe haber al menos 1 prueba de integración de alto nivel para cada acción de los controladores.
+
+# Cucumber vs. RSpec.
+- Probar el comportamiento de la vista (Interfaz), en el caso donde habia Asociaciones de datos, se volvio un poco engorroso y dificil en RSpec comparado en el primer intento de la prueba de la misma funsionalidad con Cucumber.
+
+# Cucumber.
+- A medida que se avanza en el proyecto, se van sumando features y sus steps, se puede apreciar como la reutilización de pasos se vuelve útil y necesaria; además acelera notablemente el proceso de crear los features y sus procesos. 
+
+
+
+

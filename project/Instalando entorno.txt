@@ -1,0 +1,65 @@
+/* Pasos a seguir para instalar el ambiente de desarrollo y pruebas, en un sistema con GNU/Linux distribución Debian */
+
+* Instalar Curl.
+	"sudo sudo apt-get install curl"
+   - para ejecutar un script que instala RVM, clonando desde su repo Git.
+
+* Instalar RVM:
+	- Ejecutando el script: \curl -sSL https://get.rvm.io | bash -s stable
+	- Dependencias:  Bash, Curl y Git
+
+	Probar que instalo bien RVM:
+		- source .bash_profile
+		- type rvm | head -1
+		- Sale algo así como:  rvm: es una función
+		- rvm notes para ver más info. y que dependencias pueden faltar.
+		- "rvm requeriments" instala las dependencias que puedan faltar para ruby.
+
+* Instalar dependencias de Ruby. 
+	- Dependiendo de la versión del interprete, en este caso usaremos MRI.
+	- Dependencias: sudo aptitude install build-essential bison openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev
+
+* Instalar Ruby en RVM
+	- "rvm list known" para ver que versiones de Ruby conoce RVM.
+	- "rvm install ruby-2.1-head" para utilizar la versión más reciente de la rama 2.1.XXX
+	- "rvm use ruby-2.1-head"
+
+	#Para vox: rvm install ruby-1.9.3-p547
+
+* Instalar Rails en RVM.
+	gem install rails
+
+* Crear mi Gemset.
+	rvm gemset create 'vox_project'
+	rvm 2.1.1@vox_project
+	gem install rails -v 4.1.1
+
+    rvm 1.9.3@vox_project --create
+
+* Instalar o crear mi Rails App.
+   
+* Clonar repo. GitHub
+	posicionarse en directorio, o home y luego:	
+	git clone https://github.com/matiasmasca/vox.git
+	cd vox	
+	bundle install --without production
+
+* Inicializar la base de datos.
+	rake db:setup
+	rake db:test:prepare
+
+
+
+================== 
+Editor de texto Sublime Text 3 (Entorno desarrollo 32/64bit)
+    - Agregar el repositorio no ofical de Sublime text a nuestros repositorios:
+	  	sudo add-apt-repository ppa:webupd8team/sublime-text-3
+    - actualizar: 
+    	sudo apt-get update
+    - Instalar Sublime text 3:
+	    sudo apt-get install sublime-text-installer
+
+=============
+Editor Atom. (Entorno desarrollo 64bit)
+	- La primer prueba que hice fallo.
+

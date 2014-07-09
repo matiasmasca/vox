@@ -7,7 +7,7 @@ Característica: editar perfil organización
 
 Antecedentes:
   Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
-  Dado existe una Organización: "ACME43", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
+  Dado existe una Organización: "ACME43", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
   Y que estoy en la pantalla de "Modificar Organización"
   Cuando yo edito mi Organización 
 

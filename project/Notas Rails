@@ -1,0 +1,45 @@
+/* Notas y recordatorios sobre el Framework Ruby on Rails */
+
+// Al crear...
+- Los model en Singular, con mayuscula la primera.
+- scaffolding en singular, con mayuscula, y separados por mayusculas sin _ PorEjemploEsto
+Ejemplo:
+        rails generate scaffold HighScore game:string score:integer
+
+// Para sacarle los RSpec
+rails g scaffold Foobar name:string --no-helper-specs --no-view-specs
+
+- Crear un modelo.
+rails generate model Product name:string description:text
+
+
+// Routing
+- resources :drinks , establece la ruta para 7 actividades estandar (index, show, new, create, edit, update, destroy). Sino puedo definir cada ruta individualmente.
+
+// Migraciones.
+- Agregar un campo a un tabla.
+rails generate migration AddPartNumberToProducts part_number:string
+- Agregar una relasión.
+rails generate migration AddUserRefToProducts user:references
+rails generate migration AddCategoryRefToSelectionProcess categories:references
+
+
+// Asociaciones.
+- Las asociaciones entre modelos no son automaticas; es el programador el encargado de mantenerlas actualizadas. Para el caso de muchos a muchos, debe crear una tabla join apropiada.
+
+Receta: para añadir una asociación uno-a-muchos
+(one-to-many) en RoR
+1.  Añadir has_many al fichero del modelo que posee y belongs_to en el lado del modelo poseído.
+2.  Crear la migración para añadir la FK al lado poseído para que referencie al que le posee.
+3.  Aplicar la migración.
+4.  rake db:test:prepare para regenerar el esquema de la BD de test.
+
+- Los campos referenciados se puede usar: t.references :user, index: true (y esto pone el usuario_id, y crea el indice apropiado). Desde la linea de comandos: user:references 
+
+//Controler.
+- El primero en recibir es Rack, que manda a ActionDispacher.
+- ActionDispache primero busca, una clase: FooController y luego el metodo invocado en routes.rb; si no encuentra nada o esta vacio, asume que tiene que mostrar un index.html.
+- Si el metodo esta vacio, busca un template con ese nombre... new.html.erb y lo renderiza.
+
+
+

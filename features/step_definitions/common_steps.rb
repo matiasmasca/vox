@@ -23,8 +23,26 @@ Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |name
     :logo => nil,
     :user_id => 1
     })
-
 end
+
+Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)" asociada al usuario "(.*?)".$/) do |name_entity, address, web, email, usuario|
+    if usuario
+      usuario = User.find_by_usuario("#{usuario}")
+      user_id = usuario.id
+    else
+      user_id = 1
+    end
+
+    @organizer = Organizer.create!({ 
+    :name => name_entity, 
+    :address => address,
+    :web => web,
+    :email => email,
+    :logo => nil,
+    :user_id => user_id
+    })
+end
+
 
 Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, email, clave, tipo|
     @user = User.create!({ 
@@ -84,6 +102,9 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
   when "Modificar Organización"
     visit("/paginas/home")
     #save_and_open_page
+  when "dashboard usuario"
+    visit("/paginas/home")
+    #save_and_open_page    
   else
     visit("/¿A donde queres ir?")
   end
@@ -110,6 +131,25 @@ end
 Entonces(/^me muestra el mensaje "(.*?)"$/) do |mensaje|
   page.should have_content(mensaje)
 end
+
+#Login
+Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
+  #'Admin'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'
+  case tipo_usuario
+  when "Organizador"
+   step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
+   step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
+
+  when "Jurado"
+   step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
+  when "Admin"
+   step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "1"}
+  else
+    visit("/¿Quien sos?¡A donde queres ir!")
+  end
+end
+
+
 
 
 #Casos extremos, errores y problemas.

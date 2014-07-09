@@ -1,5 +1,5 @@
 <h2>Bienvenido a VOX</h2>
-esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
+esta es una pagina de inicio Estatica temporal, hasta que tenga su diseño y se convierta en dinamica.
 
 <div class="table-responsive">
   <table id="selection-processes-list" class="table table-striped">
@@ -49,6 +49,7 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
   <tbody >
       <tr>
         <td><p class = 'btn btn-default btn glyphicon glyphicon-film'> Mis procesos</td>
+        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(1,1), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
       </tr>
       <tr>
         <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(1,1), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
@@ -61,7 +62,7 @@ esta es una pagina home estatica temporal, hasta que se convierta en dinamica.
         <td><%= link_to ' Mi Perfil',  edit_user_path(1), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
       </tr>
             <tr>
-        <td><%= link_to ' Iniciar sesión', '/', :class => 'btn btn-default btn glyphicon glyphicon-log-in' %>
+        <td><%= link_to ' Iniciar sesión', paginas_user_dashboard_path, :class => 'btn btn-default btn glyphicon glyphicon-log-in' %>
       </tr>
 
   </tbody>
