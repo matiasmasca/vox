@@ -19,28 +19,28 @@ Escenario: crear premio
 #Casos extremos.
 Esquema del escenario: faltan datos
   # s/ PO obligatorios son: nombre, lugar
-  Y completo los datos del proceso con "<name_process>", "<place>"
-  Cuando presiono el botón "Guardar Cambios"
+  Y completo los datos del proceso con "<name_process>", "<place>", "<duration>"
+  Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "faltan datos."
 
   Ejemplos: faltan datos
-    | name_process | place            | 
-    |              | Av. Siempre Viva |
-    | prueba       |                  |
-
-Esquema del escenario: faltan datos
-  Y completo los datos del proceso con "<name_process>", "<place>"
-  Cuando presiono el botón "Guardar Cambios"
-  Entonces me muestra el mensaje de error que "esos datos son muy cortos"
-
-  Ejemplos: datos muy cortos
-    | name_process | place            | 
-    | Prem         | Av. Siempre Viva |
-    | prueba       |                  |
+    | name_process | place            | duration |
+    |              | Av. Siempre Viva | 180      |
+    | prueba       |                  | 360      | 
 
 Esquema del escenario: faltan datos
   Y completo los datos del proceso con "<name_process>", "<place>", "<duration>"
-  Cuando presiono el botón "Guardar Cambios"
+  Cuando presiono el botón "Guardar cambios"
+  Entonces me muestra el mensaje de error que "esos datos son muy cortos"
+
+  Ejemplos: datos muy cortos
+    | name_process | place            | duration |
+    | Prem         | Av. Siempre Viva | 180      |
+    | prueba       |                  | 360      | 
+
+Esquema del escenario: faltan datos
+  Y completo los datos del proceso con "<name_process>", "<place>", "<duration>"
+  Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "esos datos son muy cortos"
 
   Ejemplos: duración larga, corta, solo numeros.
@@ -48,6 +48,7 @@ Esquema del escenario: faltan datos
     | Premio Prueba | Av. Siempre Viva | 0        |
     | Premio Prueba | Av. Siempre Viva | 366      | 
     | Premio Prueba | Av. Siempre Viva | 366      |
+    | Premio Prueba | Av. Siempre Viva | 366aa    |
 
 
 Escenario: nombre premio repetido.
@@ -66,7 +67,8 @@ Escenario: Premio repetido, case sensitive: Oscares y oscares.
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
-
+#Escenario: fechas seleccionadas incoherentes.
+#Escenario: tipo de evento incorrecto.
 
 
 

@@ -19,11 +19,14 @@ Entonces(/^el premio pertenece a la organización del usuario$/) do
 
 end
 
-Dado(/^completo los datos del proceso con "(.*?)", "(.*?)"$/) do |arg1, arg2|
+Dado(/^completo los datos del proceso con "(.*?)", "(.*?)", "(.*?)"$/) do |name, place, duration|
+  fill_in "selection_process_name_process", :with => name  
+  fill_in "selection_process_place", :with => place
+  fill_in "selection_process_duration", :with => duration 
+  select_date("2014/08/13", :from => "Fecha de inicio")
+  select_date("2014/09/21", :from => "Fecha cierre")
+  select "premio", :from => "Tipo"
 
-end
 
-Dado(/^completo los datos del proceso con "(.*?)", "(.*?)", "(.*?)"$/) do |arg1, arg2, arg3|
-  
 end
 
