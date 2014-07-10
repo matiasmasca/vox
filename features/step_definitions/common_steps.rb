@@ -103,7 +103,7 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
     visit("/paginas/home")
     #save_and_open_page
   when "dashboard usuario"
-    visit("/paginas/home")
+    visit("/paginas/user_dashboard")
     #save_and_open_page    
   else
     visit("/¿A donde queres ir?")

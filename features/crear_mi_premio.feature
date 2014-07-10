@@ -16,41 +16,39 @@ Escenario: crear premio
   Entonces se crea el premio y me muestra el mensaje "Premio creado correctamente"
   Y el premio pertenece a la organización del usuario
 
-#@to-do
-# Escenario:
-# Organizador: entidad a la que pertenece el usuario. El premio debe estar asociado a la Organización a la que pertenece el usuario.
+#Casos extremos.
+Esquema del escenario: faltan datos
+  # s/ PO obligatorios son: nombre, lugar
+  Y completo los datos del proceso con "<name_process>", "<place>"
+  Cuando presiono el botón "Guardar Cambios"
+  Entonces me muestra el mensaje de error que "faltan datos."
 
-#Casos extremos
-Escenario: se olvido un dato
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
-  Y dejo en blanco Nombre
-  Y dejo en blanco Lugar
-  Cuando presiono el botón "Guardar cambios"
-  Entonces me muestra el mensaje de error que "faltan esos datos"
+  Ejemplos: faltan datos
+    | name_process | place            | 
+    |              | Av. Siempre Viva |
+    | prueba       |                  |
 
-Escenario: datos muy cortos
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
-  Y escribo "Prem" en Nombre
-  Y escribo "Av. " en Lugar,
-  Cuando presiono el botón "Guardar cambios"
+Esquema del escenario: faltan datos
+  Y completo los datos del proceso con "<name_process>", "<place>"
+  Cuando presiono el botón "Guardar Cambios"
   Entonces me muestra el mensaje de error que "esos datos son muy cortos"
 
-Escenario: muchos dias, más de 366.
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
-  Y escribo "Premios ACME" en Nombre
-  Y escribo "Av. Siempre Viva 742" en Lugar,
-  Y escribo "366" en Duracion
-  Cuando presiono el botón "Guardar cambios"
-  Entonces me muestra el mensaje de error que "son muchos dias"
+  Ejemplos: datos muy cortos
+    | name_process | place            | 
+    | Prem         | Av. Siempre Viva |
+    | prueba       |                  |
 
+Esquema del escenario: faltan datos
+  Y completo los datos del proceso con "<name_process>", "<place>", "<duration>"
+  Cuando presiono el botón "Guardar Cambios"
+  Entonces me muestra el mensaje de error que "esos datos son muy cortos"
 
-Escenario: dias es solo numeros
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
-  Y escribo "Premios ACME" en Nombre
-  Y escribo "Av. Siempre Viva 742" en Lugar,
-  Y escribo "366yy" en Duracion
-  Cuando presiono el botón "Guardar cambios"
-  Entonces me muestra el mensaje de error que "dias es solo numerico"
+  Ejemplos: duración larga, corta, solo numeros.
+    | name_process  | place            | duration |
+    | Premio Prueba | Av. Siempre Viva | 0        |
+    | Premio Prueba | Av. Siempre Viva | 366      | 
+    | Premio Prueba | Av. Siempre Viva | 366      |
+
 
 Escenario: nombre premio repetido.
   Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
@@ -60,7 +58,7 @@ Escenario: nombre premio repetido.
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
-Escenario: Premio repetido, Oscar y oscar.
+Escenario: Premio repetido, case sensitive: Oscares y oscares.
   Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,

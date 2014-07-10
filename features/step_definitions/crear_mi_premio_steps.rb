@@ -13,4 +13,17 @@ end
 Entonces(/^el premio pertenece a la organización del usuario$/) do
   puts(@user.inspect) 
   puts(@organizer.inspect)
+  puts("Proceso:" + @selection_process.inspect)
+  @selection_process.should belong_to(:organizer)
+  @selection_process.organizer_id.should eq(@user.organizer.id)
+
 end
+
+Dado(/^completo los datos del proceso con "(.*?)", "(.*?)"$/) do |arg1, arg2|
+
+end
+
+Dado(/^completo los datos del proceso con "(.*?)", "(.*?)", "(.*?)"$/) do |arg1, arg2, arg3|
+  
+end
+

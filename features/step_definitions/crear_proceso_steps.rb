@@ -31,6 +31,7 @@ end
 Entonces(/^se crea el premio y me muestra el mensaje "(.*?)"$/) do |msg|
   #Elemento: notice
   page.should have_content(msg)
+  @selection_process = SelectionProcess.last
 end
 
 #Casos extremos

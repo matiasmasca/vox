@@ -1,8 +1,8 @@
 # encoding: utf-8
 class Organizer < ActiveRecord::Base
   #Asociaciones
-  belongs_to :user
-  has_many :selection_process, dependent: :nullify
+  belongs_to :user, autosave: true
+  has_many :selection_process, dependent: :nullify, autosave: true
   
   #debe borrar todo los procesos asociados con :dependent=> :delete_all
   

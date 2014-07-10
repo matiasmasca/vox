@@ -1,7 +1,7 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
   #Asociaciones
-  has_one :organizer, dependent: :nullify
+  has_one :organizer, dependent: :nullify, autosave: true
 
   #obligatorios: usuario, email, clave, tipo_usuario_id. 
 	validates :usuario, :email, :clave, :tipo_usuario_id, presence: { message: "es un dato obligatorio."}

@@ -15,6 +15,7 @@ class SelectionProcessesController < ApplicationController
   # GET /selection_process/new
   def new
     @selection_process = SelectionProcess.new
+    
   end
 
   # GET /selection_process/1/edit
@@ -69,6 +70,6 @@ class SelectionProcessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def selection_process_params
-      params.require(:selection_process).permit(:name_process, :place, :duration, :start_date, :end_date, :process_type_id, :state)
+      params.require(:selection_process).permit(:name_process, :place, :duration, :start_date, :end_date, :process_type_id, :state, :organizer_id)
     end
 end
