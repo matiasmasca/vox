@@ -14,6 +14,7 @@
   <% end %>
 
   <div class="field">
+    <%= f.hidden_field :organizer_id, value: params[:organizer_id] %>
     <%= f.label :name_process, "Nombre del proceso", class: 'control-label' %><br>
     <%= f.text_field :name_process, class: 'form-control' %>
   </div>
