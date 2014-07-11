@@ -49,6 +49,7 @@ describe SelectionProcess do
         #puts(selection_process.inspect) 
         organizer.should have_many(:selection_process)
         selection_process.should belong_to(:organizer)
+        selection_process.organizer_id.should eql(organizer.id)
     end
 
     it "debe quedar null cuando borran un organizer" 
