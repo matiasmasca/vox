@@ -18,6 +18,7 @@ class OrganizersController < ApplicationController
   end
 
   # GET /organizers/1/edit
+  # GET /users/1/organizer/1/edit
   def edit
     if !params[:user_id].blank? #|| ADMIN
       @user = User.find(params[:user_id])

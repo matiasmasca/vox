@@ -53,6 +53,11 @@ Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, em
     })
 end
 
+Dado(/^existen (\d+) usuarios A y B$/) do |cantidad|
+  @usuarioA = User.create!({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioA.com", "clave" => "clave1234", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
+  @usuarioB = User.create!({"usuario" => "usuario02","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioB.com", "clave" => "clave1234", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
+end
+
 Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)" y email "(.*?)"$/) do |name, address, email|
   step %{existe una Organización: "#{name}", "#{address}", "" y "#{email}"}
 end
@@ -101,10 +106,13 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
     visit("/candidates")
   when "Modificar Organización"
     visit("/paginas/home")
-    #save_and_open_page
   when "dashboard usuario"
+    
     visit("/paginas/user_dashboard")
-    #save_and_open_page    
+    #save_and_open_page 
+  when "Modificar Proceso"
+    visit("/paginas/user_dashboard")
+    #save_and_open_page
   else
     visit("/¿A donde queres ir?")
   end
@@ -139,7 +147,6 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   when "Organizador"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
    step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
-
   when "Jurado"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
   when "Admin"

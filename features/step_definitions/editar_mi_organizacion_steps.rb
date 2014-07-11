@@ -5,11 +5,7 @@ Cuando(/^yo edito mi Organización$/) do
   click_on("Modificar Organización")
 end
 
-Dado(/^existen (\d+) usuarios A y B$/) do |cantidad|
-  @usuarioA = User.create!({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioA.com", "clave" => "clave1234", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
-  @usuarioB = User.create!({"usuario" => "usuario02","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioB.com", "clave" => "clave1234", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
 
-end
 
 Cuando(/^B trata de modificar la organizacion de A$/) do
   @organizer = Organizer.create!({ 

@@ -48,7 +48,7 @@ esta es una pagina de inicio Estatica temporal, hasta que tenga su diseño y se 
 
   <tbody >
       <tr>
-        <td><p class = 'btn btn-default btn glyphicon glyphicon-film'> Mis procesos</td>
+        <td><%= link_to ' Mis procesos', organizer_selection_processes_path(1), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
         <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(1,1), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
       </tr>
       <tr>

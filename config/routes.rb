@@ -7,7 +7,7 @@ Vox::Application.routes.draw do
   get "paginas/home"
   get "paginas/about"
   get "paginas/contact"
-  get "paginas/user_dashboard"
+  get "paginas/user_dashboard" 
   
   #Resource, crea los routes a 7 acciones por defecto.
   resources :selection_processes

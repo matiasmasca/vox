@@ -1,10 +1,17 @@
+# encoding: utf-8
 class SelectionProcessesController < ApplicationController
   before_action :set_selection_process, only: [:show, :edit, :update, :destroy]
 
   # GET /selection_process
   # GET /selection_process.json
   def index
-    @selection_processes = SelectionProcess.all
+    #Filtro.
+    if !params[:organizer_id].blank? #|| ADMIN
+      @organizer = Organizer.find_by_id(params[:organizer_id])
+      @selection_processes = @organizer.selection_process
+    else
+      @selection_processes = SelectionProcess.all
+    end   
   end
 
   # GET /selection_process/1
@@ -14,12 +21,23 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process/new
   def new
-    @selection_process = SelectionProcess.new
-    
+    @selection_process = SelectionProcess.new 
   end
 
   # GET /selection_process/1/edit
+  # GET /organizers/1/selection_processes/1/edit
   def edit
+    #Filtro.
+    if !params[:organizer_id].blank? #|| ADMIN
+      @organizer = Organizer.find(params[:organizer_id])
+      respond_to do |format|
+        format.html do
+          unless @organizer.selection_process.find_by_id(@selection_process) == @selection_process
+            redirect_to(root_path, alert: "Solo puedes editar los procesos que tu hayas creado.")
+          end
+        end
+      end
+    end         
   end
 
   # POST /selection_process

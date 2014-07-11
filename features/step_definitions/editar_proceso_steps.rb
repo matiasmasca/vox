@@ -1,4 +1,4 @@
-# encoding: utf-8
+#encoding: utf-8
 Cuando(/^yo edito el premio$/) do
   #visit edit_selection_process_path(@selection_process)
   click_on('Editar')

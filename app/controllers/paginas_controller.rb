@@ -14,7 +14,9 @@ class PaginasController < ApplicationController
   	# Podemos usar esto para simular el usuario, mientras no tengamos el login.
   	# crear esas variables de @intancia que necesitamos en la vista.
   	# ir al dashboard del organizador.
-  end
+    #@user = User.first 
+    #redirect_to(paginas_user_dashboard_path() , alert: "Bienvenido usuario #{@user.nombre}.")
+   end
 
   def jurado
   	# ir al dashboard del jurado.

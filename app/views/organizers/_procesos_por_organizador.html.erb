@@ -1,0 +1,11 @@
+<% @user.organizer.selection_process.each do |proceso| %>
+<li>
+  <h3><span ><%= proceso.name_process %></span></h3>
+  <span >Tipo: <%= proceso.process_type_id %></span>
+  <span >Duración: <%= proceso.duration %> días.</span>
+  <%= link_to 'Más información', selection_process_path(proceso) %>
+  <p>
+  <p> <%= link_to 'Editar', edit_organizer_selection_process_path(@user.organizer.id, proceso) %>
+
+</li>
+<% end %>

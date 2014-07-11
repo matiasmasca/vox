@@ -1,4 +1,5 @@
 <% @user = User.first %>
+
 <h2>Bienvenido a Usuario </h2>
 esta es una pagina de usarios registrado temporal, hasta tener un diseño definitivo.
 
@@ -15,14 +16,14 @@ esta es una pagina de usarios registrado temporal, hasta tener un diseño defini
   <tbody >
       <% unless @user.organizer(true).nil? %>
       <tr>
-        <td><p class = 'btn btn-default btn glyphicon glyphicon-film'> Mis procesos</td>
-        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+        <td><%= link_to ' Mis procesos', organizer_selection_processes_path(@user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
+        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %></td>
+        <td><%= link_to ' Modificar Proceso', edit_organizer_selection_process_path(@user.organizer.id, @user.organizer.selection_process.first.id), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %></td>
       </tr>      
       <tr>
         <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
       </tr>
 	  <% end %>
-
       <tr>      
         <td><%= link_to ' Mi Perfil',  edit_user_path(@user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
       </tr>
@@ -75,10 +76,17 @@ esta es una pagina de usarios registrado temporal, hasta tener un diseño defini
 </p>
 
 <% unless @user.organizer(true).nil? %>
- <h3>Organizaciones </h3>
-      <ol class="organizer">
-        <%= render 'users/misorganizaciones' %>
-      </ol>
+  <h3>Organizaciones </h3>
+  <ol class="organizer">
+    <%= render 'users/misorganizaciones' %>
+  </ol>
+<% end %>
+
+<% unless @user.organizer.selection_process.nil? %>
+  <h3>Procesos de selección </h3>
+  <ol class="selection_processs">
+    <%= render 'organizers/procesos_por_organizador' %>
+  </ol>
 <% end %>
 
 <%= link_to 'Editar', edit_user_path(@user), :class => 'btn btn-link' %> |
