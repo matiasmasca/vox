@@ -6,7 +6,7 @@ class SelectionProcessesController < ApplicationController
   # GET /selection_process
   # GET /selection_process.json
   def index
-    #Filtro.
+    #Filtro: solo veo mis procesos.
     if !params[:organizer_id].blank? #|| ADMIN
       @organizer = Organizer.find_by_id(params[:organizer_id])
       @selection_processes = @organizer.selection_process
@@ -22,6 +22,9 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process/new
   def new
+    if !params[:organizer_id].blank? #|| ADMIN
+         @organizer = Organizer.find_by_id(params[:organizer_id])
+    end
     @selection_process = SelectionProcess.new 
   end
 

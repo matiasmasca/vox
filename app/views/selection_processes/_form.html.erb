@@ -16,11 +16,11 @@
   <div class="field">
     <%= f.hidden_field :organizer_id, value: params[:organizer_id] %>
     <%= f.label :name_process, "Nombre del proceso", class: 'control-label' %><br>
-    <%= f.text_field :name_process, class: 'form-control' %>
+    <%= f.text_field :name_process, placeholder: "ingrese el nombre del proceso, que verá el público.",  class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :place, "Lugar", class: 'control-label' %><br>
-    <%= f.text_field :place, class: 'form-control' %>
+    <%= f.text_field :place, placeholder: "ingrese el lugar donde se realizará el proceso.", class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :duration, "Duración", class: 'control-label' %><br>
@@ -44,6 +44,23 @@
     <%= f.label :state, "Estado" , class: 'control-label' %><br>
     <%= f.select :state, estados_del_proceso, selected: @selection_process.state, class: 'form-control' %>
   </div>
+  <hr>
+  <div class="field">
+    Organiza:
+  <% unless @organizer.nil? %>
+      <b><%= @organizer.name %></b></div>
+    <li>
+      <span ><%= @organizer.address %></span>
+      <%= link_to 'Más información', organizer_path(@organizer) %>
+      <p>
+    </li>
+  <% else %>
+    <div class="field">
+    <%= f.label :organizer_id, "ID Organización", class: 'control-label' %><br>
+    <%= f.text_field :organizer_id, placeholder: "ingrese el ID del organizador del proceso.", class: 'form-control' %>
+  </div>
+  <% end %>
+
   <div><br></div>
   <div class="actions" >
     <%= f.submit 'Guardar cambios',  class: 'btn btn-primary' %>
