@@ -1,6 +1,7 @@
 # encoding: utf-8
 class SelectionProcessesController < ApplicationController
   before_action :set_selection_process, only: [:show, :edit, :update, :destroy]
+  before_action :check_property, only: [:show, :edit, :update, :destroy]
 
   # GET /selection_process
   # GET /selection_process.json
@@ -26,18 +27,7 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process/1/edit
   # GET /organizers/1/selection_processes/1/edit
-  def edit
-    #Filtro.
-    if !params[:organizer_id].blank? #|| ADMIN
-      @organizer = Organizer.find(params[:organizer_id])
-      respond_to do |format|
-        format.html do
-          unless @organizer.selection_process.find_by_id(@selection_process) == @selection_process
-            redirect_to(root_path, alert: "Solo puedes editar los procesos que tu hayas creado.")
-          end
-        end
-      end
-    end         
+  def edit     
   end
 
   # POST /selection_process
@@ -89,5 +79,21 @@ class SelectionProcessesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def selection_process_params
       params.require(:selection_process).permit(:name_process, :place, :duration, :start_date, :end_date, :process_type_id, :state, :organizer_id)
+    end
+
+    # Filtro.
+    # para que solo pueda operar sobre sus propios procesos.
+     #Filtro.
+    def check_property
+      if !params[:organizer_id].blank? #|| ADMIN
+        @organizer = Organizer.find(params[:organizer_id])
+        respond_to do |format|
+          format.html do
+            unless @organizer.selection_process.find_by_id(@selection_process) == @selection_process
+              redirect_to(root_path, alert: "Solo puedes operar sobre los procesos que tu hayas creado.")
+            end
+          end
+        end
+      end
     end
 end

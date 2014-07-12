@@ -71,7 +71,7 @@ Escenario: modificar la organizacion de otro usuario
   Dado existen 2 usuarios A y B
   Y existe una Organización: "ACME-B", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
   Cuando B trata de modificar la organizacion de A
-  Entonces me muestra el mensaje "Solo puedes editar tu organización."
+  Entonces me muestra el mensaje "Solo puedes operar sobre la organización que tu hayas creado."
 
 
 @to-do

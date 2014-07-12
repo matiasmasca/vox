@@ -107,7 +107,6 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
   when "Modificar Organización"
     visit("/paginas/home")
   when "dashboard usuario"
-    
     visit("/paginas/user_dashboard")
     #save_and_open_page 
   when "Modificar Proceso"
@@ -147,6 +146,7 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   when "Organizador"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
    step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
+   #funcionan esos steps...
   when "Jurado"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
   when "Admin"

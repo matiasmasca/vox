@@ -48,4 +48,4 @@ Escenario: modificar el premio de otra organización
   Dado existe una Organización: "ACME-A", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "usuario01".
   Y que existe un Proceso: "Premios ACME 3th. Editar", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-A".
   Cuando B trata de modificar el premio de A
-  Entonces me muestra el mensaje "Solo puedes editar los procesos que tu hayas creado."
+  Entonces me muestra el mensaje "Solo puedes operar sobre los procesos que tu hayas creado."
