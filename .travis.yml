@@ -10,7 +10,8 @@ script:
   - RAILS_ENV=test 
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rspec  
+  - bundle exec rspec
+  - bundle exec rake cucumber  
 #Deploy en Heroku
 #Esto es un mix de lo que genero Travis, con otras opciones.
 deploy:
