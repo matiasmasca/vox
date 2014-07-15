@@ -49,7 +49,8 @@ Por ejemplo cree un application_helper para mostrar un mensaje en una tabla, y
 - En el caso del framework, es condición necesaria conocer el MVC y su funsionamiento, para entender como deberían funcionar las cosas. Cuando uno entiende como fusionan las cosas o como debería funcionar es más facil crear las pruebas primero antes que el código, porque uno sabe a donde quiere llegar, donde se van a estar presentando los errores y el código que uno le gustaría tener (concepto: "Code we wish we had" o CWWWH); uno sabe en que pasos intermedios uno puede ir definiendo cosas que aun no existe. Por ejemplo al crear una acción en un modelo, uno puede ir partiendo de la vista, el controlador y llegar con pruebas hasta el método del modelo.
 
 # Sobre Errores.
-- Algunas probuebas ayudaron a encontrar errores en etapas tempranas. Por ejemplo un error de ortografia que no se habia localizado, en un mensaje, hasta avanzado el proyecto. (error sistematico)
+- Algunas probuebas ayudaron a encontrar errores en etapas tempranas. Por ejemplo un error de ortografia que no se habia localizado, en un mensaje, hasta avanzado el proyecto. (error sistematico).
+- Si los casos de prueba (ejemplos) no cumbren las situaciones, pueden haber errores allí. Por ejemplo no se prueba una ruta a un ID que no existe y generar un error 404: "We're sorry, but something went wrong."
 
 // Errores ante cambio.
 Al crear los Procesos de Selección (selection_process), me habia equivocado en la creación y puse en plural: selection_processes, lo cual impacto en todo lo relasionado a esa entidad, en las 3 capas: modelo, controlador y vista. Y las pruebas asociadas. 
@@ -79,6 +80,7 @@ Por ejemplo: en la features "listado_entidades_organizadoras.feature" tenia una 
 
 # Cucumber.
 - A medida que se avanza en el proyecto, se van sumando features y sus steps, se puede apreciar como la reutilización de pasos se vuelve útil y necesaria; además acelera notablemente el proceso de crear los features y sus procesos. 
+- Pude detectar que faltaban algunas features, al avanzar en el proceso. Por ejemplo las feature de "mostrar categoria" para el Admin. lo detecte cuando estaba haciendolo para el caso particular del usuario Organizador.
 
 
 

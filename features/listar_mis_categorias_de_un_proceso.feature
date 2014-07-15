@@ -1,12 +1,12 @@
 # language: es
 Característica: listar categorías
-  Con la finalidad de poder ver todas las categorías del sistema, ya sea para modificarlas, borrarlas o agregar nuevas.
-  como un usuario administrador
-  Quiero poder ver un listado de las categorías, junto con los links para editarlas o borrarlas.
-#Ejemplo de datos:
-#    | Nombre         | Descripción | Nro. de Plazas | 
-#    | Mejor Actor    | prueba      | 5      | 
-#    | Mejor Director | prueba      | 5      | 
+  Con la finalidad de poder ver todos las categorías de un proceso, ya sea para modificarlas, borrarlas o agregar nuevas.
+  como un usuario organizador
+  Quiero poder ver un listado de las categorías, junto con los links para editarlos o borrarlos.
+
+# Condiciones preliminares.
+# Usuario, Organizacion, Proceso, Categorias...
+
 
 #Camino feliz
 Escenario: listar una categoría
@@ -40,3 +40,6 @@ Escenario: no tiene categorías creadas.
   Dado que no he creado ninguna categoría
   Y que estoy en la pantalla de "administración de Categorías"
   Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."
+
+# trato de listar las categorias de un proceso que no es mio.
+# trato de listar las cateogrias de otro proceso de mi organización

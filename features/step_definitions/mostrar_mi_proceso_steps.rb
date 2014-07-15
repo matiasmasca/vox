@@ -28,7 +28,7 @@ Cuando(/^B trata de ver el premio de A$/) do
   org_id = @organizer.id
   process_id = @selection_process.id
   
-  visit(edit_organizer_selection_process_path(org_id, process_id))
+  visit(organizer_selection_process_path(org_id, process_id))
   #save_and_open_page
 end
 

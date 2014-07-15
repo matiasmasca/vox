@@ -57,7 +57,7 @@ describe SelectionProcess do
     #   @selection_process = SelectionProcess.create!({  "name_process" => "MyString" , "place" => "MyString", "organizer_id" => organizer.id }) 
     #   selection_process_id = @selection_process.id
     #   @organizer.destroy
-    #   lambda { SelectionProcess.find(selection_process_id) }.should
+    #   lambda { SelectionProcess.find_by_id(selection_process_id) }.should
     #       raise_error(ActiveRecord::RecordNotFound)
 end
 

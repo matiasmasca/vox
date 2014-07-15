@@ -137,6 +137,7 @@ end
 
 Entonces(/^me muestra el mensaje "(.*?)"$/) do |mensaje|
   page.should have_content(mensaje)
+  #save_and_open_page
 end
 
 #Login

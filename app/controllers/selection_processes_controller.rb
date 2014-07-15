@@ -9,7 +9,7 @@ class SelectionProcessesController < ApplicationController
     #Filtro: solo veo mis procesos.
     if !params[:organizer_id].blank? #|| ADMIN
       @organizer = Organizer.find_by_id(params[:organizer_id])
-      @selection_processes = @organizer.selection_process
+      @selection_processes = @organizer.selection_process 
     else
       @selection_processes = SelectionProcess.all
     end   
@@ -17,7 +17,7 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process/1
   # GET /selection_process/1.json
-  def show
+  def show 
   end
 
   # GET /selection_process/new
@@ -76,7 +76,14 @@ class SelectionProcessesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_selection_process
-      @selection_process = SelectionProcess.find(params[:id])
+      @selection_process = SelectionProcess.find_by_id(params[:id])
+      respond_to do |format|
+        format.html do
+          if @selection_process.nil?
+             redirect_to(root_path, alert: "No se encontró proceso de selección con ese ID.")
+          end
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -89,14 +96,17 @@ class SelectionProcessesController < ApplicationController
      #Filtro.
     def check_property
       if !params[:organizer_id].blank? #|| ADMIN
-        @organizer = Organizer.find(params[:organizer_id])
+        @organizer = Organizer.find_by_id(params[:organizer_id])
         respond_to do |format|
           format.html do
             unless @organizer.selection_process.find_by_id(@selection_process) == @selection_process
               redirect_to(root_path, alert: "Solo puedes operar sobre los procesos que tu hayas creado.")
             end
+
           end
         end
       end
     end
+
 end
+
