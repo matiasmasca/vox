@@ -1,0 +1,14 @@
+
+<!--Lista de Candidadtos para la Categoría seleccionada del Proceso seleccionado-->
+<!--tiene que mostrar solo si hay cagoria seleccionada-->
+<% unless @selection_process.nil? %>
+<% @category = Category.find_by_id(2)  %>
+<p class="list-group-item"><b>Candidatos: <%= "#{@category.name}"  %></b></p>
+<div class="list-group">
+<% @category.candidate.each do |candidate| %>        
+       <%= link_to candidate, :class => "list-group-item" do %>
+           <%= candidate.name %>
+      <% end %>
+<% end %>
+</div>
+<% end %>

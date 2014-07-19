@@ -1,7 +1,7 @@
 # language: es
 Característica: listar candidatos
   Con la finalidad de poder ver todos las candidatos del sistema
-  como una categoria administrador
+  como un usuario administrador
   Quiero poder ver un listado de las candidatos, junto con los links para editarlos o borrarlos.
 #Ejemplo de datos:
 #                           
@@ -10,14 +10,14 @@ Característica: listar candidatos
 #    | Mejor Director | pruebas  | png        | 
 
 #Camino feliz
-Escenario: listar una categoria
+Escenario: listar una categoría
   Dado que he creado 1 candidato:
     | name         | bios                           | url_image | category_id |
     | Pepe Actor   | ganador de muchos premios      | jpg       |   1         |
   Y que estoy en la pantalla de "administración de Candidatos"
   Entonces veo una lista de las candidatos con 1 de ellos.
 
-Escenario: más de una categoria
+Escenario: más de una categoría
   Dado que he creado 2 candidato:
     | name         | bios                           | url_image | category_id |
     | Pepe Actor   | ganador de muchos premios      | jpg       |   1         |
@@ -40,4 +40,4 @@ Escenario: tiene el mismo contenido
 Escenario: no tiene candidatos creadas.
   Dado que no he creado ningúna candidato
   Y que estoy en la pantalla de "administración de Candidatos"
-  Entonces veo una una tabla vacia, con el mensaje "Ud. no tiene registros creados."
+  Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."

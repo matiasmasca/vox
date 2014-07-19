@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nombre del Proceso:</strong>
-  <%= @selection_process.name_process %>
+  <strong>Nombre del Proceso: </strong><h2><%= @selection_process.name_process %></h2>
 </p>
 
 <p>
@@ -34,12 +33,12 @@
   <%= @selection_process.state %>
 </p>
 
-<%= link_to 'Editar', edit_selection_process_path(@selection_process), :class => 'btn btn-link' %> |
-<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>
-
 <% if @selection_process.organizer %>
       <h3>Organiza:</h3>
       <ol class="organizer">    
          <%= render partial: "organizador"  %>
       </ol>
 <% end %>
+
+<%= link_to 'Editar', edit_selection_process_path(@selection_process), :class => 'btn btn-link' %> |
+<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>

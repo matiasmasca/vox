@@ -9,7 +9,7 @@ Característica: borrar una categoría
 Escenario: borrar categoría
   Dado existe una categoría llamada "Mejor director"
   Y que estoy en la pantalla de "administración de Categorías"
-  Cuando hago click en "Eliminar", para eliminar la categoria
+  Cuando hago click en "Eliminar", para eliminar la categoría
   Entonces se borra la categoría "Mejor director"
 
 # IceBox

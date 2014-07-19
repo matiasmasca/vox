@@ -5,7 +5,7 @@ Característica: editar una Categoría
   Quiero poder editar una Categoría en el sistema
 
 Antecedentes:
-  Dado existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742" 
+  Dado existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
   Y que existe una Categoría con: "Categoría A", "Una descripción", "3", "1"
   Y que estoy en la pantalla de "administración de Categorías"
   Cuando yo edito una Categoría 
@@ -44,7 +44,6 @@ Esquema del escenario: problemas con datos
 
 Escenario: nombre unico
   Dado que existe una Categoría con: "Categoría B", "Una descripción", "3", "1"
-  #Y que existe una Categoría con: "Categoría B", "Una descripción", "3", "1"
   Y que estoy en la pantalla de "administración de Categorías"
   Cuando yo edito la 2da. Categoría
   Y modifico de la categoría los datos "Categoría A", "otra descripcion", "5" y "1" 

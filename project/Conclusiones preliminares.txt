@@ -47,6 +47,7 @@ Por ejemplo cree un application_helper para mostrar un mensaje en una tabla, y
 
 # Rails y BDD/TDD.
 - En el caso del framework, es condición necesaria conocer el MVC y su funsionamiento, para entender como deberían funcionar las cosas. Cuando uno entiende como fusionan las cosas o como debería funcionar es más facil crear las pruebas primero antes que el código, porque uno sabe a donde quiere llegar, donde se van a estar presentando los errores y el código que uno le gustaría tener (concepto: "Code we wish we had" o CWWWH); uno sabe en que pasos intermedios uno puede ir definiendo cosas que aun no existe. Por ejemplo al crear una acción en un modelo, uno puede ir partiendo de la vista, el controlador y llegar con pruebas hasta el método del modelo.
+- El paso de refactor, de la práctica, es dificil de realizar para un usuario novicio, ya que no se sabe donde estan los problemas. Con que funcione, pasando las pruebas de aceptación, se pasa a la siguiente caracteristica (feature) desperdiciando parte del esfuerzo.
 
 # Sobre Errores.
 - Algunas probuebas ayudaron a encontrar errores en etapas tempranas. Por ejemplo un error de ortografia que no se habia localizado, en un mensaje, hasta avanzado el proyecto. (error sistematico).

@@ -1,0 +1,47 @@
+
+<div class=".col-xs-5 .col-md-3 sidebar-offcanvas" id="sidebar">
+<% unless @user.nil? %>
+  <div class="list-group">
+    <p class="list-group-item"><b>Mis Procesos</b></p>
+      <% @selection_processes = @user.organizer.selection_process %>
+      <%= render partial: "selection_processes/menu_selection_process_items", object: @selection_processes %> 
+   </div>
+<% end %>
+
+  <% unless @selection_process.nil? %>
+  <div class="list-group"> <!--Por proceso-->
+    <p class="list-group-item"><b>Proceso seleccionado:</b></p>
+      <%= render partial: "selection_processes/menu_selected_process", object: @selection_process %> 
+   </div>
+
+  <div class="list-group"><!--Categorias-->
+    <%= render partial: "categories/menu_categorias_proceso", object: @selection_process %> 
+  </div>
+
+  <div class="list-group"><!--Candidatos-->
+    <%= render partial: "candidates/menu_candidates_category", object: @category %> 
+  </div>
+  
+  <% unless @user.nil?  %>
+  <div class="list-group">
+        <p class="list-group-item"><b>Organización</b></p>
+        <%= link_to ' Modificar Organización',  user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil list-group-item' %>
+        <%= link_to ' Modificar Organización',  edit_user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil list-group-item' %>
+        <%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign list-group-item' %>
+  </div> 
+  <% end %>
+  <% end %>
+
+<% unless @user.nil? %>
+  <div class="list-group">
+    <p class="list-group-item active"><b>Usuario</b></p>
+    <%= link_to ' Mi Perfil',  edit_user_path(@user.id), :class => 'btn btn-default btn glyphicon glyphicon-user list-group-item' %>
+    <%= link_to ' Cerrar sesión', '/', :class => 'btn btn-default btn glyphicon glyphicon-log-out list-group-item' %>
+  </div>
+<% end %>
+
+
+</div>
+
+
+

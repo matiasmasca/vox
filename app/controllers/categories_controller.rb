@@ -15,6 +15,9 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
+    if !params[:selection_process_id].blank? #|| ADMIN
+         @selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
+    end
     @category = Category.new
   end
 
@@ -29,7 +32,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Categoria creada correctamente.' }
+        format.html { redirect_to @category, notice: 'Categoría creada correctamente.' }
         format.json { render action: 'show', status: :created, location: @category }
       else
         format.html { render action: 'new' }

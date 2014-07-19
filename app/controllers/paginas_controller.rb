@@ -1,5 +1,7 @@
 # encoding: utf-8
 class PaginasController < ApplicationController
+  before_action :set_user, only: [:user_dashboard]
+
   def home
   end
 
@@ -9,13 +11,15 @@ class PaginasController < ApplicationController
   def contact
   end
 
-  def organizador
+  def user_dashboard
   	# va a buscar un template llamado /organizador.html.erb
   	# Podemos usar esto para simular el usuario, mientras no tengamos el login.
   	# crear esas variables de @intancia que necesitamos en la vista.
   	# ir al dashboard del organizador.
-    #@user = User.first 
-    #redirect_to(paginas_user_dashboard_path() , alert: "Bienvenido usuario #{@user.nombre}.")
+      #logger.debug "Person attributes hash: #{@user.attributes.inspect}"
+      
+      #Aca podrias redirigir para otro lado si no hay usuario con ese ID, y cosas asi
+            
    end
 
   def jurado
@@ -25,4 +29,16 @@ class PaginasController < ApplicationController
   def votante
   	# ir al dashboard del elector.
   end
+
+
+    private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find_by_id(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:paginas).permit(:id)
+    end
 end

@@ -8,6 +8,8 @@ Dado(/^existe una categoría llamada "(.*?)"$/) do |nombre_categoria|
   step %{que existe una Categoría con: "#{nombre_categoria}", "Una descripción", "3", "1"}
 end
 
-Cuando(/^hago click en "(.*?)", para eliminar la categoria$/) do |arg1|
- find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(6)").click_on('Eliminar')
+Cuando(/^hago click en "(.*?)", para eliminar la categoría$/) do |arg1|
+	#save_and_open_page
+ find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(7)").click_on('Eliminar')
+            #categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(7)
 end

@@ -20,7 +20,7 @@ Dado(/^que no he creado ningún proceso de selección$/) do
   @selection_process = nil
 end
 
-Entonces(/^veo una una tabla vacia, con el mensaje "(.*?)"$/) do |mensaje|
+Entonces(/^veo una una tabla vacía, con el mensaje "(.*?)"$/) do |mensaje|
   step %{se lee el texto "#{mensaje}"}
 end
 

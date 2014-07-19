@@ -17,7 +17,7 @@ Escenario: listar una categoría
   Entonces veo una lista de las categorías con 1 de ellos.
 
 Escenario: más de una categoría
-  Dado que he creado 2 catenaria:
+  Dado que he creado 2 categoría:
     | name           | description | bench | selection_process_id |
     | Mejor Actor    | prueba      | 5     | 1                    |  
     | Mejor Director | prueba      | 5     | 1                    |
@@ -25,7 +25,7 @@ Escenario: más de una categoría
   Entonces veo una lista de las categorías con 2 de ellos.
 
 Escenario: tiene el mismo contenido
-  Dado que he creado 2 catenaria:
+  Dado que he creado 2 categoría:
     | name           | description | bench | selection_process_id |
     | Mejor Actor    | prueba      | 5     | 1                    |  
     | Mejor Director | prueba      | 5     | 1                    |
@@ -37,6 +37,6 @@ Escenario: tiene el mismo contenido
 
 #Casos Extremos.
 Escenario: no tiene categorías creadas.
-  Dado que no he creado ninguna categoría
+  Dado que no he creado ningúna categoría
   Y que estoy en la pantalla de "administración de Categorías"
   Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."

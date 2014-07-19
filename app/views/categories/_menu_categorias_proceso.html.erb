@@ -1,0 +1,18 @@
+
+ <!--Lista de Categorías del Proceso seleccionado-->
+<% unless @selection_process.category.nil? %>
+ <p class="list-group-item"><b>Categorías: <%= "#{@selection_process.name_process}"  %></b></p>
+<div class="list-group">
+<% @selection_process.category.each do |category| %>        
+       <%= link_to selection_process_category_path(@selection_process, category), :class => "list-group-item" do %>
+           <%= category.name %>
+           <% if category.candidate.size == category.bench %>
+           		<span class="badge pull-right alert-success">
+           	<% else %>
+           		<span class="badge pull-right">
+           	<% end %>
+           	<%= category.candidate.size %> / <%= category.bench %></span>
+      <% end %>
+<% end %>
+</div>
+<% end %>

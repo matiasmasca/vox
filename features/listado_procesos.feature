@@ -35,5 +35,5 @@ Escenario: tiene el mismo contenido
 Escenario: no tiene procesos creados.
   Dado que no he creado ningún proceso de selección
   Y que estoy en la pantalla de mis procesos electorales
-  Entonces veo una una tabla vacia, con el mensaje "Ud. no tiene registros creados."
+  Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."
 

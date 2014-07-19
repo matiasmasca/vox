@@ -3,7 +3,7 @@ Dado(/^completo los datos del candidato con "(.*?)", "(.*?)"$/) do |nombre, bios
   #Crear mock
   # Mock proceso.
   steps %{Y existe un premio llamado "Premios cacatua del año 2222" que se realizara en "Av. Siempre Viva 742"}
-  # Mock categoria.
+  # Mock categoría.
   steps %{Y que existe una Categoría con: "Categoría ABC", "Una descripción", "3", "1"}
   @candidato = {"category_id" => @category.id, "name" => nombre,"bios" => bios}
   #save_and_open_page
@@ -29,7 +29,7 @@ end
 Dado(/^subo una imagen que se utilizará como avatar del candidato\.$/) do
   # Mock proceso.
   #steps %{Y existe un premio llamado "Premios cacatua del año 2222" que se realizara en "Av. Siempre Viva 742"}
-  # Mock categoria.
+  # Mock categoría.
   #steps %{Y que existe una Categoría con: "Categoría ABC", "Una descripción", "3", "1"}
   imagen_path = "/public/images/uploads/isologos/no-borrar.jpg"
   page.attach_file('candidate_avatar_file', File.join(Rails.root, imagen_path), visible: false)

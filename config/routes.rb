@@ -1,25 +1,35 @@
 Vox::Application.routes.draw do
-  resources :candidates
-
-  resources :categories
-
   #paginas estaticas
   get "paginas/home"
   get "paginas/about"
   get "paginas/contact"
-  get "paginas/user_dashboard" 
+  get "paginas/user_dashboard"
+  get 'paginas/user_dashboard/:id' => 'paginas#user_dashboard' 
   
-  #Resource, crea los routes a 7 acciones por defecto.
-  resources :selection_processes
-  resources :organizers
+  #Resources, crea los routes a 7 acciones por defecto.
   resources :users
+  resources :organizers
+  resources :selection_processes
+  resources :categories
+  resources :candidates
+  # Esos serian los ruteo de back-end, individuales.
 
+
+  #Estos ruteos extra son para usar las asociaciones.
   resources :users do 
     resources :organizers, only: [:show, :edit]
   end
 
   resources :organizers do
     resources :selection_processes
+  end
+
+  resources :selection_processes do
+    resources :categories
+  end
+
+  resources :categories do
+    resources :candidates
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

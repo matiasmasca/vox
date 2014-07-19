@@ -3,7 +3,6 @@
   <% if @category.errors.any? %>
     <div class="alert alert-danger">
       <h2><%= pluralize(@category.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
-
       <ul>
       <% @category.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,13 +10,28 @@
       </ul>
     </div>
   <% end %>
-  <div class="form-group">
-    <%= f.label :selection_process_id, "Cod. Proceso", class: 'control-label' %><br>
-    <%= f.text_field :selection_process_id,  class: "form-control", size: "10", maxlength: "255"  %>
+ 
+  <div class="field">
+  
+    Pertenece al proceso:
+  <% unless params[:selection_process_id].nil? %>
+     <%= f.hidden_field :selection_process_id, value: params[:selection_process_id] %> 
+      <b><%= @selection_process.name_process %></b>
+    <li>
+      <%= link_to 'Más información', selection_process_path(@selection_process) %>
+      <p>
+    </li>
+  <% else %>
+
+    <div class="field">
+    <%= f.label :selection_process_id, "ID Organización", class: 'control-label' %><br>
+    <%= f.text_field :selection_process_id, placeholder: "ingrese el ID del proceso.", class: 'form-control' %>
+  </div>
+  <% end %>
   </div>
 
   <div class="form-group">
-    <%= f.label :name, "Nombre categoria", class: 'control-label' %><br>
+    <%= f.label :name, "Nombre categoría", class: 'control-label' %><br>
     <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "255"  %>
   </div>
   <div class="form-group">
@@ -35,5 +49,6 @@
 
 
 <% end %>
+
 </div>
 

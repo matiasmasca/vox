@@ -27,5 +27,5 @@ Escenario: más de un proceso, mantien el contenido de cada uno
 Escenario: no tiene procesos creados.
   Dado que no he creado ningúna Organización
   Y que estoy en la pantalla de Administración de Organizaciones
-  Entonces veo una una tabla vacia, con el mensaje "Ud. no tiene registros creados."
+  Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."
 

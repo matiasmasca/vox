@@ -8,12 +8,12 @@
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--Esto es para darle Zoom desde el dispositivo móvil -->
 </head>
+
 <body>
-  <div class="navbar navbar-inverse">
-	<div class="container">
+  <div class="navbar navbar-inverse" role="navigation">
+	 <div class="container">
 	  <div class="navbar-header">
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 	      <span class="sr-only">Toggle navigation</span>
@@ -27,14 +27,30 @@
 	    <ul class="nav navbar-nav">
 	      <li class="active"><%= link_to 'Inicio',  paginas_home_path %></li>
 	      <li><%= link_to 'Acerca de',  paginas_about_path %></li>
-	      <li><%= link_to 'Contacto',  paginas_contact_path %>/li>
+	      <li><%= link_to 'Contacto',  paginas_contact_path %></li>
 	    </ul>
 	  </div><!--/.nav-collapse -->
-	</div>
-   </div>
-   <div class="container">
-      <%= flash_messages %> 
-      <%= yield %>
-   </div>
+	 </div><!-- /.container -->
+  </div><!-- /.navbar -->
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3 col-md-3 sidebar-offcanvas" id="sidebar">
+            <!--Sidebar content-->
+           <%= render partial: "paginas/menu", object: @user %> 
+        </div>
+
+        <div class="col-md-9">
+             <%= flash_messages %> 
+             <%= yield %>
+        </div>
+    </div>
+  </div>
+
+   <hr>
+   <footer>
+     <p align="center"> Powered by VOX - 2014</p>
+     <p align="center"> Uneté a <a href="http://www.comunidadtic.com.ar">ComunidadTIC</a><p/>
+   </footer>
 </body>
 </html>

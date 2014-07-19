@@ -59,8 +59,8 @@ end
 
 Cuando(/^yo edito la (\d+)da\. Categoría$/) do |arg1|
   #save_and_open_page	
-  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(5)").click_on('Editar')
-             #categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(5) > a:nth-child(1)
+  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6)").click_on('Editar')
+             #categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6) > a:nth-child(1)
 end
 
 Dado(/^que existe una Categoría llamada "(.*?)" con "(.*?)" plazas, sin descripción definidoa$/) do |nombre, plazas|

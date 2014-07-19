@@ -1,25 +1,25 @@
 # language: es
-Característica: crear una categoria para un premio.
+Característica: crear una categoría para un premio.
   Con la finalidad de agrupar los candidatos en n-tuplas, para su posterior elección, a petición de algun usuario en particular.
   Como usuario administrador
-  Quiero poder crear categorias para cualquier proceso de selección en el sistema.
+  Quiero poder crear categorías para cualquier proceso de selección en el sistema.
 
 Antecedentes:
-  Dado que estoy en la pantalla de administración y hago click en "Agregar Categoria" 
+  Dado que estoy en la pantalla de administración y hago click en "Agregar Categoría" 
   Y existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
 
 #Camino feliz.
-Escenario: crear categoria.
-  Dado que estoy en la pantalla de administración y hago click en "Agregar Categoria"
-  Y completo los datos de la categoria con "Nombre C", "Una descripción", "3", "1"
+Escenario: crear categoría.
+  Dado que estoy en la pantalla de administración y hago click en "Agregar Categoría"
+  Y completo los datos de la categoría con "Nombre C", "Una descripción", "3", "1"
   Cuando presiono el botón "Guardar Cambios"
-  Entonces se crea la categoria y me muestra el mensaje "Categoria creada correctamente."
-  Y me muestra los datos de la categoria recien creada
+  Entonces se crea la categoría y me muestra el mensaje "Categoría creada correctamente."
+  Y me muestra los datos de la categoría recién creada
 
 #Casos extremos.
 Esquema del escenario: faltan datos
   # s/ PO obligatorios son: id, nombre y bench.
-  Y completo los datos de la categoria con "<name>", "<description>", "<bench>", "<selection_process_id>"
+  Y completo los datos de la categoría con "<name>", "<description>", "<bench>", "<selection_process_id>"
   Cuando presiono el botón "Guardar Cambios"
   Entonces me muestra el mensaje de error que "faltan datos."
 
@@ -60,8 +60,8 @@ Esquema del escenario: faltan datos
     | Nombre | descripción | 1000   | 1                    |  
     | Nombre | descripción | 5      | 9223372036854775809    | 
 
-Escenario: nombre de categoria debe ser unico para el proceso.
-  Y completo los datos de la categoria con "Nombre C", "Una descripción", "3", "1"
-  Pero como ya existe una categoria con ese nombre "Nombre C"
+Escenario: nombre de categoría debe ser unico para el proceso.
+  Y completo los datos de la categoría con "Nombre C", "Una descripción", "3", "1"
+  Pero como ya existe una categoría con ese nombre "Nombre C"
   Cuando presiono el botón "Guardar Cambios"
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado."

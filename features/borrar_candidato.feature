@@ -2,7 +2,7 @@
 Característica: borrar un candidato
   Con la finalidad de borrar un candidato que ya no participará
   como un usuario administrador
-  Quiero poder eliminar un candidato de una categoria del sistema
+  Quiero poder eliminar un candidato de una categoría del sistema
 
 #Camino feliz
 # Borrar desde listado

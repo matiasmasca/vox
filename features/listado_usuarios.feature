@@ -41,7 +41,7 @@ Escenario: tiene el mismo contenido
 Escenario: no tiene usuarios creados.
   Dado que no he creado ningún usuario
   Y que estoy en la pantalla de "administración de Usuarios"
-  Entonces veo una una tabla vacia, con el mensaje "Ud. no tiene registros creados."
+  Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."
 
 # @to-do
 # Ver link a las organizaciones del usuario.

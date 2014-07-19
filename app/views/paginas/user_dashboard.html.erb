@@ -1,17 +1,10 @@
+<p id="notice"><%= notice %></p>
 
-<% 
-
-    @user = User.find_by_id(9)
- 
-
- if @user.blank?
-    @user = User.first 
- end
-
- %>
-
-<h2>Bienvenido a Usuario </h2>
-esta es una pagina de usarios registrado temporal, hasta tener un diseño definitivo.
+<div class="jumbotron">
+  <h2>Bienvenido</h2>
+  <h1><%= @user.nombre %>, <%= @user.apellido %></h1>
+  <p>esta es una pagina que verian los usarios registrado, es un diseño temporal hasta tener un diseño definitivo..</p>
+</div>
 
 <hr>
 <br>
@@ -26,9 +19,18 @@ esta es una pagina de usarios registrado temporal, hasta tener un diseño defini
   <tbody >
    <% unless @user.organizer.nil? %>
       <tr>
+        <td><%= link_to ' Mis Categorías', selection_process_categories_path(@user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
+        <td><%= link_to ' Agregar Categoría', new_selection_process_category_path(@user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+        </td>                                                            
+        <td><%= link_to ' Modificar Categoría', edit_selection_process_category_path(@user.organizer, @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer.selection_process[0] %>
+        </td>
+      </tr>   
+      <tr>
         <td><%= link_to ' Mis procesos', organizer_selection_processes_path(@user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
-        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %></td>                                                            
-        <td><%= link_to ' Modificar Proceso', edit_organizer_selection_process_path(@user.organizer, @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer.selection_process[0] %></td>
+        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+        </td>                                                            
+        <td><%= link_to ' Modificar Proceso', edit_organizer_selection_process_path(@user.organizer, @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer.selection_process[0] %>
+        </td>
       </tr>      
       <tr>
         <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer %>
@@ -43,64 +45,4 @@ esta es una pagina de usarios registrado temporal, hasta tener un diseño defini
   </tbody>
   </table>
 </div>
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Usuario:</strong>
-  <%= @user.usuario %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @user.nombre %>
-</p>
-
-<p>
-  <strong>Apellido:</strong>
-  <%= @user.apellido %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Clave:</strong>
-  <%= @user.clave %>
-</p>
-
-<p>
-  <strong>Facebook:</strong>
-  <%= @user.facebook %>
-</p>
-
-<p>
-  <strong>Twitter:</strong>
-  <%= @user.twitter %>
-</p>
-
-<p>
-  <strong>Tipo usuario:</strong>
-  <%= @user.tipo_usuario_id %>
-</p>
-
-<% unless @user.organizer(true).nil? %>
-  <h3>Organizaciones </h3>
-  <ol class="organizer">
-    <%= render 'users/misorganizaciones' %>
-  </ol>
- 
- <% unless @user.organizer.selection_process.nil? %>
-  <h3>Procesos de selección </h3>
-  <ol class="selection_processs">
-    <%= render 'organizers/procesos_por_organizador' %>
-  </ol>
- <% end %>
-
-<% end %>
-
-
-
-<%= link_to 'Editar', edit_user_path(@user), :class => 'btn btn-link' %> |
-<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>

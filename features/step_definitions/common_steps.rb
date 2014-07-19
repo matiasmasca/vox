@@ -72,7 +72,7 @@ Cuando(/^(?:presiono|que presione) el botón "(.*?)"$/) do |button|
   #click_button button #me da problemas con Capybara.
   #find_button(button).click #me da problemas con Capybara.
   click_on(button)
-  
+  #save_and_open_page
 end
 
 Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do |botton|
@@ -93,29 +93,28 @@ Dado(/^se lee el texto "(.*?)"$/) do |texto|
 end
 
 Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
-  case pantalla
-  when "administración de Usuarios"
-    visit("/users")
-  when "Administración de Organizaciones"
-    visit("/organizers")
-  when "mis procesos electorales"
-    visit("/selection_processes")
-  when "administración de Categorías"
-    visit("/categories")
-  when "administración de Candidatos"
-    visit("/candidates")
-  when "Modificar Organización"
-    visit("/paginas/home")
-  when "dashboard usuario"
-    visit("/paginas/user_dashboard")
-    #save_and_open_page 
-  when "Modificar Proceso"
-    visit("/paginas/user_dashboard")
-    #save_and_open_page
-  else
-    visit("/¿A donde queres ir?")
-  end
-
+    case pantalla
+    when "administración de Usuarios"
+      visit("/users")
+    when "Administración de Organizaciones"
+      visit("/organizers")
+    when "mis procesos electorales"
+      visit("/selection_processes")
+    when "administración de Categorías"
+      visit("/categories")
+    when "administración de Candidatos"
+      visit("/candidates")
+    when "Modificar Organización"
+      visit("/paginas/home")
+    when "dashboard usuario"
+      visit("/paginas/user_dashboard")
+      save_and_open_page 
+    when "Modificar Proceso"
+      visit("/paginas/user_dashboard")
+      #save_and_open_page
+    else
+      visit("/¿A donde queres ir?")
+    end
 end
 
 #TO-Do: refactorizar estos 2 en el Case de arriba.
@@ -147,7 +146,7 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   when "Organizador"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
    step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
-   #funcionan esos steps...
+   step %{que estoy en la pantalla de "dashboard usuario"}
   when "Jurado"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
   when "Admin"
@@ -156,9 +155,6 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
     visit("/¿Quien sos?¡A donde queres ir!")
   end
 end
-
-
-
 
 #Casos extremos, errores y problemas.
 Entonces(/^me muestra el mensaje de error que "([^"]*)"$/) do |mensaje|

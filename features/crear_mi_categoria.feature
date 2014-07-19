@@ -5,15 +5,17 @@ Característica: crear una categoría para un premio.
   Quiero poder crear categorías para un proceso de selección de mi organización.
 
 Antecedentes:
-  Dado que estoy en la pantalla de administración de un proceso y hago click en "Agregar Categoría" 
-  Y existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
+  Dado que estoy logueado como "Organizador" 
+  Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15"  asociado a mi organizacion "Nerv Corp.".
+  #Y que estoy en la pantalla de "Modificar Proceso" #hasta que este el diseño de pantallas.
+  
+  Y presiono el botón "Agregar Categoría" 
 
 #Camino feliz.
 Escenario: crear categoría.
-  Dado que estoy en la pantalla de administración y hago click en "Agregar Categoría"
-  Y completo los datos de la categoría con "Nombre C", "Una descripción", "3", "1"
+  Y completo los datos de mi categoría con "Nombre C", "Una descripción", "3", "1"
   Cuando presiono el botón "Guardar Cambios"
-  Entonces se crea la categoría y me muestra el mensaje "Categoría creada correctamente."
+  Entonces me muestra el mensaje "Categoría creada correctamente."
   Y me muestra los datos de la categoría recién creada
 
 #Casos extremos.
@@ -65,3 +67,10 @@ Escenario: nombre de categoría debe ser único para el proceso.
   Pero como ya existe una categoría con ese nombre "Nombre C"
   Cuando presiono el botón "Guardar Cambios"
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado."
+
+Escenario: Categoría repetido, case sensitive: Mejor Actor y mejor actor.
+  Y completo los datos de la categoría con "Nombre C", "Una descripción", "3", "1"
+  Pero como ya existe una categoría con ese nombre "Nombre C"
+  Cuando presiono el botón "Guardar Cambios"
+  Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado."
+  Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
