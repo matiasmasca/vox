@@ -3,11 +3,17 @@
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
   before_action :set_category
+  before_action :check_property,  only: [:show, :edit, :update, :destroy]
 
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = Candidate.all
+    #Filtro: solo veo mis candidatos.
+    if !params[:category_id].blank? #|| ADMIN
+      @candidates = Candidate.where(category_id: @category)
+    else
+      @candidates = Candidate.all
+    end  
   end
 
   # GET /candidates/1
@@ -81,11 +87,12 @@ class CandidatesController < ApplicationController
       params.require(:candidate).permit(:name, :bios, :url_image, :category_id, :avatar_file)
     end
 
-        #Filtro de Propiedad.
+    # Filtro de Propiedad.
     # Un usuario solo puede modificar operar con las Organizaciones que haya creado.
     def check_property
       if !params[:category_id].blank? #|| ADMIN
       #@user = User.find_by_id(params[:category_id])
+      #logger.debug "CANDIDATE: #{@candidate} " 
       respond_to do |format|
         format.html do
           unless @candidate.category_id == @category.id

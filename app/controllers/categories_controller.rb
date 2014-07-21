@@ -12,9 +12,7 @@ class CategoriesController < ApplicationController
       @categories = Category.where(selection_process_id: @selection_process)
     else
       @categories = Category.all
-    end  
-
-    
+    end     
   end
 
   # GET /categories/1
