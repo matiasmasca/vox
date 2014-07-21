@@ -5,9 +5,8 @@ Característica: borrar un premio
   Quiero poder eliminar un premio vinculado a mi organización
 
 Antecedentes:
-  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
-  Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
-  Dado que existe un Proceso: "Premios ACME", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-ARG".
+  Dado que estoy logueado como "Organizador"
+  Dado que existe un Proceso: "Premios ACME", "Alguna ciudad", "15"  asociado a mi organizacion "Nerv Corp.".
   Y que estoy en la pantalla de "dashboard usuario"
   Y que presione el botón "Mis procesos" 
   #/organizers/9/selection_processes

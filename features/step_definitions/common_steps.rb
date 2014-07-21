@@ -108,8 +108,7 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
       visit("/paginas/home")
     when "dashboard usuario"
       #Ojo User y SelecctionProcess tiene que estar definido.
-      visit("/paginas/user_dashboard")
-      save_and_open_page 
+      visit(paginas_user_dashboard_path(@user) )
     when "Modificar Proceso"
       visit("/paginas/user_dashboard")
       #save_and_open_page

@@ -3,7 +3,7 @@
 <!--tiene que mostrar solo si hay cagoria seleccionada-->
 <% unless @category.nil? %>
 
-<p class="list-group-item"><b>Candidatos: <%= "#{@category.name}"  %></b></p>
+<p class="list-group-item"><b>Candidatos: <%= link_to "#{@category.name}", category_path(@category), :class => "" %></b></p>
 <div class="list-group">
 <% @category.candidate.each do |candidate| %>        
        <%= link_to candidate, :class => "list-group-item" do %>
@@ -18,7 +18,6 @@
         </span>
    <% end %>  
 <% end %>
-
 
 </div>
 <% end %>

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<% unless @user.nil? %>
 <div class="jumbotron">
   <h2>Bienvenido</h2>
-  <h1><%= @user.nombre %>, <%= @user.apellido %></h1>
+  <h1><%= @user.nombre unless @user.nombre.nil? %>, <%= @user.apellido unless @user.nombre.nil?  %></h1>
   <p>esta es una pagina que verian los usarios registrado, es un diseño temporal hasta tener un diseño definitivo..</p>
 </div>
 
@@ -35,16 +35,23 @@
         </td>
       </tr>      
       <tr>
+      <td><%= link_to ' Mi Organización',  user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer %>
         <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer %>
       </tr>
+
 	  <% end %>
-      <tr>      
-        <td><%= link_to ' Mi Perfil',  edit_user_path(@user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
-      </tr>
-            <tr>
-        <td><%= link_to ' Cerrar sesión', '/', :class => 'btn btn-default btn glyphicon glyphicon-log-out' %>
-      </tr>
+
+    <tr> 
+      <td><%= link_to ' Mi Perfil',  user_path(@user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>     
+      <td><%= link_to ' Editar Perfil',  edit_user_path(@user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
+    </tr>
+    
+    <tr>
+       <td><%= link_to ' Cerrar sesión', '/', :class => 'btn btn-default btn glyphicon glyphicon-log-out' %>
+    </tr>
   </tbody>
   </table>
 </div>
+
+<% end %>
 

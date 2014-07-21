@@ -17,7 +17,7 @@ Vox::Application.routes.draw do
 
   #Estos ruteos extra son para usar las asociaciones.
   resources :users do 
-    resources :organizers, only: [:show, :edit]
+    resources :organizers #, only: [:show, :edit] no me da las rutas con esto puesto.
   end
 
   resources :organizers do

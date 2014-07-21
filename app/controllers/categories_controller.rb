@@ -2,7 +2,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_selection_process
-  #before_action :check_property
+  before_action :check_property
 
   # GET /categories
   # GET /categories.json
@@ -97,7 +97,7 @@ class CategoriesController < ApplicationController
       respond_to do |format|
         format.html do
           unless @category.selection_process.organizer.id == @selection_process.organizer.id
-             redirect_to(edit_user_organizer_path(@selection_process.organizer.user,@selection_process.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+             redirect_to(user_organizer_path(@selection_process.organizer.user,@selection_process.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
           end
         end
         end
