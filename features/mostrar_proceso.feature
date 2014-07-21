@@ -6,8 +6,10 @@ Característica: mostrar información de un premio
 
 #Camino feliz
 Escenario: mostrar premio
-  Dado existe un premio llamado "Premios ACME 2014" que se realizara en "Av. Siempre Viva 742"
-  Dado que estoy en la pantalla de mis procesos electorales
+  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
+  Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
+  Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-ARG".
+  Dado que estoy en la pantalla de "administración de procesos"
   Cuando hago click en Mostrar para "Premios ACME 2014"
   Entonces veo toda la información del premio.
 

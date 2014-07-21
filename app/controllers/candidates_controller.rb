@@ -2,6 +2,7 @@
 # Ojo con los before y after action que se ejecutaran en cada acción, en cada llamada a los metodos.
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
+  before_action :set_category
 
   # GET /candidates
   # GET /candidates.json
@@ -69,8 +70,30 @@ class CandidatesController < ApplicationController
       @candidate = Candidate.find_by_id(params[:id])
     end
 
+    def set_category
+      if !params[:category_id].blank? #|| ADMIN
+         @category = Category.find_by_id(params[:category_id])
+      end
+    end 
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
       params.require(:candidate).permit(:name, :bios, :url_image, :category_id, :avatar_file)
     end
+
+        #Filtro de Propiedad.
+    # Un usuario solo puede modificar operar con las Organizaciones que haya creado.
+    def check_property
+      if !params[:category_id].blank? #|| ADMIN
+      #@user = User.find_by_id(params[:category_id])
+      respond_to do |format|
+        format.html do
+          unless @candidate.category_id == @category.id
+            redirect_to(edit_user_organizer_path(@category.selection_process.organizer.user,@category.selection_process.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+          end
+        end
+        end
+      end
+    end   
+
 end

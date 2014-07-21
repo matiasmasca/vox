@@ -98,7 +98,7 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
       visit("/users")
     when "Administración de Organizaciones"
       visit("/organizers")
-    when "mis procesos electorales"
+    when "administración de procesos"
       visit("/selection_processes")
     when "administración de Categorías"
       visit("/categories")
@@ -107,6 +107,7 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
     when "Modificar Organización"
       visit("/paginas/home")
     when "dashboard usuario"
+      #Ojo User y SelecctionProcess tiene que estar definido.
       visit("/paginas/user_dashboard")
       save_and_open_page 
     when "Modificar Proceso"

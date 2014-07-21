@@ -20,10 +20,12 @@
    <% unless @user.organizer.nil? %>
       <tr>
         <td><%= link_to ' Mis Categorías', selection_process_categories_path(@user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
+        <% unless @user.organizer.selection_process.empty? %>
         <td><%= link_to ' Agregar Categoría', new_selection_process_category_path(@user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
-        </td>                                                            
+        </td>
         <td><%= link_to ' Modificar Categoría', edit_selection_process_category_path(@user.organizer, @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer.selection_process[0] %>
         </td>
+        <% end %>
       </tr>   
       <tr>
         <td><%= link_to ' Mis procesos', organizer_selection_processes_path(@user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>

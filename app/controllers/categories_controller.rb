@@ -1,11 +1,20 @@
 # encoding: utf-8
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_selection_process
+  #before_action :check_property
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    #Filtro: solo veo mis procesos.
+    if !params[:selection_process_id].blank? #|| ADMIN
+      @categories = Category.where(selection_process_id: @selection_process)
+    else
+      @categories = Category.all
+    end  
+
+    
   end
 
   # GET /categories/1
@@ -71,8 +80,31 @@ class CategoriesController < ApplicationController
       @category = Category.find_by_id(params[:id])
     end
 
+    def set_selection_process
+      if !params[:selection_process_id].blank? #|| ADMIN
+         @selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :description, :bench, :selection_process_id)
     end
+
+    #Filtro de Propiedad.
+    # Un usuario solo puede modificar operar con las Organizaciones que haya creado.
+    def check_property
+      if !params[:selection_process_id].blank? #|| ADMIN
+      #@selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
+      respond_to do |format|
+        format.html do
+          unless @category.selection_process.organizer.id == @selection_process.organizer.id
+             redirect_to(edit_user_organizer_path(@selection_process.organizer.user,@selection_process.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+          end
+        end
+        end
+      end
+    end   
+
+
 end

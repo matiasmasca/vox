@@ -1,9 +1,9 @@
 
 <div class=".col-xs-5 .col-md-3 sidebar-offcanvas" id="sidebar">
-<% unless @user.nil? %>
+<% unless @user.nil? || @user.organizer.nil? %>
   <div class="list-group">
     <p class="list-group-item"><b>Mis Procesos</b></p>
-      <% @selection_processes = @user.organizer.selection_process %>
+      <% @selection_processes = @user.organizer.selection_process unless @user.organizer.nil? %>
       <%= render partial: "selection_processes/menu_selection_process_items", object: @selection_processes %> 
    </div>
 <% end %>
