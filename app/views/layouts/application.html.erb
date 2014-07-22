@@ -35,22 +35,28 @@
 
   <div class="container-fluid">
     <div class="row">
+        <!-- Barra lateral -->
         <div class="col-xs-3 col-md-3 sidebar-offcanvas" id="sidebar">
-            <!--Sidebar content-->
+            <!-- Sidebar content -->
            <%= render partial: "paginas/menu", object: @user %> 
         </div>
 
+                  <!-- Contenido -->
         <div class="col-md-9">
              <%= flash_messages %> 
              <%= yield %>
         </div>
+
+
+
+
     </div>
   </div>
 
    <hr>
    <footer>
      <p align="center"> Powered by VOX - 2014</p>
-     <p align="center"> Uneté a <a href="http://www.comunidadtic.com.ar">ComunidadTIC</a><p/>
+     <p align="center"> Únete a <a href="http://www.comunidadtic.com.ar">ComunidadTIC</a><p/>
    </footer>
 </body>
 </html>

@@ -18,6 +18,11 @@
   <%= @category.selection_process.name_process %>
 </p>
 
+<h3>Candidatos/Postulantes:</h3>
+<div><!--Candidatos-->
+    <%= render partial: "candidates/candidates_category", object: @category %> 
+</div>
+
 <%= link_to ' Editar', edit_category_path(@category), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
 <%= link_to ' Ir a categorias', categories_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %>
 
@@ -27,3 +32,4 @@
          <%= render partial: "misprocesos"  %>
       </ol>
 <% end %>
+

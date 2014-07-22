@@ -35,7 +35,7 @@
 <% unless @user.nil? %>
   <div class="list-group">
     <p class="list-group-item active"><b>Usuario</b></p>
-    <%= link_to ' Mi Perfil',  edit_user_path(@user), :class => 'btn btn-default btn glyphicon glyphicon-user list-group-item' if @user.id  %>
+    <%= link_to ' Mi Perfil',  user_path(@user), :class => 'btn btn-default btn glyphicon glyphicon-user list-group-item' if @user.id  %>
     <%= link_to ' Cerrar sesión', '/', :class => 'btn btn-default btn glyphicon glyphicon-log-out list-group-item' %>
   </div>
 <% end %>

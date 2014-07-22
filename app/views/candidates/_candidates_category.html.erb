@@ -1,0 +1,25 @@
+<!--Lista de Candidadtos para la Categoría seleccionada del Proceso seleccionado-->
+<!--tiene que mostrar solo si hay cagoria seleccionada-->
+
+<% unless @category.nil? %>
+<div class="bs-example">
+  <div class="row">
+	<% @category.candidate.each do |candidate| 
+	    @candidate = candidate       
+	 %>  
+	<%= render partial: "candidates/candidate", object: @candidate %>
+	<%  end %>
+
+	  <!-- ahora agregar (+) para que sumen los candidatos que faltan -->
+	  <% if @category.candidate.size <= @category.bench %>
+	  <div class="col-sm-6 col-md-4">
+	     <% (@category.bench - @category.candidate.size ).times do |candi|  %>
+	      <%= link_to ' Agregar Candidato', new_category_candidate_path(@category), :class => "list-group-item btn glyphicon glyphicon-plus-sign" %>
+	        </span>
+	     <% end %>  
+	    </div>
+	   <% end %>
+	<% end %>
+      
+  </div>
+</div>

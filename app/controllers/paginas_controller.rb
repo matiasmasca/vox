@@ -39,6 +39,6 @@ class PaginasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:paginas).permit(:id)
+      params.require(:paginas).permit(:id, :organizer_id, :selection_process_id, :category_id)
     end
 end

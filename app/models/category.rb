@@ -1,7 +1,8 @@
 # encoding: utf-8
 class Category < ActiveRecord::Base
 	belongs_to :selection_process, autosave: true
-    has_many :candidate, dependent: :nullify, autosave: true
+    has_many :candidate, autosave: true
+	
 	#validaciones
 	validates :name, :bench, :selection_process_id, presence: { message: "es un dato obligatorio."}
 

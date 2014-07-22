@@ -1,21 +1,20 @@
 <p>
-  <strong>Nombre y Apellido:</strong>
-  <%= @candidate.name %>
-</p>
-
-<p>
-  <strong>Bios:</strong>
-  <%= @candidate.bios %>
-</p>
-
-<p>
-  <strong>Url Avatar:</strong>
  <%= link_to(image_tag(@candidate.image_path,
         alt: "Avatar #{@candidate.id}",
         id: "imgAvatar-#{@candidate.id}",
         class: "imgAvatar", 
         size: "200x200"), 
         @candidate.image_path) %>
+</p>
+<p>
+  <strong>Nominado:</strong>
+  <%= @candidate.name %>
+</p>
+<p>
+  <strong>bios:</strong>
+</p>
+<p>
+  <%= @candidate.bios %>
 </p>
 
 <%= link_to ' Editar', edit_candidate_path(@candidate), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
