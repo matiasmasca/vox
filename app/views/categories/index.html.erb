@@ -22,8 +22,14 @@
         <td><%= category.description %></td>
         <td><%= category.bench %></td>
         <td><%= category.selection_process_id %></td>
-        <td><%= link_to ' Mostrar', category, :class => 'btn btn-default btn-xs btn glyphicon glyphicon-eye-open' %></td>
-        <td><%= link_to ' Editar', edit_category_path(category), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-pencil'  %></td>
+      <% unless params[:selection_process_id].nil? %>
+        <td><%= link_to ' Mostrar', selection_process_category_path(category.selection_process, category), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-eye-open' %></td>
+        <td><%= link_to ' Editar', edit_selection_process_category_path(category.selection_process, category), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-pencil' %></td>
+        <% else %>
+         <td><%= link_to ' Mostrar', category_path(category), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-eye-open' %></td>
+        <td><%= link_to ' Editar', edit_category_path(category), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-pencil' %></td>
+        <% end %>
+
         <td><%= link_to ' Eliminar', category, :class => 'btn btn-danger btn-xs btn glyphicon glyphicon-trash active', :method => :delete, data: { confirm: "Esta seguro que desea borrar este usuario: #{category.name}?"} %></td>
       </tr>
     <% end %>
@@ -32,4 +38,8 @@
 
 <br>
 
+<% unless params[:selection_process_id].nil? %>
+<%= link_to 'Agregar Categoría', new_selection_process_category_path(params[:selection_process_id]), :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+<% else %>
 <%= link_to 'Agregar Categoría', new_category_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+<% end %>

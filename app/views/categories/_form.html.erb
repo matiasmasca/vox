@@ -1,5 +1,5 @@
-<div class="form-group">
-<%= form_for @category, :html => { :class => 'form-horizontal' } do |f| %>
+<div>
+<%= form_for @category, :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
   <% if @category.errors.any? %>
     <div class="alert alert-danger">
       <h2><%= pluralize(@category.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
@@ -10,45 +10,38 @@
       </ul>
     </div>
   <% end %>
- 
-  <div class="field">
-  
-    Pertenece al proceso:
+   <div class="field">
   <% unless params[:selection_process_id].nil? %>
-     <%= f.hidden_field :selection_process_id, value: params[:selection_process_id] %> 
-      <b><%= @selection_process.name_process %></b>
+     Pertenece al proceso: <b><%= @selection_process.name_process %></b>
     <li>
       <%= link_to 'Más información', selection_process_path(@selection_process) %>
       <p>
     </li>
-  <% else %>
+    <%= f.hidden_field :selection_process_id, value: params[:selection_process_id] %> 
 
-    <div class="field">
+    </div>
+  <% else %>
     <%= f.label :selection_process_id, "ID Organización", class: 'control-label' %><br>
     <%= f.text_field :selection_process_id, placeholder: "ingrese el ID del proceso.", class: 'form-control' %>
-  </div>
+    </div>
   <% end %>
-  </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= f.label :name, "Nombre categoría", class: 'control-label' %><br>
-    <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "255"  %>
+    <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "255", placeholder: "ingrese un nombre para la categoría."  %>
   </div>
-  <div class="form-group">
+  <div class="field">
     <%= f.label :description, "Descripción", class: 'control-label' %><br>
-    <%= f.text_area :description, class: "form-control", :cols => "30", :rows => "10" %>
+    <%= f.text_area :description, class: "form-control", :cols => "30", :rows => "10", placeholder: "ingrese una descripción para la categoría, que ayude a determinar los candidatos que la incluyen." %>
   </div>
-  <div class="form-group">
+  <div class="field">
     <%= f.label :bench, "Nro. de plazas", class: 'control-label' %><br>
-    <%= f.number_field :bench, class: "form-control", size: "5", maxlength: "255"  %>
+    <%= f.number_field :bench, class: "form-control", size: "5", maxlength: "255", placeholder: "ingrese la cantidad de candidatos que podrá tener la categoría."  %>
   </div>
 
   <div class="actions">
    <%= button_tag ' Guardar Cambios', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>
   </div>
-
-
 <% end %>
-
 </div>
 

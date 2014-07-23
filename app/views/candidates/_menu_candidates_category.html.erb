@@ -1,8 +1,7 @@
 
 <!--Lista de Candidadtos para la Categoría seleccionada del Proceso seleccionado-->
 <!--tiene que mostrar solo si hay cagoria seleccionada-->
-<% unless @category.nil? %>
-
+<% unless @category.nil? || @category.id.nil?  %>
 <p class="list-group-item"><b>Candidatos a <%= link_to "#{@category.name}", category_path(@category), :class => "" %></b></p>
 <div class="list-group">
 <% @category.candidate.each do |candidate| %>        

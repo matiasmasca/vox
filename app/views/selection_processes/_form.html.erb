@@ -1,5 +1,5 @@
-<div class="form-group">
-<%= form_for @selection_process, :html => { :class => 'form-horizontal' } do  |f| %>
+<div>
+<%= form_for @selection_process,:html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
   <% if @selection_process.errors.any? %>
     
     <div class="alert alert-danger">
@@ -13,39 +13,39 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.hidden_field :organizer_id, value: params[:organizer_id] %>
     <%= f.label :name_process, "Nombre del proceso", class: 'control-label' %><br>
     <%= f.text_field :name_process, placeholder: "ingrese el nombre del proceso, que verá el público.",  class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :place, "Lugar", class: 'control-label' %><br>
     <%= f.text_field :place, placeholder: "ingrese el lugar donde se realizará el proceso.", class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :duration, "Duración", class: 'control-label' %><br>
     <%= f.text_field :duration, placeholder: "ingrese la cantidad de dias", onchange: "alert('cambio la duraccion');" , class: 'form-control' %> días.
   </div>  
-  <div class="field">
+  <div class="form-group">
     <%= f.label :start_date, "Fecha de inicio", class: 'control-label' %><br>
     <%= f.date_select :start_date, start_year: 2013, last_year: 2050, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :end_date, "Fecha cierre", class: 'control-label' %><br>
     <%= f.date_select :end_date, start_year: 2013, last_year: 2050, class: 'form-control' %>
   </div>
-    <div class="field">
+    <div class="form-group">
      <% tipos_de_procesos = {'premio'=> 1, 'certamen'=> 2, 'votación'=> 3} %>
      <%= f.label :process_type_id, "Tipo", class: 'control-label' %><br>
      <%= f.select :process_type_id, tipos_de_procesos, selected: @selection_process.process_type_id, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <% estados_del_proceso = {'nuevo'=> 'nuevo', 'abierto'=> 'abierto', 'cerrado'=> 'cerrado'} %>
     <%= f.label :state, "Estado" , class: 'control-label' %><br>
     <%= f.select :state, estados_del_proceso, selected: @selection_process.state, class: 'form-control' %>
   </div>
   <hr>
-  <div class="field">
+  <div class="form-group">
     Organiza:
   <% unless @organizer.nil? %>
       <b><%= @organizer.name %></b></div>
@@ -55,7 +55,7 @@
       <p>
     </li>
   <% else %>
-    <div class="field">
+    <div class="form-group">
     <%= f.label :organizer_id, "ID Organización", class: 'control-label' %><br>
     <%= f.text_field :organizer_id, placeholder: "ingrese el ID del organizador del proceso.", class: 'form-control' %>
   </div>

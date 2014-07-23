@@ -1,6 +1,4 @@
 <!--Lista de procesos-->
-<% logger.debug "PROCESOS: #{@selection_processes.inspect}" %>
-
 <% unless @selection_processes.empty? %>
  <div class="list-group">
  <%= link_to ' Mis procesos', organizer_selection_processes_path(@selection_processes.first.organizer), :class => 'list-group-item active' %>

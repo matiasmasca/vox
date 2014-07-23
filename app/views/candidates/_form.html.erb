@@ -1,4 +1,5 @@
-<%= form_for @candidate, :html => { :class => 'form-horizontal' } do |f| %>
+<div>
+<%= form_for @candidate, :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
   <% if @candidate.errors.any? %>
     <div id="alert alert-danger">
       <h2><%= pluralize(@candidate.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
@@ -10,26 +11,40 @@
       </ul>
     </div>
   <% end %>
+  
+  <% unless @category.nil? %>
+   <div class="field">Pertenece al proceso:
+    <b><%= link_to @category.selection_process.name_process, selection_process_path(@category.selection_process) %></b>
+    <%= f.hidden_field :selection_process_id, value: @category.selection_process_id %> 
+    </div>
+  <% end %>
 
-  <p> ID Proceso y ID Categoria. solo en Back-end del Admin.</p>
-  <p>
-    <strong>ID Proceso:</strong>
-    <%= @candidate.category_id %>
-  </p>
-    <div class="form-group">
-    <%= f.label :category_id, "Cod. Categoría", class: 'control-label' %><br>
-    <%= f.text_field :category_id,  class: "form-control", size: "10"  %>
+  <% unless @category.nil? %>
+    <div class="field">
+      <%= f.label :category_id, "Para la categoría: ", class: 'control-label' %>
+      <%= @category.name %>
+      <%= f.hidden_field :category_id, value: @category %> 
+    </div>
+  <% else %>
+  <div>
+    <p> ID Categoria. solo en Back-end del Admin.</p>
   </div>
+    <div class="field">
+      <%= f.label :category_id, "Cod. Categoría", class: 'control-label' %><br>
+      <%= f.text_field :category_id,  class: "form-control", size: "10", placeholder: "Ingrese el cod. de categoría a la que pertenecerá este candidato."  %>
+    </div>
+    
+  <% end %>
 
-  <div class="form-group">
-    <%= f.label :name, "Nombre y Apellido", class: 'control-label' %><br>
-    <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "110"  %>
+  <div class="field">
+    <%= f.label :name, "Postulante / Nominado", class: 'control-label' %><br>
+    <%= f.text_field :name,  class: "form-control", size: "10", maxlength: "110", placeholder: "ingrese el nombre (o una identificación) para el postulante, que verá el público."  %>
   </div>
-  <div class="form-group">
+  <div class="field">
     <%= f.label :bios, "BIOS", class: 'control-label' %><br>
-    <%= f.text_area :bios, class: "form-control", :cols => "30", :rows => "10" %>
+    <%= f.text_area :bios, class: "form-control", :cols => "30", :rows => "10", placeholder: "ingrese una descripción sobre el postulante (candidato, nominado) para que vea el público." %>
   </div>
-  <div class="form-group">
+  <div class="field">
       <%= f.label :avatar_file, "Avatar usuario:", class: 'control-label' %><br>
       <%= f.file_field :avatar_file , accept: 'image/png,image/gif,image/jpeg' %>
     </div>
@@ -37,3 +52,4 @@
    <%= button_tag ' Guardar Cambios', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>
   </div>
 <% end %>
+</div>

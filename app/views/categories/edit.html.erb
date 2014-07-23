@@ -3,5 +3,7 @@
 <%= render 'form' %>
 
 <%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>|
-<%= link_to ' Mostrar', @category, :class => 'btn btn-link btn glyphicon glyphicon-eye-open' %>
 
+<%= link_to ' Mostrar', selection_process_category_path(@category.selection_process, @category), :class => 'btn btn-link btn glyphicon glyphicon-eye-open' %>|
+
+<%= link_to ' Ir a categorias', selection_process_categories_path(@category.selection_process), :class => 'btn btn-link btn glyphicon glyphicon-list' %>

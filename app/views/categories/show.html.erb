@@ -23,8 +23,8 @@
     <%= render partial: "candidates/candidates_category", object: @category %> 
 </div>
 
-<%= link_to ' Editar', edit_category_path(@category), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
-<%= link_to ' Ir a categorias', categories_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %>
+<%= link_to ' Editar', edit_selection_process_category_path(@category.selection_process, @category), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
+<%= link_to ' Ir a categorias', selection_process_categories_path(@category.selection_process), :class => 'btn btn-link btn glyphicon glyphicon-list' %>
 
 <% if @category.selection_process %>
       <h3>Procesos de selección:</h3>
@@ -32,4 +32,3 @@
          <%= render partial: "misprocesos"  %>
       </ol>
 <% end %>
-

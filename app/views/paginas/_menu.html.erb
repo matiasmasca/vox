@@ -10,7 +10,7 @@
 
   <% unless @selection_process.nil? %>
   <div class="list-group"> <!--Por proceso-->
-    <p class="list-group-item"><b>Proceso seleccionado:</b></p>
+    <p class="list-group-item"><b>Proceso seleccionado:</b> <%= @selection_process.name_process %></p>
       <%= render partial: "selection_processes/menu_selected_process", object: @selection_process %> 
    </div>
 

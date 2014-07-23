@@ -2,14 +2,14 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_selection_process
-  before_action :check_property
+  before_action :check_property, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
     #Filtro: solo veo mis procesos.
     if !params[:selection_process_id].blank? #|| ADMIN
-      @categories = Category.where(selection_process_id: @selection_process)
+      @categories = Category.where(selection_process_id: @selection_process.id)
     else
       @categories = Category.all
     end     
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     if !params[:selection_process_id].blank? #|| ADMIN
-         @selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
+       @selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
     end
     @category = Category.new
   end
@@ -67,7 +67,10 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Categoría borrada correctamente.' }
+      format.html do
+        redirect_to(selection_process_category_path(@selection_process), notice: 'Categoría borrada correctamente.') if !params[:selection_process_id].nil?
+        redirect_to(categories_url, notice: 'Categoría borrada correctamente, por el Admin.') if params[:selection_process_id].nil?
+      end
       format.json { head :no_content }
     end
   end
@@ -76,6 +79,13 @@ class CategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find_by_id(params[:id])
+      respond_to do |format|
+        format.html do
+          if @category.nil?
+             redirect_to(root_path, alert: "No se encontró proceso de selección con ese ID.")
+          end
+        end
+      end
     end
 
     def set_selection_process
@@ -93,16 +103,14 @@ class CategoriesController < ApplicationController
     # Un usuario solo puede modificar operar con las Organizaciones que haya creado.
     def check_property
       if !params[:selection_process_id].blank? #|| ADMIN
-      #@selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
+      @selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
       respond_to do |format|
         format.html do
-          unless @category.selection_process.organizer.id == @selection_process.organizer.id
-             redirect_to(user_organizer_path(@selection_process.organizer.user,@selection_process.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+          unless @selection_process == @category.selection_process
+             redirect_to(user_organizer_path(@selection_process.organizer.user,@selection_process.organizer), alert: "Solo puedes operar sobre las categorías del proceso seleccionado.")
           end
         end
         end
       end
     end   
-
-
 end

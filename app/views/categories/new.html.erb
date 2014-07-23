@@ -3,4 +3,8 @@
 
 <%= render 'form' %>
 
+<% if params[:selection_process_id] %>
+<%= link_to ' Ir a Categorias', selection_process_categories_path(params[:selection_process_id]), :class => 'btn btn-default btn glyphicon glyphicon-list' %>
+<% else %>
 <%= link_to ' Ir a Categorias', categories_path, :class => 'btn btn-default btn glyphicon glyphicon-list' %>
+<% end %>
