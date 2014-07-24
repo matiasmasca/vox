@@ -34,25 +34,25 @@
   </div><!-- /.navbar -->
 
   <div class="container-fluid">
-    <div class="row">
+    <div class="row-fluid">
         <!-- Barra lateral -->
-        <div class="col-xs-3 col-md-3 sidebar-offcanvas" id="sidebar">
-            <!-- Sidebar content -->
+        <div class="col-xs-12 col-sm-4 col-md-3" id="sidebar">
+           <!-- Sidebar content -->
            <%= render partial: "paginas/menu", object: @user %> 
         </div>
 
-                  <!-- Contenido -->
-        <div class="col-md-9">
+        <!-- Add the extra clearfix for only the required viewport -->
+        <div class="clearfix visible-xs-block"></div>
+
+        <!-- Contenido -->
+        <div class="col-xs-12 col-sm-8 col-md-9">
              <%= flash_messages %> 
              <%= yield %>
         </div>
-
-
-
-
     </div>
   </div>
 
+ <!-- Pie -->
  <hr>
    <footer class="bottom">
      <div class="container hidden-xs">

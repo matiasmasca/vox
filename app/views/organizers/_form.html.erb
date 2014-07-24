@@ -1,5 +1,5 @@
 <div>
-  <%= form_for @organizer, :html => { :class => 'form-horizontal' :role => 'form' }, :multipart => true do  |f| %>
+  <%= form_for @organizer, :html => { :class => 'form-horizontal', :role => 'form' }, :multipart => true do |f| %>
     <% if @organizer.errors.any? %>
       <div class="alert alert-danger">
         <h2><%= pluralize(@organizer.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
