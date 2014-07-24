@@ -14,7 +14,7 @@
   <% unless @category.nil? %>
    <div class="field">Pertenece al proceso:
     <b><%= link_to @category.selection_process.name_process, selection_process_path(@category.selection_process) %></b>
-    <%= f.hidden_field :selection_process_id, value: @category.selection_process_id %> 
+    <% #= f.hidden_field :selection_process_id, value: @category.selection_process_id #= f.hidden_field :selection_process_id, value: params[:selection_process_id] //cuando creo no entiende este parametro %> 
     </div>
   <% end %>
 

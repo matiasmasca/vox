@@ -68,8 +68,11 @@ class CategoriesController < ApplicationController
     @category.destroy
     respond_to do |format|
       format.html do
-        redirect_to(selection_process_category_path(@selection_process), notice: 'Categoría borrada correctamente.') if !params[:selection_process_id].nil?
-        redirect_to(categories_url, notice: 'Categoría borrada correctamente, por el Admin.') if params[:selection_process_id].nil?
+        if !params[:selection_process_id].nil? || @selection_process
+          redirect_to(selection_process_category_path(@selection_process), notice: 'Categoría borrada correctamente.') 
+        else
+          redirect_to(categories_url, notice: 'Categoría borrada correctamente, por el Admin.')
+        end
       end
       format.json { head :no_content }
     end

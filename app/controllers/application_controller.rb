@@ -8,19 +8,18 @@ class ApplicationController < ActionController::Base
 
   before_filter :load_sidebar
 
-  private
+ private
   def load_sidebar
   	#Aca tendrías que poner todo lo que necesitas pre-cargar en la barra lateral.
   	#Ojo que se ejecuta en cada llamado...
   	set_selection_process if params[:selection_process_id]
   end
 
-
   def set_selection_process
       @selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
       if !@selection_process.nil? && @user.nil?
         @organizer = @selection_process.organizer
-        @user =  User.find_by_id(@selection_process.organizer.user_id)
+        @user = User.find_by_id(@selection_process.organizer.user_id)
       end
-    end
+  end
 end
