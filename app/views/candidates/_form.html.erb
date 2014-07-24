@@ -3,7 +3,6 @@
   <% if @candidate.errors.any? %>
     <div id="alert alert-danger">
       <h2><%= pluralize(@candidate.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
-
       <ul>
       <% @candidate.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -23,7 +22,7 @@
     <div class="field">
       <%= f.label :category_id, "Para la categoría: ", class: 'control-label' %>
       <%= @category.name %>
-      <%= f.hidden_field :category_id, value: @category %> 
+      <%= f.hidden_field :category_id, value: @category.id %> 
     </div>
   <% else %>
   <div>
