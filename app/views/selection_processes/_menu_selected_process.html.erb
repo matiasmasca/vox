@@ -8,7 +8,8 @@
     <!--Categorias del proceso-->
    <%= link_to ' Categorías', selection_process_categories_path(@selection_process), :class => 'btn btn-link btn glyphicon glyphicon-list list-group-item' %>
    <!--Candidatos del proceso-->
-	 <%= link_to ' Candidatos', category_candidates_path(@selection_process.category), :class => 'btn btn-link btn glyphicon glyphicon-list list-group-item' %>
+   <!--Candidatos where: Category.selection_process_id == selection_process -->
+	 <%= link_to ' Candidatos', selection_processes_candidates_url(@selection_process), :class => 'btn btn-link btn glyphicon glyphicon-list list-group-item' %>
 	<p>
   </div>
 <% end %>

@@ -1,6 +1,7 @@
 # encoding: utf-8
 class PaginasController < ApplicationController
   before_action :set_user, only: [:user_dashboard]
+  before_action :set_selection_process , only: [:user_dashboard]
 
   def home
   end
@@ -20,7 +21,7 @@ class PaginasController < ApplicationController
       
       #Aca podrias redirigir para otro lado si no hay usuario con ese ID, y cosas asi
             
-   end
+  end
 
   def jurado
   	# ir al dashboard del jurado.
@@ -36,6 +37,8 @@ class PaginasController < ApplicationController
     def set_user
       @user = User.find_by_id(params[:id])
     end
+
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

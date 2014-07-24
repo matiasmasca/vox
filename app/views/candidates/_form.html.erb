@@ -32,7 +32,6 @@
       <%= f.label :category_id, "Cod. Categoría", class: 'control-label' %><br>
       <%= f.text_field :category_id,  class: "form-control", size: "10", placeholder: "Ingrese el cod. de categoría a la que pertenecerá este candidato."  %>
     </div>
-    
   <% end %>
 
   <div class="field">
@@ -46,7 +45,7 @@
   <div class="field">
       <%= f.label :avatar_file, "Avatar usuario:", class: 'control-label' %><br>
       <%= f.file_field :avatar_file , accept: 'image/png,image/gif,image/jpeg' %>
-    </div>
+  </div>
   <div class="actions">
    <%= button_tag ' Guardar Cambios', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>
   </div>

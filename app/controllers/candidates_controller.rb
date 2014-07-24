@@ -13,7 +13,14 @@ class CandidatesController < ApplicationController
       @candidates = Candidate.where(category_id: @category)
     else
       @candidates = Candidate.all
-    end  
+    end
+    
+    if !params[:selection_process_id].blank?
+      #<!--Candidatos where: category.selection_process_id == selection_process -->
+      @categories = Category.where(selection_process_id: params[:selection_process_id])
+      @candidates = Candidate.where(category_id: @categories)
+    end
+
   end
 
   # GET /candidates/1
@@ -84,7 +91,7 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :bios, :url_image, :category_id, :avatar_file)
+      params.require(:candidate).permit(:name, :bios, :url_image, :category_id, :selection_process_id, :avatar_file)
     end
 
     # Filtro de Propiedad.
