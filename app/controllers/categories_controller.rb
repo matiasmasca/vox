@@ -67,14 +67,8 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html do
-        if !params[:selection_process_id].nil? || @selection_process
-          redirect_to(selection_process_category_path(@selection_process), notice: 'Categoría borrada correctamente.') 
-        else
-          redirect_to(categories_url, notice: 'Categoría borrada correctamente, por el Admin.')
-        end
-      end
-      format.json { head :no_content }
+        format.html { redirect_to :back, status: 303, notice: 'Categoría borrada correctamente.' }
+        format.json { head :no_content }
     end
   end
 

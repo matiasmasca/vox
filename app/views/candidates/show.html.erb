@@ -16,6 +16,6 @@
 <p>
   <%= @candidate.bios %>
 </p>
-<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>|
+<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>
 <%= link_to ' Editar', edit_candidate_path(@candidate), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
-<%= link_to ' Ir a candidatos', candidates_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %>
+<%= link_to ' Ir a candidatos', category_candidates_path(@candidate.category_id), :class => 'btn btn-link btn glyphicon glyphicon-list' %>

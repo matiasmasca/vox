@@ -72,15 +72,14 @@ class CandidatesController < ApplicationController
   def destroy
     @candidate.destroy
     respond_to do |format|
-      if !params[:category_id].nil? 
-          format.html {  redirect_to(selection_processes_candidates_url(@category.selection_process), notice: 'Categoría borrada correctamente.') }
-        else
-          format.html { redirect_to candidates_url, notice: 'Candidato borrado correctamente.' }
-      end
-           format.json { head :no_content }
-
-
-
+      format.html { redirect_to :back, status: 303, notice: 'Candidato borrado correctamente.' }
+      #if !params[:category_id].nil? 
+          #format.html {  redirect_to(category_candidates_path(@category), notice: 'Categoría borrada correctamente.')          
+       # else
+          #format.html { redirect_to candidates_url, notice: 'Candidato borrado correctamente.' }
+      #end
+      format.json { head :no_content }
+       
     end
   end
 

@@ -60,7 +60,8 @@ class OrganizersController < ApplicationController
   def destroy
     @organizer.destroy
     respond_to do |format|
-      format.html { redirect_to organizers_url, notice: 'Organización borrada correctamente.' }
+      format.html { redirect_to :back, status: 303, notice: 'Organización borrada correctamente.' }
+      #format.html { redirect_to organizers_url, notice: 'Organización borrada correctamente.' }
       format.json { head :no_content }
     end
   end
