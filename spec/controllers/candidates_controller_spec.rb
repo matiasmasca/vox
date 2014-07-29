@@ -51,6 +51,9 @@ describe CandidatesController do
 	  end
 
 	  describe "DELETE Destroy" do
+	  	before(:each) do
+      	  request.env["HTTP_REFERER"] = "/candidates"
+    	end
 	     it "borra el registro category solicitado" do
 	        candidate = Candidate.create! valid_attributes
 	        expect {

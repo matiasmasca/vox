@@ -38,6 +38,10 @@ describe CategoriesController do
   end
 
   describe "DELETE Destroy" do
+    before(:each) do
+      request.env["HTTP_REFERER"] = "/categories"
+    end
+    
      it "borra el registro category solicitado" do
         category = Category.create! valid_attributes
         expect {

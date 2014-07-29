@@ -143,6 +143,10 @@ describe UsersController do
   end
 
   describe "DELETE destroy" do
+    before(:each) do
+      request.env["HTTP_REFERER"] = "/users"
+    end
+
     it "destroys the requested user" do
       user = User.create! valid_attributes
       expect {

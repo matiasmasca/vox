@@ -59,6 +59,10 @@ describe OrganizersController do
   end
 
   describe "DELETE Destroy" do
+    before(:each) do
+      request.env["HTTP_REFERER"] = "/organizers"
+    end
+
       it "borra el registro organizer solicitado" do
         organizer = Organizer.create! valid_attributes
         expect {

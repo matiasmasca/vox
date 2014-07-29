@@ -21,5 +21,7 @@ class ApplicationController < ActionController::Base
         @organizer = @selection_process.organizer
         @user = User.find_by_id(@selection_process.organizer.user_id)
       end
+      #flash.notice = "Pase por set_selection_process"
   end
+
 end

@@ -90,10 +90,16 @@ class CandidatesController < ApplicationController
     end
 
     def set_category
-      if !params[:category_id].blank? #|| ADMIN
-         @category = Category.find_by_id(params[:category_id])
+    if params[:category_id]
+      @category = Category.find_by_id(params[:category_id]) 
+      unless @category.selection_process.nil?
+        @selection_process = @category.selection_process
+        @organizer = @selection_process.organizer
+        @user = User.find_by_id(@selection_process.organizer.user_id)
       end
-    end 
+      #flash.notice = "Pase por set_category"
+    end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params

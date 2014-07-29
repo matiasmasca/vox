@@ -2,7 +2,7 @@
 <!--tiene que mostrar solo si hay cagoria seleccionada-->
 
 <% unless @category.nil? %>
-<div class="bs-example">
+<div>
   <div class="row">
 	<% @category.candidate.each do |candidate| 
 	    @candidate = candidate       

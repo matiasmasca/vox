@@ -143,6 +143,10 @@ describe SelectionProcessesController do
   end
 
   describe "DELETE destroy" do
+    before(:each) do
+      request.env["HTTP_REFERER"] = "/selection_processes"
+    end
+
     it "destroys the requested selection_process" do
       selection_process = SelectionProcess.create! valid_attributes
       expect {
