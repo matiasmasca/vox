@@ -144,6 +144,7 @@ describe UsersController do
 
   describe "DELETE destroy" do
     before(:each) do
+      #Esto es necesario porque despues de borrar hace un :back
       request.env["HTTP_REFERER"] = "/users"
     end
 

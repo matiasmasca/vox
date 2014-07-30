@@ -1,11 +1,12 @@
 #encoding: utf-8
 Dado(/^que existe una Categoría con: "(.*?)", "(.*?)", "(.*?)", "(.*?)"$/) do |nombre, descripcion, plazas, proceso_id|
     #step %{existe un premio llamado "Premios cacatua del año" que se realizara en "Av. Siempre Viva 742"}
+    #puts(@selection_process.inspect)
     @category = Category.create!({ 
     :name => nombre, 
     :description => descripcion,
     :bench => plazas,
-    :selection_process_id => @selection_process.id.to_i #Aca tendria que ir un proceso mockeado.
+    :selection_process_id => @selection_process.id #Aca tendria que ir un proceso mockeado.
     })
 end
 
@@ -63,7 +64,7 @@ Cuando(/^yo edito la (\d+)da\. Categoría$/) do |arg1|
              #categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6) > a:nth-child(1)
 end
 
-Dado(/^que existe una Categoría llamada "(.*?)" con "(.*?)" plazas, sin descripción definidoa$/) do |nombre, plazas|
+Dado(/^que existe una Categoría llamada "(.*?)" con "(.*?)" plazas, sin descripción definida$/) do |nombre, plazas|
   @category.update_attributes!({ :description => nil })
 end
 

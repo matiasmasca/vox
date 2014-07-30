@@ -16,7 +16,7 @@ Escenario: editar una Categoría
   Entonces veo que el nombre cambio y el nro. de plazas cambio.
 
 Escenario: agrego dato que faltaba
-  Dado que existe una Categoría llamada "Mejor Categoroia" con "3" plazas, sin descripción definidoa
+  Dado que existe una Categoría llamada "Mejor Categoroia" con "3" plazas, sin descripción definida
   Y que estoy en la pantalla de "administración de Categorías"
   Cuando yo edito una Categoría
   Y cambio la descripción por "Premia  a las mejores Categorías del año"

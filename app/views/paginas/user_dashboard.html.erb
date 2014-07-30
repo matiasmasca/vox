@@ -17,10 +17,10 @@
   </thead>
 
   <tbody >
-   <% unless @user.organizer.nil? %>
-      <tr>
-        <td><%= link_to ' Mis Categorías', selection_process_categories_path(@user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
+   <% unless !@user.organizer.nil? && !@user.organizer[0].nil?  %>
+      <tr>    
         <% unless @user.organizer.selection_process.empty? %>
+        <td><%= link_to ' Mis Categorías', selection_process_categories_path( @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
         <td><%= link_to ' Agregar Categoría', new_selection_process_category_path(@user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
         </td>
         <td><%= link_to ' Modificar Categoría', edit_selection_process_category_path(@user.organizer, @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer.selection_process[0] %>
@@ -33,12 +33,20 @@
         </td>                                                            
         <td><%= link_to ' Modificar Proceso', edit_organizer_selection_process_path(@user.organizer, @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer.selection_process[0] %>
         </td>
-      </tr>      
-      <tr>
+      </tr>  
+
+   <% end %>
+
+
+   <% unless @user.organizer.nil? %>    
+    <tr>
       <td><%= link_to ' Mi Organización',  user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer %>
         <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer %>
       </tr>
-
+    <% else %>
+      <tr>
+        <td><%= link_to ' Crear Organización',  new_user_organizer_path(@user), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
+      </tr>
 	  <% end %>
 
     <tr> 

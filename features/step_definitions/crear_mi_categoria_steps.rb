@@ -1,5 +1,5 @@
 # encoding: utf-8
-Dado(/^completo los datos de mi categoría con "(.*?)", "(.*?)", "(.*?)", "(.*?)"$/) do |nombre, descripcion, plazas, id|
+Dado(/^completo los datos de mi categoría con "(.*?)", "(.*?)", "(.*?)"$/) do |nombre, descripcion, plazas|
    fill_in "category_name", :with => nombre
    fill_in "category_description", :with => descripcion
    fill_in "category_bench", :with => plazas

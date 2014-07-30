@@ -20,7 +20,7 @@ Escenario: borrar premio
 
 #Tengo varios, borrar el primero
 Escenario: borrar premio el 2do. premio  
-  Dado que existe un Proceso: "Premios Reina del Desierto 2014", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-ARG".
+  Dado que existe un Proceso: "Premios Reina del Desierto 2014", "Alguna ciudad", "15"  asociado a mi organizacion "Nerv Corp.".
   Cuando hago click en Borrar para "Premios ACME"
   Entonces se borra el premio "Premios ACME"
   Entonces me muestra el mensaje "Proceso borrado correctamente."

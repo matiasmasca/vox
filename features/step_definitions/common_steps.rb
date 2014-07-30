@@ -71,7 +71,7 @@ Cuando(/^(?:presiono|que presione) el botón "(.*?)"$/) do |button|
   #save_and_open_page
   #click_button button #me da problemas con Capybara.
   #find_button(button).click #me da problemas con Capybara.
-  click_on(button)
+  click_on(button) # clicks on either links or buttons
   #save_and_open_page
 end
 
@@ -108,9 +108,11 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
       visit("/paginas/home")
     when "dashboard usuario"
       #Ojo User y SelecctionProcess tiene que estar definido.
-      visit(paginas_user_dashboard_path(@user) )
+      #puts(@user.inspect)
+      visit("/paginas/user_dashboard/#{@user.id}")
+
     when "Modificar Proceso"
-      visit("/paginas/user_dashboard")
+      visit("/paginas/user_dashboard/#{@user.id}")
       #save_and_open_page
     else
       visit("/¿A donde queres ir?")
@@ -146,7 +148,8 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   when "Organizador"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
    step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
-   step %{que estoy en la pantalla de "dashboard usuario"}
+   #step %{que estoy en la pantalla de "dashboard usuario"}
+
   when "Jurado"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
   when "Admin"

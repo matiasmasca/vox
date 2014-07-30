@@ -45,7 +45,7 @@ end
 Entonces(/^veo que el "(.*?)" cambio\.$/) do |atributo|
   #step %{que estoy en la pantalla de "administración de Candidatos"}
   #save_and_open_page
-  find("div.container:nth-child(2) > p:nth-child(2)").should have_content(@update_name) if atributo == "nombre"
+  find("div.col-xs-12:nth-child(3) > p:nth-child(3)").should have_content(@update_name) if atributo == "nombre"
   find("div.container:nth-child(2) > p:nth-child(3)").should have_content(@update_bios) if atributo == "bios"
 
   #find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should have_content(@category.name)

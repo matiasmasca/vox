@@ -10,6 +10,19 @@
         </ul>
      </div>
     <% end %>
+   <% if params[:user_id].blank? %>
+      <div class="field">
+        <%= f.label :user_id, "ID Usuario", class: 'control-label' %><br>
+        <%= f.text_field :user_id, class: 'form-control' %>
+      </div>
+    <% else%>
+      <div class="field">
+        <%= f.label :user_id, "Del Usuario: ", class: 'control-label' %>
+        <%= params[:user_id] %>
+        <%= f.hidden_field :user_id, value: params[:user_id] %> 
+      </div>
+    <% end %>
+
     <div class="field">
       <%= f.label :name, "Nombre de la Organización", class: 'control-label' %><br>
       <%= f.text_field :name, class: 'form-control' %>
