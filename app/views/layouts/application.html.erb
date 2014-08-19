@@ -14,21 +14,31 @@
 <body>
   <div class="navbar navbar-inverse" role="navigation">
 	 <div class="container">
-	  <div class="navbar-header">
+	  <div class="navbar-header navbar-left">
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 	      <span class="sr-only">Toggle navigation</span>
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="#">VOX: CMS para Procesos de Selección</a>
+	    <a class="navbar-brand" href="#">VOX:  <small>CMS para Procesos de Selección</small></a>
 	  </div>
 	  <div class="navbar-collapse collapse">
-	    <ul class="nav navbar-nav">
-	      <li class="active"><%= link_to 'Inicio',  paginas_home_path %></li>
-	      <li><%= link_to 'Acerca de',  paginas_about_path %></li>
-	      <li><%= link_to 'Contacto',  paginas_contact_path %></li>
+	    <ul class="nav navbar-nav navbar-left">
+	      <li class="active"><%= link_to ' Inicio',  paginas_home_path, class: "glyphicon glyphicon-home" %></li>
 	    </ul>
+      
+      <!--/Login -->
+      <% if user_signed_in? %>
+        <ul class="navbar-text navbar-right">
+        <li class="active">Logueado como: <strong><%= current_user.email %></strong>.</li>
+        <li><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+      <% else %>
+          <%= render partial: "layouts/login" %> 
+      <% end %>
+      <!--/login -->
+
 	  </div><!--/.nav-collapse -->
 	 </div><!-- /.container -->
   </div><!-- /.navbar -->
@@ -56,7 +66,12 @@
  <hr>
    <footer class="bottom">
      <div class="container hidden-xs">
-       <p class="navbar-text pull-left">Powered by VOX - 2014 <a href="https://github.com/matiasmasca/vox">VOX</a></p>
+      <ul class="nav navbar-nav pull-left">
+        <li><a href="https://github.com/matiasmasca/vox">Powered by VOX - 2014</a></li>
+        <li><%= link_to 'Acerca de',  paginas_about_path %></li>
+        <li><%= link_to 'Contacto',  paginas_contact_path %></li>
+      </ul>
+
        <p class="navbar-text pull-center">Únete a <a href="http://www.comunidadtic.com.ar">ComunidadTIC</a><p/>
        <a href="https://twitter.com/matiasmasca" class="navbar-btn btn-info btn pull-right">@matiasmasca </a>
     </div>

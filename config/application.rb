@@ -23,7 +23,9 @@ module Vox
 	# config/application.rb
 	# TODO Remove this in Rails 4.1
 	config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']
-    
+   
+   #Esto es por Devise y Heroku
+config.assets.initialize_on_precompile = false 
   end
 end
 
@@ -56,8 +58,8 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
 =end
 #--
 
-#Agragar Bootstrap a las validaciones
-
+#Agregar Bootstrap a las validaciones
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| 
   "<div class=\"has-error form-group\">#{html_tag}</div>".html_safe
 }
+

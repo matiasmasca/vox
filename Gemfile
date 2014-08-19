@@ -4,6 +4,8 @@ ruby '1.9.3' #Versión de Ruby.
 
 gem 'rails', '4.0.1'
 
+gem 'devise' #Para registración y autenticación de usuarios.
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

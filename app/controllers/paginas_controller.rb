@@ -1,7 +1,8 @@
 # encoding: utf-8
 class PaginasController < ApplicationController
-  before_action :set_user, only: [:user_dashboard]
+  before_action :set_user, only: [:user_dashboard, :admin_dashboard]
   before_action :set_selection_process , only: [:user_dashboard]
+  before_action :authenticate_user!, only: [:user_dashboard, :admin_dashboard]
 
   def home
   end
@@ -21,6 +22,9 @@ class PaginasController < ApplicationController
       
       #Aca podrias redirigir para otro lado si no hay usuario con ese ID, y cosas asi
             
+  end
+
+  def admin_dashboard
   end
 
   def jurado

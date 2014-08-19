@@ -1,0 +1,48 @@
+<% unless @user.nil? %>
+<div class="jumbotron">
+  <h2>Bienvenido Admin.</h2>
+  <h1><%= @user.nombre unless @user.nombre.nil? %>, <%= @user.apellido unless @user.nombre.nil?  %></h1>
+  <p>esta es una pagina que verian los usarios registrado, es un diseño temporal hasta tener un diseño definitivo..</p>
+</div>
+
+<hr>
+<div class="table-responsive">
+  <table id="selection-processes-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Usuario Admin.</th>
+    </tr>
+  </thead>
+
+  <tbody >
+      <tr>
+        <td>  <%= link_to ' Candidatos', candidates_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %></td>
+        <td><%= link_to ' Agregar Candidato', new_candidate_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+      </tr>
+      <tr>
+        <td>  <%= link_to ' Categorías', categories_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %></td>
+        <td><%= link_to ' Agregar Categoría', new_category_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+      </tr>
+
+      <tr>
+        <td><%= link_to ' Procesos de Selección', selection_processes_path, :class => 'btn btn-default btn glyphicon glyphicon-star' %></td>
+        <td><%= link_to ' Agregar Procesos de Selección', new_selection_process_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+      </tr>
+      <tr>
+        <td><%= link_to ' Organizaciones', organizers_path, :class => 'btn btn-default btn glyphicon glyphicon-list-alt' %></td>
+        <td><%= link_to ' Registrar Organización', new_organizer_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+      </tr>
+      <tr>
+        <td><%= link_to ' Usuarios', users_path, :class => 'btn btn-default btn glyphicon glyphicon-user' %>
+        <td><%= link_to ' Registrar Usuario', new_user_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+      </tr>
+
+  </tbody>
+  </table>
+</div>
+<br>
+<hr>
+<% else %>
+Usuario nulo, a donde vas?
+<% end %>
+

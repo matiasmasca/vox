@@ -42,7 +42,7 @@
     <a class="active list-group-item"><b>Usuario</b></a>
     <div>
       <%= link_to ' Mi Perfil',  user_path(@user), :class => "btn btn-default btn glyphicon glyphicon-user list-group-item" if @user.id  %>
-      <%= link_to " Cerrar sesión", "/", :class => "btn btn-default btn glyphicon glyphicon-log-out list-group-item" %>
+      <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'btn btn-default btn glyphicon glyphicon-log-out list-group-item'  %>
     </div>
   </div>
    </div>

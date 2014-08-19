@@ -1,68 +1,28 @@
-<h2>Bienvenido a VOX</h2>
-esta es una pagina de inicio Estatica temporal, hasta que tenga su diseño y se convierta en dinamica.
-
-<div class="table-responsive">
-  <table id="selection-processes-list" class="table table-striped">
-  <thead>
-    <tr>
-      <th>Usuario Admin.</th>
-    </tr>
-  </thead>
-
-  <tbody >
-      <tr>
-        <td>  <%= link_to ' Candidatos', candidates_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %></td>
-        <td><%= link_to ' Agregar Candidato', new_candidate_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
-      </tr>
-      <tr>
-        <td>  <%= link_to ' Categorías', categories_path, :class => 'btn btn-link btn glyphicon glyphicon-list' %></td>
-        <td><%= link_to ' Agregar Categoría', new_category_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
-      </tr>
-
-      <tr>
-        <td><%= link_to ' Procesos de Selección', selection_processes_path, :class => 'btn btn-default btn glyphicon glyphicon-star' %></td>
-        <td><%= link_to ' Agregar Procesos de Selección', new_selection_process_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
-      </tr>
-      <tr>
-        <td><%= link_to ' Organizaciones', organizers_path, :class => 'btn btn-default btn glyphicon glyphicon-list-alt' %></td>
-        <td><%= link_to ' Registrar Organización', new_organizer_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
-      </tr>
-      <tr>
-        <td><%= link_to ' Usuarios', users_path, :class => 'btn btn-default btn glyphicon glyphicon-user' %>
-        <td><%= link_to ' Registrar Usuario', new_user_path, :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
-      </tr>
-
-  </tbody>
-  </table>
+<% unless user_signed_in? %>
+<div class="jumbotron">
+  <h1>¿Eres nuevo en Vox?</h1>
+        <p class="lead">Para poder participar de algun proceso de selección deberás tener registrado tu usuario y contraseña.</p>
+        <p class="lead">Vox es una plataforma donde podrás votar por tus candidatos favoritos en diferentes procesos de elección.</p>
+        <p><%= link_to "Crear usuario", new_user_registration_path, :class => 'btn btn-lg btn-warning'  %></p>
+        <h2> Ya tienes cuenta</h2>
+        <p> Inicia sesión aqui <%= link_to "Iniciar sesión", new_user_session_path, :class => 'navbar-link'  %>
 </div>
-<br>
 <hr>
+<% end %>
+
+<h2>Procesos de Selección en VOX</h2>
+Proximamente se listarán los procesos de selección, de la plataforma, para que puedas participar de ellos o ver los resultados.
 <br>
 <div class="table-responsive">
   <table id="selection-processes-list" class="table table-striped">
   <thead>
     <tr>
-      <th>Usuario Organizador</th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody >
-      <tr>
-        <td><%= link_to ' Mis procesos', organizer_selection_processes_path(1), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
-        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(1,1), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
-      </tr>
-      <tr>
-        <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(1,1), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
-      </tr>
       <tr>
         <td></td>        
-      </tr>
-      <tr>
-      
-        <td><%= link_to ' Mi Perfil',  edit_user_path(1), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
-      </tr>
-            <tr>
-        <td><%= link_to ' Iniciar sesión', "/paginas/user_dashboard/2/", :class => 'btn btn-default btn glyphicon glyphicon-log-in' %>
       </tr>
 
   </tbody>

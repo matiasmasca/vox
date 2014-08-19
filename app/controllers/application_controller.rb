@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :load_sidebar
 
+
+
  private
   def load_sidebar
   	#Aca tendrías que poner todo lo que necesitas pre-cargar en la barra lateral.
@@ -22,6 +24,33 @@ class ApplicationController < ActionController::Base
         @user = User.find_by_id(@selection_process.organizer.user_id)
       end
       #flash.notice = "Pase por set_selection_process"
+  end
+
+  protected
+
+  # A donde va cuando inicia la sesión.
+  def after_sign_in_path_for(resource)
+    # return the path based on resource
+    case @user.tipo_usuario_id
+    when 1
+      path = "/paginas/admin_dashboard/#{@user.id}" 
+    when 2
+      path = "/paginas/jury_dashboard/#{@user.id}" 
+    when 3
+      path = "/paginas/user_dashboard/#{@user.id}" 
+      #redirect(path)
+      #redirect paginas_user_dashboard_path(@user)
+    else
+      request.referrer       
+    end
+
+    path 
+  end
+
+  # A donde va cuando finaliza la sesión.
+  def after_sign_out_path_for(resource_or_scope)
+    #request.referrer
+    "/"
   end
 
 end

@@ -15,18 +15,21 @@ module ApplicationHelper
     end
     nil
   end
-#--
 #-- Boostrap: Poner  <%= flash_messages %> en el layout.
 
-  # tabla sin registros:
+# tabla sin registros:
   #Muestra un mensaje se que aun no hay registros cargados en una tabla.
   #@to-do: es recomendable refactorizar este helper y llevarlo a un un metodo de instancia para un Controller. El helper se usa para formatear la vista.
   def tabla_sin_registros(modelo)
     unless modelo.first    
-       flash[:notice] = "Ud. no tiene registros creados.\n \n Cuando los haya creado se listaran aqui." 
+       #flash[:notice] = "Ud. no tiene registros creados.\n \n Cuando los haya creado se listaran aqui." 
        #A la vista tenes que mandar por content_tag (ActionView::Helpers::TagHelper)
        @content = content_tag(:tr, content_tag(:td, "Ud. no tiene registros creados."))
        @content << content_tag(:tr, content_tag(:td, "Cuando los haya creado se listaran aqui."))
     end
   end  
+
+#
+  
+
 end

@@ -1,10 +1,15 @@
 Vox::Application.routes.draw do
+  devise_for :users
+  
   #paginas estaticas
   get "paginas/home"
   get "paginas/about"
   get "paginas/contact"
   get "paginas/user_dashboard"
-  get 'paginas/user_dashboard/:id' => 'paginas#user_dashboard' 
+  get 'paginas/user_dashboard/:id' => 'paginas#user_dashboard'
+
+  get "paginas/admin_dashboard"
+  get 'paginas/admin_dashboard/:id' => 'paginas#admin_dashboard' 
   
   #Resources, crea los routes a 7 acciones por defecto.
   resources :users

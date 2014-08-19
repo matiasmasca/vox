@@ -1,6 +1,7 @@
 # encoding: utf-8
 # Ojo con los before y after action que se ejecutaran en cada acción, en cada llamada a los metodos.
 class CandidatesController < ApplicationController
+  
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
   before_action :set_category
   before_action :check_property,  only: [:show, :edit, :update, :destroy]
