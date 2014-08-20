@@ -25,7 +25,10 @@ module Vox
 	config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']
    
    #Esto es por Devise y Heroku
-config.assets.initialize_on_precompile = false 
+   config.assets.initialize_on_precompile = false 
+
+   #Para poner Devise en español.
+   config.i18n.default_locale = :es
   end
 end
 

@@ -1,29 +1,98 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
+<%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+<div class="form-group">
+    <%= f.label :usuario, "Nombre de Usuario", class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.text_field :usuario,  class: "form-control", size: "10", maxlength: "110" , placeholder: "Ingrese el nombre que utilizará para identificarse en el sistema"%>
+    </div>
+ </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<hr>
+<div class="form-group">
+    <%= f.label :email, "Dirección de correo electrónico", class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-6">
+        <%= f.email_field :email, class: 'form-control', size: "10", maxlength: "110", placeholder: "Ingrese una dirección de correo electrónico valida, nos comunicaremos con usted por ese medio."  %>
+    </div>
+</div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+<div class="form-group">
+    <%= f.label :password, "Clave de acceso", class: 'col-sm-2 control-label'  %><i>(deje el campo en blanco si no quiere cambiar su clave)</i><br/>
+    <div class="col-sm-6">
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
+    </div>
+</div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+<div class="form-group">
+    <%= f.label :password_confirmation, "Repita clave", class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
+    </div>
+</div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+<div class="form-group">
+    <%= f.label :current_password,"Su clave actual", class: 'col-sm-2 control-label' %> <i>(Necesitamos tu clave actual, para salvar los cambios.)</i>
+    <div class="col-sm-6">
+        <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+    </div>
+</div>
 
-  <div><%= f.submit "Update" %></div>
+<hr>
+  <div class="form-group">
+    <%= f.label :nombre, "Nombre/s", class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.text_field :nombre,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese su nombre o nombres, para personalizar algunas partes del sistema." %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :apellido, "Apellido", class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.text_field :apellido,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese su apellido/s, para personalizar algunas partes del sistema." %>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :facebook, "Usuario en Facebook", class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.text_field :facebook,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese la URL de su perfil de facebook." %>
+    </div>
+  </div>
+  <div class="form-group">
+  <%= f.label :twitter, "Usuario en Twitter", class: 'col-sm-2 control-label' %><br>
+   <div class="col-sm-6 input-group">    
+    <span class="input-group-addon">@</span>
+    <%= f.text_field :twitter,  class: "form-control", size: "20", maxlength: "15", placeholder: "Ingrese su usuario de twitter, sin el @" %>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <% if @user.tipo_usuario_id == 1 %>
+    <% tipos_usuarios = {'Admin'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'} %>
+    <%= f.label :tipo_usuario_id, "Tipo Usuario" , class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.select :tipo_usuario_id, tipos_usuarios, selected: @user.tipo_usuario_id, class: 'form-control' %>
+    </div>
+    <% end %>
+  </div>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+        <%= f.submit "Actualizar", class: "btn btn-primary" %>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+        <%= render "users/shared/links" %>
+    </div>
+</div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h5>Cancelar mi cuenta.</h5>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>¿Descontento con el servicio? <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estas seguro de eliminar tu cuenta?" }, method: :delete, class: 'btn btn-default btn-xs' %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left'  %>

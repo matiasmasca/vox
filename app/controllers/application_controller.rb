@@ -8,7 +8,10 @@ class ApplicationController < ActionController::Base
 
   before_filter :load_sidebar
 
+  before_action :set_user
 
+  #Parametros para formularios de Devise.
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
  private
   def load_sidebar
@@ -21,9 +24,15 @@ class ApplicationController < ActionController::Base
       @selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
       if !@selection_process.nil? && @user.nil?
         @organizer = @selection_process.organizer
-        @user = User.find_by_id(@selection_process.organizer.user_id)
+        #@user = User.find_by_id(@selection_process.organizer.user_id)
       end
       #flash.notice = "Pase por set_selection_process"
+  end
+
+  def set_user
+      if user_signed_in?
+        @current_user = current_user  
+      end
   end
 
   protected
@@ -52,5 +61,17 @@ class ApplicationController < ActionController::Base
     #request.referrer
     "/"
   end
+
+  #Parametros para formularios de Devise.
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:usuario, :nombre, :apellido, :email, :facebook, :twitter, :tipo_usuario_id, :password, :password_confirmation)
+    end
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:usuario, :nombre, :apellido, :email, :facebook, :twitter, :tipo_usuario_id, :password, :password_confirmation, :current_password)
+    end
+  end
+
+
 
 end

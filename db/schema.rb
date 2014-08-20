@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140819175529) do
   create_table "selection_processes", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration"
+    t.integer  "duration",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
@@ -74,10 +74,9 @@ ActiveRecord::Schema.define(version: 20140819175529) do
     t.string   "nombre"
     t.string   "apellido"
     t.string   "email"
-    t.string   "clave"
     t.string   "facebook"
     t.string   "twitter"
-    t.integer  "tipo_usuario_id"
+    t.integer  "tipo_usuario_id",        default: 3,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false

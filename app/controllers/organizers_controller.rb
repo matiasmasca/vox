@@ -72,7 +72,7 @@ class OrganizersController < ApplicationController
     # Para evitar repetir este código en cada acción.
     def set_organizer
       @organizer = Organizer.find_by_id(params[:id])
-      @user = @organizer.user
+      #@user = @organizer.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -84,7 +84,7 @@ class OrganizersController < ApplicationController
     # Un usuario solo puede modificar operar con las Organizaciones que haya creado.
     def check_property
       if !params[:user_id].blank? #|| ADMIN
-      @user = User.find_by_id(params[:user_id])
+      #@user = User.find_by_id(params[:user_id])
       respond_to do |format|
         format.html do
           unless @user.organizer == @organizer

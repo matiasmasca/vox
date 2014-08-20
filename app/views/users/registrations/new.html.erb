@@ -1,18 +1,85 @@
-<h2>Sign up</h2>
+<h2>Crea tu cuenta de Vox</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+<%= devise_error_messages! %>
+<hr>
+<h3> Datos Obligatorios:</h3>
+<div class="form-group">
+    <%= f.label :usuario, "Nombre de Usuario", class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.text_field :usuario,  class: "form-control", size: "10", maxlength: "110" , placeholder: "Ingrese el nombre que utilizará para identificarse en el sistema"%>
+    </div>
+ </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+<div class="form-group">
+    <%= f.label :email, "Dirección de correo electrónico", class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-6">
+        <%= f.email_field :email, class: 'form-control', size: "10", maxlength: "110", placeholder: "Ingrese una dirección de correo electrónico valida, nos comunicaremos con usted por ese medio."  %>
+    </div>
+</div>
 
-  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+<div class="form-group">
+    <%= f.label :password, "Clave de acceso", class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-6">
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
+    </div>
+</div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+<div class="form-group">
+    <%= f.label :password_confirmation, "Confirme su clave de acceso",class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
+    </div>
+</div>
 
-  <div><%= f.submit "Sign up" %></div>
+<hr>
+<h3> Puede completarlos más tarde:</h3>
+  <div class="form-group">
+    <%= f.label :nombre, "Nombre/s", class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.text_field :nombre,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese su nombre o nombres, para personalizar algunas partes del sistema." %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :apellido, "Apellido", class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.text_field :apellido,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese su apellido/s, para personalizar algunas partes del sistema." %>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :facebook, "Usuario en Facebook", class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.text_field :facebook,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese la URL de su perfil de facebook." %>
+    </div>
+  </div>
+  <div class="form-group">
+  <%= f.label :twitter, "Usuario en Twitter", class: 'col-sm-2 control-label' %><br>
+   <div class="col-sm-6 input-group">    
+    <span class="input-group-addon">@</span>
+    <%= f.text_field :twitter,  class: "form-control", size: "20", maxlength: "15", placeholder: "Ingrese su usuario de twitter, sin el @" %>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <% if @user.tipo_usuario_id == 1 %>
+    <% tipos_usuarios = {'Admin'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'} %>
+    <%= f.label :tipo_usuario_id, "Tipo Usuario" , class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-6">
+    <%= f.select :tipo_usuario_id, tipos_usuarios, selected: @user.tipo_usuario_id, class: 'form-control' %>
+    </div>
+    <% end %>
+  </div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+        <%= f.submit "Crear cuenta", class: "btn btn-primary" %>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+        <%= render "users/shared/links" %>
+    </div>
+</div>
 <% end %>
-
-<%= render "users/shared/links" %>

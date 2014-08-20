@@ -19,11 +19,6 @@
 </p>
 
 <p>
-  <strong>Clave:</strong>
-  <%= @user.clave %>
-</p>
-
-<p>
   <strong>Facebook:</strong>
   <%= @user.facebook %>
 </p>
@@ -38,6 +33,11 @@
   <%= @user.tipo_usuario_id %>
 </p>
 
+<% #Si es admini, mostrar los otros datos de Devise. %>
+<% if user_signed_in? && current_user.tipo_usuario_id == 1  %>
+
+<% end %>
+
 <% unless @user.organizer(true).nil? %>
       <h3>Organizaciones </h3>
       <ol class="organizer">
@@ -45,6 +45,6 @@
       </ol>
 <% end %>
 
-<%= link_to 'Editar', edit_user_path(@user), :class => 'btn btn-link' %> |
+<%= link_to 'Editar Perfil',edit_user_registration_path, :class => 'btn btn-link' %> |
 <%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>
 

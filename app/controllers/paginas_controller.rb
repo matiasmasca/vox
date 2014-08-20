@@ -1,8 +1,9 @@
 # encoding: utf-8
 class PaginasController < ApplicationController
-  before_action :set_user, only: [:user_dashboard, :admin_dashboard]
-  before_action :set_selection_process , only: [:user_dashboard]
   before_action :authenticate_user!, only: [:user_dashboard, :admin_dashboard]
+  before_action :set_user
+  before_action :set_selection_process , only: [:user_dashboard]
+  
 
   def home
   end
@@ -14,11 +15,17 @@ class PaginasController < ApplicationController
   end
 
   def user_dashboard
-  	# va a buscar un template llamado /organizador.html.erb
+  	# va a buscar un template llamado /user_dashboard.html.erb
   	# Podemos usar esto para simular el usuario, mientras no tengamos el login.
   	# crear esas variables de @intancia que necesitamos en la vista.
   	# ir al dashboard del organizador.
       #logger.debug "Person attributes hash: #{@user.attributes.inspect}"
+      #logger.debug "Person attributes hash: #{@user.inspect}"
+      #if user_signed_in?
+        #logger.debug "Current User hash: #{current_user.inspect}"
+        #logger.debug "User session hash: #{user_session.inspect}"
+        #@user = current_user  
+      #end
       
       #Aca podrias redirigir para otro lado si no hay usuario con ese ID, y cosas asi
             
@@ -38,8 +45,11 @@ class PaginasController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    #en desuso por Devise
     def set_user
-      @user = User.find_by_id(params[:id])
+      if user_signed_in?
+        @current_user = current_user  
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

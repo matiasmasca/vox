@@ -207,6 +207,9 @@ Devise.setup do |config|
   # are using only default views.
   # config.scoped_views = false
 
+  # Para que use las vistas personalizadas.
+    config.scoped_views = true
+
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
   # config.default_scope = :user
@@ -256,4 +259,6 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+
 end

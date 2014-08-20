@@ -1,7 +1,7 @@
 # encoding: utf-8
 # Ojo con los before y after action que se ejecutaran en cada acción, en cada llamada a los metodos.
 class CandidatesController < ApplicationController
-  
+  before_action :authenticate_user!
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
   before_action :set_category
   before_action :check_property,  only: [:show, :edit, :update, :destroy]
@@ -96,7 +96,7 @@ class CandidatesController < ApplicationController
       unless @category.selection_process.nil?
         @selection_process = @category.selection_process
         @organizer = @selection_process.organizer
-        @user = User.find_by_id(@selection_process.organizer.user_id)
+        #@user = User.find_by_id(@selection_process.organizer.user_id)
       end
       #flash.notice = "Pase por set_category"
     end
