@@ -35,7 +35,7 @@
         <li><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
         <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
       <% else %>
-          <%= render partial: "layouts/login" %> 
+          <%#= render partial: "layouts/login" %> 
       <% end %>
       <!--/login -->
 

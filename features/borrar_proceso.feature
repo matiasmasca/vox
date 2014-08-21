@@ -1,8 +1,11 @@
 # language: es
 Característica: borrar un premio
-  Con la finalidad de borrar un premio que ya no se utiliza
-  como un usuario registrado administrador del sistema
+  Con la finalidad de borrar un premio (proceso de selección) que ya no se utiliza
+  como un usuario administrador del sistema
   Quiero poder eliminar un premio en el sistema
+
+Antecedentes:
+  Dado que estoy logueado como "Administrador"
 
 #Camino feliz
 # Borrar desde listado

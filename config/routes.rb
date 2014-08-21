@@ -12,7 +12,10 @@ Vox::Application.routes.draw do
   get 'paginas/admin_dashboard/:id' => 'paginas#admin_dashboard' 
   
   #Resources, crea los routes a 7 acciones por defecto.
-  resources :users
+  scope "/admin" do
+    resources :users
+  end
+
   resources :organizers
   resources :selection_processes
   resources :categories

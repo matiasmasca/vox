@@ -57,13 +57,17 @@ Cuando(/^modifico "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, email, cla
   end
 
   if clave
-    fill_in "user_clave", :with => clave
+    fill_in "user_password", :with => clave
+    fill_in "user_password_confirmation", :with => clave
   end
 
   if tipo
     select tipo, :from => "Tipo Usuario"
   end
-
+  #Devise te pide la clave actual para cualquier cambio.
+  fill_in "user_current_password", :with => clave
+  
+  
   click_on("Guardar cambios")
 end
 
@@ -83,6 +87,9 @@ Cuando(/^modifico datos "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, apell
   if twitter
     fill_in "user_twitter", :with => twitter
   end
+
+  #Devise te pide la clave actual para cualquier cambio.
+  fill_in "user_current_password", :with => clave
 
   click_on("Guardar cambios")
 end

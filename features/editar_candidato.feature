@@ -5,6 +5,7 @@ Característica: editar un candidato
 	Quiero poder editar cualquier usuario del sistema.
 
 Antecedentes:
+  Dado que estoy logueado como "Administrador"
 	Dado existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742" 
   Y que existe una Categoría con: "Categoría A", "Una descripción", "3", "1"
 	Y que existe un candidato: "Manolito", "Es un buen tipo".

@@ -43,7 +43,7 @@ describe SelectionProcess do
     end
 
     it "debe estar asociado a una Organización" do
-        user = User.create({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "clave" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 })
+        user = User.create({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "password" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 })
         organizer = Organizer.create!({ "name" => "ACME-test" , "address" => "UnaDireccionCualquiera", "email" => "Una@test.com", "user_id" => user.id })
         selection_process = SelectionProcess.create!({  "name_process" => "MyString" , "place" => "MyString", "organizer_id" => user.organizer.id }) 
         #puts(selection_process.inspect) 

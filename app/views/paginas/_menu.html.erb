@@ -8,7 +8,7 @@
    </div>
 <% end %>
 
-  <% unless @selection_process.nil? %>
+<% unless @selection_process.nil? %>
   <div class="list-group"> <!--Por proceso-->
     <p class="list-group-item"><b>Proceso seleccionado:</b> <%= @selection_process.name_process %></p>
       <%= render partial: "selection_processes/menu_selected_process", object: @selection_process %> 
@@ -22,10 +22,8 @@
     <%= render partial: "candidates/menu_candidates_category", object: @category %> 
   </div>
   
-   <!--Usuario Organizer!-->
- <!--Chequear!!! lo vi solo en http://0.0.0.0:3000/selection_processes/2/candidates -->
-   
-  <% unless @current_user.nil?  %>
+ <!--Usuario Organizer!-->
+  <% unless @current_user.organizer.nil?  %>
   <div class="list-group">
         <p class="list-group-item active"><b>Organización</b></p>
         <%= link_to ' Mostrar Organización',  user_organizer_path(@current_user, @current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-star list-group-item' %>
@@ -33,10 +31,10 @@
         <%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@current_user.id, @current_user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign list-group-item' %>
   </div> 
   <% end %>
-  <% end %>
+<% end %>
 
+<!--Usuario-->
 <% unless @current_user.nil?  %>
- <!--Usuario-->
  <div class="list-group">
   <div class="list-group">
     <a class="active list-group-item"><b>Usuario</b></a>

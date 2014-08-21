@@ -1,27 +1,28 @@
 # language: es
-Característica: crear un premio
-  Con la finalidad de elegir el ganador de una categoría
+Característica: crear un usuario
+  Con la finalidad identificar a las personas que utilizan el sistema, de implementar diferentes permisos y para poder contactarlos. 
   como un usuario administrador
   Quiero poder crear un usuario del sistema
 
 Antecedentes:
+  Dado que estoy logueado como "Administrador"
   Dado que estoy en la pantalla de administración y hago click en "Registrar Usuario"
-  Y completo los datos del usuario con "usuario01", "nombre", "apellido", "email", "clave1234", "facebook", "twiter" y "Organizador"
+  Y completo los datos del usuario con "usuario01", "nombre", "apellido", "email", "clave12345", "facebook", "twiter" y "Organizador"
 
 
 #Camino feliz
 Esquema del escenario: datos usuario
   #Cual será el nombre de usuario en el sistema? Product Owner: un nombre de usuario o el correo
-  Y completo los datos del usuario con "<usuario>", "<nombre>", "<apellido>", "<email>", "<clave>", "<facebook>", "<twiter>" y "<tipo_usuario_id>"  
+  Y completo los datos del usuario con "<usuario>", "<nombre>", "<apellido>", "<email>", "<password>", "<facebook>", "<twiter>" y "<tipo_usuario_id>"  
   Cuando presiono el botón "Guardar cambios"
   Entonces se lee el texto "Usuario registrado correctamente."
 
   Ejemplos: camino feliz
-    | usuario     | nombre | apellido | email                         | clave     | facebook  | twiter| tipo_usuario_id |
+    | usuario     | nombre | apellido | email                         | password     | facebook  | twiter| tipo_usuario_id |
     | pepeargento | pepe   | argento  | pepeargento@argentina.com.ar  | moni12345 |           | @pepe | Organizador     |
 
   Ejemplos: tipos de usuario
-    | usuario     | nombre | apellido | email      | clave     | facebook   | twiter | tipo_usuario_id |
+    | usuario     | nombre | apellido | email      | password     | facebook   | twiter | tipo_usuario_id |
     | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Admin           |
     | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Jurado          |
     | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Organizador     |
@@ -30,13 +31,13 @@ Esquema del escenario: datos usuario
 #Casos extremos
 Esquema del escenario: datos usuario
   #Cual será el nombre de usuario en el sistema? Product Owner: 
-  Y completo los datos del usuario con "<usuario>", "<nombre>", "<apellido>", "<email>", "<clave>", "<facebook>", "<twiter>" y "<tipo_usuario_id>"
+  Y completo los datos del usuario con "<usuario>", "<nombre>", "<apellido>", "<email>", "<password>", "<facebook>", "<twiter>" y "<tipo_usuario_id>"
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "faltan datos."
 
-  #Cuales son obligatorios? el PO, dijo que son: usuario, email, clave, tipo usuario. 
+  #Cuales son obligatorios? el PO, dijo que son: usuario, email, password, tipo usuario. 
   Ejemplos: faltan datos
-    | usuario     | nombre | apellido | email                         | clave   | facebook    | twiter| tipo_usuario_id |
+    | usuario     | nombre | apellido | email                         | password   | facebook    | twiter| tipo_usuario_id |
     |             | pepe   | argento  | pepeargento@argentina.com.ar  | moni123 |             | @pepe | Organizador     |
     | pepeargento | pepe   | argento  |                               | moni123 |             | @pepe | Organizador     |
     | pepeargento | pepe   | argento  | pepeargento@argentina.com.ar  |         |  myfacebook | @pepe | Organizador     |
@@ -47,23 +48,23 @@ Esquema del escenario: datos usuario
   #- nombre: 2 chr ~ 110, allow blank
   #- apellido: 2 chr ~ 110, allow blank
   #- email: 5 chr ~ 110
-  #- clave: 9 chr ~ 110
+  #- password: 8 chr ~ 110
   #- facebook: 2 chr ~ 110, allow blank
   #- twiter: 2 chr ~ 15, allow blank (incluido el arroba)
   #- tipo_usuario_id: 1 (por ahora solo habrá 3 tipos de usuarios: 1,2,3)
   Ejemplos: longitud minima incorrecta
-    | usuario     | nombre | apellido | email                         | clave     | facebook   | twiter| tipo_usuario_id |
+    | usuario     | nombre | apellido | email                         | password     | facebook   | twiter| tipo_usuario_id |
     | pepearg     | pepe   | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
     | pepearge    | 6      | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
     | pepearge    | Li     | Z        | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
     | pepearge    | Li     | Zi       | l@wz                          | moni12345 | myfacebook | @pepe | Organizador     |
-    | pepearge    | Li     | Zi       | li@mail.wz                    | moni1234  | myfacebook | @pepe | Organizador     |
+    | pepearge    | Li     | Zi       | li@mail.wz                    | moni123  | myfacebook | @pepe | Organizador     |
     | pepearge    | Li     | Zi       | li@mail.wz                    | moni12345 | m          | @pepe | Organizador     |
     | pepearge    | Li     | Zi       | li@mail.wz                    | moni12345 | myfac      | @     | Organizador     |
 
   # Deprecado: probar a bajo nivel, porque se impide por Vista con maxlength.
   #Ejemplos: longitud maxima incorrecta
-  #  | usuario     | nombre | apellido | email                         | clave     | facebook   | twiter| tipo_usuario_id |
+  #  | usuario     | nombre | apellido | email                         | password     | facebook   | twiter| tipo_usuario_id |
   #      | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   | pepe   | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
   #   | pepearge    | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      | argento  | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
   #  | pepearge    | Li     | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA        | pepeargento@argentina.com.ar  | moni12345 | myfacebook | @pepe | Organizador     |
@@ -108,5 +109,9 @@ Escenario: email del usuario debe ser unico.
 #  Y me muestra la imagen de "avatar generica"
 
 #Ejemplo de datos:
-#| usuario    | nombre | apellido | email                         | clave     | facebook  | twiter| tipo_usuario_id |
+#| usuario    | nombre | apellido | email                         | password     | facebook  | twiter| tipo_usuario_id |
 #|pepeargento | pepe   | argento  | pepeargento@argentina.com.ar  | moni123   |           | @pepe | 1               |
+
+
+#TO-DO: te estaria faltando el usuario tipo 4, o Votante.
+# Por defecto se registran Jurados.

@@ -13,3 +13,4 @@ class CreateSelectionProcesses < ActiveRecord::Migration
   end
 end
 
+#Duration, se cambia a Integer en otra migracion.

@@ -8,7 +8,6 @@ describe "users/index" do
         :nombre => "Nombre",
         :apellido => "Apellido",
         :email => "Email",
-        :clave => "Clave",
         :facebook => "Facebook",
         :twitter => "Twitter",
         :tipo_usuario_id => 1
@@ -18,7 +17,6 @@ describe "users/index" do
         :nombre => "Nombre",
         :apellido => "Apellido",
         :email => "Email",
-        :clave => "Clave",
         :facebook => "Facebook",
         :twitter => "Twitter",
         :tipo_usuario_id => 1
@@ -33,7 +31,6 @@ describe "users/index" do
     assert_select "tr>td", :text => "Nombre".to_s, :count => 2
     assert_select "tr>td", :text => "Apellido".to_s, :count => 2
     assert_select "tr>td", :text => "Email".to_s, :count => 2
-    assert_select "tr>td", :text => "Clave".to_s, :count => 2
     assert_select "tr>td", :text => "Facebook".to_s, :count => 2
     assert_select "tr>td", :text => "Twitter".to_s, :count => 2
     assert_select "tr>td", :text => 1.to_s, :count => 2

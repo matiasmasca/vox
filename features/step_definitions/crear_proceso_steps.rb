@@ -1,8 +1,4 @@
 # encoding: utf-8
-Dado(/^que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"$/) do
-  visit("/selection_processes")
-  click_on "Nuevo proceso de selección"
-end
 
 Dado(/^escribo "(.*?)" en Nombre$/) do |nombre|
 	fill_in "selection_process_name_process", :with => nombre

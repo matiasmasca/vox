@@ -72,7 +72,7 @@ class OrganizersController < ApplicationController
     # Para evitar repetir este código en cada acción.
     def set_organizer
       @organizer = Organizer.find_by_id(params[:id])
-      #@user = @organizer.user
+      @user = @organizer.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

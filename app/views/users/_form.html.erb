@@ -13,9 +13,28 @@
   <% end %>
 
   <div class="form-group">
+    <%= f.label :email, "Dirección de correo electrónico", class: 'control-label' %><br>
+    <%= f.text_field :email,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese una dirección de correo electrónico valida, nos comunicaremos con usted por ese medio." %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :usuario, "Nombre de Usuario", class: 'control-label' %><br>
     <%= f.text_field :usuario,  class: "form-control", size: "10", maxlength: "110" , placeholder: "Ingrese el nombre que utilizará para identificarse en el sistema"%>
   </div>
+  <div class="form-group">
+    <%= f.label :password, "Clave de acceso", class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-6">
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
+    </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :password_confirmation, "Confirme su clave de acceso",class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
+    </div>
+</div>
+
   <div class="form-group">
     <%= f.label :nombre, "Nombre/s", class: 'control-label' %><br>
     <%= f.text_field :nombre,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese su nombre o nombres, para personalizar algunas partes del sistema." %>
@@ -24,10 +43,7 @@
     <%= f.label :apellido, "Apellido", class: 'control-label' %><br>
     <%= f.text_field :apellido,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese su apellido/s, para personalizar algunas partes del sistema." %>
   </div>
-  <div class="form-group">
-    <%= f.label :email, "Dirección de correo electrónico", class: 'control-label' %><br>
-    <%= f.text_field :email,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese una dirección de correo electrónico valida, nos comunicaremos con usted por ese medio." %>
-  </div>
+
   <div class="form-group">
     <%= f.label :facebook, "Usuario en Facebook", class: 'control-label' %><br>
     <%= f.text_field :facebook,  class: "form-control", size: "10", maxlength: "110", placeholder: "Ingrese la URL de su perfil de facebook." %>
@@ -41,7 +57,7 @@
   </div>
 
   <div class="form-group">
-    <% tipos_usuarios = {'Admin'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'} %>
+    <% tipos_usuarios = {'Administrador'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'} %>
     <%= f.label :tipo_usuario_id, "Tipo Usuario" , class: 'control-label' %><br>
     <%= f.select :tipo_usuario_id, tipos_usuarios, selected: @user.tipo_usuario_id, class: 'form-control' %>
   </div>

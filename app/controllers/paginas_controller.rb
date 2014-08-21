@@ -32,6 +32,7 @@ class PaginasController < ApplicationController
   end
 
   def admin_dashboard
+    set_user
   end
 
   def jurado

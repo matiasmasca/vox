@@ -58,6 +58,7 @@ es:
       not_found: "no se ha encontró."
       not_locked: "no estaba bloqueado."
       blank: "Por favor completa el campo: %{attribute}"
+      taken: "ya está siendo utilizado. Cambia por otra dirección de correo electrónico."
       not_saved:
         one: "1 error impidió que este %{resource} fuese guardado:"
         other: "%{count} errores impidieron que este %{resource} fuese guardado:"

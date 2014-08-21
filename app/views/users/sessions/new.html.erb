@@ -2,14 +2,14 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
 <div class="form-group">
-    <%= f.label :email, class: "col-sm-2 control-label" %>
+    <%= f.label :email,"Correo electrónico", class: "col-sm-2 control-label" %>
     <div class="col-sm-6">
-        <%= f.email_field :email, autofocus: true , class: "form-control" %>
+        <%= f.email_field :email,  autofocus: true , class: "form-control" %>
     </div>
 </div>
 
 <div class="form-group">
-    <%= f.label :password, class: "col-sm-2 control-label" %>
+    <%= f.label :password, "Clave", class: "col-sm-2 control-label" %>
     <div class="col-sm-6">
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
     </div>

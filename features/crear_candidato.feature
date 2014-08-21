@@ -1,10 +1,11 @@
 # language: es
 Característica: crear un candidato para un premio.
   Con la finalidad de agregar los candidatos a las categoría, para su posterior elección, a petición de algun usuario en particular.
-  Como usuario administrador
+  Como usuario administrador del sistema
   Quiero poder crear candidatos para cualquier proceso de selección en el sistema.
 
 Antecedentes:
+  Dado que estoy logueado como "Administrador"
   Dado que estoy en la pantalla de administración y hago click en "Agregar Candidato" 
   Y existe un premio llamado "Premios cacatua del año" que se realizara en "Av. Siempre Viva 742"
   Y que existe una Categoría con: "Categoría A", "Una descripción", "3", "1"

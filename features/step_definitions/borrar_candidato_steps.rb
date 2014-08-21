@@ -6,6 +6,7 @@ Dado(/^existe un candidato llamado "(.*?)"$/) do |nombre|
 end
 
 Cuando(/^hago click en "(.*?)", para eliminar el candidato$/) do |arg1|
+  #save_and_open_page
   find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(7)").click_on('Eliminar')
 end
 

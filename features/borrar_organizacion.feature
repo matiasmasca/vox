@@ -1,8 +1,11 @@
 # language: es
 Característica: borrar una organización
-  Con la finalidad de borrar un premio que ya no se utiliza
-  como un usuario registrado de una organización
-  Quiero poder eliminar un premio en el sistema
+  Con la finalidad de borrar una organizacion que ya no se utiliza o no tiene un administrador
+  como un usuario administrador
+  Quiero poder eliminar una organizacion del sistema
+
+Antecedentes:
+  Dado que estoy logueado como "Administrador"
 
 #Camino feliz
 # Borrar desde listado

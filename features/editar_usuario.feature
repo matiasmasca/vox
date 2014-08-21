@@ -23,17 +23,17 @@ Escenario: agrego dato que faltaba
 
 #Casos extremos
 Esquema del escenario: problemas con datos obligatorios
-  Y modifico "<usuario>", "<email>", "<clave>" y "<tipo>"  
+  Y modifico "<usuario>", "<email>", "<password>" y "<tipo>"  
   Entonces me muestra el mensaje de error que "faltan o estan mal esos datos"
 
   Ejemplos: faltan datos obligatorios
-   | usuario 	 | email               | clave      | tipo        | 
+   | usuario 	 | email               | password      | tipo        | 
    |         	 | pepe@argento.com.ar | clave12345 | Organizador |
    | pepeargento |                     | clave12345 | Organizador |
    | pepeargento | pepe@argento.com.ar |            | Organizador |
   
   Ejemplos: datos obligatorios muy cortos
-   | usuario 	 | email               | clave      | tipo        | 
+   | usuario 	 | email               | password      | tipo        | 
    | pepearg     | pepe@argento.com.ar | clave12345 | Organizador | 
    | pepeargento | @g.ws               | clave12345 | Organizador |
    | pepeargento | pepe@argento.com.ar | 12345678   | Organizador |

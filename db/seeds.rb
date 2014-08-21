@@ -9,7 +9,7 @@
 
 
 users = [{:usuario => 'organizador', :nombre => 'Gregorio', :apellido => 'Martinez', :email => 'unemail@go.com',:password => "clave12345", :password_confirmation => "clave12345",  :facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
-    	  {:usuario => 'TheTerminator', :nombre => 'Ramon', :apellido => 'Ortega', :email => 'beto@ortega.com', :password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'},
+    	  {:usuario => 'TheTerminator', :nombre => 'Ramon', :apellido => 'Ortega', :email => 'beto@ortega.com', :password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
     	  {:usuario => 'donramon', :nombre => 'Ramon', :apellido => 'Don', :email => 'donramon@chavo.mx', :password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '1'},
     	  {:usuario => 'TheHelp12', :nombre => 'Gregorio', :apellido => 'Torres', :email => 'dostorres@hobbit.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
      	  {:usuario => 'Chocolate', :nombre => 'Gregorio', :apellido => 'Kaute-Mock', :email => 'examples@itaca.mx',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
@@ -17,7 +17,10 @@ users = [{:usuario => 'organizador', :nombre => 'Gregorio', :apellido => 'Martin
      	  {:usuario => 'SpaceOdyssey', :nombre => 'Gregorio', :apellido => 'Delmonte', :email => 'unemail2@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
      	  {:usuario => 'TheIncredibles', :nombre => 'Gregorio', :apellido => 'Perez', :email => 'unemail3@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
      	  {:usuario => 'RaidersLostArk', :nombre => 'Gregorio', :apellido => 'Acuña', :email => 'unemail4@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
-     	  {:usuario => 'ChickenRun', :nombre => 'Gregorio', :apellido => 'Escaleno', :email => 'unemail5@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'}
+     	  {:usuario => 'ChickenRun', :nombre => 'Gregorio', :apellido => 'Escaleno', :email => 'unemail5@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
+        {:usuario => 'Jurado1', :nombre => 'Gregorio', :apellido => 'Acuña', :email => 'jurado1@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'},
+        {:usuario => 'Jurado2', :nombre => 'Gregorio', :apellido => 'Acuña', :email => 'jurado2@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'},
+        {:usuario => 'Jurado3', :nombre => 'Gregorio', :apellido => 'Acuña', :email => 'jurado3@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'}
   	 ]
 
 users.each do |user|
@@ -26,7 +29,7 @@ end
 
 organizers = [{:name => 'ACME', :address => 'Desierto de Arizona', :web => 'http://www.acme.org', :email => 'contact@acme.org', :logo => 'jpg', :user_id => 1 },
   {:name => 'FAMPAS (Fake Academy of Motion Picture Arts and Sciences)', :address => '8949 Wilshire Boulevard Beverly Hills, California 90211', :web => 'http://www.fakeoscars.org/', :email => 'fakecontact@oscars.org', :logo => 'jpg',:user_id => 2},
-  {:name => 'test13245', :address => 'Dirección de la ORG', :web => 'http://test.com', :email => 'contact@oscars.org', :logo => 'jpg',:user_id => 3},
+  {:name => 'test13245', :address => 'Dirección de la ORG', :web => 'http://test.com', :email => 'contact@oscars.org', :logo => 'jpg',:user_id => 1},
   {:name => 'Comunidad TIC', :address => 'Corrientes, Argentina', :web => 'http://www.comunidadtic.com.ar', :email => 'contacto@comunidadtic.com.ar', :logo => 'jpg',:user_id => 4},
   {:name => 'Nombre A', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesA@mail.ws',:user_id => 5},
   {:name => 'Nombre B', :address => 'Una dirección cualquiera', :web => 'UnSitioWeb', :email => 'examplesB@mail.ws',:user_id => 6},

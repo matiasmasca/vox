@@ -40,19 +40,19 @@ class ApplicationController < ActionController::Base
   # A donde va cuando inicia la sesión.
   def after_sign_in_path_for(resource)
     # return the path based on resource
-    case @user.tipo_usuario_id
+    case current_user.tipo_usuario_id
     when 1
-      path = "/paginas/admin_dashboard/#{@user.id}" 
+      path = "/paginas/admin_dashboard/#{current_user.id}" 
     when 2
-      path = "/paginas/jury_dashboard/#{@user.id}" 
+      path = "/paginas/jury_dashboard/#{current_user.id}" 
     when 3
-      path = "/paginas/user_dashboard/#{@user.id}" 
+      path = "/paginas/user_dashboard/#{current_user.id}" 
       #redirect(path)
-      #redirect paginas_user_dashboard_path(@user)
+      #redirect paginas_user_dashboard_path(@current_user)
     else
       request.referrer       
     end
-
+    #Redirecciona a este path...
     path 
   end
 

@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   # Mensaje de error personalizado, value.length se genera de forma dinamica. Podría mejorarse creando un validador en lib/initializer/validator.rb
   # Clave, pasa a controlarse por Devise.
   #validates :clave, length: { 
-  #  in: 9..110, 
+  #  in: 9..128, 
   #  too_short: proc { |p, v| "es muy corta, la longitud mínima es #{v[:count]}, usted ingreso #{v[:value].length} caracteres." }, 
   #  too_long:  proc { |p, v| "es muy larga, la longitud máxima es #{v[:count]}, usted ingreso #{v[:value].length} caracteres." }  
   #}, :allow_blank => true

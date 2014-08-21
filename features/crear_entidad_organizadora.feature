@@ -5,6 +5,7 @@ Característica: crear un entidad organizadora
   Quiero poder crear una organización en el sistema
 
 Antecedentes:
+  Dado que estoy logueado como "Administrador"
   Dado que estoy en la pantalla de "Administración de Organizaciones" 
   Y que presione el botón "Crear nueva Organización"  
   Y completo los datos de la organización con "Nombre A", "Dirección", "Sitio Web" y "contacto@email.com"

@@ -7,7 +7,6 @@ describe "users/show" do
       :nombre => "Nombre",
       :apellido => "Apellido",
       :email => "Email",
-      :clave => "Clave",
       :facebook => "Facebook",
       :twitter => "Twitter",
       :tipo_usuario_id => 1
@@ -21,7 +20,6 @@ describe "users/show" do
     rendered.should match(/Nombre/)
     rendered.should match(/Apellido/)
     rendered.should match(/Email/)
-    rendered.should match(/Clave/)
     rendered.should match(/Facebook/)
     rendered.should match(/Twitter/)
     rendered.should match(/1/)

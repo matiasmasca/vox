@@ -1,8 +1,8 @@
-<% unless @user.nil? %>
+<% if user_signed_in? %>
 <div class="jumbotron">
   <h2>Bienvenido Admin.</h2>
-  <h1><%= @user.nombre unless @user.nombre.nil? %>, <%= @user.apellido unless @user.nombre.nil?  %></h1>
-  <p>esta es una pagina que verian los usarios registrado, es un diseño temporal hasta tener un diseño definitivo..</p>
+  <h1><%= @current_user.nombre unless @current_user.nombre.nil? %>, <%= @current_user.apellido unless @current_user.nombre.nil?  %></h1>
+  <p>esta es una pagina que verian los usarios administradores de la plataforma, es un diseño temporal hasta tener un diseño definitivo.</p>
 </div>
 
 <hr>
@@ -10,7 +10,7 @@
   <table id="selection-processes-list" class="table table-striped">
   <thead>
     <tr>
-      <th>Usuario Admin.</th>
+      <th>Opciones disponibles</th>
     </tr>
   </thead>
 
@@ -42,7 +42,5 @@
 </div>
 <br>
 <hr>
-<% else %>
-Usuario nulo, a donde vas?
 <% end %>
 

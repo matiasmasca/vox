@@ -48,14 +48,22 @@ Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, em
     @user = User.create!({ 
     :usuario => usuario, 
     :email => email,
-    :clave => clave,
+    :password => clave,
+    :password_confirmation => clave,
     :tipo_usuario_id => tipo
     })
+
+  #Para Devise podes probar con:
+  #email = 'testing@man.net'
+  #password = 'secretpass'
+  #User.new(:email => email, :password => password, :password_confirmation => password).save!
+
+
 end
 
 Dado(/^existen (\d+) usuarios A y B$/) do |cantidad|
-  @usuarioA = User.create!({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioA.com", "clave" => "clave1234", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
-  @usuarioB = User.create!({"usuario" => "usuario02","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioB.com", "clave" => "clave1234", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
+  @usuarioA = User.create!({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioA.com", "password" => "clave12345", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
+  @usuarioB = User.create!({"usuario" => "usuario02","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioB.com", "password" => "clave12345", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
 end
 
 Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)" y email "(.*?)"$/) do |name, address, email|
@@ -76,12 +84,8 @@ Cuando(/^(?:presiono|que presione) el botón "(.*?)"$/) do |button|
 end
 
 Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do |botton|
-  visit(paginas_home_path)
+  visit(paginas_admin_dashboard_path)
   click_on botton
-  
-  #@to-do: chequear uri correcta
-  #Aca deberia estar en /organizers/new falta algo que cheque la URL.
-  #visit("/organizers/new")
 end
 
 Cuando(/^selecciono el link con el texto "(.*?)"$/) do |button|
@@ -105,18 +109,22 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
     when "administración de Candidatos"
       visit("/candidates")
     when "Modificar Organización"
-      visit("/paginas/home")
+      visit("/paginas/user_dashboard")
     when "dashboard usuario"
       #Ojo User y SelecctionProcess tiene que estar definido.
       #puts(@user.inspect)
       visit("/paginas/user_dashboard/#{@user.id}")
-
     when "Modificar Proceso"
       visit("/paginas/user_dashboard/#{@user.id}")
       #save_and_open_page
+    when "Ingreso"
+      visit(user_session_path)
     else
       visit("/¿A donde queres ir?")
     end
+#Esto se puede refactorizar en el archivo: support/paths.rb
+#when /la pagina de logueo/
+#  user_session_path
 end
 
 #TO-Do: refactorizar estos 2 en el Case de arriba.
@@ -143,7 +151,7 @@ end
 
 #Login
 Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
-  #'Admin'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'
+  #'Administrador'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'
   case tipo_usuario
   when "Organizador"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
@@ -152,11 +160,24 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
 
   when "Jurado"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
-  when "Admin"
+  when "Administrador"
    step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "1"}
   else
     visit("/¿Quien sos?¡A donde queres ir!")
   end
+  visit '/users/sign_out' #Sugieren cerrar la sesión por las dudas.
+  #visit user_session_path
+  visit '/users/sign_in'
+  #Esto es para evitar el Ambiguous match
+  fill_in("Correo electrónico", with: 'shinji@ikari.com.ar', :match => :prefer_exact)
+  fill_in("Clave", with: 'neogenesis', :match => :prefer_exact)
+  #save_and_open_page
+  click_button "Iniciar sesión"
+
+  #login_as(user, :scope => :user, :run_callbacks => false)
+  page.should have_content("Ha iniciado sesión satisfactoriamente.")
+
+
 end
 
 #Casos extremos, errores y problemas.

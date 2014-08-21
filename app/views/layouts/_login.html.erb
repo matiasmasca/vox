@@ -1,9 +1,10 @@
+<% #Deberia de esconder este formulario cuando el usuario esta en la pantalla de login %>
 <%= form_for(:user, :url => session_path(:user), html: { class: "navbar-form navbar-right form-inline" }) do |f| %>
         <div class="form-group">
-          <%= f.text_field :email, :placeholder => "Email", class: "form-control" %> 
+          <%= f.text_field :email, :placeholder => "su@email", class: "form-control" %> 
         </div>
         <div class="form-group">
           <%= f.password_field :password, :placeholder => "Password", class: "form-control"  %>
         </div>
-        <%= f.submit 'Iniciar sesión', class: "btn btn-success" %>
+        <%= f.submit 'Ingresar', class: "btn btn-success" %>
 <% end %>

@@ -1,10 +1,11 @@
 # language: es
 Característica: editar una Categoría
   Con la finalidad de poder modificar directamente los datos de una Categoría, cuando sea solicitado.
-  Como una Categoría administrador
+  Como usuario administrador
   Quiero poder editar una Categoría en el sistema
 
 Antecedentes:
+  Dado que estoy logueado como "Administrador"
   Dado existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
   Y que existe una Categoría con: "Categoría A", "Una descripción", "3", "1"
   Y que estoy en la pantalla de "administración de Categorías"

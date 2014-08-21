@@ -5,6 +5,7 @@ Característica: crear una categoría para un premio.
   Quiero poder crear categorías para cualquier proceso de selección en el sistema.
 
 Antecedentes:
+  Dado que estoy logueado como "Administrador"
   Dado que estoy en la pantalla de administración y hago click en "Agregar Categoría" 
   Y existe un premio llamado "Premios ACME" que se realizara en "Av. Siempre Viva 742"
 

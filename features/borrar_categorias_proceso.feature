@@ -3,6 +3,9 @@ Característica: borrar una categoría
   Con la finalidad de borrar una categoría que ya no se utiliza
   como un usuario administrador
   Quiero poder eliminar una categoría en el sistema
+  
+Antecedentes:
+  Dado que estoy logueado como "Administrador"
 
 #Camino feliz
 # Borrar desde listado

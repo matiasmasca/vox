@@ -6,7 +6,8 @@ Característica: editar perfil organización
   Quiero poder editar el perfil de mi Organización en el sistema
 
 Antecedentes:
-  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
+  Dado que estoy logueado como "Organizador"
+  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "3"
   Dado existe una Organización: "ACME43", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
   Y que estoy en la pantalla de "Modificar Organización"
   Cuando yo edito mi Organización 

@@ -1,7 +1,7 @@
-<% unless @user.nil? %>
+<% unless @current_user.nil? %>
 <div class="jumbotron">
   <h2>Bienvenido</h2>
-  <h1><%= @user.nombre unless @user.nombre.nil? %>, <%= @user.apellido unless @user.nombre.nil?  %></h1>
+  <h1><%= @current_user.nombre unless @current_user.nombre.nil? %>, <%= @current_user.apellido unless @current_user.nombre.nil?  %></h1>
   <p>esta es una pagina que verian los usarios registrado, es un diseño temporal hasta tener un diseño definitivo..</p>
 </div>
 
@@ -16,41 +16,41 @@
   </thead>
 
   <tbody >
-   <% unless !@user.organizer.nil? && !@user.organizer[0].nil?  %>
+   <% unless !@current_user.organizer.nil? && !@current_user.organizer[0].nil?  %>
       <tr>    
-        <% unless @user.organizer.selection_process.empty? %>
-        <td><%= link_to ' Mis Categorías', selection_process_categories_path( @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
-        <td><%= link_to ' Agregar Categoría', new_selection_process_category_path(@user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+        <% unless @current_user.organizer.selection_process.empty? %>
+        <td><%= link_to ' Mis Categorías', selection_process_categories_path( @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
+        <td><%= link_to ' Agregar Categoría', new_selection_process_category_path(@current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
         </td>
-        <td><%= link_to ' Modificar Categoría', edit_selection_process_category_path(@user.organizer, @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer.selection_process[0] %>
+        <td><%= link_to ' Modificar Categoría', edit_selection_process_category_path(@current_user.organizer, @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer.selection_process[0] %>
         </td>
         <% end %>
       </tr>   
       <tr>
-        <td><%= link_to ' Mis procesos', organizer_selection_processes_path(@user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
-        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@user.id, @user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+        <td><%= link_to ' Mis procesos', organizer_selection_processes_path(@current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
+        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@current_user.id, @current_user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
         </td>                                                            
-        <td><%= link_to ' Modificar Proceso', edit_organizer_selection_process_path(@user.organizer, @user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer.selection_process[0] %>
+        <td><%= link_to ' Modificar Proceso', edit_organizer_selection_process_path(@current_user.organizer, @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer.selection_process[0] %>
         </td>
       </tr>  
 
    <% end %>
 
 
-   <% unless @user.organizer.nil? %>    
+   <% unless @current_user.organizer.nil? %>    
     <tr>
-      <td><%= link_to ' Mi Organización',  user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer %>
-        <td><%= link_to ' Modificar Organización',  edit_user_organizer_path(@user, @user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @user.organizer %>
+      <td><%= link_to ' Mi Organización',  user_organizer_path(@current_user, @current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer %>
+        <td><%= link_to ' Modificar mi Organización',  edit_user_organizer_path(@current_user, @current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer %>
       </tr>
     <% else %>
       <tr>
-        <td><%= link_to ' Crear Organización',  new_user_organizer_path(@user), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
+        <td><%= link_to ' Crear Organización',  new_user_organizer_path(@current_user), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
       </tr>
 	  <% end %>
 
     <tr> 
-      <td><%= link_to ' Mi Perfil',  user_path(@user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>     
-      <td><%= link_to ' Editar Perfil',  edit_user_path(@user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
+      <td><%= link_to ' Mi Perfil',  user_path(@current_user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>     
+      <td><%= link_to ' Editar Perfil',  edit_user_path(@current_user.id), :class => 'btn btn-default btn glyphicon glyphicon-user' %>
     </tr>
     
     <tr>
