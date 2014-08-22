@@ -62,8 +62,8 @@ Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, em
 end
 
 Dado(/^existen (\d+) usuarios A y B$/) do |cantidad|
-  @usuarioA = User.create!({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioA.com", "password" => "clave12345", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
-  @usuarioB = User.create!({"usuario" => "usuario02","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioB.com", "password" => "clave12345", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
+  @usuarioA = User.create!({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioA.com", "password" => "clave12345", :password_confirmation => "clave12345", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
+  @usuarioB = User.create!({"usuario" => "usuario02","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioB.com", "password" => "clave12345", :password_confirmation => "clave12345", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
 end
 
 Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)" y email "(.*?)"$/) do |name, address, email|
@@ -145,8 +145,8 @@ Entonces(/^veo el mensaje "(.*?)"$/) do |mensaje|
 end
 
 Entonces(/^me muestra el mensaje "(.*?)"$/) do |mensaje|
-  page.should have_content(mensaje)
   #save_and_open_page
+  page.should have_content(mensaje)
 end
 
 #Login
@@ -177,10 +177,19 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   #login_as(user, :scope => :user, :run_callbacks => false)
   page.should have_content("Ha iniciado sesión satisfactoriamente.")
 
-
 end
 
 #Casos extremos, errores y problemas.
 Entonces(/^me muestra el mensaje de error que "([^"]*)"$/) do |mensaje|
+  #save_and_open_page
   page.should have_content("error")
+end
+
+Dado(/^estoy logueado como, email: "(.*?)" y clave: "(.*?)"$/) do |usuario, clave|
+  visit '/users/sign_out' #Sugieren cerrar la sesión por las dudas.
+  visit '/users/sign_in'
+  fill_in("Correo electrónico", with: "#{usuario}", :match => :prefer_exact)
+  fill_in("Clave", with: "#{clave}", :match => :prefer_exact)
+  click_button "Iniciar sesión"
+  page.should have_content("Ha iniciado sesión satisfactoriamente.")
 end

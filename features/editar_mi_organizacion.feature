@@ -7,15 +7,13 @@ Característica: editar perfil organización
 
 Antecedentes:
   Dado que estoy logueado como "Organizador"
-  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "3"
-  Dado existe una Organización: "ACME43", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
   Y que estoy en la pantalla de "Modificar Organización"
   Cuando yo edito mi Organización 
 
 #Camino feliz
 Escenario: editar una organización 
-  Y cambio el nombre por "ACME", la domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
-  Entonces veo que el nombre cambio y la domicilio cambio.
+  Y cambio el nombre por "ACME", el domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
+  Entonces veo que el nombre cambio y el domicilio cambio.
 
 Escenario: agrego dato que faltaba
   Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742", sin web definida
@@ -70,8 +68,8 @@ Escenario: nombre unico
 
 Escenario: modificar la organizacion de otro usuario
   Dado existen 2 usuarios A y B
-  Y existe una Organización: "ACME-B", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
-  Cuando B trata de modificar la organizacion de A
+  Y existe una Organización: "ACME-2", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "usuario02"
+  Cuando A trata de modificar la organizacion de B
   Entonces me muestra el mensaje "Solo puedes operar sobre la organización que tu hayas creado."
 
 

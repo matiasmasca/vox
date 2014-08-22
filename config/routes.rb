@@ -1,6 +1,4 @@
 Vox::Application.routes.draw do
-  devise_for :users
-  
   #paginas estaticas
   get "paginas/home"
   get "paginas/about"
@@ -11,11 +9,12 @@ Vox::Application.routes.draw do
   get "paginas/admin_dashboard"
   get 'paginas/admin_dashboard/:id' => 'paginas#admin_dashboard' 
   
-  #Resources, crea los routes a 7 acciones por defecto.
-  scope "/admin" do
+  devise_for :users
+  #scope "/admin" do
     resources :users
-  end
+  #end
 
+  #Resources, crea los routes a 7 acciones por defecto.
   resources :organizers
   resources :selection_processes
   resources :categories

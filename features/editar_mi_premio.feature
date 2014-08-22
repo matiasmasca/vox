@@ -1,13 +1,14 @@
 # language: es
 Característica: editar mi premio
-  Con la finalidad de: controlar la información que ve el publico sombre un premio que organiza mi organización; manejar la imagen.
+  Con la finalidad de: controlar la información que ve el publico sombre un premio que organiza mi organización; y manejar la imagen que se comunica.
   Como un usuario perteneciente a una organización
   Quiero poder editar un premio en el sistema organizado por mi Organización 
 
 Antecedentes:
-  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
-  Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
-  Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-ARG".
+  Dado que estoy logueado como "Organizador"
+  #Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
+  #Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
+  Dado que existe un Proceso: "Mejor batalla", "Alguna ciudad", "15"  asociado a mi organizacion "Nerv Corp.".
   Y que estoy en la pantalla de "Modificar Proceso"
   Cuando yo edito mi Proceso 
 

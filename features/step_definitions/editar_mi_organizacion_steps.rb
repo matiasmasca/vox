@@ -5,9 +5,7 @@ Cuando(/^yo edito mi Organización$/) do
   click_on("Modificar mi Organización")
 end
 
-
-
-Cuando(/^B trata de modificar la organizacion de A$/) do
+Cuando(/^A trata de modificar la organizacion de B$/) do
   @organizer = Organizer.create!({ 
     :name => "Oranizacion Pepito", 
     :address => "una dirección",

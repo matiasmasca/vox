@@ -84,15 +84,26 @@ class OrganizersController < ApplicationController
     # Un usuario solo puede modificar operar con las Organizaciones que haya creado.
     def check_property
       if !params[:user_id].blank? #|| ADMIN
-      #@user = User.find_by_id(params[:user_id])
+         if @current_user.nil? 
+            @user = User.find_by_id(params[:user_id])
+          else
+            @user =  @current_user
+          end
       respond_to do |format|
         format.html do
           unless @user.organizer == @organizer
             redirect_to(edit_user_organizer_path(@user,@user.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+            return
           end
         end
       end
-    end   
+     end
+
+     if @organizer.user != @current_user && !@current_user.is_admin?
+        redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+        return
+      end
+
     end
 
 end

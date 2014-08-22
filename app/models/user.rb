@@ -53,5 +53,8 @@ class User < ActiveRecord::Base
   #def mi_oganizacion
   #  Organizer.where("user_id = ?", self.id).first
   #end
+  def is_admin?
+      self.tipo_usuario_id == 1
+  end
 
 end

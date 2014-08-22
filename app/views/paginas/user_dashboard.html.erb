@@ -16,14 +16,14 @@
   </thead>
 
   <tbody >
-   <% unless !@current_user.organizer.nil? && !@current_user.organizer[0].nil?  %>
+   <% unless @current_user.organizer.nil? #&& !@current_user.organizer[0].nil?  %>
       <tr>    
         <% unless @current_user.organizer.selection_process.empty? %>
-        <td><%= link_to ' Mis Categorías', selection_process_categories_path( @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
-        <td><%= link_to ' Agregar Categoría', new_selection_process_category_path(@current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
-        </td>
-        <td><%= link_to ' Modificar Categoría', edit_selection_process_category_path(@current_user.organizer, @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer.selection_process[0] %>
-        </td>
+          <td><%= link_to ' Mis Categorías', selection_process_categories_path( @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
+          <td><%= link_to ' Agregar Categoría', new_selection_process_category_path(@current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+          </td>
+          <td><%= link_to ' Modificar Categoría', edit_selection_process_category_path(@current_user.organizer, @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer.selection_process[0] %>
+          </td>
         <% end %>
       </tr>   
       <tr>
