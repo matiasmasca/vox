@@ -83,4 +83,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(:usuario, :nombre, :apellido, :email, :facebook, :twitter, :tipo_usuario_id, :password, :password_confirmation)
     end
     
+    def check_property
+      if current_user.is_admin?
+        
+      end
+    end
 end

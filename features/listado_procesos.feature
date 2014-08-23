@@ -1,8 +1,11 @@
 # language: es
 Característica: listar procesos
-  Con la finalidad de poder ver todos los procesos de elección creados por mi
-  como un usuario registrado de una organización
+  Con la finalidad de poder ver todos los procesos de elección creados en el sistema
+  como un usuario administrador
   Quiero poder ver un listado de los procesos
+
+Antecedentes:
+  Dado que estoy logueado como "Administrador"
 
 #Camino feliz
 Escenario: listar un proceso

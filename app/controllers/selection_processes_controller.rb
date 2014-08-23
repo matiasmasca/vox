@@ -108,7 +108,7 @@ class SelectionProcessesController < ApplicationController
     # para que solo pueda operar sobre sus propios procesos.
     #Filtro.
     def check_property
-      if !params[:organizer_id].blank? || @current_user.is_admin?
+      if !params[:organizer_id].blank? && !@current_user.is_admin?
         @organizer = Organizer.find_by_id(params[:organizer_id])
         respond_to do |format|
           format.html do

@@ -28,8 +28,6 @@ module ApplicationHelper
        @content << content_tag(:tr, content_tag(:td, "Cuando los haya creado se listaran aqui."))
     end
   end  
-
-#
-  
+ 
 
 end

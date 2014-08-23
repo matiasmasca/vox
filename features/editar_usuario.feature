@@ -5,7 +5,8 @@ Característica: editar un Usuario
   Quiero poder editar un Usuario en el sistema
 
 Antecedentes:
-  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
+  Dado que estoy logueado como "Administrador"
+  Y existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "3"
   Y que estoy en la pantalla de "administración de Usuarios"
   Cuando yo edito un Usuario 
 
@@ -27,16 +28,15 @@ Esquema del escenario: problemas con datos obligatorios
   Entonces me muestra el mensaje de error que "faltan o estan mal esos datos"
 
   Ejemplos: faltan datos obligatorios
-   | usuario 	 | email               | password      | tipo        | 
-   |         	 | pepe@argento.com.ar | clave12345 | Organizador |
+   | usuario 	   | email               | password   | tipo        | 
+   |         	   | pepe@argento.com.ar | clave12345 | Organizador |
    | pepeargento |                     | clave12345 | Organizador |
-   | pepeargento | pepe@argento.com.ar |            | Organizador |
   
   Ejemplos: datos obligatorios muy cortos
-   | usuario 	 | email               | password      | tipo        | 
+   | usuario 	   | email               | password   | tipo        | 
    | pepearg     | pepe@argento.com.ar | clave12345 | Organizador | 
    | pepeargento | @g.ws               | clave12345 | Organizador |
-   | pepeargento | pepe@argento.com.ar | 12345678   | Organizador |
+   | pepeargento | pepe@argento.com.ar | 1234567    | Organizador |
 
 #Cuales son las longitudes minimas y maximas? el PO, dijo que:
 #- usuario: 8 chr ~ 110
@@ -52,21 +52,21 @@ Esquema del escenario: problemas con datos no-obligatorios
   Y modifico datos "<nombre>", "<apellido>", "<facebook>" y "<twitter>"  
   Entonces me muestra el mensaje de error que "estan mal esos datos"
 
-  Ejemplos: datos obligatorios muy cortos
+  Ejemplos: datos muy cortos
    | nombre | apellido | facebook   						   | twitter | 
    | p      | Argento  | https://www.facebook.com/Comunidadtic | @pepe   | 
    | pepe   | A        | https://www.facebook.com/Comunidadtic | @pepe   |
-   | pepe   | Argento  | ht                                    | @pepe   |
+   | pepe   | Argento  | h                                     | @pepe   |
    | pepe   | Argento  | https://www.facebook.com/Comunidadtic | @       |
 
 # PO: las longitudes maximas, se limitan desde el formulario, con length.
 
 Escenario: nombre unico
-  Dado existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"
+  Dado existe un Usuario: "kakaroto", "kakaroto@saiyajin.com.ar", "bulmabulma" y "3"
   Y existe un Usuario: "pepeargentino", "pepito@argentos.com.ar", "sevieneeltiburon" y "3"
   Y que estoy en la pantalla de "administración de Usuarios"
-  Cuando yo edito otro Usuario
-  Y modifico "shinji ikari", "pepe@argentos.com.ar", "sevieneeltiburon" y "Organizador" 
+  Cuando yo edito el "cuarto" Usuario
+  Y modifico "kakaroto", "pepe@argentos.com.ar", "sevieneeltiburon" y "Organizador" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
 
   @to-do

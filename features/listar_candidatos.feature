@@ -9,6 +9,9 @@ Característica: listar candidatos
 #    | Mejor Actor    | pruebas  | jpg        | 
 #    | Mejor Director | pruebas  | png        | 
 
+Antecedentes:
+  Dado que estoy logueado como "Administrador"
+
 #Camino feliz
 Escenario: listar una categoría
   Dado que he creado 1 candidato:

@@ -9,9 +9,9 @@ Vox::Application.routes.draw do
   get "paginas/admin_dashboard"
   get 'paginas/admin_dashboard/:id' => 'paginas#admin_dashboard' 
   
-  devise_for :users
+  devise_for :users, :path_prefix => 'my'
   #scope "/admin" do
-    resources :users
+  resources :users
   #end
 
   #Resources, crea los routes a 7 acciones por defecto.

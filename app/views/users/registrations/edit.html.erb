@@ -2,7 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
 <%= devise_error_messages! %>
-
+<hr>
 <div class="form-group">
     <%= f.label :usuario, "Nombre de Usuario", class: 'col-sm-2 control-label' %><br>
     <div class="col-sm-6">
@@ -10,7 +10,6 @@
     </div>
  </div>
 
-<hr>
 <div class="form-group">
     <%= f.label :email, "Dirección de correo electrónico", class: 'col-sm-2 control-label'  %>
     <div class="col-sm-6">
@@ -32,12 +31,6 @@
     </div>
 </div>
 
-<div class="form-group">
-    <%= f.label :current_password,"Su clave actual", class: 'col-sm-2 control-label' %> <i>(Necesitamos tu clave actual, para salvar los cambios.)</i>
-    <div class="col-sm-6">
-        <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
-    </div>
-</div>
 
 <hr>
   <div class="form-group">
@@ -76,7 +69,14 @@
     </div>
     <% end %>
   </div>
-
+<hr>
+<div class="form-group">
+    <%= f.label :current_password,"Su clave actual", class: 'col-sm-2 control-label' %>
+    <i>(Necesitamos tu clave actual, para salvar los cambios.)</i>
+    <div class="col-sm-6">
+        <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+    </div>
+</div>
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">

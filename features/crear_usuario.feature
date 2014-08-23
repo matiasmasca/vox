@@ -9,7 +9,6 @@ Antecedentes:
   Dado que estoy en la pantalla de administración y hago click en "Registrar Usuario"
   Y completo los datos del usuario con "usuario01", "nombre", "apellido", "email", "clave12345", "facebook", "twiter" y "Organizador"
 
-
 #Camino feliz
 Esquema del escenario: datos usuario
   #Cual será el nombre de usuario en el sistema? Product Owner: un nombre de usuario o el correo
@@ -18,14 +17,14 @@ Esquema del escenario: datos usuario
   Entonces se lee el texto "Usuario registrado correctamente."
 
   Ejemplos: camino feliz
-    | usuario     | nombre | apellido | email                         | password     | facebook  | twiter| tipo_usuario_id |
+    | usuario     | nombre | apellido | email                         | password  | facebook  | twiter| tipo_usuario_id |
     | pepeargento | pepe   | argento  | pepeargento@argentina.com.ar  | moni12345 |           | @pepe | Organizador     |
 
   Ejemplos: tipos de usuario
-    | usuario     | nombre | apellido | email      | password     | facebook   | twiter | tipo_usuario_id |
-    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Admin           |
-    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Jurado          |
-    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @p    | Organizador     |
+    | usuario     | nombre | apellido | email      | password  | facebook   | twiter  | tipo_usuario_id |
+    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @pepito | Admin           |
+    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @pepito | Jurado          |
+    | pepearge    | Li     | Zi       | li@mail.wz | moni12345 | myfac      | @pepito | Organizador     |
 
 
 #Casos extremos

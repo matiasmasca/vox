@@ -4,6 +4,9 @@ Característica: mostrar información de un premio
   como un usuario administrador
   Quiero poder ver todos los datos un premio, que yo he creado, en el sistema
 
+Antecedentes:
+  Dado que estoy logueado como "Administrador"
+
 #Camino feliz
 Escenario: mostrar premio
   Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"

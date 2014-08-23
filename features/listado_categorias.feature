@@ -8,6 +8,9 @@ Característica: listar categorías
 #    | Mejor Actor    | prueba      | 5      | 
 #    | Mejor Director | prueba      | 5      | 
 
+Antecedentes:
+  Dado que estoy logueado como "Administrador"
+
 #Camino feliz
 Escenario: listar una categoría
   Dado que he creado 1 categoría:

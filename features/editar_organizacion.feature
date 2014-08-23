@@ -1,18 +1,19 @@
 # language: es
 Característica: editar perfil organización
-  Con la finalidad de poder modificar los datos de una Organización
+  Con la finalidad de poder modificar los datos de una Organización a petición de algun usuario.
   como un usuario administrador
-  Quiero poder editar el perfil de mi Organización en el sistema
+  Quiero poder editar el perfil de una Organización en el sistema
 
 Antecedentes:
+  Dado que estoy logueado como "Administrador"
   Dado existe una Organización: "ACME43", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
   Y que estoy en la pantalla de Administración de Organizaciones
   Cuando yo edito una Organización 
 
 #Camino feliz
 Escenario: editar una organización 
-  Y cambio el nombre por "ACME", la domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
-  Entonces veo que el nombre cambio y la domicilio cambio.
+  Y cambio el nombre por "ACME", el domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
+  Entonces veo que el nombre cambio y el domicilio cambio.
 
 Escenario: agrego dato que faltaba
   Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742", sin web definida

@@ -4,6 +4,9 @@ Característica: listar Organizadores
   como un usuario administrador
   Quiero poder ver un listado de todos los Organizadores
 
+Antecedentes:
+  Dado que estoy logueado como "Administrador"
+
 #Camino feliz
 Escenario: listar un organizaciones
   Dado que he creado 1 organización:

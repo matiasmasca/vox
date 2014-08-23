@@ -45,6 +45,8 @@ Por ejemplo cree un application_helper para mostrar un mensaje en una tabla, y
 
 - Con la existencias de estas herramientas, y su facilidad de integración en el flujo de trabajo, se puede decir que la existencias de pruebas creadas por el mismo Desarrollador se vuelven una condición exigible. Por lo tanto su enseñaza formal debería empezar a conciderarse también; pensando en la forma de enseñar TDD: http://blog.testdouble.com/posts/2014-01-25-the-failures-of-intro-to-tdd.html
 
+- Si se abandona la técnica, por un momento y el programador agrega funsionalidades sin hacer antes las pruebas entonces esta documentación viva sufre el mismo problema de desactualización que la documentación tradicional.
+
 # Rails y BDD/TDD.
 - En el caso del framework, es condición necesaria conocer el MVC y su funsionamiento, para entender como deberían funcionar las cosas. Cuando uno entiende como fusionan las cosas o como debería funcionar es más facil crear las pruebas primero antes que el código, porque uno sabe a donde quiere llegar, donde se van a estar presentando los errores y el código que uno le gustaría tener (concepto: "Code we wish we had" o CWWWH); uno sabe en que pasos intermedios uno puede ir definiendo cosas que aun no existe. Por ejemplo al crear una acción en un modelo, uno puede ir partiendo de la vista, el controlador y llegar con pruebas hasta el método del modelo.
 - El paso de refactor, de la práctica, es dificil de realizar para un usuario novicio, ya que no se sabe donde estan los problemas. Con que funcione, pasando las pruebas de aceptación, se pasa a la siguiente caracteristica (feature) desperdiciando parte del esfuerzo.
@@ -59,6 +61,7 @@ Al crear los Procesos de Selección (selection_process), me habia equivocado en 
 Para unificar criterios tuve que cambiar a sigular el nombre y los errores empezaron a brotar, saber que pruebas fallaban ayudo a medir el impacto del cambio y a solucionar problemas en otras partes del sistema asociadas, como ser la configuración de las rutas. Se evidencio la fragilidad de las pruebas ante cambios en el codigo: en cucumber fueron 25 pruebas rotas y en TDD (Rspec) fueron más de 46. Afecto a otros modelos asociados por ejemplo Organizer.
 Lo interesante de este caso es encontrar 1 a 1 los puntos de fallo en la aplicación, cuando los errores informados por el interprete no lo hacen de una forma tan clara y precisa.
 
+- A priori, es dificil medir el impacto del cambio. Que las pruebas fallen ante el cambio no significa del todo que este rota por completo; paso que luego de corrigir algo para otra prueba, las pruebas dejaron de estar rotas.
 
 #Falsos Positivos.
 - Daba verde pero no estaba probando lo que tenia que probar.
