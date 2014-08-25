@@ -40,7 +40,8 @@ Vox::Application.routes.draw do
   end
 
   get '/selection_processes/:selection_process_id/candidates' => 'candidates#index', as: :selection_processes_candidates 
-
+  get '/selection_processes/:selection_process_id/candidates/new' => 'candidates#new', as: :new_selection_processes_candidates 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

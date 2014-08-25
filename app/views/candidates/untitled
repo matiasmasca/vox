@@ -1,0 +1,6 @@
+_select_categories.html.erb
+<div class="form-group">
+    <% estados_del_proceso = {'nuevo'=> 'nuevo', 'abierto'=> 'abierto', 'cerrado'=> 'cerrado'} %>
+    <%= f.label :state, "Estado" , class: 'control-label' %><br>
+    <%= f.select :state, estados_del_proceso, selected: @selection_process.state, class: 'form-control' %>
+  </div>

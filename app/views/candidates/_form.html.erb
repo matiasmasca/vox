@@ -32,6 +32,26 @@
       <%= f.label :category_id, "Cod. Categoría", class: 'control-label' %><br>
       <%= f.text_field :category_id,  class: "form-control", size: "10", placeholder: "Ingrese el cod. de categoría a la que pertenecerá este candidato."  %>
     </div>
+    <% if !params[:selection_process_id].nil? %>
+    <% 
+    process_id = params[:selection_process_id].to_i
+    categories = SelectionProcess.find_by_id(process_id).category
+    categories_list = {}
+    categories.each do |categoria| 
+      categories_list["#{categoria.name}"] = categoria.id
+    end
+    
+    %>
+      <% if !categories.blank?  %>
+       <div class="field">
+        <%= f.label :category_id, "O seleccione una categoría: " , class: 'control-label' %><br>
+        <%= f.select :category_id, categories_list, class: 'form-control input-lg' %>
+       </div>
+       <% end %>
+    <% end %>
+
+
+
   <% end %>
 
   <div class="field">

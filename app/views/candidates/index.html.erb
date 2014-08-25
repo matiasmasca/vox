@@ -38,5 +38,8 @@
 </table>
 <br>
 
+<% unless params[:selection_process_id].nil? %>
+<%= link_to 'Agregar Canidato', "candidates/new?selection_process_id=#{params[:selection_process_id]}", :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+<% else %>
 <%= link_to 'Agregar Candidato', new_candidate_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
-
+<% end %>
