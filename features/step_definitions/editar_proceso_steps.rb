@@ -11,9 +11,10 @@ Cuando(/^cambio el nombre por "(.*?)" y el lugar por "(.*?)"$/) do |name_process
 end
 
 Entonces(/^veo que el nombre cambio y la dirección cambio\.$/) do
-  step %{que estoy en la pantalla de mis procesos electorales}
+  step %{que estoy en la pantalla de "Mis procesos"}
 	find("table#selection-processes-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should 	have_content(@update_name_process)
 	find("table#selection-processes-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)").should	have_content(@update_pace)
+  #save_and_open_page
 end
 
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)", sin duración definida$/) do |name_process, place|

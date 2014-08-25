@@ -6,23 +6,28 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process
   # GET /selection_process.json
-  def index
-    #Filtro: solo veo mis procesos.
-    # ¿Seguro que este filtro va aca? ¿que lo diferencia de check_property?
-    if !params[:organizer_id].blank? && !@current_user.organizer.id.blank? && !@current_user.is_admin?
-
-      if @current_user.organizer.id.to_i == params[:organizer_id].to_i
-        #@organizer = Organizer.find_by_id(params[:organizer_id]) 
-        @organizer = Organizer.find_by_id(@current_user.organizer.id)
-        @selection_processes = @organizer.selection_process
+  def index     
+    if check_property
+      if @current_user.is_admin?
+        if params[:organizer_id].blank?
+          @selection_processes = SelectionProcess.all 
+        else
+          @organizer = Organizer.find_by_id(params[:organizer_id])
+          @selection_processes = @organizer.selection_process
+        end  
       else
-        security_exit
-      end   
-    elsif @current_user.is_admin?
-      @selection_processes = SelectionProcess.all 
-    else
-      #security_exit
-    end  
+        if params[:organizer_id].blank? 
+           @organizer = Organizer.find_by_id(@current_user.organizer.id)
+           @selection_processes = @organizer.selection_process
+          else
+            if @current_user.organizer.id.to_i == params[:organizer_id].to_i
+              @organizer = Organizer.find_by_id(params[:organizer_id]) 
+              #@organizer = Organizer.find_by_id(@current_user.organizer.id)
+              @selection_processes = @organizer.selection_process
+            end
+          end   
+        end
+    end
   end
 
   # GET /selection_process/1
@@ -40,7 +45,7 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process/1/edit
   # GET /organizers/1/selection_processes/1/edit
-  def edit     
+  def edit 
   end
 
   # POST /selection_process
@@ -92,8 +97,7 @@ class SelectionProcessesController < ApplicationController
       respond_to do |format|
         format.html do
           if @selection_process.nil?
-             redirect_to(root_path, alert: "No se encontró proceso de selección con ese ID.")
-             return
+             redirect_to(root_path, alert: "No se encontró proceso de selección con ese ID.") and return
           end
         end
       end
@@ -101,37 +105,51 @@ class SelectionProcessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def selection_process_params
-      params.require(:selection_process).permit(:name_process, :place, :duration, :start_date, :end_date, :process_type_id, :state, :organizer_id)
+      params.require(:selection_process).permit(:id, :name_process, :place, :duration, :start_date, :end_date, :process_type_id, :state, :organizer_id)
     end
 
     # Filtro.
     # para que solo pueda operar sobre sus propios procesos.
-    #Filtro.
     def check_property
-      if !params[:organizer_id].blank? && !@current_user.is_admin?
+      return true if @current_user.is_admin?
+
+      if !params[:organizer_id].blank?
         @organizer = Organizer.find_by_id(params[:organizer_id])
-        respond_to do |format|
-          format.html do
-            unless @organizer.selection_process.find_by_id(@selection_process) == @selection_process
-              security_exit
-            end
-          end
-        end
+      else
+        @organizer = @current_user.organizer unless @current_user.is_admin?
+        params[:organizer_id] = @organizer.id     
       end
 
       unless @selection_process.nil?
         if @selection_process.organizer != @current_user.organizer && !@current_user.is_admin?
-          security_exit
+            security_exit
+            return false
+          else
+            return true
         end
+      else
+        unless @organizer.selection_process.find_by_id(@selection_process) == @selection_process
+          security_exit
+          return false
+        else
+          return true
+      end
       end
 
-      #@selection_processes[0].organizer_id
 
     end
 
     def security_exit
-      redirect_to(root_path, alert: "Solo puedes operar sobre los procesos que tu hayas creado.")
-      #return
+      puts("PARAM: #{params[:organizer_id]}")
+      puts("ORG: #{@organizer.inspect}")
+      puts("USER: #{@current_user.inspect}")
+
+        respond_to do |format|
+        format.html do
+           redirect_to(root_path, alert: "Solo puedes operar sobre los procesos que tu hayas creado.")
+           return false
+        end
+      end
     end
 
 end

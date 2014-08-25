@@ -1,6 +1,7 @@
 # encoding: utf-8
 Cuando(/^hago click en Mostrar para "(.*?)"$/) do |process_name|
   #first("#selection-processes-list", :text => "Mostrar") #Esto no hace click!
+  #save_and_open_page
   find("table#selection-processes-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(8)").click_on('Mostrar')
 end
 

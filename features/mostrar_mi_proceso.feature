@@ -5,10 +5,11 @@ Característica: mostrar información de mi premio
   Quiero poder ver todos los datos un premio, que yo he creado, en el sistema
 
 Antecedentes:
-  Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
-  Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
-  Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-ARG".
-  Dado que estoy en la pantalla de mis procesos electorales
+  Dado que estoy logueado como "Organizador"
+  #Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
+  #Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
+  Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
+  Dado que estoy en la pantalla de "Mis procesos"
 
 #Camino feliz
 Escenario: mostrar premio 
@@ -19,7 +20,7 @@ Escenario: mostrar premio
 Escenario: ver el premio de otra organización
   Dado existen 2 usuarios A y B
   Dado existe una Organización: "ACME-A", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "usuario01".
-  Y que existe un Proceso: "Premios ACME 3th. Editar", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-A".
+  Y que existe un Proceso: "Premios ACME 3th. Editar", "Alguna ciudad", "15" asociado a mi organizacion "ACME-A".
   Cuando B trata de ver el premio de A
   Entonces me muestra el mensaje "Solo puedes operar sobre los procesos que tu hayas creado."
 

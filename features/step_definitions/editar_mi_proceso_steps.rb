@@ -1,13 +1,15 @@
 #encoding: utf-8
 Cuando(/^yo edito mi Proceso$/) do
   #modificar cuando este el front end de usuarios.}
-  
-  #click_on("Modificar Proceso")
-  first(:link, 'Modificar Proceso').click
+#  save_and_open_page
+  click_on("Editar")
   #save_and_open_page
+  #first(:link, 'Modificar Proceso').click
+  
+
 end
 
-Dado(/^que existe un Proceso: "(.*?)", "(.*?)", "(.*?)"  asociado a mi organizacion "(.*?)"\.$/) do |name_process, place, duration, organizer_name|
+Dado(/^que existe un Proceso: "(.*?)", "(.*?)", "(.*?)" asociado a mi organizacion "(.*?)"\.$/) do |name_process, place, duration, organizer_name|
   if organizer_name
      organizer = Organizer.find_by_name("#{organizer_name}")
      organizer_id = organizer.id

@@ -114,8 +114,13 @@ Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
       #Ojo User y SelecctionProcess tiene que estar definido.
       #puts(@user.inspect)
       visit("/paginas/user_dashboard/#{@user.id}")
+    when "Mis procesos"
+      visit("/organizers/#{@user.id}/selection_processes")
     when "Modificar Proceso"
-      visit("/paginas/user_dashboard/#{@user.id}")
+      visit("/organizers/#{@user.id}/selection_processes")  
+      #save_and_open_page
+    when "Modificar Mi Proceso"
+      visit("/organizers/#{@user.id}/selection_processes/#{@selection_process.id}")  
       #save_and_open_page
     when "Ingreso"
       visit(user_session_path)
@@ -154,17 +159,18 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   #'Administrador'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'
   case tipo_usuario
   when "Organizador"
-   step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
+   step %{existe un Usuario: "ONG shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
    step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
    #step %{que estoy en la pantalla de "dashboard usuario"}
 
   when "Jurado"
-   step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
+   step %{existe un Usuario: "Jurado shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
   when "Administrador"
-   step %{existe un Usuario: "shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "1"}
+   step %{existe un Usuario: "Admin shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "1"}
   else
     visit("/¿Quien sos?¡A donde queres ir!")
   end
+
   visit '/users/sign_out' #Sugieren cerrar la sesión por las dudas.
   #visit user_session_path
   visit '/users/sign_in'

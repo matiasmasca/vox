@@ -8,13 +8,13 @@ Antecedentes:
   Dado que estoy logueado como "Organizador"
   #Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
   #Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
-  Dado que existe un Proceso: "Mejor batalla", "Alguna ciudad", "15"  asociado a mi organizacion "Nerv Corp.".
-  Y que estoy en la pantalla de "Modificar Proceso"
+  Dado que existe un Proceso: "Mejor batalla", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
+  Y que estoy en la pantalla de "Modificar Mi Proceso"
   Cuando yo edito mi Proceso 
 
 #Camino feliz
 Escenario: editar premio
-  Y cambio el nombre por "Premios ACME" y el lugar por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
+  Dado cambio el nombre por "Premios ACME" y el lugar por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
   Entonces veo que el nombre cambio y la dirección cambio.
 
 #Casos extremos
@@ -37,8 +37,8 @@ Esquema del escenario: problemas con datos obligatorios
    | Monchito     | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  | 360      |
  
 Escenario: Nombre de premio, debe ser unico.
-  Dado que existe un Proceso: "Premios ACME 1st. Editar", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-ARG".
-  Y que existe un Proceso: "Premios ACME 2nd. Editar", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-ARG".
+  Dado que existe un Proceso: "Premios ACME 1st. Editar", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
+  Y que existe un Proceso: "Premios ACME 2nd. Editar", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
   Y que estoy en la pantalla de "Modificar Proceso"
   Cuando yo edito el 2do. premio
   Y cambio, de mi proceso: "Premios ACME 1st. Editar", "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos" o "30"
@@ -47,6 +47,6 @@ Escenario: Nombre de premio, debe ser unico.
 Escenario: modificar el premio de otra organización
   Dado existen 2 usuarios A y B
   Dado existe una Organización: "ACME-A", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "usuario01".
-  Y que existe un Proceso: "Premios ACME 3th. Editar", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-A".
+  Y que existe un Proceso: "Premios ACME 3th. Editar", "Alguna ciudad", "15" asociado a mi organizacion "ACME-A".
   Cuando B trata de modificar el premio de A
   Entonces me muestra el mensaje "Solo puedes operar sobre los procesos que tu hayas creado."

@@ -29,6 +29,7 @@ Cuando(/^B trata de ver el premio de A$/) do
   process_id = @selection_process.id
   
   visit(organizer_selection_process_path(org_id, process_id))
+  # /organizers/:organizer_id/selection_processes/:id
   #save_and_open_page
 end
 

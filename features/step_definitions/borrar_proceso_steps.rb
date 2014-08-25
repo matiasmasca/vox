@@ -1,5 +1,6 @@
 # encoding: utf-8
 Cuando(/^hago click en Borrar para "(.*?)"$/) do |process_name|
+	#save_and_open_page
    #Hace click en el único borrar que figura en la pagina.
    click_on("Borrar")
    
@@ -11,6 +12,7 @@ Cuando(/^hago click en Borrar para "(.*?)"$/) do |process_name|
 end
 
 Entonces(/^se borra el premio "(.*?)"$/) do |process_name|
+  #save_and_open_page
   find("#selection-processes-list").should have_no_content(process_name)
 end
 

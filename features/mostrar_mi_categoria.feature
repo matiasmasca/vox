@@ -7,7 +7,7 @@
 # Antecedentes:
 #   Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
 #   Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
-#   Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-ARG".
+#   Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15" asociado a mi organizacion "ACME-ARG".
 #   Dado que existe una Categoría: "Miss Simpatia del Desierto" asociado a mi proceso "Reina del Desierto".
 #   Dado que estoy en la pantalla de mis categorías
 
@@ -20,7 +20,7 @@
 # Escenario: ver la categoría de otra organización
 #   Dado existen 2 usuarios A y B
 #   Dado existe una Organización: "ACME-A", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "usuario01".
-#   Y que existe un Proceso: "categorías ACME 3th. Editar", "Alguna ciudad", "15"  asociado a mi organizacion "ACME-A".
+#   Y que existe un Proceso: "categorías ACME 3th. Editar", "Alguna ciudad", "15" asociado a mi organizacion "ACME-A".
 #   Cuando B trata de ver el categoría de A
 #   Entonces me muestra el mensaje "Solo puedes operar sobre los procesos que tu hayas creado."
 

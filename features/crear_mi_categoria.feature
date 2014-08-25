@@ -6,7 +6,7 @@ Característica: crear una categoría para un premio.
 
 Antecedentes:
   Dado que estoy logueado como "Organizador" 
-  Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15"  asociado a mi organizacion "Nerv Corp.".
+  Dado que existe un Proceso: "Reina del Desierto", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
   #Y que estoy en la pantalla de "Modificar Proceso" #hasta que este el diseño de pantallas.
   Dado que estoy en la pantalla de "dashboard usuario"
   Y presiono el botón "Agregar Categoría" 

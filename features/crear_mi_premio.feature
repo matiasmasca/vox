@@ -52,7 +52,6 @@ Esquema del escenario: faltan datos
 
 
 Escenario: nombre premio repetido.
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Pero como ya existe un premio con ese nombre "Premios ACME" y lugar "Av. Siempre Viva 742"
@@ -60,7 +59,6 @@ Escenario: nombre premio repetido.
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
 Escenario: Premio repetido, case sensitive: Oscares y oscares.
-  Dado que estoy en la pantalla de mis procesos electorales y hago click en "Nuevo proceso de selección"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Pero como ya existe un premio con ese nombre "premios acme" y lugar "Av. Siempre Viva 742"

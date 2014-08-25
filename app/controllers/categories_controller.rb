@@ -1,7 +1,7 @@
 # encoding: utf-8
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category , only: [:show, :edit, :update, :destroy]
   before_action :set_selection_process
   before_action :check_property, only: [:show, :edit, :update, :destroy]
 

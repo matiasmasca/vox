@@ -34,10 +34,10 @@ Escenario: tiene el mismo contenido
     | coquiargento | coqui  | argento  | coquiargento@argentina.com.ar | clave12345|           | @coqui  | 3               |
   Y que estoy en la pantalla de "administración de Usuarios"
   Entonces veo una lista con exactamente la información de los 2 usuarios.
-    | Usuario      | Nombre | Apellido | Email                         | Facebook  | Twitter | Tipo usuario |
-    | shinjiikari  |        |          | shinji@ikari.com.ar           |           |         | 1            |    
-    | pepeargento  | pepe   | argento  | pepeargento@argentina.com.ar  |           | @pepe   | 1            |
-    | coquiargento | coqui  | argento  | coquiargento@argentina.com.ar |           | @coqui  | 3            |
+    | Usuario           | Nombre | Apellido | Email                         | Facebook  | Twitter | Tipo usuario |
+    | Admin shinjiikari |        |          | shinji@ikari.com.ar           |           |         | 1            |    
+    | pepeargento       | pepe   | argento  | pepeargento@argentina.com.ar  |           | @pepe   | 1            |
+    | coquiargento      | coqui  | argento  | coquiargento@argentina.com.ar |           | @coqui  | 3            |
 #shinjiikari es el usuario admin. de prueba 
 
 

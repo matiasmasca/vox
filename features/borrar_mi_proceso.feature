@@ -6,7 +6,7 @@ Característica: borrar un premio
 
 Antecedentes:
   Dado que estoy logueado como "Organizador"
-  Dado que existe un Proceso: "Premios ACME", "Alguna ciudad", "15"  asociado a mi organizacion "Nerv Corp.".
+  Dado que existe un Proceso: "Premios ACME", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
   Y que estoy en la pantalla de "dashboard usuario"
   Y que presione el botón "Mis procesos" 
   #/organizers/9/selection_processes
@@ -16,11 +16,11 @@ Antecedentes:
 Escenario: borrar premio  
   Cuando hago click en Borrar para "Premios ACME"
   Entonces se borra el premio "Premios ACME"
-  Entonces me muestra el mensaje "Ud. no tiene registros creados. Cuando los haya creado se listaran aqui."
+  Entonces me muestra el mensaje "Proceso borrado correctamente."
 
 #Tengo varios, borrar el primero
 Escenario: borrar premio el 2do. premio  
-  Dado que existe un Proceso: "Premios Reina del Desierto 2014", "Alguna ciudad", "15"  asociado a mi organizacion "Nerv Corp.".
+  Dado que existe un Proceso: "Premios Reina del Desierto 2014", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
   Cuando hago click en Borrar para "Premios ACME"
   Entonces se borra el premio "Premios ACME"
   Entonces me muestra el mensaje "Proceso borrado correctamente."

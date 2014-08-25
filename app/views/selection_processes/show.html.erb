@@ -36,6 +36,11 @@
       <ol class="organizer">    
          <%= render partial: "organizador"  %>
       </ol>
+<% elsif current_user.is_admin?  %>
+    <h3>Organiza:</h3>
+    <ol class="organizer">
+     <span>Proceso huerfano</span> 
+    </ol>
 <% end %>
 
 <%= link_to 'Editar', edit_selection_process_path(@selection_process), :class => 'btn btn-link' %> |
