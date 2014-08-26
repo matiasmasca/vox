@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "users/show" do
+  login_admin
+  
   before(:each) do
     @user = assign(:user, stub_model(User,
       :usuario => "Usuario",

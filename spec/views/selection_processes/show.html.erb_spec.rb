@@ -2,6 +2,8 @@
 require 'spec_helper'
 
 describe "selection_processes/show" do
+  login_admin
+  
    before(:each) do
     @selection_process = assign(:selection_process, stub_model(SelectionProcess,
       :name_process => "Premios ACME",

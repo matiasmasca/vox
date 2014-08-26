@@ -2,6 +2,8 @@
 require 'spec_helper'
 
 describe CandidatesController do
+	login_admin
+	
 	let(:valid_attributes) { { "name" => "Corre caminos" , "bios" => "UnaDireccionCualquiera", "category_id" => "1"} }
 	let(:valid_session) { {} }
 

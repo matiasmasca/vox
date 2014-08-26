@@ -1,6 +1,9 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe "selection_processes/edit" do
+  login_user
+  
   before(:each) do
     @selection_process = assign(:selection_process, stub_model(SelectionProcess,
       :name_process => "Premios ACME",

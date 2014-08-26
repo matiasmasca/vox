@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "users/index" do
+  login_admin
+  
   before(:each) do
     assign(:users, [
       stub_model(User,

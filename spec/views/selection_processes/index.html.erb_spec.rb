@@ -2,6 +2,8 @@
 require 'spec_helper'
 
 describe "selection_processes/index" do
+  login_admin
+  
   before(:each) do
     assign(:selection_processes, [
       stub_model(SelectionProcess,

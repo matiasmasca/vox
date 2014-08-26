@@ -72,9 +72,9 @@
 <hr>
 <div class="form-group">
     <%= f.label :current_password,"Su clave actual", class: 'col-sm-2 control-label' %>
-    <i>(Necesitamos tu clave actual, para salvar los cambios.)</i>
     <div class="col-sm-6">
         <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+        <span class="help-block">Necesitamos tu clave actual, para salvar los cambios.</span>
     </div>
 </div>
 

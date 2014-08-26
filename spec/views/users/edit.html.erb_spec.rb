@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "users/edit" do
+  login_admin
+  
   before(:each) do
     @user = assign(:user, stub_model(User,
       :usuario => "MyString",
@@ -23,7 +25,7 @@ describe "users/edit" do
       assert_select "input#user_nombre[name=?]", "user[nombre]"
       assert_select "input#user_apellido[name=?]", "user[apellido]"
       assert_select "input#user_email[name=?]", "user[email]"
-      assert_select "input#user_current_password[name=?]", "user[current_password]"
+      assert_select "input#user_password[name=?]", "user[password]"
       assert_select "input#user_facebook[name=?]", "user[facebook]"
       assert_select "input#user_twitter[name=?]", "user[twitter]"
       assert_select "select#user_tipo_usuario_id option[selected]", text: "Organizador"

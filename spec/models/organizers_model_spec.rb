@@ -52,7 +52,7 @@ describe Organizer do
     end
 
     it "tiene asignada un Usuario del sistema." do
-      user = User.create!({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "clave" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 }) 
+      user = User.create!({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "password" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 }) 
       organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "Una@test.com", "user_id" => user.id })
       organizer.should belong_to(:user)
     end
