@@ -1,0 +1,33 @@
+<h2>Procesos de Selección en VOX</h2>
+Proximamente se listarán los procesos de selección, de la plataforma, para que puedas participar de ellos o ver los resultados.
+<br>
+<div class="table-responsive">
+  <table id="selection-processes-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody >
+      <tr>
+        <td></td>        
+      </tr>
+
+  </tbody>
+  </table>
+</div>
+
+<hr>
+<%=
+case current_user.tipo_usuario_id
+    when 1
+      render :template => "/paginas/admin_dashboard/" 
+      #format.html { render "/paginas/admin_dashboard/", :layout => false  } 
+    when 2
+      render :template =>  "/paginas/jury_dashboard/" 
+      #format.html { render "/paginas/jury_dashboard/", :layout => false  } 
+    when 3
+      render :template =>  "/paginas/user_dashboard/"  , :layout => false
+      #format.html { render "/paginas/user_dashboard/", :layout => false  }       
+    end
+    %>

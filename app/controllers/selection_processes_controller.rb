@@ -1,8 +1,8 @@
 # encoding: utf-8
 class SelectionProcessesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_selection_process, only: [:show, :edit, :update, :destroy]
   before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_selection_process, only: [:show, :edit, :update, :destroy]
 
   # GET /selection_process
   # GET /selection_process.json
@@ -10,7 +10,8 @@ class SelectionProcessesController < ApplicationController
     if check_property
       if @current_user.is_admin?
         if params[:organizer_id].blank?
-          @selection_processes = SelectionProcess.all 
+          @selection_processes = SelectionProcess.all
+          return 
         else
           @organizer = Organizer.find_by_id(params[:organizer_id])
           @selection_processes = @organizer.selection_process
@@ -33,6 +34,7 @@ class SelectionProcessesController < ApplicationController
   # GET /selection_process/1
   # GET /selection_process/1.json
   def show
+    user_session[:selection_processes_id] = @selection_process.id
   end
 
   # GET /selection_process/new
@@ -52,7 +54,7 @@ class SelectionProcessesController < ApplicationController
   # POST /selection_process.json
   def create
     @selection_process = SelectionProcess.new(selection_process_params)
-
+    user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?
     respond_to do |format|
       if @selection_process.save
         format.html { redirect_to @selection_process, notice: 'Premio creado correctamente.' }
@@ -81,6 +83,7 @@ class SelectionProcessesController < ApplicationController
   # DELETE /selection_process/1
   # DELETE /selection_process/1.json
   def destroy
+    user_session[:selection_process_id] = nil
     @selection_process.destroy
     respond_to do |format|
       format.html { redirect_to :back, status: 303, notice: 'Proceso borrado correctamente.' }
@@ -92,12 +95,19 @@ class SelectionProcessesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_selection_process
-      @selection_process = SelectionProcess.find_by_id(params[:id])
-      @organizer = @selection_process.organizer
-      respond_to do |format|
-        format.html do
-          if @selection_process.nil?
-             redirect_to(root_path, alert: "No se encontró proceso de selección con ese ID.") and return
+      selection_process_id = user_session[:selection_process_id] unless user_session[:selection_process_id].nil?
+      selection_process_id = params[:id] unless params[:id].nil?
+      
+      if selection_process_id
+       @selection_process = SelectionProcess.find_by_id(selection_process_id)
+       @organizer = @selection_process.organizer unless @selection_process.nil?           
+       user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?        
+
+        respond_to do |format|
+          format.html do
+            if @selection_process.nil?
+               redirect_to(root_path, alert: "No se encontró proceso de selección con ese ID.") and return
+            end
           end
         end
       end
@@ -111,6 +121,7 @@ class SelectionProcessesController < ApplicationController
     # Filtro.
     # para que solo pueda operar sobre sus propios procesos.
     def check_property
+      #logger.info(@current_user.is_admin?)
       return true if @current_user.is_admin?
 
       if !params[:organizer_id].blank?
@@ -135,15 +146,9 @@ class SelectionProcessesController < ApplicationController
           return true
       end
       end
-
-
     end
 
     def security_exit
-      puts("PARAM: #{params[:organizer_id]}")
-      puts("ORG: #{@organizer.inspect}")
-      puts("USER: #{@current_user.inspect}")
-
         respond_to do |format|
         format.html do
            redirect_to(root_path, alert: "Solo puedes operar sobre los procesos que tu hayas creado.")

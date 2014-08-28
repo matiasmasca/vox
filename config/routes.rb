@@ -1,15 +1,27 @@
 Vox::Application.routes.draw do
-  #paginas estaticas
-  get "paginas/home"
-  get "paginas/about"
-  get "paginas/contact"
-  get "paginas/user_dashboard"
-  get 'paginas/user_dashboard/:id' => 'paginas#user_dashboard'
-
-  get "paginas/admin_dashboard"
-  get 'paginas/admin_dashboard/:id' => 'paginas#admin_dashboard' 
-  
   devise_for :users, :path_prefix => 'my'
+
+  #paginas estaticas
+  get "paginas/home" 
+  get "paginas/about"
+  get "paginas/contact" 
+  
+  unauthenticated do
+    get "paginas/home" 
+    get "paginas/about"
+    get "paginas/contact"
+  end
+
+  authenticated do
+    get "paginas/dashboard" => 'paginas#dashboard'
+    get "paginas/user_dashboard"
+    get 'paginas/user_dashboard/:id' => 'paginas#user_dashboard'
+
+    get "paginas/admin_dashboard"
+    get 'paginas/admin_dashboard/:id' => 'paginas#admin_dashboard' 
+  end
+
+
   #scope "/admin" do
   resources :users
   #end
@@ -48,6 +60,7 @@ Vox::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root to: "paginas#home"
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   #   get 'oganizers' => 'organizers#index'

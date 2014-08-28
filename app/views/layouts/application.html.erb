@@ -25,16 +25,13 @@
 	  </div>
 	  <div class="navbar-collapse collapse">
 	    <ul class="nav navbar-nav navbar-left">
-	      <li class="active"><%= link_to ' Inicio',  paginas_home_path, class: "glyphicon glyphicon-home" %></li>
-        <% if user_signed_in? %>
           <%= render partial: "layouts/navbar_items" %>
-        <% end %> 
 	    </ul>
       
       <!--/Login -->
       <% if user_signed_in? %>
         <ul class="navbar-text navbar-right">
-        <li class="active">Logueado como: <strong><%= current_user.email %></strong>.</li>
+        <li class="active" title="Estas identificado como: <%= current_user.email %>">Identificado: <strong><%= current_user.email %></strong>.</li>
         <li><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
         <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
       <% else %>

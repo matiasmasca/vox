@@ -14,6 +14,9 @@ class PaginasController < ApplicationController
   def contact
   end
 
+  def dashboard    
+  end
+
   def user_dashboard
   	# va a buscar un template llamado /user_dashboard.html.erb
   	# Podemos usar esto para simular el usuario, mientras no tengamos el login.

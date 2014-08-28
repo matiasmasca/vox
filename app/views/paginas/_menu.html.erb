@@ -8,7 +8,7 @@
    </div>
 <% end %>
 
-<% unless @selection_process.nil? %>
+<% unless user_session.nil? || user_session[:selection_processes_id].nil? %>
   <div class="list-group"> <!--Por proceso-->
     <p class="list-group-item"><b>Proceso seleccionado:</b> <%= @selection_process.name_process %></p>
       <%= render partial: "selection_processes/menu_selected_process", object: @selection_process %> 
@@ -23,23 +23,23 @@
   </div>
   
  <!--Usuario Organizer!-->
-  <% unless @current_user.organizer.nil?  %>
+  <% unless user_session.nil? || user_session[:organizer_id].nil?  %>
   <div class="list-group">
         <p class="list-group-item active"><b>Organización</b></p>
-        <%= link_to ' Mostrar Organización',  user_organizer_path(@current_user, @current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-star list-group-item' %>
-        <%= link_to ' Modificar Organización',  edit_user_organizer_path(@current_user, @current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil list-group-item' %>
-        <%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@current_user.id, @current_user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign list-group-item' %>
+        <%= link_to ' Mostrar Organización',  user_organizer_path(@current_user, user_session[:organizer_id]), :class => 'btn btn-default btn glyphicon glyphicon-star list-group-item' %>
+        <%= link_to ' Modificar Organización',  edit_user_organizer_path(@current_user, user_session[:organizer_id]), :class => 'btn btn-default btn glyphicon glyphicon-pencil list-group-item' %>
+        <%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@current_user.id, user_session[:organizer_id]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign list-group-item' %>
   </div> 
   <% end %>
 <% end %>
 
 <!--Usuario-->
-<% unless @current_user.nil?  %>
+<% if user_signed_in?  %>
  <div class="list-group">
   <div class="list-group">
     <a class="active list-group-item"><b>Usuario</b></a>
     <div>
-      <%= link_to ' Mi Perfil',  user_path(@current_user), :class => "btn btn-default btn glyphicon glyphicon-user list-group-item" if @current_user.id   %>
+      <%= link_to ' Mi Perfil',  user_path(current_user), :class => "btn btn-default btn glyphicon glyphicon-user list-group-item" if current_user.id   %>
       <%= link_to " Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'btn btn-default btn glyphicon glyphicon-log-out list-group-item'  %>
     </div>
   </div>

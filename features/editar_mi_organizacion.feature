@@ -13,19 +13,13 @@ Antecedentes:
 #Camino feliz
 Escenario: editar una organización 
   Y cambio el nombre por "ACME", el domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
-  Entonces veo que el nombre cambio y el domicilio cambio.
+  Entonces veo que el nombre de mi organización cambio y el domicilio cambio.
 
 Escenario: agrego dato que faltaba
-  Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742", sin web definida
-  Y que estoy en la pantalla de Administración de Organizaciones
-  Cuando yo edito una Organización
   Y cambio web por "www.acme.org"
-  Entonces veo que la web cambio, sin afectar a nombre o dirección.
+  Entonces veo que mi sitio web cambio, sin afectar a nombre o dirección.
 
 Escenario: agrego foto que faltaba
-  Dado existe una Organización llamada "ACME" con domicilio en "Av. Siempre Viva 742", sin web definida
-  Y que estoy en la pantalla de Administración de Organizaciones
-  Y yo edito una Organización
   Y subo una imagen que se utilizará como logo de la organización.
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje "Organización actualizada correctamente."
@@ -61,8 +55,6 @@ Esquema del escenario: problemas con datos obligatorios
 Escenario: nombre unico
   Dado existe una Organización: "ACME", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
   Y existe una Organización: "ACME-ARGENTINA", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com"
-  Y que estoy en la pantalla de Administración de Organizaciones
-  Cuando yo edito otra Organización
   Y cambio "ACME", "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos", "ong.org.ar" y "info@email.com" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
 

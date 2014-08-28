@@ -5,35 +5,58 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
-  before_filter :load_sidebar
-
+  
   before_action :set_user
-
+  
   #Parametros para formularios de Devise.
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  before_filter :load_sidebar
 
  private
   def load_sidebar
   	#Aca tendrías que poner todo lo que necesitas pre-cargar en la barra lateral.
   	#Ojo que se ejecuta en cada llamado...
-  	set_selection_process if params[:selection_process_id]
+  	set_selection_process  if user_signed_in?
   end
 
   def set_selection_process
-      @selection_process = SelectionProcess.find_by_id(params[:selection_process_id])
-      if !@selection_process.nil? && @user.nil?
-        @organizer = @selection_process.organizer
-        #@user = User.find_by_id(@selection_process.organizer.user_id)
+      selection_process_id = user_session[:selection_process_id] unless user_session[:selection_process_id].nil?
+      selection_process_id = params[:selection_process_id] unless params[:selection_process_id].nil?
+      
+      if params[:selection_process_id] || user_session[:selection_process_id]
+        @selection_process = SelectionProcess.find_by_id(selection_process_id)
+        user_session[:selection_processes_id] = @selection_process.id if @selection_process
       end
-      #flash.notice = "Pase por set_selection_process"
+      
+      #Set_organizer
+      if !@selection_process.nil?
+        @organizer = @selection_process.organizer
+        user_session[:organizer_id] = @organizer.id if @organizer    
+      end
   end
+
 
   def set_user
       if user_signed_in?
-        @current_user = current_user  
+      @current_user ||= current_user &&
+      User.find_by(id: current_user.id)
+
+        if current_user.tipo_usuario_id == 3  
+          user_session[:organizer_id] = current_user.organizer.id 
+        end
+        #logger.info(user_session[:organizer_id])
       end
   end
+
+  def security_exit
+        respond_to do |format|
+        format.html do
+           redirect_to(root_path, alert: "Operación no permitida.")
+           #return false
+        end
+      end
+    end
 
   protected
 

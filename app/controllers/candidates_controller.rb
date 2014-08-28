@@ -4,7 +4,7 @@ class CandidatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
   before_action :set_category
-  before_action :check_property,  only: [:show, :edit, :update, :destroy]
+  before_action :check_property,  only: [:index, :show, :edit, :update, :destroy]
 
   # GET /candidates
   # GET /candidates.json
@@ -13,12 +13,17 @@ class CandidatesController < ApplicationController
     if !params[:category_id].blank? #|| ADMIN
       @candidates = Candidate.where(category_id: @category)
     else
-      @candidates = Candidate.all
+      @candidates = Candidate.all if current_user.is_admin?
     end
     
     if !params[:selection_process_id].blank?
       #<!--Candidatos where: category.selection_process_id == selection_process -->
       @categories = Category.where(selection_process_id: params[:selection_process_id])
+      @candidates = Candidate.where(category_id: @categories)
+    end
+
+    unless user_session[:selection_process_id].nil?
+      @categories = Category.where(selection_process_id: user_session[:selection_process_id])
       @candidates = Candidate.where(category_id: @categories)
     end
 
@@ -42,7 +47,7 @@ class CandidatesController < ApplicationController
   # POST /candidates.json
   def create
     @candidate = Candidate.new(candidate_params)
-
+    user_session[:category_id] = @candidate.category_id
     respond_to do |format|
       if @candidate.save
         format.html { redirect_to @candidate, notice: 'Candidato creado correctamente.' }
@@ -87,18 +92,26 @@ class CandidatesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_candidate
-      @candidate = Candidate.find_by_id(params[:id])
+      candidate_id = user_session[:candidate_id] unless user_session[:candidate_id].nil?
+      candidate_id = params[:id] unless params[:id].blank?
+      if candidate_id
+        @candidate = Candidate.find_by_id(candidate_id)
+      end
     end
 
     def set_category
-    if params[:category_id]
-      @category = Category.find_by_id(params[:category_id]) 
+      category_id = user_session[:category_id] unless user_session[:category_id].nil?
+      category_id = params[:id] unless params[:id].nil?
+      category_id = @candidate.category_id if @candidate
+
+    if category_id
+      @category = Category.find_by_id(category_id)
+      user_session[:category_id] = @category.id
       unless @category.selection_process.nil?
         @selection_process = @category.selection_process
         @organizer = @selection_process.organizer
         #@user = User.find_by_id(@selection_process.organizer.user_id)
       end
-      #flash.notice = "Pase por set_category"
     end
   end
 
@@ -110,7 +123,10 @@ class CandidatesController < ApplicationController
     # Filtro de Propiedad.
     # Un usuario solo puede modificar operar con las Organizaciones que haya creado.
     def check_property
-      if !params[:category_id].blank? #|| ADMIN
+      return true if @current_user.is_admin?
+
+      #Cambiar parametro arriba.
+      if !params[:category_id].blank? && @candidate #|| ADMIN
       #@user = User.find_by_id(params[:category_id])
       #logger.debug "CANDIDATE: #{@candidate} " 
       respond_to do |format|
@@ -121,6 +137,9 @@ class CandidatesController < ApplicationController
         end
         end
       end
+
+      #Manda parametro por otro lado.
+
     end   
 
 end

@@ -7,6 +7,15 @@ Cuando(/^cambio el nombre por "(.*?)", el domicilio por "(.*?)"$/) do |name, add
   @update_name = name
   @update_address = address
   @organizer.update_attributes!({:name => @update_name,:address => @update_address })
+
+  if name
+    fill_in "organizer_name", :with => name
+  end
+
+  if address
+    fill_in "organizer_address", :with => address
+  end
+  
 end
 
 Entonces(/^veo que el nombre cambio y el domicilio cambio\.$/) do
@@ -24,6 +33,10 @@ end
 Cuando(/^cambio web por "(.*?)"$/) do |web|
   @update_web = web
   @organizer.update_attributes!({ :web => @update_web})
+
+  if web
+    fill_in "organizer_web", :with => web
+  end
 end
 
 Entonces(/^veo que la web cambio, sin afectar a nombre o dirección\.$/) do

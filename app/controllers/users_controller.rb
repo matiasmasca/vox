@@ -1,8 +1,8 @@
 # encoding: utf-8
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :check_property,  only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
+  before_action :check_property,  only: [:index, :show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -75,7 +75,9 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find_by_id(params[:id])
+      if !params[:id].blank? 
+        @user = User.find_by_id(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -84,8 +86,27 @@ class UsersController < ApplicationController
     end
     
     def check_property
-      if current_user.is_admin?
-        
+      return true if @current_user.is_admin?
+
+      if !params[:id].blank? 
+          @user = User.find_by_id(params[:id])
+        else
+          @user = nil
       end
+      
+        puts("ACAAAAAAAAAAAAA!!!!!!!!!!! <<<<<=======") 
+        puts("@current_user = #{@current_user.id}")
+        puts("@user = #{@user}")
+
+      unless @user == @current_user 
+          respond_to do |format|
+            format.html do
+              unless @user == @current_user
+                redirect_to(root_path, alert: "Solo puedes operar sobre el usuario que tu hayas creado.")
+                return
+              end
+            end
+          end
+        end
     end
 end
