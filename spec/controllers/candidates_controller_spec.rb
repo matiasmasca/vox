@@ -5,7 +5,13 @@ describe CandidatesController do
 	login_admin
 	
 	let(:valid_attributes) { { "name" => "Corre caminos" , "bios" => "UnaDireccionCualquiera", "category_id" => "1"} }
-	let(:valid_session) { {} }
+	let(:valid_session) {  {"warden.user.user.key" => session["warden.user.user.key"]}  }
+
+	# Crear Proceso y Category
+	before :each do		
+		selection_process = SelectionProcess.create! ({ "name_process" => "MyString" , "place" => "MyString"})
+		category = Category.create! ({ "name" => "Mejor ACME" , "bench" => "5", "selection_process_id" => "1"})
+	end
 
 	describe "GET new" do
       it "assigns a new candidate as @candidate" do

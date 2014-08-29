@@ -101,12 +101,12 @@ class CandidatesController < ApplicationController
 
     def set_category
       category_id = user_session[:category_id] unless user_session[:category_id].nil?
-      category_id = params[:id] unless params[:id].nil?
+      category_id = params[:category_id] unless params[:category_id].nil?
       category_id = @candidate.category_id if @candidate
 
     if category_id
       @category = Category.find_by_id(category_id)
-      user_session[:category_id] = @category.id
+      user_session[:category_id] = @category.id if @category
       unless @category.selection_process.nil?
         @selection_process = @category.selection_process
         @organizer = @selection_process.organizer
