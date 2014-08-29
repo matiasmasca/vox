@@ -132,7 +132,8 @@ class CandidatesController < ApplicationController
       respond_to do |format|
         format.html do
           unless @candidate.category_id == @category.id
-            redirect_to(edit_user_organizer_path(@category.selection_process.organizer.user,@category.selection_process.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+            user_session[:category_id] = nil
+            redirect_to(edit_user_organizer_path(@category.selection_process.organizer.user,@category.selection_process.organizer), alert: "Solo puedes operar sobre el proceso que tu hayas creado.")
           end
         end
         end

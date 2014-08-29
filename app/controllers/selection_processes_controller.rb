@@ -151,6 +151,7 @@ class SelectionProcessesController < ApplicationController
     def security_exit
         respond_to do |format|
         format.html do
+           user_session[:selection_process_id] = nil
            redirect_to(root_path, alert: "Solo puedes operar sobre los procesos que tu hayas creado.")
            return false
         end

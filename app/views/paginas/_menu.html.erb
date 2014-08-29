@@ -1,14 +1,15 @@
 
 <div>
 <% unless @current_user.nil? || @current_user.organizer.nil? %>
-  <div class="list-group"> <!--Del proceso.-->
+  <div class="list-group"> <!--De los procesos.-->
     <p class="list-group-item"><b>Mis Procesos</b></p>
       <% @selection_processes = @current_user.organizer.selection_process unless @current_user.organizer.nil? %>
       <%= render partial: "selection_processes/menu_selection_process_items", object: @selection_processes %> 
    </div>
 <% end %>
 
-<% unless user_session.nil? || user_session[:selection_processes_id].nil? %>
+<% unless user_session.nil? || user_session[:selection_processes_id].nil?  %>
+ <% if @selection_process  %>
   <div class="list-group"> <!--Por proceso-->
     <p class="list-group-item"><b>Proceso seleccionado:</b> <%= @selection_process.name_process %></p>
       <%= render partial: "selection_processes/menu_selected_process", object: @selection_process %> 
@@ -21,7 +22,7 @@
   <div class="list-group"><!--Candidatos-->
     <%= render partial: "candidates/menu_candidates_category", object: @category %> 
   </div>
-  
+ <% end %>
  <!--Usuario Organizer!-->
   <% unless user_session.nil? || user_session[:organizer_id].nil?  %>
   <div class="list-group">

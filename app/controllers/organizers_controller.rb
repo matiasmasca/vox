@@ -108,26 +108,37 @@ class OrganizersController < ApplicationController
           else
             @user =  @current_user
           end
-
-
-        respond_to do |format|
-          format.html do
+        #respond_to do |format|
+          #format.html do
             unless @user.organizer.id == @organizer.id
-              redirect_to(root_path(@user, @user.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+              security_exit
+              #redirect_to(root_path(@user, @user.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
               return
             end
-          end
-      end
+          #end
+       #end
      end
 
       if @organizer && !@current_user.is_admin?
         if @organizer.user != @current_user && !@current_user.is_admin?
-          redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+          security_exit
+          #redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
           return
         end
       else
-        redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
-        # return
+        security_exit
+        #redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+         return
+      end
+    end
+
+    def security_exit
+        respond_to do |format|
+        format.html do
+           user_session[:organizer_id] =  nil
+           redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+           return false
+        end
       end
     end
 

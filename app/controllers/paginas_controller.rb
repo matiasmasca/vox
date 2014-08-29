@@ -1,6 +1,6 @@
 # encoding: utf-8
 class PaginasController < ApplicationController
-  before_action :authenticate_user!, only: [:user_dashboard, :admin_dashboard]
+  before_action :authenticate_user!, except: [:home, :about, :contact]
   before_action :set_user
   before_action :set_selection_process , only: [:user_dashboard]
   

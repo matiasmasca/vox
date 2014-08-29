@@ -146,6 +146,7 @@ class CategoriesController < ApplicationController
         respond_to do |format|
           format.html do
             unless @selection_process == @category.selection_process
+               user_session[:category_id] = nil
                redirect_to(organizer_selection_process_path(@selection_process.organizer.user, @selection_process), alert: "Solo puedes operar sobre las categorías del proceso seleccionado.")
             end
           end

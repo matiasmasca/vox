@@ -1,5 +1,5 @@
 <!--Lista de opciones por proceso-->
-<% unless user_session[:selection_processes_id] #@selection_process.nil? || @selection_process.organizer.nil? %>
+<% if user_session[:selection_processes_id] #@selection_process.nil? || @selection_process.organizer.nil? %>
   <div class="list-group">
     <!--Sidebar Cabecera active-->
     <%= link_to ' Mis Procesos', organizer_selection_processes_path(@selection_process.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film list-group-item active' %>

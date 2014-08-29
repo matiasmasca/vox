@@ -79,6 +79,7 @@ Por ejemplo: en la features "listado_entidades_organizadoras.feature" tenia una 
 # BDD vs. TDD.
 - Las pruebas de integración, de comportamiento con Cucumber, me dan la posibilidad de comprobar el funsionamiento del sistema si surgen cambios en el framework de una manera muy simple y presica. En lenguajes como Ruby donde hay problemas de compatibilidad hacia atras, esto resulta muy útil.
 - Como regla, debe haber al menos 1 prueba de integración de alto nivel para cada acción de los controladores.
+- Las pruebas de integración (cukes) fallan primero, o más rapidamente, que las de más bajo nivel; ya que en la interacción entre partes se pueden dar fallas o problemas que no fueron contemplados a más bajo nivel.
 
 # Cucumber vs. RSpec.
 - Probar el comportamiento de la vista (Interfaz), en el caso donde habia Asociaciones de datos, se volvio un poco engorroso y dificil en RSpec comparado en el primer intento de la prueba de la misma funsionalidad con Cucumber.
