@@ -46,6 +46,11 @@ class PaginasController < ApplicationController
   	# ir al dashboard del elector.
   end
 
+  #Para pruebas de stress
+  def loaderio
+    render :text => ENV["loaderio"].to_s if Rails.env.production?
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

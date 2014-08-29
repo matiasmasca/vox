@@ -5,7 +5,12 @@ Vox::Application.routes.draw do
   get "paginas/home" 
   get "paginas/about"
   get "paginas/contact" 
-  
+
+  #para prueba de stress
+  if Rails.env.production?
+    get ENV["loaderio"].to_s => 'paginas#loaderio'
+  end
+
   unauthenticated do
     get "paginas/home" 
     get "paginas/about"
