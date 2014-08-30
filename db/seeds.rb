@@ -108,3 +108,13 @@ candidates.each do |candidate|
   Candidate.create!(candidate)
 end
 
+voters = [
+   {:user_id => '11', :selection_process_id => '1', :estado => '3'},
+   {:user_id => '12', :selection_process_id => '1', :estado => '3'},
+   {:user_id => '13', :selection_process_id => '1', :estado => '3'}
+   ]
+
+voters.each do |voter|
+  VoterList.create!(voter)
+end
+

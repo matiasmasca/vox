@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819175529) do
+ActiveRecord::Schema.define(version: 20140829215938) do
 
   create_table "candidates", force: true do |t|
     t.string   "name"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140819175529) do
   create_table "selection_processes", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration"
+    t.integer  "duration",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
@@ -101,5 +101,16 @@ ActiveRecord::Schema.define(version: 20140819175529) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+
+  create_table "voter_lists", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "selection_process_id"
+    t.integer  "estado"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "voter_lists", ["selection_process_id"], name: "index_voter_lists_on_selection_process_id"
+  add_index "voter_lists", ["user_id"], name: "index_voter_lists_on_user_id"
 
 end

@@ -52,6 +52,10 @@ Vox::Application.routes.draw do
     resources :categories
   end
 
+  resources :selection_processes do
+    resources :voter_lists
+  end
+
   resources :categories do
     resources :candidates
   end

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   
   #Asociaciones
   has_one :organizer, dependent: :nullify, autosave: true
+  has_many :voter_list, autosave: true
 
   #obligatorios: usuario, email, clave, tipo_usuario_id.
   # clave pasa a llamarse encrypted_password y es controlada por la gema Devise.

@@ -1,0 +1,65 @@
+<div>
+<%= form_for [@selection_process, @selection_process.voter_list.build], :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
+  <% if @voter_list.errors.any? %>
+    <div id="alert alert-danger">
+      <h2><%= pluralize(@voter_list.errors.count, "error") %> prohibe/en que los datos sean guardados:</h2>
+      <ul>
+      <% @voter_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% unless @selection_process.nil? %>
+   <div class="field">Pertenece al proceso:
+    <b><%= link_to @selection_process.name_process, selection_process_path(@selection_process) %></b>
+    </div>
+  <% end %>
+
+  <% unless @selection_process.nil? %>
+    <div class="field">
+      <%= f.label :selection_process_name, "Para el proceso: ", class: 'control-label' %>
+      <%= @selection_process.name %>
+      <%= f.hidden_field :selection_process_id, value: @selection_process.id %> 
+    </div>
+  <% else %>
+  <div>
+    <p> ID Proces de Selección. solo en Back-end del Admin.</p>
+  </div>
+    <div class="field">
+      <%= f.label :selection_process_id, "Cod. Proceso", class: 'control-label' %><br>
+      <%= f.text_field :selection_process_id,  class: "form-control", size: "10", placeholder: "Ingrese el cod. del proceso a la que pertenecerá este elector."  %>
+    </div>
+    <% 
+    #Carga la lista a desplegar.
+    if !params[:selection_process_id].nil?
+    organizer_id = params[:organizer_id].to_i
+    selection_processes = SelectionProcess.find_by_id(organizer_id)
+    selection_processes_list = {}
+    selection_processes.each do |selection_process| 
+      selection_processes_list["#{selection_process.name}"] = selection_process.id
+    end
+
+    %>
+      <% if !categories.blank?  %>
+       <div class="field">
+        <%= f.label :selection_process_id, "O seleccione una categoría: " , class: 'control-label' %><br>
+        <%= f.select :selection_process_id, selection_processes_list, class: 'form-control input-lg' %>
+       </div>
+       <% end %>
+    <% end %>
+
+
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email, "Email elector", class: 'control-label' %><br>
+    <%= f.text_field :email,  class: "form-control", size: "10", maxlength: "110", placeholder: "ingrese el email que identifica al elector y luego presion Guardar Cambios."  %>
+  </div>
+
+  <div class="actions">
+   <%= button_tag ' Guardar Cambios', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>
+  </div>
+<% end %>
+</div>

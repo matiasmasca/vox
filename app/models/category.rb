@@ -17,5 +17,4 @@ class Category < ActiveRecord::Base
 	
 	#Unico
 	validates :name, uniqueness: { scope: :selection_process_id, message: "ese nombre ya está siendo utilizado." }
-
 end

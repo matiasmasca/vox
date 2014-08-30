@@ -49,6 +49,7 @@ rails g scaffold Foobar name:string --no-helper-specs --no-view-specs
 // Version 2014
 rails g scaffold User usuario:string nombre:string apellido:string email:string clave:string facebook:string twetter:string tipo_usuario_id:integer 
 
+rails g model VoterList user:references selection_process:references estado:integer
 
 Los inflection se utiliza Irregular.
    inflect.irregular 'error', 'errores'

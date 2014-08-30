@@ -1,0 +1,10 @@
+
+<p>
+  <strong>Nominado:</strong>
+  <%= @voter_list.user_id %>
+</p>
+<p>
+
+<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>
+<%= link_to ' Editar', voter_list_path(@voter_list), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
+<%= link_to ' Ir a candidatos', voter_lists_path(@voter_list), :class => 'btn btn-link btn glyphicon glyphicon-list' %>

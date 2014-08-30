@@ -1,0 +1,40 @@
+<h1>Lista de Electores</h1>
+
+<div class="table-responsive">
+  <table id="voter_list-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>email</th>
+      <th>Estado</th>
+      <th>Cod. Proceso</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= tabla_sin_registros @voter_list %> 
+    <% @voter_list.each do |voter| %>
+      <tr>
+        <td><%= voter.user_id %></td>
+        <td><%= voter.selection_process_id %></td>
+        <td><%= voter.estado %></td>
+       <% unless params[:selection_process_id].nil? %>
+        <td><%= link_to ' Mostrar', selection_process_voter_list_path(voter.selection_process_id, voter), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-eye-open' %></td>
+        <td><%= link_to ' Editar', edit_selection_process_voter_list_path(voter.selection_process_id, voter), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-pencil' %></td>
+        <td><%= link_to ' Eliminar', selection_process_voter_list_path(voter, selection_process_id: voter.selection_process_id), :class => 'btn btn-danger btn-xs btn glyphicon glyphicon-trash active', :method => :delete, data: { confirm: "Esta seguro que desea borrar este candidato: #{voter.user_id}?"} %></td>
+        <% end %>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+<br>
+
+<% unless params[:selection_process_id].nil? %>
+<%= link_to 'Agregar Canidato', "voter_list/new?selection_process_id=#{params[:selection_process_id]}", :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+<% else %>
+<%= link_to 'Agregar Candidato', new_candidate_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+<% end %>

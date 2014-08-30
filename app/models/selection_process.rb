@@ -3,6 +3,7 @@ class SelectionProcess < ActiveRecord::Base
     #Asociaciones
     belongs_to :organizer, autosave: true
     has_many :category, autosave: true
+    has_many :voter_list, autosave: true
 
 	#datos obligatorios
 	validates :name_process, :place, presence: { message: "es un dato obligatorio."}
