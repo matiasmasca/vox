@@ -55,6 +55,7 @@ Por ejemplo cree un application_helper para mostrar un mensaje en una tabla, y
 - Algunas probuebas ayudaron a encontrar errores en etapas tempranas. Por ejemplo un error de ortografia que no se habia localizado, en un mensaje, hasta avanzado el proyecto. (error sistematico).
 - Si los casos de prueba (ejemplos) no cumbren las situaciones, pueden haber errores allí. Por ejemplo no se prueba una ruta a un ID que no existe y generar un error 404: "We're sorry, but something went wrong."
 - Cuando se integro la gema Devise, las pruebas incluso rotas ayudaron a detectar errores de comportamiento. Por ejemplo en el panel del administrador que  no se mostraba.
+- Riesgo: si la herramienta que se usa para realizar las pruebas, no soporta una funcionalidad por ejemplo "Variables de sesion de usuario", entonces al falla porque no puede leer estas variables nos veremos a tomar caminos logicos que no contemplen esas variables o a poner excesivas condiciones IF.
 
 // Errores ante cambio.
 Al crear los Procesos de Selección (selection_process), me habia equivocado en la creación y puse en plural: selection_processes, lo cual impacto en todo lo relasionado a esa entidad, en las 3 capas: modelo, controlador y vista. Y las pruebas asociadas. 

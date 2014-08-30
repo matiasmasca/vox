@@ -22,6 +22,10 @@
   <div class="list-group"><!--Candidatos-->
     <%= render partial: "candidates/menu_candidates_category", object: @category %> 
   </div>
+  <!-- Padrón -->
+  <div class="list-group"><!--Candidatos-->
+    <%= render partial: "voter_lists/menu_voter_list", object: @selection_process %> 
+  </div>
  <% end %>
  <!--Usuario Organizer!-->
   <% unless user_session.nil? || user_session[:organizer_id].nil?  %>
@@ -29,7 +33,7 @@
         <p class="list-group-item active"><b>Organización</b></p>
         <%= link_to ' Mostrar Organización',  user_organizer_path(@current_user, user_session[:organizer_id]), :class => 'btn btn-default btn glyphicon glyphicon-star list-group-item' %>
         <%= link_to ' Modificar Organización',  edit_user_organizer_path(@current_user, user_session[:organizer_id]), :class => 'btn btn-default btn glyphicon glyphicon-pencil list-group-item' %>
-        <%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@current_user.id, user_session[:organizer_id]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign list-group-item' %>
+        <%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(user_session[:organizer_id]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign list-group-item' %>
   </div> 
   <% end %>
 <% end %>

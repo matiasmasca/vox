@@ -19,11 +19,15 @@ Vox::Application.routes.draw do
 
   authenticated do
     get "paginas/dashboard" => 'paginas#dashboard'
+    
     get "paginas/user_dashboard"
     get 'paginas/user_dashboard/:id' => 'paginas#user_dashboard'
 
     get "paginas/admin_dashboard"
     get 'paginas/admin_dashboard/:id' => 'paginas#admin_dashboard' 
+
+    get "paginas/jury_dashboard"
+    get 'paginas/jury_dashboard/:id' => 'paginas#jury_dashboard' 
   end
 
 
@@ -54,6 +58,7 @@ Vox::Application.routes.draw do
 
   resources :selection_processes do
     resources :voter_lists
+    get '/selection_processes/:selection_process_id/voter_lists/'  => 'voter_lists#search_voter', as: :selection_processes_candidates
   end
 
   resources :categories do

@@ -18,13 +18,24 @@
     <%= tabla_sin_registros @voter_list %> 
     <% @voter_list.each do |voter| %>
       <tr>
-        <td><%= voter.user_id %></td>
-        <td><%= voter.selection_process_id %></td>
-        <td><%= voter.estado %></td>
+        <% voter.user_id = 1 if voter.user_id.nil? %>
+        <% user = User.find_by_id(voter.user_id) %>
+        <td><%= "#{user.nombre} #{user.apellido}" %></td>
+        
+        <td><%= "#{user.email}" %></td>
+        <% 
+        case voter.estado
+          when 1
+            estado = "aprobado"
+          when 2
+            estado = "pendiente"
+          when 3
+            estado = "rechazado"
+        end
+        %>
+        <td><%= estado %></td>
        <% unless params[:selection_process_id].nil? %>
-        <td><%= link_to ' Mostrar', selection_process_voter_list_path(voter.selection_process_id, voter), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-eye-open' %></td>
-        <td><%= link_to ' Editar', edit_selection_process_voter_list_path(voter.selection_process_id, voter), :class => 'btn btn-default btn-xs btn glyphicon glyphicon-pencil' %></td>
-        <td><%= link_to ' Eliminar', selection_process_voter_list_path(voter, selection_process_id: voter.selection_process_id), :class => 'btn btn-danger btn-xs btn glyphicon glyphicon-trash active', :method => :delete, data: { confirm: "Esta seguro que desea borrar este candidato: #{voter.user_id}?"} %></td>
+        <td><%= link_to ' Eliminar', selection_process_voter_list_path(voter.selection_process_id, voter ), :class => 'btn btn-danger btn-xs btn glyphicon glyphicon-trash active', :method => :delete, data: { confirm: "Esta seguro que desea quitar el elector: #{user.nombre} #{user.apellido} del padrón?"} %></td>
         <% end %>
       </tr>
     <% end %>
@@ -34,7 +45,5 @@
 <br>
 
 <% unless params[:selection_process_id].nil? %>
-<%= link_to 'Agregar Canidato', "voter_list/new?selection_process_id=#{params[:selection_process_id]}", :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
-<% else %>
-<%= link_to 'Agregar Candidato', new_candidate_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+  <%= link_to 'Agregar Elector', "voter_lists/new", :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
 <% end %>

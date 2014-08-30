@@ -17,49 +17,36 @@
     </div>
   <% end %>
 
-  <% unless @selection_process.nil? %>
-    <div class="field">
-      <%= f.label :selection_process_name, "Para el proceso: ", class: 'control-label' %>
-      <%= @selection_process.name %>
-      <%= f.hidden_field :selection_process_id, value: @selection_process.id %> 
-    </div>
-  <% else %>
-  <div>
-    <p> ID Proces de Selección. solo en Back-end del Admin.</p>
-  </div>
-    <div class="field">
-      <%= f.label :selection_process_id, "Cod. Proceso", class: 'control-label' %><br>
-      <%= f.text_field :selection_process_id,  class: "form-control", size: "10", placeholder: "Ingrese el cod. del proceso a la que pertenecerá este elector."  %>
-    </div>
-    <% 
+  <% unless @selection_process.nil? 
     #Carga la lista a desplegar.
-    if !params[:selection_process_id].nil?
-    organizer_id = params[:organizer_id].to_i
-    selection_processes = SelectionProcess.find_by_id(organizer_id)
-    selection_processes_list = {}
-    selection_processes.each do |selection_process| 
-      selection_processes_list["#{selection_process.name}"] = selection_process.id
-    end
-
-    %>
-      <% if !categories.blank?  %>
-       <div class="field">
-        <%= f.label :selection_process_id, "O seleccione una categoría: " , class: 'control-label' %><br>
-        <%= f.select :selection_process_id, selection_processes_list, class: 'form-control input-lg' %>
-       </div>
-       <% end %>
+      users = User.where(tipo_usuario_id: 2)
+      #users = User.find_by(tipo_usuario_id: 2)
+      users_list = {}
+      users.each do |user| 
+        users_list["#{user.nombre} #{user.apellido}"] = user.id
+      end 
+      %>
+      <% if !users.blank?  %>
+         <div class="field">
+          <%= f.label :user_id, "Seleccione un usuario: " , class: 'control-label' %><br>
+          <%= f.select :user_id, users_list, class: 'form-control' %>
+          <%= f.hidden_field :estado, value: 1 %>
+         </div>
+      <% end %>
     <% end %>
 
-
-  <% end %>
-
-  <div class="field">
-    <%= f.label :email, "Email elector", class: 'control-label' %><br>
-    <%= f.text_field :email,  class: "form-control", size: "10", maxlength: "110", placeholder: "ingrese el email que identifica al elector y luego presion Guardar Cambios."  %>
-  </div>
-
   <div class="actions">
-   <%= button_tag ' Guardar Cambios', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>
+   <%= button_tag ' Agregar Usuario', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>
   </div>
 <% end %>
 </div>
+
+<hr>
+
+<%= form_tag(controller: "voter_lists", action: "search_voter", method: "get", class: "form-horizontal", role: "form") do |f| %>
+  <div class="field">
+  <%= label_tag(:email, "Buscar por email:", class: 'control-label') %>
+  <%= text_field_tag :email, nil, {class: "form-control", size: "10", maxlength: "110", placeholder: "ingrese el email que identifica al elector y luego presion Buscar."} %>
+  <%= submit_tag "Buscar", name: nil, class: "btn btn-default" %>
+  </div>
+<% end %>

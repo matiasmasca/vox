@@ -38,8 +38,18 @@ class PaginasController < ApplicationController
     set_user
   end
 
-  def jurado
+  def jury_dashboard
+    @selection_processes = SelectionProcess.all
+    set_user
   	# ir al dashboard del jurado.
+  end
+
+  def user_dashboard
+    set_user
+  end
+
+  def dashboard
+    set_user
   end
 
   def votante

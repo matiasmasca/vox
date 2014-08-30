@@ -78,7 +78,7 @@ class OrganizersController < ApplicationController
       organizer_id = params[:id] unless params[:id].nil?
        
       if organizer_id
-        @organizer = Organizer.find_by_id(organizer_id)
+        @organizer = Organizer.find_by_id(organizer_id.to_i)
         @user = @organizer.user
         user_session[:organizer_id] = @organizer.id if @organizer 
       end

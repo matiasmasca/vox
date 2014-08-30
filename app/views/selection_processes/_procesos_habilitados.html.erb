@@ -1,0 +1,37 @@
+<div class="table-responsive">
+  <table id="selection-processes-list" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre del Proceso</th>
+      <th>Fecha Cierre</th>
+      <th>Estado</th>
+      <th>Habilitado</th>
+      <th>Puedes votar</th>
+      <th>Resultados</th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <%= tabla_sin_registros @selection_processes %>    
+    <% @selection_processes.each do |selection_process| %>
+      <tr>
+        <td><%= selection_process.name_process %></td>
+        <td><%= selection_process.end_date %></td>
+        <td><%= selection_process.state %></td>
+        <td><%= link_to 'Solicitar Acceso', new_selection_process_voter_list_path(selection_process, @current_user.id), :class => 'btn btn-default btn-xs' %>
+
+          <%= link_to 'Quiero participar', {:controller => "voter_lists", 
+                       :action => "create", 
+                       :user_id => @current_user.id, 
+                       :selection_process_id => selection_process.id,
+                       :estado => 1},
+                       :class => 'btn btn-default btn-xs',
+                       :method => "post" %>
+        </td>
+        <td><%= link_to 'Votar', selection_process, :class => 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Ver resultados', selection_process, :class => 'btn btn-default btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>

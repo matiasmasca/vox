@@ -58,4 +58,12 @@ class User < ActiveRecord::Base
       self.tipo_usuario_id == 1
   end
 
+  def is_jury?
+      self.tipo_usuario_id == 2
+  end
+
+  def is_organizer?
+      self.tipo_usuario_id == 3
+  end
+
 end

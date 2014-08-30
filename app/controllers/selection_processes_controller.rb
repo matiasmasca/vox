@@ -34,14 +34,12 @@ class SelectionProcessesController < ApplicationController
   # GET /selection_process/1
   # GET /selection_process/1.json
   def show
-    user_session[:selection_processes_id] = @selection_process.id
   end
 
   # GET /selection_process/new
   def new
-    if !params[:organizer_id].blank? #|| ADMIN
-      @organizer = Organizer.find_by_id(params[:organizer_id])
-    end
+    #user_session[:selection_processes_id] = nil
+    set_organizer if @organizer.nil?
     @selection_process = SelectionProcess.new 
   end
 
@@ -54,13 +52,16 @@ class SelectionProcessesController < ApplicationController
   # POST /selection_process.json
   def create
     @selection_process = SelectionProcess.new(selection_process_params)
-    user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?
     respond_to do |format|
       if @selection_process.save
+        user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?
+        user_session[:organizer_id] = @selection_process.organizer_id
         format.html { redirect_to @selection_process, notice: 'Premio creado correctamente.' }
         format.json { render action: 'show', status: :created, location: @selection_process }
       else
         format.html { render action: 'new' }
+        user_session[:selection_processes_id] = nil
+        user_session[:organizer_id] = nil
         format.json { render json: @selection_process.errors, status: :unprocessable_entity }
       end
     end
@@ -71,6 +72,8 @@ class SelectionProcessesController < ApplicationController
   def update
     respond_to do |format|
       if @selection_process.update(selection_process_params)
+        user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?
+        user_session[:organizer_id] = @selection_process.organizer_id
         format.html { redirect_to @selection_process, notice: 'Proceso actualizado correctamente.' }
         format.json { head :no_content }
       else
@@ -106,6 +109,7 @@ class SelectionProcessesController < ApplicationController
         respond_to do |format|
           format.html do
             if @selection_process.nil?
+               user_session[:selection_process_id] = nil
                redirect_to(root_path, alert: "No se encontró proceso de selección con ese ID.") and return
             end
           end
@@ -118,17 +122,33 @@ class SelectionProcessesController < ApplicationController
       params.require(:selection_process).permit(:id, :name_process, :place, :duration, :start_date, :end_date, :process_type_id, :state, :organizer_id)
     end
 
+    def set_organizer
+      if params[:organizer_id].blank? && !@current_user.is_admin?
+        @organizer = Organizer.find_by_id(@current_user.organizer.id)
+        user_session[:organizer_id] = @organizer.id
+      else
+        @organizer = Organizer.find_by_id(params[:organizer_id])
+        user_session[:organizer_id] = @organizer.id if @organizer
+      end
+    end
+
     # Filtro.
     # para que solo pueda operar sobre sus propios procesos.
     def check_property
       #logger.info(@current_user.is_admin?)
       return true if @current_user.is_admin?
+      
+      if current_user.organizer.nil?
+        security_exit
+        return false
+      end
 
       if !params[:organizer_id].blank?
         @organizer = Organizer.find_by_id(params[:organizer_id])
+        user_session[:organizer_id] = @organizer.id
       else
         @organizer = @current_user.organizer unless @current_user.is_admin?
-        params[:organizer_id] = @organizer.id     
+        params[:organizer_id] = @organizer.id if @organizer     
       end
 
       unless @selection_process.nil?

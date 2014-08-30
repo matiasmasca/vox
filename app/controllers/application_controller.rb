@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
       @current_user ||= current_user &&
       User.find_by(id: current_user.id)
 
-        if current_user.tipo_usuario_id == 3  
+        if current_user.tipo_usuario_id == 3 && current_user.organizer
           user_session[:organizer_id] = current_user.organizer.id 
         end
         #logger.info(user_session[:organizer_id])

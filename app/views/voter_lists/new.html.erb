@@ -1,6 +1,7 @@
-<h1>Nuevo candidato</h1>
-<p>Las candidatos, forman parte de las n-uplas de los procesos (por ejemplo una terna de nominados, tiene 3 candidatos).
+<h1>Nuevo Elector</h1>
+<p>Los electores son los usuarios registrados en el sistema que pueden votar por los candidadtos en las diferentes categorias de un proceso.
+<p>Para que puedan emitir su voto, deben agregarse al padrón.
 
 <%= render 'form' %>
 
-<%= link_to ' Ir a Candidatos', candidates_path, :class => 'btn btn-default btn glyphicon glyphicon-list' %>
+<%= link_to ' Ir al Padrón', selection_process_voter_lists_path(@selection_process.id), :class => 'btn btn-default btn glyphicon glyphicon-list' %>

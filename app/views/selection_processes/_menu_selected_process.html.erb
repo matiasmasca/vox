@@ -1,10 +1,10 @@
 <!--Lista de opciones por proceso-->
-<% if user_session[:selection_processes_id] #@selection_process.nil? || @selection_process.organizer.nil? %>
+<% unless @selection_process.organizer.nil? #&& !user_session[:selection_processes_id] || @selection_process.nil? %>
   <div class="list-group">
     <!--Sidebar Cabecera active-->
     <%= link_to ' Mis Procesos', organizer_selection_processes_path(@selection_process.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film list-group-item active' %>
       <!--Editar el proceso-->
-      <% if !@selection_process.id.nil? %>
+  <% if !@selection_process.id.nil? %>
     <%= link_to ' Editar proceso', edit_selection_process_path(@selection_process), title: "Editar proceso #{@selection_process.name_process}", :class => 'btn btn-default btn glyphicon glyphicon-pencil list-group-item' %> 
     <!--Categorias del proceso-->
    <%= link_to ' Categorías', selection_process_categories_path(@selection_process), :class => 'btn btn-link btn glyphicon glyphicon-list list-group-item' %>

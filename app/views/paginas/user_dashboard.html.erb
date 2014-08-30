@@ -22,20 +22,15 @@
           <td><%= link_to ' Mis Categorías', selection_process_categories_path( @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
           <td><%= link_to ' Agregar Categoría', new_selection_process_category_path(@current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
           </td>
-          <td><%= link_to ' Modificar Categoría', edit_selection_process_category_path(@current_user.organizer, @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer.selection_process[0] %>
-          </td>
         <% end %>
       </tr>   
       <tr>
         <td><%= link_to ' Mis procesos', organizer_selection_processes_path(@current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-film' %></td>
-        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@current_user.id, @current_user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
+        <td><%= link_to ' Nuevo proceso de selección', new_organizer_selection_process_path(@current_user.organizer.id), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign' %>
         </td>                                                            
-        <td><%= link_to ' Modificar Proceso', edit_organizer_selection_process_path(@current_user.organizer, @current_user.organizer.selection_process[0]), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer.selection_process[0] %>
-        </td>
       </tr>  
 
    <% end %>
-
 
    <% unless @current_user.organizer.nil? %>    
     <tr>
@@ -45,6 +40,7 @@
     <% else %>
       <tr>
         <td><%= link_to ' Crear Organización',  new_user_organizer_path(@current_user), :class => 'btn btn-default btn glyphicon glyphicon-pencil' %>
+        <span class="help-block">Para poder crear procesos de selección (premios, certámenes, etc.) primero debes crear una Organización que será quien lo organice.</span>
       </tr>
 	  <% end %>
 
