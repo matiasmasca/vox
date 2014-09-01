@@ -42,9 +42,10 @@ class PaginasController < ApplicationController
   end
 
   def jury_dashboard
-    @selection_processes = SelectionProcess.all
     set_user
-  	# ir al dashboard del jurado.
+    @selection_processes =  SelectionProcess.includes(:voter_list).where("voter_lists.user_id = #{current_user.id}")
+    
+    # ir al dashboard del jurado.
   end
 
   def user_dashboard
@@ -52,6 +53,7 @@ class PaginasController < ApplicationController
   end
 
   def dashboard
+    @selection_processes = SelectionProcess.includes(:voter_list).where(:state => "nuevo") if current_user.is_jury? || current_user.is_admin?
     set_user
   end
 
@@ -79,4 +81,5 @@ class PaginasController < ApplicationController
     def user_params
       params.require(:paginas).permit(:id, :organizer_id, :selection_process_id, :category_id)
     end
+
 end

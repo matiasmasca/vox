@@ -6,8 +6,8 @@
     <tr>
       <th>Nombre</th>
       <th>email</th>
-      <th>Estado</th>
       <th>Cod. Proceso</th>
+      <th>Estado</th>
       <th></th>
       <th></th>
       <th></th>
@@ -23,6 +23,7 @@
         <td><%= "#{user.nombre} #{user.apellido}" %></td>
         
         <td><%= "#{user.email}" %></td>
+        <td><%= voter.selection_process_id %></td>
         <% 
         case voter.estado
           when 1

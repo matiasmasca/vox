@@ -24,11 +24,17 @@ class VoterListsController < ApplicationController
   	@voter_list = @selection_process.voter_list.create(voter_list_params)
     @voter_list.estado = 2 if @voter_list.estado.nil?
     user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?
+
     respond_to do |format|
       if @voter_list.save
-        format.html { redirect_to selection_process_voter_lists_path(@selection_process), notice: 'Usuario agregado al padrón correctamente.' }
+        if current_user.is_admin? || current_user.is_organizer?
+          format.html { redirect_to selection_process_voter_lists_path(@selection_process), notice: 'Usuario agregado al padrón correctamente.' }
+        else
+          format.html { redirect_to :back, notice: 'agregado al padrón correctamente.' }
+
+        end 
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to :back, alert: 'Elector NO se agrego al padrón.' }
       end
     end
   end

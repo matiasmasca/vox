@@ -8,7 +8,7 @@
    </div>
 <% end %>
 
-<% unless user_session.nil? || user_session[:selection_process_id].nil?  %>
+<% unless user_session.nil? || user_session[:selection_process_id].nil? || current_user.is_jury?  %>
  <% if @selection_process  %>
   <div class="list-group"> <!--Por proceso-->
     <p class="list-group-item active"><b>Proceso seleccionado:</b> <%= @selection_process.name_process %></p>
