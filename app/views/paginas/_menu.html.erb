@@ -8,10 +8,10 @@
    </div>
 <% end %>
 
-<% unless user_session.nil? || user_session[:selection_processes_id].nil?  %>
+<% unless user_session.nil? || user_session[:selection_process_id].nil?  %>
  <% if @selection_process  %>
   <div class="list-group"> <!--Por proceso-->
-    <p class="list-group-item"><b>Proceso seleccionado:</b> <%= @selection_process.name_process %></p>
+    <p class="list-group-item active"><b>Proceso seleccionado:</b> <%= @selection_process.name_process %></p>
       <%= render partial: "selection_processes/menu_selected_process", object: @selection_process %> 
    </div>
 
@@ -23,7 +23,7 @@
     <%= render partial: "candidates/menu_candidates_category", object: @category %> 
   </div>
   <!-- Padrón -->
-  <div class="list-group"><!--Candidatos-->
+  <div class="list-group"><!--Padron-->
     <%= render partial: "voter_lists/menu_voter_list", object: @selection_process %> 
   </div>
  <% end %>

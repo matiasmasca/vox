@@ -1,7 +1,9 @@
 <!--Lista de procesos-->
-<% unless @selection_process.nil? || @selection_process.organizer %>
+
+
  <div class="list-group">
  <a class="list-group-item active" href=""> Padrón</a>
- <%= link_to ' Padrón de Electores', selection_process_voter_lists_path(@selection_process.organizer), :class => 'btn btn-default btn glyphicon glyphicon-list list-group-item' %>
- </div>
+ <% unless @selection_process.nil? #|| @selection_process.organizer.nil? %>
+ <%= link_to ' Padrón de Electores', selection_process_voter_lists_path(user_session[:selection_process_id]), :class => 'btn btn-default btn glyphicon glyphicon-list list-group-item' %>
 <% end %>
+ </div>

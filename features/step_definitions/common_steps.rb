@@ -1,7 +1,13 @@
 # encoding: utf-8
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_process, place|
   step %{existe una Organización: "ComunidadTIC", "Internet, La Plata, Buenos Aires, Argentina", "" y "contacto@comunidadtic.com.ar"} if @organizer == nil
-  
+    
+    unless @organizer.nil?
+      organizer_id = @organizer.id.to_i
+    else
+      organizer_id = 1
+    end
+
   @selection_process = SelectionProcess.create!({ 
   	:name_process => name_process, 
   	:place => place,
@@ -10,7 +16,7 @@ Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_
   	:end_date => '2014-09-01',
     :process_type_id => '1',
     :state => 'nuevo',
-    :organizer_id => @organizer.id.to_i
+    :organizer_id => organizer_id
   	})
 end
 

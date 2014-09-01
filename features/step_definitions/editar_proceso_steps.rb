@@ -18,7 +18,7 @@ Entonces(/^veo que el nombre cambio y la dirección cambio\.$/) do
 end
 
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)", sin duración definida$/) do |name_process, place|
-  @selection_process = SelectionProcess.create!({ :name_process => name_process, :place => place, :duration => nil })
+  @selection_process = SelectionProcess.create!({ :name_process => name_process, :place => place, :duration => nil, :organizer_id => 1 })
 end
 
 Cuando(/^cambio el duracion por "(.*?)"$/) do |duration|

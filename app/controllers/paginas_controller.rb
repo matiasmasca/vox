@@ -35,6 +35,9 @@ class PaginasController < ApplicationController
   end
 
   def admin_dashboard
+    @selection_processes = nil
+    @organizador = nil
+
     set_user
   end
 
@@ -61,6 +64,7 @@ class PaginasController < ApplicationController
     render :text => ENV["loaderio"].to_s if Rails.env.production?
   end
 
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -41,6 +41,7 @@ class SelectionProcessesController < ApplicationController
     #user_session[:selection_processes_id] = nil
     set_organizer if @organizer.nil?
     @selection_process = SelectionProcess.new 
+    user_session[:selection_process_id] = @selection_process.id
   end
 
   # GET /selection_process/1/edit
@@ -99,7 +100,7 @@ class SelectionProcessesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_selection_process
       selection_process_id = user_session[:selection_process_id] unless user_session[:selection_process_id].nil?
-      selection_process_id = params[:id] unless params[:id].nil?
+      selection_process_id = params[:id] unless params[:id].nil? 
       
       if selection_process_id
        @selection_process = SelectionProcess.find_by_id(selection_process_id)

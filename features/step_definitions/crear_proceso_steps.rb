@@ -25,6 +25,7 @@ end
 
 Dado(/^escribo "(.*?)" en ID Organización$/) do |organizer_id|
  fill_in "selection_process_organizer_id", :with => organizer_id
+ #save_and_open_page
 end
 
 
