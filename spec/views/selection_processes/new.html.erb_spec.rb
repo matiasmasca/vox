@@ -23,6 +23,8 @@ describe "selection_processes/new" do
       assert_select "input#selection_process_duration[name=?]", "selection_process[duration]"
       #assert_select "input#selection_process_state[name=?]", "selection_processes[state]"
       assert_select "select#selection_process_state option[selected]", text: "nuevo"
+      assert_select "input#selection_process_organizer_id[name=?]", "selection_process[organizer_id]"
+
     end
   end
   

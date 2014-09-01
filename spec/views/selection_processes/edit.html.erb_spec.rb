@@ -9,6 +9,7 @@ describe "selection_processes/edit" do
       :name_process => "Premios ACME",
       :place => "Los Angeles, CA, USA",
       :duration => "90",
+      :organizer_id => "1",
       :state => "nuevo"
     ))
   end
@@ -22,6 +23,7 @@ describe "selection_processes/edit" do
       assert_select "input#selection_process_duration[name=?]", "selection_process[duration]"
       #assert_select "input#selection_process_state[name=?]", "selection_process[state]"
       assert_select "select#selection_process_state option[selected]", text: "nuevo"
+      assert_select "input#selection_process_organizer_id[name=?]", "selection_process[organizer_id]"
     end
   end
 

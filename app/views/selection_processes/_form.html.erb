@@ -55,7 +55,7 @@
       <p>
     </li>
   <% else %>
-    <%  if @current_user.is_admin? %>
+    <%  if current_user.is_admin? %>
       <div class="form-group">
       <%= f.label :organizer_id, "ID Organización", class: 'control-label' %><br>
       <%= f.text_field :organizer_id, placeholder: "ingrese el ID del organizador del proceso.", class: 'form-control' %>

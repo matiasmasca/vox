@@ -24,7 +24,7 @@ describe SelectionProcessesController do
   # This should return the minimal set of attributes required to create a valid
   # SelectionProcess. As you add validations to SelectionProcess, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name_process" => "MyString" , "place" => "MyString"} }
+  let(:valid_attributes) { { "name_process" => "MyString" , "place" => "MyString", "organizer_id" => "1"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
