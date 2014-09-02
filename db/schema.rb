@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140829215938) do
   create_table "selection_processes", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration",        limit: 255
+    t.integer  "duration"   
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
