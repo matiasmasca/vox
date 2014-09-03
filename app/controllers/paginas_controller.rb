@@ -6,15 +6,13 @@ class PaginasController < ApplicationController
   
 
   def home
+    @selection_processes = SelectionProcess.all
   end
 
   def about
   end
 
   def contact
-  end
-
-  def dashboard    
   end
 
   def user_dashboard
@@ -53,9 +51,11 @@ class PaginasController < ApplicationController
   end
 
   def dashboard
+    set_user
+    @selection_processes = SelectionProcess.all
     #aca mostraría los que puede participar
     @selection_processes = SelectionProcess.includes(:voter_list).where(:state => "nuevo") if current_user.is_jury? || current_user.is_admin?
-    set_user
+    
   end
 
   def votante

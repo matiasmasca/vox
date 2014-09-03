@@ -1,46 +1,7 @@
-<div class="table-responsive">
-  <table id="selection-processes-list" class="table table-striped">
-  <thead>
-    <tr>
-      <th>Nombre del Proceso</th>
-      <th>Fecha Cierre</th>
-      <th>Estado</th>
-      <th>Habilitado</th>
-      <th>Puedes votar</th>
-      <th>Resultados</th>
-    </tr>
-  </thead>
-
-  <tbody >
-    <%= tabla_sin_registros @selection_processes %>    
-    <% @selection_processes.each do |selection_process| %>
-      <tr>
-        <td><%= selection_process.name_process %></td>
-        <td><%= selection_process.end_date %></td>
-        <td><%= selection_process.state %></td>
-      <td>
-        <%= form_for [selection_process, selection_process.voter_list.build], :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
-        <%= f.hidden_field :selection_process, value: selection_process %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <div class="actions" >
-          <%= f.submit 'Solicitar autorización',  class: 'btn btn-warning btn-xs' %> 
-        </div>
-        <% end %>  
-
-          <%#= link_to 'Quiero participar', {:controller => "voter_lists", 
-                       :action => "create", 
-                       :user_id => current_user.id, 
-                       :selection_process_id => selection_process.id,
-                       :estado => 1},
-                       :class => 'btn btn-default btn-xs',
-                       :method => "post" %>
-        </td>
-
-        <td><%= link_to 'Votar', selection_process, :class => 'btn btn-success btn-xs' %>
-        </td>
-        <td><%= link_to 'Ver resultados', selection_process, :class => 'btn btn-info btn-xs' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  </table>
-</div>
+<!-- Procesos habilitados para el Usuario -->  
+<h2>Usted puede participar en los siguientes procesos: </h2>
+ <% @selection_processes.each do |selection_process| 
+      @selection_process = selection_process   
+   %>  
+  <%= render partial: "selection_processes/selection_process", object: @selection_process %>
+  <%  end %>

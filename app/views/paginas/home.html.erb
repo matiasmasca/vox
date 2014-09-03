@@ -11,20 +11,9 @@
 <% end %>
 
 <h2>Procesos de Selección en VOX</h2>
-Proximamente se listarán los procesos de selección, de la plataforma, para que puedas participar de ellos o ver los resultados.
+Se listarán los procesos de selección, de la plataforma, para que puedas participar de ellos o ver los resultados.
 <br>
-<div class="table-responsive">
-  <table id="selection-processes-list" class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody >
-      <tr>
-        <td></td>        
-      </tr>
 
-  </tbody>
-  </table>
-</div>
+
+<%= render partial: "selection_processes/procesos_habilitados", object: @selection_processes  %>
+

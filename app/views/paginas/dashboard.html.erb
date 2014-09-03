@@ -5,29 +5,43 @@ Proximamente se listarán los procesos de selección, de la plataforma, para que
   <table id="selection-processes-list" class="table table-striped">
   <thead>
     <tr>
+      <th>Nombre del Proceso</th>
+      <th>Lugar</th>
+      <th>Duración</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Cierre</th>
+      <th>Tipo</th>
+      <th>Estado</th>
+      <th></th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
-  <tbody >
-      <tr>
-        <td></td>        
-      </tr>
 
+  <tbody >
+    <%= tabla_sin_registros @selection_processes %>    
+    <% @selection_processes.each do |selection_process| %>
+      <tr>
+        <td><%= selection_process.name_process %></td>
+        <td><%= selection_process.place %></td>
+        <td><%= selection_process.duration %></td>
+        <td><%= selection_process.start_date %></td>
+        <td><%= selection_process.end_date %></td>
+        <td><%= selection_process.process_type_id %></td>
+        <td><%= selection_process.state %></td>
+         <td><%= form_for [selection_process, selection_process.voter_list.build], :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
+<%= f.hidden_field :selection_process, value: selection_process %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<div class="actions" >
+<%= f.submit 'Solicitar autorización', class: 'btn btn-warning btn-xs' %>
+</div>
+<% end %>
+</td>
+<td><%= link_to 'Votar', selection_process, :class => 'btn btn-success btn-xs' %>
+</td>
+<td><%= link_to 'Ver resultados', selection_process, :class => 'btn btn-info btn-xs' %></td>
+      </tr>
+    <% end %>
   </tbody>
   </table>
 </div>
-
-<hr>
-<%=
-case current_user.tipo_usuario_id
-    when 1
-      render :template => "/paginas/admin_dashboard/" 
-      #format.html { render "/paginas/admin_dashboard/", :layout => false  } 
-    when 2
-      render :template =>  "/paginas/jury_dashboard/" 
-      #format.html { render "/paginas/jury_dashboard/", :layout => false  } 
-    when 3
-      render :template =>  "/paginas/user_dashboard/" 
-      #format.html { render "/paginas/user_dashboard/", :layout => false  }       
-    end
-%>

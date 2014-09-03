@@ -109,8 +109,8 @@ candidates.each do |candidate|
 end
 
 voters = [
-   {:user_id => '11', :selection_process_id => '1', :estado => '3'},
-   {:user_id => '12', :selection_process_id => '1', :estado => '3'},
+   {:user_id => '11', :selection_process_id => '1', :estado => '1'},
+   {:user_id => '12', :selection_process_id => '1', :estado => '2'},
    {:user_id => '13', :selection_process_id => '1', :estado => '3'}
    ]
 

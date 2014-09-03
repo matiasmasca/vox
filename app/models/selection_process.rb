@@ -16,4 +16,15 @@ class SelectionProcess < ActiveRecord::Base
 	
 	#datos unicos.
 	validates :name_process, uniqueness: { message: "ya está siendo utilizado.", :case_sensitive => false }
+
+	def type
+		case self.process_type_id
+			when 1
+				"premio"
+			when 2
+				"certamen"
+			when 3
+				"votación"
+	  	end
+	end
 end
