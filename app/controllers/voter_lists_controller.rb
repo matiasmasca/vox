@@ -7,7 +7,10 @@ class VoterListsController < ApplicationController
   #before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
 
   def index
-  	@voter_list = VoterList.all
+    return @voter_list = VoterList.all if current_user.is_admin?
+
+  	#Mostrar el padron del proceso actual.
+    return @voter_list = VoterList.includes(:selection_process).where(:selection_process_id => user_session[:selection_process_id] ) if current_user.is_organizer?
   end
 
   def show
@@ -68,6 +71,15 @@ class VoterListsController < ApplicationController
   end
 
   def search_voter
+    @user_list = User.search_by_email(params[:search]).order("created_at DESC")
+    
+    if @user_list.size == 0
+     respond_to do |format|
+      format.html { redirect_to :back, status: 303, alert: 'No se encontró Elector con ese correo electrónico.' }
+      #format.html { redirect_to users_url, notice: 'Usuario borrado correctamente.' }
+      format.json { head :no_content }
+      end
+    end
   end
 
 
@@ -75,11 +87,15 @@ class VoterListsController < ApplicationController
  private
  # Never trust parameters from the scary internet, only allow the white list through.
  def voter_list_params
-    params.require(:voter_list).permit(:user_id, :selection_process_id, :estado)
+    params.require(:voter_list).permit(:user_id, :selection_process_id, :estado, :search)
  end
 
  def set_voter_list
     @voter_list = VoterList.find_by_id(params[:id])
+ end
+
+ def check_property
+
  end
 
 end

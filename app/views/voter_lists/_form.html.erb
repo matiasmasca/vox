@@ -36,17 +36,17 @@
     <% end %>
 
   <div class="actions">
-   <%= button_tag ' Agregar Usuario', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-floppy-disk" %>
+   <%= button_tag ' Agregar seleccionado', type: 'submit', :class=>"btn btn-primary btn glyphicon glyphicon-plus-sign btn-sm" %>
   </div>
 <% end %>
 </div>
 
 <hr>
 
-<%= form_tag(controller: "voter_lists", action: "search_voter", method: "get", class: "form-horizontal", role: "form") do |f| %>
+<%= form_tag(new_selection_process_voter_list_path , action: "search_voter", method: "post", class: "form-horizontal", role: "form") do |f| %>
   <div class="field">
   <%= label_tag(:email, "Buscar por email:", class: 'control-label') %>
-  <%= text_field_tag :email, nil, {class: "form-control", size: "10", maxlength: "110", placeholder: "ingrese el email que identifica al elector y luego presion Buscar."} %>
-  <%= submit_tag "Buscar", name: nil, class: "btn btn-default" %>
+  <%= text_field_tag :search, nil, {class: "form-control", size: "10", maxlength: "110", placeholder: "ingrese el email que identifica al elector y luego presion Buscar."} %>
+  <%= submit_tag "Buscar", name: nil, class: "btn btn-default icon-search" %>
   </div>
 <% end %>

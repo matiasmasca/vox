@@ -53,6 +53,7 @@ class PaginasController < ApplicationController
   end
 
   def dashboard
+    #aca mostraría los que puede participar
     @selection_processes = SelectionProcess.includes(:voter_list).where(:state => "nuevo") if current_user.is_jury? || current_user.is_admin?
     set_user
   end

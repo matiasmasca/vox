@@ -66,4 +66,8 @@ class User < ActiveRecord::Base
       self.tipo_usuario_id == 3
   end
 
+  def self.search_by_email(query)
+      where("email like ?", "%#{query}%")
+  end
+
 end
