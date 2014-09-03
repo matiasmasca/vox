@@ -27,14 +27,18 @@
         <% 
         case voter.estado
           when 1
-            estado = "aprobado"
-          when 2
-            estado = "pendiente"
-          when 3
-            estado = "rechazado"
-        end
-        %>
-        <td><%= estado %></td>
+            estado = "aprobado" %>
+            <td><p class="label label-success"><%=  estado %></p></td>
+         <%  when 2
+            estado = "pendiente" %>
+            <td><%= link_to '', selection_process_admission_voter_path(voter.selection_process_id, voter, :admission => 'aprobado' ), :class => 'btn btn-success btn-xs btn glyphicon glyphicon-ok active', :method => :post, data: { confirm: "Esta seguro que desea APROBAR el elector: #{user.nombre} #{user.apellido} para este padrón?"} %> 
+                <%= link_to '', selection_process_admission_voter_path(voter.selection_process_id, voter, :admission => 'rechazado' ), :class => 'btn btn-warning btn-xs btn glyphicon glyphicon-remove active', :method => :post, data: { confirm: "Esta seguro que desea RECHAZAR el elector: #{user.nombre} #{user.apellido} para este padrón?"} %>
+            </td>
+        <%   when 3
+            estado = "rechazado" %>
+            <td><span class="label label-danger"><%=  estado %></span></td>
+        <% end %>
+        
        <% unless params[:selection_process_id].nil? %>
         <td><%= link_to ' Eliminar', selection_process_voter_list_path(voter.selection_process_id, voter ), :class => 'btn btn-danger btn-xs btn glyphicon glyphicon-trash active', :method => :delete, data: { confirm: "Esta seguro que desea quitar el elector: #{user.nombre} #{user.apellido} del padrón?"} %></td>
         <% end %>
@@ -48,3 +52,4 @@
 <% unless params[:selection_process_id].nil? %>
   <%= link_to 'Agregar Elector', "voter_lists/new", :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
 <% end %>
+</div>

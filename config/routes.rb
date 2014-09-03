@@ -58,8 +58,8 @@ Vox::Application.routes.draw do
 
   resources :selection_processes do
     post '/voter_lists/new'  => 'voter_lists#search_voter', as: :voter_list_add_seach_voter
-    post '/selection_processes/:selection_process_id/voter_lists/add_voter'  => 'voter_lists#add_voter', as: :selection_processes_add_voter
-    
+    post '/selection_processes/:selection_process_id/voter_lists/add_voter'  => 'voter_lists#add_voter', as: :add_voter
+    post '/voter_lists/:id' => 'voter_lists#admission_voter', as: :admission_voter
     resources :voter_lists
   end
 

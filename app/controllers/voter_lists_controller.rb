@@ -6,6 +6,8 @@ class VoterListsController < ApplicationController
   #before_action :set_category , only: [:index, :show, :edit, :update, :destroy]
   #before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
 
+  #Estado: 1. = "aprobado", 2. = "pendiente", 3. "rechazado"
+
   def index
     return @voter_list = VoterList.all if current_user.is_admin?
 
@@ -14,6 +16,7 @@ class VoterListsController < ApplicationController
   end
 
   def show
+    admission_voter if params[:admission]
   end
 
   def new
@@ -61,6 +64,17 @@ class VoterListsController < ApplicationController
     redirect_to voter_list_path(@voter_list)
   end
 
+  def admission_voter
+    if params[:admission] == "aprobado"
+       @voter_list.update!(estado: 1) 
+    end
+
+    if params[:admission] == "rechazado"
+       @voter_list.update!(estado: 3) 
+    end
+    redirect_to :back, notice: "La admisión del elector fue #{params[:admission]} correctamente." 
+  end
+
   def enable_voter
   end
 
@@ -87,7 +101,7 @@ class VoterListsController < ApplicationController
  private
  # Never trust parameters from the scary internet, only allow the white list through.
  def voter_list_params
-    params.require(:voter_list).permit(:user_id, :selection_process_id, :estado, :search)
+    params.require(:voter_list).permit(:user_id, :selection_process_id, :estado, :search, :admission)
  end
 
  def set_voter_list

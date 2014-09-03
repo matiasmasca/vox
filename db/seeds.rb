@@ -19,8 +19,8 @@ users = [{:usuario => 'organizador', :nombre => 'Gregorio', :apellido => 'Martin
      	  {:usuario => 'RaidersLostArk', :nombre => 'Gregorio', :apellido => 'Acuña', :email => 'unemail4@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
      	  {:usuario => 'ChickenRun', :nombre => 'Gregorio', :apellido => 'Escaleno', :email => 'unemail5@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '3'},
         {:usuario => 'Jurado001', :nombre => 'Gregorio', :apellido => 'Acuña', :email => 'jurado1@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'},
-        {:usuario => 'Jurado002', :nombre => 'Gregorio', :apellido => 'Acuña', :email => 'jurado2@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'},
-        {:usuario => 'Jurado003', :nombre => 'Gregorio', :apellido => 'Acuña', :email => 'jurado3@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'}
+        {:usuario => 'Jurado002', :nombre => 'Gregory', :apellido => 'Acuña', :email => 'jurado2@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'},
+        {:usuario => 'Jurado003', :nombre => 'Micaëla', :apellido => 'Acuña', :email => 'jurado3@go.com',:password => "clave12345", :password_confirmation => "clave12345",:facebook => 'https://facebook.com/cosme.fulanito', :twitter => '@fulanito', :tipo_usuario_id => '2'}
   	 ]
 
 users.each do |user|
