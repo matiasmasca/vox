@@ -2,11 +2,11 @@
  <div class="col-sm-6 col-md-4">
         <div class="thumbnail size: 200x200">
            <%= link_to(image_tag(@selection_process.organizer.image_path,
-        alt: "Avatar #{@selection_process.organizer.id}",
-        id: "imgAvatar-#{@selection_process.organizer.id}",
-        class: "thumbnail",
-        size: "200x200"), 
-        @selection_process.organizer.image_path) %>
+              alt: "Avatar #{@selection_process.organizer.id}",
+              id: "imgAvatar-#{@selection_process.organizer.id}",
+              class: "thumbnail",
+              size: "200x200"), 
+              @selection_process.organizer.image_path) %>
           <div class="caption">
             <h3><%= @selection_process.name_process %></h3>
             <div style="white-space: pre-line; text-align: justify; ">
@@ -14,13 +14,13 @@
               Tiene una duracción de <%= @selection_process.duration %> días. Empieza el <%= @selection_process.start_date %> hasta el <%= @selection_process.end_date %>.
               <p>Es organizado por <%= @selection_process.organizer.name %>
 
-			<p>Estado: <%= @selection_process.state %>
-            <p>Tipo: <%= @selection_process.type %>
+			        <p>Estado: <%= @selection_process.state %>
+              <p>Tipo: <%= @selection_process.type %>
               
               <% @voter_list = @selection_process.voter_list.find_by(user_id: current_user) %></p>
-        <% if @voter_list %>
             </div>
- 	
+        <% if @voter_list %>
+            
         <% case @voter_list.estado
           when 1
             estado = "aprobado" %>
@@ -37,9 +37,9 @@
 
             <p><%= mail_to "#{@selection_process.organizer.email}", " Contactar", cc: "contacto@vox.com",
          subject: "VOX: #{@selection_process.name_process}. Comentario.", :class => 'btn btn-default btn glyphicon glyphicon-pencil' , :role => "button"  %>
-          </div>
-        </div>
-      </div>
- </div>
+          </div> <!-- caption --> 
+     </div> <!-- thumbnail --> 
+  </div> <!-- col-sm-6 -->
 <% end %>
          
+

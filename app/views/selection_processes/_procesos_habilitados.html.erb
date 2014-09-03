@@ -1,7 +1,10 @@
 <!-- Procesos habilitados para el Usuario -->  
-<h2>Usted puede participar en los siguientes procesos: </h2>
+ <div class="row-fluid">
  <% @selection_processes.each do |selection_process| 
       @selection_process = selection_process   
    %>  
   <%= render partial: "selection_processes/selection_process", object: @selection_process %>
   <%  end %>
+</div><!-- row -->
+
+

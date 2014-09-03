@@ -2,20 +2,12 @@
 <div class="jumbotron">
   <h2>Bienvenido</h2>
   <h1><%= @current_user.nombre unless @current_user.nombre.nil? %>, <%= @current_user.apellido unless @current_user.nombre.nil?  %></h1>
-  <p>esta es una pagina que verian los usarios registrado que pueden votar en algun proceso, es un diseño temporal hasta tener un diseño definitivo..</p>
 </div>
+<p>esta es una pagina que verian los usarios registrado que pueden votar en algun proceso, es un diseño temporal hasta tener un diseño definitivo.</p>
 
 <hr>
 <br>
-<div class="table-responsive">
-  <table id="user-option-list" class="table table-striped">
-  <thead>
-    <tr>
-      <th>Usuario Elector (Jurado)</th>
-    </tr>
-  </thead>
-
+<h2>Proceos en los que solicito participar: </h2>
 <%= render partial: "selection_processes/procesos_habilitados", object: @selection_processes  %>
-</div>
 
 <% end %>

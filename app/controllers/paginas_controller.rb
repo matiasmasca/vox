@@ -3,7 +3,6 @@ class PaginasController < ApplicationController
   before_action :authenticate_user!, except: [:home, :about, :contact]
   before_action :set_user
   before_action :set_selection_process , only: [:user_dashboard]
-  
 
   def home
     @selection_processes = SelectionProcess.all
@@ -35,7 +34,6 @@ class PaginasController < ApplicationController
   def admin_dashboard
     @selection_processes = nil
     @organizador = nil
-
     set_user
   end
 
