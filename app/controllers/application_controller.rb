@@ -5,12 +5,11 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  
-  before_action :set_user
-  
+   
   #Parametros para formularios de Devise.
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  before_action :set_user
   before_filter :load_sidebar
 
  private
@@ -26,7 +25,12 @@ class ApplicationController < ActionController::Base
       
       if params[:selection_process_id] || user_session[:selection_process_id]
         @selection_process = SelectionProcess.find_by_id(selection_process_id)
-        user_session[:selection_processes_id] = @selection_process.id if @selection_process
+        if @selection_process && @selection_process.is_owner?(current_user.id) && !current_user.is_admin? 
+          user_session[:selection_processes_id] = @selection_process.id if @selection_process
+        else
+          @selection_process = nil
+          user_session[:selection_processes_id] = nil
+        end
       end
       
       #Set_organizer
@@ -39,8 +43,7 @@ class ApplicationController < ActionController::Base
 
   def set_user
       if user_signed_in?
-      @current_user ||= current_user &&
-      User.find_by(id: current_user.id)
+      @current_user ||= current_user && User.find_by(id: current_user.id)
 
         if current_user.tipo_usuario_id == 3 && current_user.organizer
           user_session[:organizer_id] = current_user.organizer.id 

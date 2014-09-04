@@ -2,8 +2,8 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_selection_process
-  before_action :set_category , only: [:index, :show, :edit, :update, :destroy]
-  before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_category, except: [:new] #, only: [:index, :show, :edit, :update, :destroy]
+  before_action :check_property #, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
@@ -123,8 +123,13 @@ class CategoriesController < ApplicationController
     def check_property
       return true if @current_user.is_admin?
 
+      
       #Primero si puede ver el proceso.
       set_selection_process if @selection_process.nil?
+      unless @selection_process.is_owner?(current_user.id) 
+        security_exit
+        return false
+      end
       
       @organizer = @organizer.selection_process.find_by_id(@selection_process)
 
@@ -146,10 +151,22 @@ class CategoriesController < ApplicationController
         respond_to do |format|
           format.html do
             unless @selection_process == @category.selection_process
+               user_session[:selection_process_id] = nil
                user_session[:category_id] = nil
                redirect_to(organizer_selection_process_path(@selection_process.organizer.user, @selection_process), alert: "Solo puedes operar sobre las categorías del proceso seleccionado.")
             end
           end
+        end
+      end
+    end
+
+     def security_exit
+        respond_to do |format|
+        format.html do
+           user_session[:selection_process_id] = nil
+           user_session[:category_id] = nil
+           redirect_to(root_path, alert: "Solo puedes operar sobre las categorías del proceso seleccionado.")
+           return false
         end
       end
     end   

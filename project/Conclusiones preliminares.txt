@@ -1,4 +1,4 @@
-/* En este documento voy agregando algunas notas mentales, pensamientos y conclusiones preliminares en el camino de este proyecto.
+/* En este documento voy agregando algunas ideas, notas mentales, pensamientos y conclusiones preliminares en el camino de este proyecto.
 */
 
 - Hay que aprender a leer los errores e identificar de que tipo son. Uno termina aprendiendo a leerlos más tranquilo. La tranquilidad al leer un mensaje de error se incrementa a medida que uno se acostumbra a la forma de trabajar.
@@ -64,6 +64,9 @@ Lo interesante de este caso es encontrar 1 a 1 los puntos de fallo en la aplicac
 
 - A priori, es dificil medir el impacto del cambio. Que las pruebas fallen ante el cambio no significa del todo que este rota por completo; paso que luego de corrigir algo para otra prueba, las pruebas dejaron de estar rotas.
 
+- En "modulos" que no tenian pruebas, volvimos a tener el problema de que la plataforma tenia fallas ante ciertos cambios, pero no teniamos forma de saber hasta que alguien de alguna manera probaba ese camino y se producia el fallo. Es decir sin la alerta temprana de las pruebas ¿Cuál es la alternativa?
+
+
 #Falsos Positivos.
 - Daba verde pero no estaba probando lo que tenia que probar.
 Por ejemplo: en la features "listado_entidades_organizadoras.feature" tenia una tabla con 1 sola entrada en lugar de 2 entradas, entonces todo estaba en verde, pero en realidad no estaba probando que tenia que tener 2 registros en la tabla. Estaba probado que las tablas coincidan en contenidos, entre la tabla de ejemplos y la tabla creaba. Si bien estaba bien la funcionalidad, la prueba era un falso positivo porque en caso de 1 registro sólo la prueba tendria que fallar.
@@ -88,6 +91,7 @@ Por ejemplo: en la features "listado_entidades_organizadoras.feature" tenia una 
 # Cucumber.
 - A medida que se avanza en el proyecto, se van sumando features y sus steps, se puede apreciar como la reutilización de pasos se vuelve útil y necesaria; además acelera notablemente el proceso de crear los features y sus procesos. 
 - Pude detectar que faltaban algunas features, al avanzar en el proceso. Por ejemplo las feature de "mostrar categoria" para el Admin. lo detecte cuando estaba haciendolo para el caso particular del usuario Organizador.
+- A medida que el software crece en complejidad, se hace cada vez más dificil mantener el mapa mental de todas las rutas posibles y los estados que tiene que tener el sistema en cada una de estas rutas. Aquí es cuando los escenarios y las pruebas automatizadas empiezan a evidenciar sus beneficios.
 
 # Integración Continua.
 - A mayor impacto del cambio, mayor defensa proveen las pruebas. Al integrar la gema Devise, impacto en varias partes del sistema, provocando muchos errores. Estos errores nunca fueron vistos por los usuarios finales del sistema porque Travis-ci, no hacia el deploy en Heroku ya que fallaban las pruebas.

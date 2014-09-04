@@ -50,6 +50,6 @@
 <br>
 
 <% unless params[:selection_process_id].nil? %>
-  <%= link_to 'Agregar Elector', "voter_lists/new", :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+  <%= link_to 'Agregar Elector', new_selection_process_voter_list_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
 <% end %>
 </div>
