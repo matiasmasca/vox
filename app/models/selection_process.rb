@@ -4,6 +4,7 @@ class SelectionProcess < ActiveRecord::Base
     belongs_to :organizer, autosave: true
     has_many :category, autosave: true
     has_many :voter_list, autosave: true
+    has_many :user, through: :voter_list
 
 	#datos obligatorios
 	validates :name_process, :place, presence: { message: "es un dato obligatorio."}
@@ -30,6 +31,11 @@ class SelectionProcess < ActiveRecord::Base
 
 	def is_owner?(user_id)
 	  self.organizer.user_id == user_id 
-	end 
+	end
+
+	def is_public?
+		true
+		#self.process_type_id like "public"
+	end
 
 end

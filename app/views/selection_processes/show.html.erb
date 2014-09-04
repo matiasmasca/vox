@@ -43,5 +43,10 @@
     </ol>
 <% end %>
 
+<hr>
+Ver Categorias...
+
+<% if current_user.is_admin?  %>
 <%= link_to 'Editar', edit_selection_process_path(@selection_process), :class => 'btn btn-link' %> |
+<% end  %>
 <%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>

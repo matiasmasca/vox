@@ -96,4 +96,6 @@ Por ejemplo: en la features "listado_entidades_organizadoras.feature" tenia una 
 # Integración Continua.
 - A mayor impacto del cambio, mayor defensa proveen las pruebas. Al integrar la gema Devise, impacto en varias partes del sistema, provocando muchos errores. Estos errores nunca fueron vistos por los usuarios finales del sistema porque Travis-ci, no hacia el deploy en Heroku ya que fallaban las pruebas.
 
-
+# Documentación Viva.
+- No es facil de ver o encontrar cierta clase de información como los Valores que puede asumir un Dato (de tipo selección). Por ejemplo para "Estado" de una solicitud de admisión a un proceso: 1. aprobado, 2. pendiente. 3. rechazado. 
+Si no hay una prueba que los muestre, por ejemplo como las tablas de ejemplos de cucumber, pero debe existir al menos 1 prueba que los utilice de esa forma. En algunos casos los agregue como comentarios "#PO: ..." dejando notas de lo conversado con el Product Owner.
