@@ -62,9 +62,9 @@ class PaginasController < ApplicationController
 
   #Para pruebas de stress
   def loaderio
-    render :text => ENV["loaderio"].to_s if Rails.env.production?
+    #render :text => ENV["loaderio"].to_s if Rails.env.production?
+    render html: ENV["loaderio"].to_s if Rails.env.production?
   end
-
   
 
   private

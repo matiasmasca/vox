@@ -8,7 +8,7 @@ Vox::Application.routes.draw do
 
   #para prueba de stress
   if Rails.env.production?
-    get ENV["loaderio"].to_s => 'paginas#loaderio'
+    get ENV["loaderio"].to_s => 'paginas#loaderio' as: ENV["loaderio"].to_s
   end
 
   unauthenticated do
