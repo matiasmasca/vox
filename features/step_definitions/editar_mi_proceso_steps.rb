@@ -1,7 +1,7 @@
 #encoding: utf-8
 Cuando(/^yo edito mi Proceso$/) do
   #modificar cuando este el front end de usuarios.}
-  save_and_open_page
+  #save_and_open_page
   click_on("Editar")
   #save_and_open_page
   #first(:link, 'Modificar Proceso').click
