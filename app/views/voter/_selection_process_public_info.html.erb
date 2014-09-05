@@ -1,0 +1,26 @@
+<% unless @selection_process.nil? %>
+  <div>
+     <div class="thumbnail size: 200x200">
+           <%= link_to(image_tag(@selection_process.organizer.image_path,
+              alt: "Avatar #{@selection_process.organizer.id}",
+              id: "imgAvatar-#{@selection_process.organizer.id}",
+              class: "thumbnail",
+              size: "200x200"), 
+              @selection_process.organizer.image_path) %>
+          <div class="caption">
+            <h3><%= @selection_process.name_process %></h3>
+            <div style="white-space: pre-line; text-align: justify; ">
+              <p>Se realiza en <%= @selection_process.place %>.
+              Tiene una duracción de <%= @selection_process.duration %> días. Empieza el <%= @selection_process.start_date %> hasta el <%= @selection_process.end_date %>.
+              <p>Es organizado por <%= @selection_process.organizer.name %>
+			        <p>Estado: <%= @selection_process.state %>
+              <p>Tipo: <%= @selection_process.type %></p>
+            </div>
+            <p><%= link_to ' Ver resultados', selection_process_path(@selection_process), :class => 'btn btn-info btn glyphicon glyphicon-info-sign', :role => "button" %>
+
+            <p><%= mail_to "#{@selection_process.organizer.email}", " Contactar", cc: "contacto@vox.com",
+         subject: "VOX: #{@selection_process.name_process}. Comentario.", :class => 'btn btn-default btn glyphicon glyphicon-pencil' , :role => "button"  %>
+          </div> <!-- caption --> 
+     </div> <!-- thumbnail --> 
+  </div> 
+<% end %>

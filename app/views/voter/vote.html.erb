@@ -1,0 +1,29 @@
+<!-- Infor Proceso -->
+<div>
+	<div class="row">
+		<%= render partial: "voter/selection_process_public_info", object: @selection_process %>
+	</div><!-- /.row -->
+</div>
+<hr>
+
+<!-- Categoria -->
+<div>
+	<%= render partial: "voter/categories_buttons", object: @selection_process %>
+</div>
+<hr>
+
+<!-- Candidatos categoría seleccionada -->
+<%= form_tag({action: :vote}) do %>
+<div>
+  <div class="row">
+	<%= render partial: "voter/candidates_category_choice", object: @category %>
+  </div><!-- /.row -->
+</div>
+<!-- registrar voto -->
+<div class="center">
+<%= link_to ' Votar seleccionado', '/', :class => 'btn btn-primary btn glyphicon glyphicon-envelope', :role => "submit" %>
+</div>
+<hr>
+
+
+<% end %>

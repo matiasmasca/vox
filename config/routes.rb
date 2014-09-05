@@ -61,6 +61,7 @@ Vox::Application.routes.draw do
     post '/selection_processes/:selection_process_id/voter_lists/add_voter'  => 'voter_lists#add_voter', as: :add_voter
     post '/voter_lists/:id' => 'voter_lists#admission_voter', as: :admission_voter
     resources :voter_lists
+    get 'voter/vote' => 'voter#vote', as: :vote
   end
 
   resources :categories do

@@ -1,0 +1,12 @@
+<!--Lista de Categorías del Proceso seleccionado-->
+<div class="btn-group btn-group-justified">
+ <% unless @selection_process.category.nil? %>
+   <div>
+   <% @selection_process.category.each do |category| %>   
+    <div class="btn-group"><p>     
+           <%= link_to " #{category.name}", selection_process_vote_path(@selection_process, :category_id => category.id), :class => 'btn btn-default btn glyphicon glyphicon-ok', :role => "button" %>
+    </div>
+   <% end %>
+   </div>
+ <% end %>
+</div> 

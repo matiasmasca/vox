@@ -1,0 +1,40 @@
+<% unless @category.nil? %>
+
+<div class="row">
+  <div>
+    <div class="input-group">
+	<% @category.candidate.each do |candidate| 
+	    @candidate = candidate       
+	 %>  
+	<% unless @candidate.nil? %>
+	<div class="col-sm-6 col-md-4">
+        <div class="thumbnail size: 200x200">
+           <%= link_to(image_tag(@candidate.image_path,
+        	alt: "Avatar #{@candidate.id}",
+        	id: "imgAvatar-#{@candidate.id}",
+        	class: "thumbnail",
+        	size: "200x200"), 
+        	@candidate.image_path) %>
+	          <div class="caption">
+	            <h3><%= @candidate.name %></h3>
+	            <div style="white-space: pre-line; text-align: justify; ">
+	              <p><%= @candidate.bios %></p>
+	            </div>
+	            <p><%= link_to ' Info', category_candidate_path(@candidate.category_id, @candidate), :class => 'btn btn-default btn glyphicon glyphicon-plus', :role => "button" %>
+	          </div><!-- caption -->
+	           <div  class="well"> 
+		           <%= radio_button_tag(:vote, "#{candidate.id}") %>
+	        	   <%= label_tag(candidate.name, "#{candidate.name}") %>
+        	   </div>
+        </div><!-- thumbnail --> 
+
+	</div><!-- col-sm-6 -->
+
+	<% end %><!-- candidato -->
+	
+	<%  end %><!-- candidatos categoria -->
+      
+	</div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<%  end %><!-- /category -->
