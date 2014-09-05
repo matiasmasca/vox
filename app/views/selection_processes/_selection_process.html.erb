@@ -24,7 +24,7 @@
         <% case @voter_list.estado
           when 1
             estado = "aprobado" %>
-           <p><%= link_to ' Votar', selection_process_voter_list_path(@selection_process, @voter_list ), :class => 'btn btn-success btn glyphicon glyphicon-check active' %> 
+           <p><%= link_to ' Votar', selection_process_vote_path_path(@selection_process, :elector => @voter_list ), :class => 'btn btn-success btn glyphicon glyphicon-check active' %> 
          <%  when 2
             estado = "pendiente" %>
             <p>Resultado admisión: <span class="label label-warning"><%=  estado %></span>
