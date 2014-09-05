@@ -16,7 +16,6 @@ class VoterListsController < ApplicationController
   end
 
   def show
-    admission_voter if params[:admission]
   end
 
   def new
