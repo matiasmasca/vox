@@ -2,7 +2,7 @@
 class VoterListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_voter_list
-  #before_action :set_selection_process
+  before_action :set_selection_process
   #before_action :set_category , only: [:index, :show, :edit, :update, :destroy]
   #before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
 
@@ -105,6 +105,11 @@ class VoterListsController < ApplicationController
 
  def set_voter_list
     @voter_list = VoterList.find_by_id(params[:id])
+ end
+
+ def set_selection_process
+  return if @selection_process
+  @selection_process = SelectionProcess.find_by(id: params[:selection_process_id])
  end
 
  def check_property

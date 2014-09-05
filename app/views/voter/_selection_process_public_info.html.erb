@@ -1,11 +1,11 @@
 <% unless @selection_process.nil? %>
   <div>
-     <div class="thumbnail size: 200x200">
+     <div class="thumbnail">
            <%= link_to(image_tag(@selection_process.organizer.image_path,
               alt: "Avatar #{@selection_process.organizer.id}",
               id: "imgAvatar-#{@selection_process.organizer.id}",
               class: "thumbnail",
-              size: "200x200"), 
+              size: "242x200"), 
               @selection_process.organizer.image_path) %>
           <div class="caption">
             <h3><%= @selection_process.name_process %></h3>

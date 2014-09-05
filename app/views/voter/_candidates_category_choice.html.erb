@@ -1,6 +1,4 @@
 <% unless @category.nil? %>
-
-<div class="row">
   <div>
     <div class="input-group">
 	<% @category.candidate.each do |candidate| 
@@ -8,14 +6,15 @@
 	 %>  
 	<% unless @candidate.nil? %>
 	<div class="col-sm-6 col-md-4">
-        <div class="thumbnail size: 200x200">
+        <div class="thumbnail">
            <%= link_to(image_tag(@candidate.image_path,
+        	size: "242x200",
         	alt: "Avatar #{@candidate.id}",
         	id: "imgAvatar-#{@candidate.id}",
-        	class: "thumbnail",
-        	size: "200x200"), 
+        	class: "img-responsive"
+        	), 
         	@candidate.image_path) %>
-	          <div class="caption">
+            <div class="caption">
 	            <h3><%= @candidate.name %></h3>
 	            <div style="white-space: pre-line; text-align: justify; ">
 	              <p><%= @candidate.bios %></p>
@@ -36,5 +35,5 @@
       
 	</div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
+
 <%  end %><!-- /category -->

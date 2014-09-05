@@ -57,7 +57,7 @@ selection_processes.each do |process|
 end
 
 categories = [
-    {:name => 'Candidatos a Coyote', :description => 'Candidatos a remplazar a el coyote en el Desierto de Arizona', :bench => '3', selection_process_id: '1'},
+    {:name => 'Candidatos a Mejor Wile E. Coyote', :description => 'Candidatos a remplazar a Wile E. Coyote, a.k.a. el coyote, en el Desierto de Arizona', :bench => '3', selection_process_id: '1'},
     {:name => 'Mejor Cohete', :description => 'TOP 5. Participan los cohetes utilizados por el coyote en sus persecuciones', :bench => '5', selection_process_id: '1'},
     {:name => 'Mejor Trampa', :description => 'TOP 10. Participan las trampas utilizadas por el coyote para atrapar al correcaminos', :bench => '10', selection_process_id: '1'},
     {:name => 'Mejor caida', :description => 'TOP100. Caidas del coyote en sus persecuciones por el desierto de Arizona', :bench => '100', selection_process_id: '1'},
