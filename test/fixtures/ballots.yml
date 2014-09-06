@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  selection_process_id: 
+  category_id: 
+  candidate_id: 
+  digital_signature: MyString
+
+two:
+  selection_process_id: 
+  category_id: 
+  candidate_id: 
+  digital_signature: MyString

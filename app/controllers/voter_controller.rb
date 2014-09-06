@@ -4,8 +4,13 @@ class VoterController < ApplicationController
 		set_selection_process
 		check_voter
 		set_category
+		@ballot = Ballot.new
 	end
 
+	def emitir_voto
+
+		@voto = Ballot.create!(selection_process_id: @selection_process, category_id: @category, candidate_id: @candidate)
+	end
 
 private
 	def set_selection_process
@@ -33,10 +38,10 @@ private
 		#Chequear si el usuario esta habilitado para votar en el proceso, en teoria sí. Pero igual chequear.
 		# El Current_user, esta registrado en en voter_list del proceso.
 		usuario_elector = VoterList.find_by(selection_process_id: @selection_process.id, user_id: current_user.id)
+		
 		unless current_user.id == usuario_elector.user_id
 			security_exit
 		end
-
 	end
 
 	def security_exit

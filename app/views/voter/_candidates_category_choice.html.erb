@@ -22,8 +22,12 @@
 	            <p><%= link_to ' Info', category_candidate_path(@candidate.category_id, @candidate), :class => 'btn btn-default btn glyphicon glyphicon-plus', :role => "button" %>
 	          </div><!-- caption -->
 	           <div  class="well"> 
-		           <%= radio_button_tag(:vote, "#{candidate.id}") %>
+		           <%= radio_button_tag(:candidate_id, "#{candidate.id}") %>
 	        	   <%= label_tag(candidate.name, "#{candidate.name}") %>
+
+	        	    <%= f.radio_button :candidate_id, "#{candidate.id}" %>
+  					<%= label :contactmethod_sms, "#{candidate.name}" %>
+
         	   </div>
         </div><!-- thumbnail --> 
 

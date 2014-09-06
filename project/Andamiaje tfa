@@ -79,4 +79,4 @@ Los inflection se utiliza Irregular.
 
 
 
-rails g scaffold Ballot selection_process:references category:references candidate:references digital signature:string 
+rails g scaffold Ballot selection_process:references category:references candidate:references digital_signature:string 

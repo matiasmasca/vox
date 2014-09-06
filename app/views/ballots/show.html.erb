@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Selection process:</strong>
+  <%= @ballot.selection_process %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @ballot.category %>
+</p>
+
+<p>
+  <strong>Candidate:</strong>
+  <%= @ballot.candidate %>
+</p>
+
+<p>
+  <strong>Digital signature:</strong>
+  <%= @ballot.digital_signature %>
+</p>
+
+<%= link_to 'Edit', edit_ballot_path(@ballot) %> |
+<%= link_to 'Back', ballots_path %>

@@ -9,15 +9,66 @@
 	<%= render partial: "voter/categories_buttons", object: @selection_process %>
 </div>
 <!-- Candidatos categoría seleccionada -->
-<%= form_tag({action: :vote}) do %>
+
+<%= form_for @ballot,:html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
+  <% if @ballot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ballot.errors.count, "error") %> prohibited this ballot from being saved:</h2>
+
+      <ul>
+      <% @ballot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.hidden_field :selection_process_id, value: @selection_process.id %> 
+<%= f.hidden_field :category_id, value: @category.id %> 
 <div>
   <div class="row">
-	<%= render partial: "voter/candidates_category_choice", object: @category %>
+	<% unless @category.nil? %>
+  <div>
+    <div class="input-group">
+	<% @category.candidate.each do |candidate| 
+	    @candidate = candidate       
+	 %>  
+	<% unless @candidate.nil? %>
+	<div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+           <%= link_to(image_tag(@candidate.image_path,
+        	size: "242x200",
+        	alt: "Avatar #{@candidate.id}",
+        	id: "imgAvatar-#{@candidate.id}",
+        	class: "img-responsive"
+        	), 
+        	@candidate.image_path) %>
+            <div class="caption">
+	            <h3><%= @candidate.name %></h3>
+	            <div style="white-space: pre-line; text-align: justify; ">
+	              <p><%= @candidate.bios %></p>
+	            </div>
+	            <p><%= link_to ' Info', category_candidate_path(@candidate.category_id, @candidate), :class => 'btn btn-default btn glyphicon glyphicon-plus', :role => "button" %>
+	          </div><!-- caption -->
+	           <div  class="well"> 
+	        	    <%= f.radio_button :candidate_id, "#{candidate.id}" %>
+  					<%= label :contactmethod_sms, "#{candidate.name}" %>
+
+        	   </div>
+        </div><!-- thumbnail --> 
+
+	</div><!-- col-sm-6 -->
+
+	<% end %><!-- candidato -->
+	
+	<%  end %><!-- candidatos categoria -->
+      
+	</div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+<%  end %><!-- /category -->
   </div><!-- /.row -->
 </div>
 <!-- registrar voto -->
-<div>
-<%= link_to ' Votar seleccionado', '/', :class => 'btn btn-primary btn glyphicon glyphicon-envelope', :role => "submit" %>
+<div class="actions">
+ <%= f.submit ' Votar seleccionado',  class: 'btn btn-primary btn glyphicon glyphicon-envelope' %>
 </div>
-
 <% end %>

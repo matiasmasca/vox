@@ -62,7 +62,11 @@ Vox::Application.routes.draw do
     post '/voter_lists/:id' => 'voter_lists#admission_voter', as: :admission_voter
     resources :voter_lists
     get 'voter/vote' => 'voter#vote', as: :vote
+
+    
   end
+
+  resources :ballots #Registrar votos! ojo
 
   resources :categories do
     resources :candidates

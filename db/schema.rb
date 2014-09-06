@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829215938) do
+ActiveRecord::Schema.define(version: 20140906223033) do
+
+  create_table "ballots", force: true do |t|
+    t.integer  "selection_process_id"
+    t.integer  "category_id"
+    t.integer  "candidate_id"
+    t.string   "digital_signature"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ballots", ["candidate_id"], name: "index_ballots_on_candidate_id"
+  add_index "ballots", ["category_id"], name: "index_ballots_on_category_id"
+  add_index "ballots", ["selection_process_id"], name: "index_ballots_on_selection_process_id"
 
   create_table "candidates", force: true do |t|
     t.string   "name"
@@ -56,7 +69,7 @@ ActiveRecord::Schema.define(version: 20140829215938) do
   create_table "selection_processes", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration"   
+    t.integer  "duration",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
@@ -76,7 +89,7 @@ ActiveRecord::Schema.define(version: 20140829215938) do
     t.string   "email"
     t.string   "facebook"
     t.string   "twitter"
-    t.integer  "tipo_usuario_id",        default: 2,  null: false
+    t.integer  "tipo_usuario_id",        default: 3,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false
