@@ -20,11 +20,11 @@ class Category < ActiveRecord::Base
 
 	#Para saber si ya voto en esa categoria
 	def already_vote?(user)
-    @voto_categoria = EmittedVote.find_by(user_id: user, category_id: self.id )
-    if @voto_categoria
-      return true
-    else
-      return false
-    end
+     @voto_categoria = EmittedVote.find_by(user_id: user, category_id: self.id )
+     if @voto_categoria
+        return true
+     else
+        return false
+     end
   end
 end

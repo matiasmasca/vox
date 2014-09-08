@@ -49,8 +49,14 @@
     </div>
   </div>
    </div>
-<% end %>
+  
+  <div class="col-xs-12 col-sm-4 col-md-3" >
+  <% if @selection_process.is_elector?(current_user) %>
+    <%= render partial: "voter/categories_buttons", object: @selection_process %>
+  <% end %>
+  </div>
 
+<% end %>
 </div>
 
 

@@ -26,7 +26,8 @@
 <%= f.hidden_field :category_id, value: @category.id unless @category.nil? %> 
 <div>
   <div class="row">
-	<% unless @category.nil? && !@category.already_vote?(current_user.id) %>
+<% unless @category.nil? %>
+  <% unless @category.already_vote?(current_user.id) %>
   <div>
     <div class="input-group">
 	<% @category.candidate.each do |candidate| 
@@ -59,7 +60,7 @@
 	</div><!-- col-sm-6 -->
 
 	<% end %><!-- candidato -->
-	
+	<%  end %><!-- ya voto en categoria -->
 	<%  end %><!-- candidatos categoria -->
       
 	</div><!-- /input-group -->
@@ -70,8 +71,23 @@
 <!-- registrar voto -->
 <div class="actions">
  <%= f.submit ' Votar seleccionado', data: { confirm: "Esta seguro que desea Votar el candidato seleccionado? NO podrá cambiar su elección una vez precionado el botón Aceptar." },  class: 'btn btn-success btn glyphicon glyphicon-envelope' %>
-
- 
-
 </div>
 <% end %>
+<hr>
+<div class="row">
+Comparte: 
+
+<% texto_adicional = "Vos también podes votar en #{@selection_process.name_process} por tu favorito, como yo lo hice." %>
+
+<!--Social Share -->
+<!--Facebook -->
+<a class="btn btn-default" href="http://www.facebook.com/sharer.php?u=<%= request.original_url %>&t=<%= texto_adicional %>"><img class="img" src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/yQ/r/7GFXgco-uzw.png" alt="" style="top: 0px;" height="14" width="14"> Facebook</a>
+
+<!--Twitter -->
+<a href="https://twitter.com/share" class="twitter-share-button" data-counturl="<%= request.original_url %>" data-text="<%= texto_adicional %>" data-related="matiasmasca" data-lang="es" data-size="large" data-count="none" data-via="TFA-VOX" >Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<!--Google plus -->
+<a class="btn btn-default" href="https://plus.google.com/share?url=<%= request.original_url %>"><img src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Share on Google+"/> Google Plus</a>
+
+</div>

@@ -25,8 +25,7 @@ class VoterList < ActiveRecord::Base
 	  	end
   end
 
-
-
+ 
     #t.integer  "user_id"
     #t.integer  "selection_process_id"
     #t.integer  "estado"

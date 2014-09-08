@@ -38,4 +38,8 @@ class SelectionProcess < ActiveRecord::Base
 		#self.process_type_id like "public"
 	end
 
+  def is_elector?(current_user)
+    usuario_elector = VoterList.find_by(selection_process_id: self.id, user_id: current_user.id)
+  end
+
 end

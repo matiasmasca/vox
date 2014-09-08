@@ -70,4 +70,6 @@ class User < ActiveRecord::Base
       where("email like ?", "%#{query}%")
   end
 
+
+
 end
