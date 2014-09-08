@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @emitted_vote.user %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @emitted_vote.category %>
+</p>
+
+<p>
+  <strong>Candidate:</strong>
+  <%= @emitted_vote.candidate %>
+</p>
+
+<%= link_to 'Edit', edit_emitted_vote_path(@emitted_vote) %> |
+<%= link_to 'Back', emitted_votes_path %>

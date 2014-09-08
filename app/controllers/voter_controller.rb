@@ -4,12 +4,19 @@ class VoterController < ApplicationController
 		set_selection_process
 		check_voter
 		set_category
+
+		#Antes de votar, debe controlar que ya no haya votado en esa categoria.
+
 		@ballot = Ballot.new
 	end
 
 	def emitir_voto
-
-		@voto = Ballot.create!(selection_process_id: @selection_process, category_id: @category, candidate_id: @candidate)
+     	@ballot = Ballot.new
+		#registrar voto, en voleta.
+		@voto = Ballot.create!(selection_process_id: @selection_process.id, category_id: @category.id, candidate_id: @candidate.id)
+		#Marcar la categoria.
+		@emitted_vote = EmittedVote.create!(user_id: current_user.id, category_id: @category.id)
+		raise ''
 	end
 
 private
@@ -30,8 +37,12 @@ private
           @category = Category.find_by_id(category_id)
           user_session[:voter_category_id] = @category.id unless @category.nil?
       	else
-		  @category = @selection_process.category.first
-		end	
+		  #@category = @selection_process.category.first
+		  user_session[:voter_category_id] = nil
+		  @category = nil
+		end
+
+		
 	end
 
 	def check_voter

@@ -23,14 +23,14 @@
     </div>
   <% end %>
 <%= f.hidden_field :selection_process_id, value: @selection_process.id %> 
-<%= f.hidden_field :category_id, value: @category.id %> 
+<%= f.hidden_field :category_id, value: @category.id unless @category.nil? %> 
 <div>
   <div class="row">
-	<% unless @category.nil? %>
+	<% unless @category.nil? && !@category.already_vote?(current_user.id) %>
   <div>
     <div class="input-group">
 	<% @category.candidate.each do |candidate| 
-	    @candidate = candidate       
+      @candidate = candidate       
 	 %>  
 	<% unless @candidate.nil? %>
 	<div class="col-sm-6 col-md-4">
@@ -51,7 +51,7 @@
 	          </div><!-- caption -->
 	           <div  class="well"> 
 	        	    <%= f.radio_button :candidate_id, "#{candidate.id}" %>
-  					<%= label :contactmethod_sms, "#{candidate.name}" %>
+  					<%= label :candidate_name, "#{candidate.name}" %>
 
         	   </div>
         </div><!-- thumbnail --> 
@@ -69,6 +69,9 @@
 </div>
 <!-- registrar voto -->
 <div class="actions">
- <%= f.submit ' Votar seleccionado',  class: 'btn btn-primary btn glyphicon glyphicon-envelope' %>
+ <%= f.submit ' Votar seleccionado', data: { confirm: "Esta seguro que desea Votar el candidato seleccionado? NO podrá cambiar su elección una vez precionado el botón Aceptar." },  class: 'btn btn-success btn glyphicon glyphicon-envelope' %>
+
+ 
+
 </div>
 <% end %>

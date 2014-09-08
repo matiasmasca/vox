@@ -55,6 +55,7 @@ rails g model VoterList user:references selection_process:references estado:inte
 constancia voto
 emision voto
 constancia de emisión del voto
+recorded 
 
 emitted_vote
 category:references
@@ -70,7 +71,9 @@ category:references
 candidate:references
 digital_signature
 
-rails g model Ballot selection_process:references category:references candidate:references digital signature:string 
+rails g model Ballot selection_process:references category:references candidate:references digital_signature:string
+
+rails g scaffold EmittedVote user:references category:references candidate:references
 
 Los inflection se utiliza Irregular.
    inflect.irregular 'error', 'errores'

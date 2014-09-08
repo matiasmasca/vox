@@ -1,0 +1,31 @@
+<h1>Listing emitted_votes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Category</th>
+      <th>Candidate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emitted_votes.each do |emitted_vote| %>
+      <tr>
+        <td><%= emitted_vote.user %></td>
+        <td><%= emitted_vote.category %></td>
+        <td><%= emitted_vote.candidate %></td>
+        <td><%= link_to 'Show', emitted_vote %></td>
+        <td><%= link_to 'Edit', edit_emitted_vote_path(emitted_vote) %></td>
+        <td><%= link_to 'Destroy', emitted_vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Emitted vote', new_emitted_vote_path %>

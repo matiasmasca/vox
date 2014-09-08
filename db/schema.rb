@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906223033) do
+ActiveRecord::Schema.define(version: 20140908135247) do
 
   create_table "ballots", force: true do |t|
     t.integer  "selection_process_id"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20140906223033) do
   end
 
   add_index "categories", ["selection_process_id"], name: "index_categories_on_selection_process_id"
+
+  create_table "emitted_votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "emitted_votes", ["category_id"], name: "index_emitted_votes_on_category_id"
+  add_index "emitted_votes", ["user_id"], name: "index_emitted_votes_on_user_id"
 
   create_table "organizers", force: true do |t|
     t.string   "name"

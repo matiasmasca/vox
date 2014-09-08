@@ -1,4 +1,6 @@
 Vox::Application.routes.draw do
+  resources :emitted_votes
+
   devise_for :users, :path_prefix => 'my'
 
   #paginas estaticas

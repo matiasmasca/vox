@@ -2,10 +2,17 @@
 <div class="btn-group btn-group-justified">
  <% unless @selection_process.category.nil? %>
    <div class="well">
-   <% @selection_process.category.each do |category| %>   
-    <div class="btn-group"><p>     
-           <%= link_to " #{category.name}", selection_process_vote_path(@selection_process, :category_id => category.id), :class => 'btn btn-default btn glyphicon glyphicon-ok', :role => "button" %>
+   <!-- Contrala las categorias, si voto o no en ellas-->
+   <% @selection_process.category.each do |category| %>
+   <% if category.already_vote?(current_user.id)  %>
+    <div class="btn-group"><p>
+           <%= link_to " #{category.name}", selection_process_vote_path, :class => 'btn btn-default btn glyphicon glyphicon-check disabled', :role => "button" %>
     </div>
+    <% else %>
+    	<div class="btn-group"><p>     
+           <%= link_to " #{category.name}", selection_process_vote_path(@selection_process, :category_id => category.id), :class => 'btn btn-warning btn glyphicon glyphicon-unchecked', :role => "button" %>
+    </div>
+   <% end %>
    <% end %>
    </div>
  <% end %>

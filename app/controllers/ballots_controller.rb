@@ -25,6 +25,9 @@ class BallotsController < ApplicationController
   # POST /ballots.json
   def create
     @ballot = Ballot.new(ballot_params)
+    category_id = params[category_id].to_i
+    #Registra que voto en esa categoria, pero no se sabrá a quien voto.
+    @emitted_vote = EmittedVote.create!(user_id: current_user.id, category_id: @ballot.category_id)
 
     respond_to do |format|
       if @ballot.save

@@ -17,4 +17,14 @@ class Category < ActiveRecord::Base
 	
 	#Unico
 	validates :name, uniqueness: { scope: :selection_process_id, message: "ese nombre ya está siendo utilizado." }
+
+	#Para saber si ya voto en esa categoria
+	def already_vote?(user)
+    @voto_categoria = EmittedVote.find_by(user_id: user, category_id: self.id )
+    if @voto_categoria
+      return true
+    else
+      return false
+    end
+  end
 end
