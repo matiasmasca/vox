@@ -1,5 +1,7 @@
 # encoding: utf-8
 class VoterController < ApplicationController
+	before_action :authenticate_user!
+	
 	def vote
 		set_selection_process
 		check_voter
@@ -42,7 +44,10 @@ private
 		  @category = nil
 		end
 
-		
+		if @selection_process.category[0].nil?
+			user_session[:voter_category_id] = nil
+		  @category = nil
+		end
 	end
 
 	def check_voter

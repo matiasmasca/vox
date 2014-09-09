@@ -39,8 +39,9 @@ class PaginasController < ApplicationController
 
   def jury_dashboard
     set_user
+    @selection_process = nil
+    user_session[:selection_process_id] = 0
     @selection_processes =  SelectionProcess.includes(:voter_list).where("voter_lists.user_id = #{current_user.id}")
-    
     # ir al dashboard del jurado.
   end
 

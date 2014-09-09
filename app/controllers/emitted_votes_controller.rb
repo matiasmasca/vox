@@ -1,4 +1,6 @@
 class EmittedVotesController < ApplicationController
+  before_action :authenticate_user!
+  
   before_action :set_emitted_vote, only: [:show, :edit, :update, :destroy]
 
   # GET /emitted_votes

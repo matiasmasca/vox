@@ -1,4 +1,6 @@
 class BallotsController < ApplicationController
+  before_action :authenticate_user!
+  
   before_action :set_ballot, only: [:show, :edit, :update, :destroy]
 
   # GET /ballots

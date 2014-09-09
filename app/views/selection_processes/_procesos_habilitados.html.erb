@@ -4,7 +4,8 @@
       @selection_process = selection_process   
    %>  
   <%= render partial: "selection_processes/selection_process", object: @selection_process %>
-  <%  end %>
+  <%  @selection_process= nil #Blanquea el objeto global %> 
+  <% end %>
 </div><!-- row -->
 
 

@@ -40,6 +40,11 @@ class SelectionProcess < ActiveRecord::Base
 
   def is_elector?(current_user)
     usuario_elector = VoterList.find_by(selection_process_id: self.id, user_id: current_user.id)
+    if usuario_elector && usuario_elector.estado == 1
+    	true
+    else
+    	false
+    end
   end
 
 end

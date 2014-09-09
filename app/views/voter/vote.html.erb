@@ -34,8 +34,8 @@
       @candidate = candidate       
 	 %>  
 	<% unless @candidate.nil? %>
-	<div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
+	  <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
            <%= link_to(image_tag(@candidate.image_path,
         	size: "242x200",
         	alt: "Avatar #{@candidate.id}",
@@ -53,25 +53,27 @@
 	           <div  class="well"> 
 	        	    <%= f.radio_button :candidate_id, "#{candidate.id}" %>
   					<%= label :candidate_name, "#{candidate.name}" %>
-
         	   </div>
-        </div><!-- thumbnail --> 
-
-	</div><!-- col-sm-6 -->
-
-	<% end %><!-- candidato -->
-	<%  end %><!-- ya voto en categoria -->
-	<%  end %><!-- candidatos categoria -->
-      
-	</div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-<%  end %><!-- /category -->
-  </div><!-- /.row -->
-</div>
-<!-- registrar voto -->
+      </div><!-- thumbnail --> 
+	  </div><!-- col-sm-6 -->
+	<% end %><!-- if candidato -->
+  <% end %><!-- candidatos x categoria -->
+  </div><!-- /input-group -->
+   <!-- registrar voto -->
 <div class="actions">
  <%= f.submit ' Votar seleccionado', data: { confirm: "Esta seguro que desea Votar el candidato seleccionado? NO podrá cambiar su elección una vez precionado el botón Aceptar." },  class: 'btn btn-success btn glyphicon glyphicon-envelope' %>
 </div>
+  </div><!-- /.col-lg-6 -->
+	<% end %><!-- ya voto en categoria -->
+	
+      
+	
+
+
+<%  end %><!-- /category -->
+  </div><!-- /.row -->
+</div>
+
 <% end %>
 <hr>
 <div class="row">
@@ -81,13 +83,21 @@ Comparte:
 
 <!--Social Share -->
 <!--Facebook -->
-<a class="btn btn-default" href="http://www.facebook.com/sharer.php?u=<%= request.original_url %>&t=<%= texto_adicional %>"><img class="img" src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/yQ/r/7GFXgco-uzw.png" alt="" style="top: 0px;" height="14" width="14"> Facebook</a>
+<a class="btn btn-default" target="_blank" href="http://www.facebook.com/sharer.php?u=<%= request.original_url %>&t=<%= texto_adicional %>"><img class="img" src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/yQ/r/7GFXgco-uzw.png" alt="" style="top: 0px;" height="14" width="14"> Facebook</a>
 
 <!--Twitter -->
-<a href="https://twitter.com/share" class="twitter-share-button" data-counturl="<%= request.original_url %>" data-text="<%= texto_adicional %>" data-related="matiasmasca" data-lang="es" data-size="large" data-count="none" data-via="TFA-VOX" >Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<a class="btn btn-default" href="http://twitter.com/share?url=<%= request.original_url %>&text=<%= texto_adicional %>&via=tfa-vox"><img src="https://dev.twitter.com/sites/default/files/images_documentation/bird_blue_16.png" alt="Share on Twitter" target="_blank"/> Tweet</a>
+
 
 <!--Google plus -->
-<a class="btn btn-default" href="https://plus.google.com/share?url=<%= request.original_url %>"><img src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Share on Google+"/> Google Plus</a>
+<a class="btn btn-default" href="https://plus.google.com/share?url=<%= request.original_url %>" target="_blank"><img src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Share on Google+"/> Google Plus</a>
+
+<!--Pinterest -->
+<a  class="btn btn-default"
+    target="_blank"
+    title="Pin It" 
+    href="http://www.pinterest.com/pin/create/button/?url=<%= request.original_url %>&description=<%= texto_adicional %>&media=<% @selection_process.organizer.image_path %>"
+  ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /> Pinterest</a>    
+
 
 </div>
