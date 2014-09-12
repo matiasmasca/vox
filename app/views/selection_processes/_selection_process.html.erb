@@ -33,7 +33,7 @@
             <p>Resultado  Admisión: <span class="label label-danger"><%=  estado %></span>
         <% end %>
         <% end %>
-            <p><%= link_to ' Ver resultados', selection_process_path(@selection_process), :class => 'btn btn-info btn glyphicon glyphicon-info-sign', :role => "button" %>
+            <p><%= link_to ' Más info.', selection_process_path(@selection_process), :class => 'btn btn-info btn glyphicon glyphicon-info-sign', :role => "button" %>
 
             <p><%= mail_to "#{@selection_process.organizer.email}", " Contactar", cc: "contacto@vox.com",
          subject: "VOX: #{@selection_process.name_process}. Comentario.", :class => 'btn btn-default btn glyphicon glyphicon-pencil' , :role => "button"  %>
