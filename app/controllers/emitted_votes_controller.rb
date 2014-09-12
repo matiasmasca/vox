@@ -1,3 +1,5 @@
+# Registra en que categorias ya voto el usuario.
+
 class EmittedVotesController < ApplicationController
   before_action :authenticate_user!
   

@@ -6,7 +6,7 @@
    <!-- Contrala las categorias, si voto o no en ellas-->
    <% @selection_process.category.each do |category| %>
    <% if category.already_vote?(current_user.id)  %>
-           <%= link_to " #{category.name}", selection_process_vote_path, :class => 'list-group-item list-group-item-success glyphicon glyphicon-check' %>
+           <%= link_to " #{category.name}", selection_process_vote_path(@selection_process), :class => 'list-group-item list-group-item-success glyphicon glyphicon-check' %>
     <% else %> 
            <%= link_to " #{category.name}", selection_process_vote_path(@selection_process, :category_id => category.id), :class => 'list-group-item list-group-item-warning glyphicon glyphicon-unchecked'%>
    <% end %>

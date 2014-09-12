@@ -65,7 +65,7 @@ Vox::Application.routes.draw do
     resources :voter_lists
     get 'voter/vote' => 'voter#vote', as: :vote
 
-    
+    get '/voter/results'  => 'voter#results', as: :results    
   end
 
   resources :ballots #Registrar votos! ojo

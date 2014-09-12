@@ -1,0 +1,8 @@
+<h1>Escrutinio</h1>
+
+<% @recuento_proceso.each do |category| %>
+<p>Categoria:  <%= category %>
+<% end %>
+<br>
+<p>Todo:
+<%= @recuento_proceso.inspect %>

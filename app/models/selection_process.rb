@@ -5,6 +5,7 @@ class SelectionProcess < ActiveRecord::Base
     has_many :category, autosave: true
     has_many :voter_list, autosave: true
     has_many :users, through: :voter_list
+    has_many :ballot, through: :ballot
 
 	#datos obligatorios
 	validates :name_process, :place, presence: { message: "es un dato obligatorio."}

@@ -21,6 +21,16 @@ class VoterController < ApplicationController
 		raise ''
 	end
 
+	def results
+		set_selection_process
+		recuento(@selection_process)
+	end
+
+
+
+
+
+
 private
 	def set_selection_process
 		if user_session[:selection_process_id] ||  params[:selection_process_id] && !@selection_process
@@ -89,4 +99,28 @@ private
       end
     end
 
+    def cantidad_votos(categoria, candidato)
+    	votos = Ballot.all.where(category_id: categoria, candidate_id: candidato).count
+    	puts("Votos candidato #{candidato}: #{votos}" )
+    	return votos
+    end
+
+    def recuento_categoria(categoria)
+	  @recuento_categoria = {}
+      categoria.candidate.each do |candidate| 
+	 	 #for candidato
+	 	 #agregar a un hash candidato:votos
+	 	 @recuento_categoria[candidate.id.to_s.to_sym] = cantidad_votos(categoria.id, candidate.id)
+		end
+	  puts("Recuento categoria: #{@recuento_categoria.inspect}")
+	  return @recuento_categoria
+	end
+
+	def recuento(proceso)
+		@recuento_proceso = {}
+		proceso.category.each do |category|
+			@recuento_proceso[category.id.to_s.to_sym] = recuento_categoria(category)
+			puts("Recuento proceso: #{@recuento_proceso[:category]}" )
+		end
+	end
 end
