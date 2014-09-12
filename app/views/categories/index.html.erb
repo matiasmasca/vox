@@ -38,8 +38,10 @@
 
 <br>
 
-<% unless params[:selection_process_id].nil? %>
-<%= link_to 'Agregar Categoría', new_selection_process_category_path(params[:selection_process_id]), :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
-<% else %>
-<%= link_to 'Agregar Categoría', new_category_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+<% if current_user.is_admin? || current_user.is_organizer? %>
+  <% unless params[:selection_process_id].nil? %>
+  <%= link_to 'Agregar Categoría', new_selection_process_category_path(params[:selection_process_id]), :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+  <% else %>
+  <%= link_to 'Agregar Categoría', new_category_path, :class => 'btn btn-primary btn glyphicon glyphicon-plus'  %>
+  <% end %>
 <% end %>

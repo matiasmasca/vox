@@ -2,7 +2,7 @@
 class OrganizersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_organizer, only: [:index, :show, :edit, :update, :destroy]
-  before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
+  before_action :check_property, only: [:index, :edit, :update, :destroy]
   # GET /organizers
   # GET /organizers.json
   def index

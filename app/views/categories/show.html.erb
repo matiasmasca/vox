@@ -22,11 +22,12 @@
 <div><!--Candidatos-->
     <%= render partial: "candidates/candidates_category", object: @category %> 
 </div>
-<%= link_to ' Ir a candidatos', category_candidates_path(@category), :class => 'btn btn-link btn glyphicon glyphicon-list' %>
 
 <% if current_user.is_admin? || current_user.is_organizer? %>
+<%= link_to ' Ir a candidatos', category_candidates_path(@category), :class => 'btn btn-link btn glyphicon glyphicon-list' %>
+
 <%= link_to ' Editar', edit_selection_process_category_path(@category.selection_process, @category), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
-<% end %>
+
 
 <%= link_to ' Ir a categorias', selection_process_categories_path(@category.selection_process), :class => 'btn btn-link btn glyphicon glyphicon-list' %>
 
@@ -36,3 +37,8 @@
          <%= render partial: "misprocesos"  %>
       </ol>
 <% end %>
+<% end %>
+
+<%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>
+
+<%= link_to " Volver a #{@category.selection_process.name_process} ", selection_process_path(@category.selection_process), :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>

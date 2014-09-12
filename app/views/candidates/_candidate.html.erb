@@ -1,5 +1,5 @@
 <% unless @candidate.nil? %>
-<div class="col-sm-6 col-md-4">
+ <div class="col-sm-6 col-md-4">
         <div class="thumbnail size: 200x200">
            <%= link_to(image_tag(@candidate.image_path,
         alt: "Avatar #{@candidate.id}",
@@ -13,10 +13,12 @@
               <p><%= @candidate.bios %></p>
             </div>
             <p><%= link_to ' Mostrar', category_candidate_path(@candidate.category_id, @candidate), :class => 'btn btn-primary btn glyphicon glyphicon-pencil', :role => "button" %>
+            <% if current_user.is_admin? || current_user.is_organizer? %>
             <%= link_to ' Editar', edit_category_candidate_path(@candidate.category_id, @candidate), :class => 'btn btn-default btn glyphicon glyphicon-pencil' , :role => "button" %></p>
+            <% end %>
           </div>
         </div>
-</div>
+ </div>
 <% end %>
 
 

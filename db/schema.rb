@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20140908135247) do
     t.string   "email"
     t.string   "facebook"
     t.string   "twitter"
-    t.integer  "tipo_usuario_id",        default: 3,  null: false
+    t.integer  "tipo_usuario_id",        default: 2,  null: false #2 Jurado.
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false

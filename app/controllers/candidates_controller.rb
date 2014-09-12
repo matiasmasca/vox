@@ -4,7 +4,7 @@ class CandidatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
   before_action :set_category
-  before_action :check_property,  only: [:index, :show, :edit, :update, :destroy]
+  before_action :check_property,  only: [:index, :edit, :update, :destroy]
 
   # GET /candidates
   # GET /candidates.json
@@ -139,8 +139,37 @@ class CandidatesController < ApplicationController
         end
       end
 
-      #Manda parametro por otro lado.
+      #Primero si puede ver el proceso.
+      set_selection_process if @selection_process.nil?
+      unless @selection_process.is_owner?(current_user.id) 
+        security_exit
+        return false
+      end
+      
+      @organizer = @organizer.selection_process.find_by_id(@selection_process)
+      
+      if @selection_process.organizer != @current_user.organizer && !@current_user.is_admin? 
+        respond_to do |format|
+          format.html do
+            unless @selection_process == @category.selection_process
+               user_session[:selection_process_id] = nil
+               user_session[:category_id] = nil
+               redirect_to(:back, alert: "Solo puedes operar sobre las categorías del proceso seleccionado.")
+            end
+          end
+        end
+      end
+    end
 
-    end   
+     def security_exit
+        respond_to do |format|
+        format.html do
+           user_session[:selection_process_id] = nil
+           user_session[:category_id] = nil
+           redirect_to(:back, alert: "Solo puedes operar sobre las categorías del proceso seleccionado.")
+           return false
+        end
+      end
+    end      
 
 end

@@ -93,10 +93,6 @@ class UsersController < ApplicationController
         else
           @user = nil
       end
-      
-        puts("ACAAAAAAAAAAAAA!!!!!!!!!!! <<<<<=======") 
-        puts("@current_user = #{@current_user.id}")
-        puts("@user = #{@user}")
 
       unless @user == @current_user 
           respond_to do |format|

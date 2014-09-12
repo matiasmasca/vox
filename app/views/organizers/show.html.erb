@@ -32,15 +32,20 @@
         @organizer.image_path) %>
 </p>
 
+<%= mail_to "#{@organizer.email}", " Contactar", cc: "contacto@vox.com",
+         subject: "VOX: contacto.", :class => 'btn btn-default btn glyphicon glyphicon-pencil' , :role => "button"  %>
+
 <br>
 <% if current_user.is_admin? || current_user.is_organizer? %>
 <%= link_to 'Editar', edit_organizer_path(@organizer), :class => 'btn btn-default' %> |
 <% end %>
 <%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>
 
-<% if @organizer.user %>
-      <h3>Usuario Administrador:</h3>
-      <ol class="user">    
-         <%= render partial: "usuarios_por_organizacion"  %>
-      </ol>
+<% if current_user.is_admin? || current_user.is_organizer? %>
+  <% if @organizer.user %>
+        <h3>Usuario Administrador:</h3>
+        <ol class="user">    
+           <%= render partial: "usuarios_por_organizacion"  %>
+        </ol>
+  <% end %>
 <% end %>

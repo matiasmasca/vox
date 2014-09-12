@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_selection_process
   before_action :set_category, except: [:new] #, only: [:index, :show, :edit, :update, :destroy]
-  before_action :check_property #, only: [:index, :show, :edit, :update, :destroy]
+  before_action :check_property, except: [:show] #, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
@@ -123,7 +123,6 @@ class CategoriesController < ApplicationController
     def check_property
       return true if @current_user.is_admin?
 
-      
       #Primero si puede ver el proceso.
       set_selection_process if @selection_process.nil?
       unless @selection_process.is_owner?(current_user.id) 
@@ -133,9 +132,7 @@ class CategoriesController < ApplicationController
       
       @organizer = @organizer.selection_process.find_by_id(@selection_process)
 
-
       #Luego si la categoria es del proceso seleccionado.
-
       if !params[:organizer_id].blank?
         @organizer = Organizer.find_by_id(params[:organizer_id])
       else

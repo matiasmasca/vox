@@ -17,14 +17,13 @@ Escenario: mostrar premio
   Entonces veo toda la información del premio.
 
 #Casos extremos.
-Escenario: ver el premio de otra organización
-  Dado existen 2 usuarios A y B
-  Dado existe una Organización: "ACME-A", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "usuario01".
-  Y que existe un Proceso: "Premios ACME 3th. Editar", "Alguna ciudad", "15" asociado a mi organizacion "ACME-A".
-  Cuando B trata de ver el premio de A
-  Entonces me muestra el mensaje "Solo puedes operar sobre los procesos que tu hayas creado."
-
-
+# Esta prueba quedo deprecada, por cambio de politica al mostrar los procesos.
+#Escenario: ver el premio de otra organización
+#  Dado existen 2 usuarios A y B
+#  Dado existe una Organización: "ACME-A", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "usuario01".
+#  Y que existe un Proceso: "Premios ACME 3th. Editar", "Alguna ciudad", "15" asociado a mi organizacion "ACME-A".
+#  Cuando B trata de ver el premio de A
+#  Entonces me muestra el mensaje "Solo puedes operar sobre los procesos que tu hayas creado."
 
 #@to-do
 #El proceso no existe.

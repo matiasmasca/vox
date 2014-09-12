@@ -1,8 +1,8 @@
 # encoding: utf-8
 class SelectionProcessesController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
-  before_action :set_selection_process, only: [:show, :edit, :update, :destroy]
+  before_action :check_property, only: [:index, :edit, :update, :destroy]
+  before_action :set_selection_process, only: [:edit, :update, :destroy]
 
   # GET /selection_process
   # GET /selection_process.json

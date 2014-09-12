@@ -55,6 +55,22 @@ private
 		# El Current_user, esta registrado en en voter_list del proceso.
 		usuario_elector = VoterList.find_by(selection_process_id: @selection_process.id, user_id: current_user.id)
 		
+		unless usuario_elector
+		  security_exit
+		  return false
+		end  
+
+		case usuario_elector.estado
+			when 2
+			 #Aun no fuiste aprobado
+			 redirect_to(:back, alert: "Aun no fuiste aprobado para votar por el organizador.")
+             return false
+			when 3
+			 #fuiste rechazado
+			 redirect_to(:back, alert: "Fuiste RECHAZADO para votar en este proceso por el organizador. Ante la duda contactate con él.")
+             return false
+		end
+
 		unless current_user.id == usuario_elector.user_id
 			security_exit
 		end

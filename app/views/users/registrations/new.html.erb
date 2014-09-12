@@ -63,11 +63,11 @@
 
   <div class="form-group">
     <% if @user.tipo_usuario_id == 1 %>
-    <% tipos_usuarios = {'Admin'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'} %>
-    <%= f.label :tipo_usuario_id, "Tipo Usuario" , class: 'col-sm-2 control-label' %><br>
-    <div class="col-sm-6">
-    <%= f.select :tipo_usuario_id, tipos_usuarios, selected: @user.tipo_usuario_id, class: 'form-control' %>
-    </div>
+     <% tipos_usuarios = {'Admin'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'} %>
+     <%= f.label :tipo_usuario_id, "Tipo Usuario" , class: 'col-sm-2 control-label' %><br>
+     <div class="col-sm-6">
+      <%= f.select :tipo_usuario_id, tipos_usuarios, selected: @user.tipo_usuario_id, class: 'form-control' %>
+     </div>
     <% end %>
   </div>
 
