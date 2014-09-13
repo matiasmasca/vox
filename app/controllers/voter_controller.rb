@@ -23,15 +23,46 @@ class VoterController < ApplicationController
 
 	def results
 		set_selection_process
+		@candidatos = @selection_process.category.first.candidate.first
+
 		recuento(@selection_process)
+
+		#En futuras versiones, deberia guardar el resultado final en una tabla para ahorrar procesamiento. Una vez cerrado el proceso.
+		
 	end
 
 
 
-
-
-
 private
+	def recuento(proceso)
+		@recuento_proceso = {}
+		proceso.category.each do |category|
+			@recuento_proceso[category.id.to_s.to_sym] = recuento_categoria(category)
+			puts("Recuento proceso: #{@recuento_proceso[:category]}" )
+		end
+		@recuento_proceso
+	end
+
+    def cantidad_votos(categoria, candidato)
+    	votos = Ballot.all.where(category_id: categoria, candidate_id: candidato).count
+    	puts("Votos candidato #{candidato}: #{votos}" )
+    	return votos
+    end
+
+    def recuento_categoria(categoria)
+	  @recuento_categoria = {}
+      categoria.candidate.each do |candidate| 
+	 	 #for candidato
+	 	 #agregar a un hash candidato:votos
+	 	 @recuento_categoria[candidate.id.to_s.to_sym] = cantidad_votos(categoria.id, candidate.id)
+		end
+	  puts("Recuento categoria: #{@recuento_categoria.inspect}")
+	  return @recuento_categoria
+	end
+
+	
+
+
 	def set_selection_process
 		if user_session[:selection_process_id] ||  params[:selection_process_id] && !@selection_process
 			selection_process =  user_session[:selection_process_id] if user_session[:selection_process_id] 
@@ -99,28 +130,5 @@ private
       end
     end
 
-    def cantidad_votos(categoria, candidato)
-    	votos = Ballot.all.where(category_id: categoria, candidate_id: candidato).count
-    	puts("Votos candidato #{candidato}: #{votos}" )
-    	return votos
-    end
 
-    def recuento_categoria(categoria)
-	  @recuento_categoria = {}
-      categoria.candidate.each do |candidate| 
-	 	 #for candidato
-	 	 #agregar a un hash candidato:votos
-	 	 @recuento_categoria[candidate.id.to_s.to_sym] = cantidad_votos(categoria.id, candidate.id)
-		end
-	  puts("Recuento categoria: #{@recuento_categoria.inspect}")
-	  return @recuento_categoria
-	end
-
-	def recuento(proceso)
-		@recuento_proceso = {}
-		proceso.category.each do |category|
-			@recuento_proceso[category.id.to_s.to_sym] = recuento_categoria(category)
-			puts("Recuento proceso: #{@recuento_proceso[:category]}" )
-		end
-	end
 end

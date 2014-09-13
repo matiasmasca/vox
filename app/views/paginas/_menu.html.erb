@@ -24,8 +24,14 @@
   </div>
   <!-- Padrón -->
   <div class="list-group"><!--Padron-->
-    <%= render partial: "voter_lists/menu_voter_list", object: @selection_process %> 
+    <%= render partial: "voter_lists/menu_voter_list", object: @selection_process %>
   </div>
+  <!-- Escrutinio -->
+  <div class="list-group">
+     <p class="list-group-item active"><b>Escrutinio</b></p>
+     <%= link_to ' Escrutinio',  selection_process_results_path(@selection_process), :class => 'btn btn-default btn glyphicon glyphicon-star list-group-item' %>
+  </div>
+
  <% end %>
  <!--Usuario Organizer!-->
   <% unless user_session.nil? || user_session[:organizer_id].nil?  %>
