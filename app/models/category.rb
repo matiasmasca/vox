@@ -26,5 +26,16 @@ class Category < ActiveRecord::Base
      else
         return false
      end
-  end
+ 	end
+
+    def porcentaje_categoria
+     #Candidad de votantes proceso, con estado Aprobado!
+	 cantidad_electores = VoterList.includes(:selection_process).where(selection_process_id: self.selection_process_id, estado: 1).count
+
+ 	#Cantidad de votos por categoria
+     cantidad_votos = Ballot.all.where(category_id: self.id).count
+
+	 #Y sacar la diferencia entre la cantidad de votos y los votantes por las categorias.
+	  porcentaje_categoria = (cantidad_votos * 100) / cantidad_electores
+    end
 end

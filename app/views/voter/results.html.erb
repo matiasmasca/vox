@@ -15,6 +15,25 @@
 <hr>
  <% @category = @selection_process.category.find_by_id(category) %>
 <h3>Categoría:  <%= @category.name %></h3>
+<div class="progress">
+  <% if @category.porcentaje_categoria < 100 %>
+	  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
+       <span class="sr-only"><%= @category.porcentaje_categoria %>% Complete</span>
+  <% elsif @category.porcentaje_categoria > 100 %>
+		<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
+       <span class="sr-only"><%= @category.porcentaje_categoria %>% Complete</span>
+  <% else %>
+		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
+       <span class="sr-only"><%= @category.porcentaje_categoria %>% Complete</span>
+  <% end %>
+  <%= @category.porcentaje_categoria %>%
+     </div><!-- /progress-bar -->
+</div>
+<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#<%= @category.id %>">
+  Ver más
+</button>
+
+<div id="<%= @category.id %>" class="collapse"><!-- collapse -->
  <% candidates = candidates.sort_by {|k,v| v}.reverse %>
 
  <% candidates.each_with_index do |candidato, index| %>
@@ -26,7 +45,9 @@
   <% end %>
   <br>
   <p>Votos categoria: <%= candidates %>
+</div><!-- /collapse -->
 <% end %>
+
 
 <hr>
 <br>

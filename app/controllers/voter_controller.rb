@@ -32,7 +32,7 @@ class VoterController < ApplicationController
 
 	def porcentaje_avance
 		#Candidad de votantes proceso, con estado Aprobado!
-		@cantidad_electores = VoterList.includes(:selection_process).where(selection_process_id: @selection_process.id).count
+		@cantidad_electores = VoterList.includes(:selection_process).where(selection_process_id: @selection_process.id, estado: 1).count
 
 		#Cantidad de votos
 		@cantidad_votos = Ballot.all.where(selection_process_id: @selection_process.id).count
