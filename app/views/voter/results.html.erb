@@ -1,4 +1,16 @@
 <h1>Escrutinio</h1>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: <%= @porcentaje_avance %>%;">
+    <%= @porcentaje_avance %>%
+  </div>
+</div>
+	<p>Cantidad electores: <%= @cantidad_electores %>
+	<p>Cantidad votos computados: <%= @cantidad_votos %>
+	<p>Cantidad categorías: <%= @cantidad_categorias %>
+	<p>Total votos teórico: <%= @total_votos_teorico %>
+	<p>Porcentaje votos padrón: <%= @porcentaje_avance %>%
+
+
 
 <% @recuento_proceso.each do |category, candidates| %>
 <hr>
@@ -21,3 +33,5 @@
 <br>
 <p>Todo:
 <%= @recuento_proceso.inspect %>
+
+

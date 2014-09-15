@@ -22,15 +22,30 @@ class VoterController < ApplicationController
 	end
 
 	def results
+		#En futuras versiones, deberia guardar el resultado final en una tabla para ahorrar procesamiento. Una vez cerrado el proceso.	
 		set_selection_process
 		@candidatos = @selection_process.category.first.candidate.first
 
 		recuento(@selection_process)
-
-		#En futuras versiones, deberia guardar el resultado final en una tabla para ahorrar procesamiento. Una vez cerrado el proceso.
-		
+		porcentaje_avance
 	end
 
+	def porcentaje_avance
+		#Candidad de votantes proceso.
+		@cantidad_electores = VoterList.includes(:selection_process).where(selection_process_id: @selection_process.id).count
+
+		#Cantidad de votos
+		@cantidad_votos = Ballot.all.where(selection_process_id: @selection_process.id).count
+
+		#Cantidad de Categoria
+		@cantidad_categorias = @selection_process.category.count
+
+		#Multiplicar los votantes por la cantidad de categorias.
+		@total_votos_teorico = @cantidad_electores * @cantidad_categorias
+		#Y sacar la diferencia entre la cantidad de votos y los votantes por las categorias.
+		@porcentaje_avance = (@cantidad_votos * 100) / @total_votos_teorico
+
+	end
 
 
 private
