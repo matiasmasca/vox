@@ -1,15 +1,24 @@
 # encoding: utf-8
 class VoterController < ApplicationController
 	before_action :authenticate_user!
+	before_action :set_selection_process
+	before_action :set_status
 	
 	def vote
-		set_selection_process
+		if @selection_process.state == "abierto"	
 		check_voter
 		set_category
 
 		#Antes de votar, debe controlar que ya no haya votado en esa categoria.
 
 		@ballot = Ballot.new
+		elsif @selection_process.state == "cerrado"
+			redirect_to(root_path, alert: "El periodo de votanción para este proceso ya se termino.")
+             return false
+		else
+			 redirect_to(root_path, alert: "Aun no estan abiertas las votanciones en este proceso.")
+             return false
+		end
 	end
 
 	def emitir_voto
@@ -18,16 +27,20 @@ class VoterController < ApplicationController
 		@voto = Ballot.create!(selection_process_id: @selection_process.id, category_id: @category.id, candidate_id: @candidate.id)
 		#Marcar la categoria.
 		@emitted_vote = EmittedVote.create!(user_id: current_user.id, category_id: @category.id)
-		raise ''
+		#raise ''
 	end
 
 	def results
-		#En futuras versiones, deberia guardar el resultado final en una tabla para ahorrar procesamiento. Una vez cerrado el proceso.	
-		set_selection_process
-		@candidatos = @selection_process.category.first.candidate.first
-
-		recuento(@selection_process)
-		porcentaje_avance
+		if @selection_process.state == "cerrado"
+			#En futuras versiones, deberia guardar el resultado final en una tabla para ahorrar procesamiento. Una vez cerrado el proceso.	
+			@candidatos = @selection_process.category.first.candidate.first
+			recuento(@selection_process)
+			porcentaje_avance
+		else
+			#fuiste rechazado
+			 redirect_to(root_path, alert: "Aun estan votando en este proceso. Debes cerrar las votaciones para ver los resultados")
+             return false
+		end
 	end
 
 	def porcentaje_avance
@@ -75,8 +88,11 @@ private
 	  return @recuento_categoria
 	end
 
-	
+	def set_status
+		unless @selection_process.state == "abierto"
 
+		end
+	end
 
 	def set_selection_process
 		if user_session[:selection_process_id] ||  params[:selection_process_id] && !@selection_process

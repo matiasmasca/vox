@@ -49,6 +49,8 @@ class ApplicationController < ActionController::Base
           user_session[:organizer_id] = current_user.organizer.id 
         end
         #logger.info(user_session[:organizer_id])
+      else
+        current_user = User.new
       end
   end
 

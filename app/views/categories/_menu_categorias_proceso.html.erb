@@ -18,8 +18,10 @@
            	<%= category.candidate.size %> / <%= category.bench %></span>
       <% end %>
 <% end %>
-<% if @selection_process.category[0].nil? && current_user.is_admin? || current_user.is_organizer? %>
-<%= link_to ' Nueva Categoría ', new_selection_process_category_path(@selection_process), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign list-group-item' %>
+<% if current_user %>
+  <% if @selection_process.category[0].nil? && current_user.is_admin? || current_user.is_organizer? %>
+  <%= link_to ' Nueva Categoría ', new_selection_process_category_path(@selection_process), :class => 'btn btn-default btn glyphicon glyphicon-plus-sign list-group-item' %>
+  <% end %>
 <% end %>
 </div>
 <% end %>

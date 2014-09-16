@@ -1,8 +1,8 @@
 # encoding: utf-8
 class SelectionProcessesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except:[:show]
   before_action :check_property, only: [:index, :edit, :update, :destroy]
-  before_action :set_selection_process, only: [:edit, :update, :destroy]
+  before_action :set_selection_process, only: [:show, :edit, :update, :destroy]
 
   # GET /selection_process
   # GET /selection_process.json
@@ -46,7 +46,10 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process/1/edit
   # GET /organizers/1/selection_processes/1/edit
-  def edit 
+  def edit
+    #Para abrir o cerrar las votaciones por enlace
+    @selection_process.abrir_elecciones if params[:cambiar_estado] == "abrir"
+    @selection_process.cerrar_elecciones if params[:cambiar_estado] == "cerrar"
   end
 
   # POST /selection_process
@@ -99,13 +102,13 @@ class SelectionProcessesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_selection_process
-      selection_process_id = user_session[:selection_process_id] unless user_session[:selection_process_id].nil?
+      selection_process_id = user_session[:selection_process_id] unless user_session.nil? || user_session[:selection_process_id].nil?
       selection_process_id = params[:id] unless params[:id].nil? 
       
       if selection_process_id
        @selection_process = SelectionProcess.find_by_id(selection_process_id)
        @organizer = @selection_process.organizer unless @selection_process.nil?           
-       user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?        
+       user_session[:selection_process_id] = @selection_process.id unless user_session.nil? || @selection_process.nil?        
 
         respond_to do |format|
           format.html do

@@ -39,13 +39,21 @@ class SelectionProcess < ActiveRecord::Base
 		#self.process_type_id like "public"
 	end
 
-  def is_elector?(current_user)
-    usuario_elector = VoterList.find_by(selection_process_id: self.id, user_id: current_user.id)
-    if usuario_elector && usuario_elector.estado == 1
+    def is_elector?(current_user)
+     usuario_elector = VoterList.find_by(selection_process_id: self.id, user_id: current_user.id)
+     if usuario_elector && usuario_elector.estado == 1
     	true
-    else
+     else
     	false
+     end
     end
-  end
+
+    def abrir_elecciones
+    	self.state = "abierto"
+    end
+
+    def cerrar_elecciones
+    	self.state = "cerrado"
+    end
 
 end
