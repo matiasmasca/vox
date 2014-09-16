@@ -1,6 +1,6 @@
 <!-- PO: Por ahora 1 solo organizador por proceso de selección -->
-<li>
+<div class="list-group-item">
   <h3><span ><%= @selection_process.organizer.name %></span></h3>
-  <%= link_to 'Más información', organizer_path(@selection_process.organizer) %>
+  <%= link_to ' Más información', organizer_path(@selection_process.organizer), :class => 'btn btn-default btn glyphicon glyphicon-info-sign' %>
   <p>
-</li>
+</div>
