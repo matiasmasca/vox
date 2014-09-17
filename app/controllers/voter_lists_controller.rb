@@ -113,6 +113,9 @@ class VoterListsController < ApplicationController
  end
 
  def check_property
+    #Si es Admin. puede ver y modificar el padron.
+    #Si es un Jurado, no puede ver el padron.
+    #Si es Organizador pero no es el dueño, no debe ver el padron.    
 
  end
 

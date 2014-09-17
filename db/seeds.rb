@@ -60,7 +60,7 @@ categories = [
     {:name => 'Candidatos a Mejor Wile E. Coyote', :description => 'Candidatos a remplazar a Wile E. Coyote, a.k.a. el coyote, en el Desierto de Arizona', :bench => '3', selection_process_id: '1'},
     {:name => 'Mejor Cohete', :description => 'TOP 5. Participan los cohetes utilizados por el coyote en sus persecuciones', :bench => '5', selection_process_id: '1'},
     {:name => 'Mejor Trampa', :description => 'TOP 10. Participan las trampas o artilugios utilizadas por el coyote para atrapar al correcaminos', :bench => '10', selection_process_id: '1'},
-    {:name => 'Mejor caida', :description => 'TOP5. Caidas del coyote en sus persecuciones por el desierto de Arizona', :bench => '5', selection_process_id: '1'},
+    {:name => 'Mejor Caída', :description => 'TOP5. Caidas del coyote en sus persecuciones por el desierto de Arizona', :bench => '5', selection_process_id: '1'},
     {:name => 'Mejor idea', :description => 'TOP5. Mejores ideas para aplicar en el desierto de Arizona', :bench => '5', selection_process_id: '1'},
     {:name => 'Mejor actor', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
     {:name => 'Mejor actor de reparto', :description => 'desde 1936', :bench => '5', :selection_process_id => '2'},
@@ -110,9 +110,12 @@ candidates = [
     {:name => "Piedra gigante" , :bios => "Atar una piedra gigante con una cuerda, elevarla 3 metros y poner comida debajo.", :category_id => "5"},
     {:name => "Comida con hierro" , :bios => "Colocar comida con pelotitas de hierro, luego usar un íman grande para atrapar a la presa.", :category_id => "5"},
     {:name => "Tunel falso" , :bios => "Pintar un tunel falso sobre una pared, y luego redirigir las lineas del trafico hacia él.", :category_id => "5"},
-    {:name => "Cohete 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "3"},
-    {:name => "Cohete 1" , :bios => "Cohete marca ACME con volante", :category_id => "3"},
-    {:name => "Cohete 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "3"}
+    {:name => "Cohete 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "2"},
+    {:name => "Cohete 1" , :bios => "Cohete marca ACME con volante", :category_id => "2"},
+    {:name => "Cohete 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"}
+    {:name => "Caída 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "2"},
+    {:name => "Caída 1" , :bios => "Cohete marca ACME con volante", :category_id => "2"},
+    {:name => "Caída 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"}
 ]
 
 candidates.each do |candidate|
