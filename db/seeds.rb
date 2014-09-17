@@ -59,9 +59,9 @@ end
 categories = [
     {:name => 'Candidatos a Mejor Wile E. Coyote', :description => 'Candidatos a remplazar a Wile E. Coyote, a.k.a. el coyote, en el Desierto de Arizona', :bench => '3', selection_process_id: '1'},
     {:name => 'Mejor Cohete', :description => 'TOP 5. Participan los cohetes utilizados por el coyote en sus persecuciones', :bench => '5', selection_process_id: '1'},
-    {:name => 'Mejor Trampa', :description => 'TOP 10. Participan las trampas utilizadas por el coyote para atrapar al correcaminos', :bench => '10', selection_process_id: '1'},
-    {:name => 'Mejor caida', :description => 'TOP100. Caidas del coyote en sus persecuciones por el desierto de Arizona', :bench => '100', selection_process_id: '1'},
-    {:name => 'Mejor idea', :description => 'TOP500. Mejores ideas para aplicar en el desierto de Arizona', :bench => '500', selection_process_id: '1'},
+    {:name => 'Mejor Trampa', :description => 'TOP 10. Participan las trampas o artilugios utilizadas por el coyote para atrapar al correcaminos', :bench => '10', selection_process_id: '1'},
+    {:name => 'Mejor caida', :description => 'TOP5. Caidas del coyote en sus persecuciones por el desierto de Arizona', :bench => '5', selection_process_id: '1'},
+    {:name => 'Mejor idea', :description => 'TOP5. Mejores ideas para aplicar en el desierto de Arizona', :bench => '5', selection_process_id: '1'},
     {:name => 'Mejor actor', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
     {:name => 'Mejor actor de reparto', :description => 'desde 1936', :bench => '5', :selection_process_id => '2'},
     {:name => 'Mejor actriz', :description => 'desde 1928', :bench => '5', :selection_process_id => '2'},
@@ -106,7 +106,13 @@ candidates = [
     {:name => "Arturo García Buhr" , :bios => "Pelicula Los chicos crecen 1943", :category_id => "6"},
     {:name => "Francisco Petrone" , :bios => "Pelicula Todo un hombre 1944", :category_id => "6"},
     {:name => "Enrique Muiño" , :bios => "Pelicula Su mejor alumno 1945", :category_id => "6"},
-    {:name => "Pedro López Lagar" , :bios => "Pelicula Celos 1967", :category_id => "6"}
+    {:name => "Pedro López Lagar" , :bios => "Pelicula Celos 1967", :category_id => "6"},
+    {:name => "Piedra gigante" , :bios => "Atar una piedra gigante con una cuerda, elevarla 3 metros y poner comida debajo.", :category_id => "5"},
+    {:name => "Comida con hierro" , :bios => "Colocar comida con pelotitas de hierro, luego usar un íman grande para atrapar a la presa.", :category_id => "5"},
+    {:name => "Tunel falso" , :bios => "Pintar un tunel falso sobre una pared, y luego redirigir las lineas del trafico hacia él.", :category_id => "5"},
+    {:name => "Cohete 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "3"},
+    {:name => "Cohete 1" , :bios => "Cohete marca ACME con volante", :category_id => "3"},
+    {:name => "Cohete 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "3"}
 ]
 
 candidates.each do |candidate|

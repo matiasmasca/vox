@@ -38,4 +38,8 @@ class Category < ActiveRecord::Base
 	 #Y sacar la diferencia entre la cantidad de votos y los votantes por las categorias.
 	  porcentaje_categoria = (cantidad_votos * 100) / cantidad_electores
     end
+
+    def ballots
+    	@ballots = Ballot.all.where(category_id: self.id)
+    end
 end

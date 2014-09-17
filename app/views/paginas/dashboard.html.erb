@@ -37,8 +37,15 @@ Proximamente se listarán los procesos de selección, de la plataforma, para que
 </div>
 <% end %>
 </td>
-<td><%= link_to 'Votar', selection_process_vote_path(selection_process), :class => 'btn btn-success btn-xs' %>
-</td>
+ <% @voter_list = selection_process.voter_list.find_by(user_id: current_user) %>
+ <td><% if @voter_list %>    
+   <% if @voter_list.estado == 1 && selection_process.state == "abierto" %>
+    <%= link_to 'Votar', selection_process_vote_path(selection_process), :class => 'btn btn-success btn-xs' %>
+    
+   <% end %>
+  <% end %>
+  </td>
+
 <td><%= link_to 'Más info.', selection_process, :class => 'btn btn-info btn-xs' %></td>
       </tr>
     <% end %>

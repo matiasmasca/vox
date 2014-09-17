@@ -19,12 +19,16 @@
               
               <% @voter_list = @selection_process.voter_list.find_by(user_id: current_user) %></p>
             </div>
-        <% if @voter_list %>
-            
+        <% if @voter_list %>    
         <% case @voter_list.estado
-          when 1
-            estado = "aprobado" %>
-           <p><%= link_to ' Votar', selection_process_vote_path(@selection_process, :elector => @voter_list ), :class => 'btn btn-success btn glyphicon glyphicon-check active' %> 
+          when 1 
+            estado = "aprobado" 
+          if @selection_process.state == "abierto" %>
+           <p><%= link_to ' Votar', selection_process_vote_path(@selection_process, :elector => @voter_list ), title: 'Puedes votar en este proceso',"data-toggle" => "tooltip", "data-placement"=>"top",  :class => 'btn btn-success btn glyphicon glyphicon-check active' %>
+            <% else %>
+            <p data-toggle="tooltip" data-placement="top" title="Aun no se puede votar en este proceso, pero ya estas habilitado para hacerlo."
+             ><%= link_to ' Votar', selection_process_vote_path(@selection_process ), :class => 'btn btn-warning btn glyphicon glyphicon-check disabled' %>
+          <% end %>
          <%  when 2
             estado = "pendiente" %>
             <p>Resultado admisión: <span class="label label-warning"><%=  estado %></span>
@@ -32,6 +36,7 @@
             estado = "rechazado" %>
             <p>Resultado  Admisión: <span class="label label-danger"><%=  estado %></span>
         <% end %>
+
         <% end %>
             <p><%= link_to ' Más info.', selection_process_path(@selection_process), :class => 'btn btn-info btn glyphicon glyphicon-info-sign', :role => "button" %>
 

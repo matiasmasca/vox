@@ -5,7 +5,7 @@
     <%= @porcentaje_avance %>%
   </div>
 </div>
-	<p>Cantidad votos computados: <%= @cantidad_votos %> de <%= @total_votos_teorico %> ( <%= @porcentaje_avance %>%)
+	<p>Votos: <%= @cantidad_votos %> de <%= @total_votos_teorico %> ( <%= @porcentaje_avance %>%)
 	<p>Cantidad electores: <%= @cantidad_electores %> | 
 	Cantidad categorías: <%= @cantidad_categorias %>
 </div>
@@ -44,14 +44,29 @@
     </div>
   <% end %>
   <br>
-  <p>Votos categoria: <%= candidates %>
+  <h4>Datos para auditoría:</h4>
+  <p>Recuento votos categoría: <%= candidates %>
+  <p>Votos categoría:<%= @category.ballots.inspect %> 
 </div><!-- /collapse -->
 <% end %>
 
 
 <hr>
 <br>
-<p>Todo:
-<%= @recuento_proceso.inspect %>
+<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#AllBallots">
+  Ver votos
+</button>
+
+<div id="AllBallots" class="collapse"><!-- collapse -->
+
+<p>Recuento votos (en crudo):<br>
+A continucación figuran la Categoría, el candidato y los votos recibidos por candidato.
+<p><%= @recuento_proceso.inspect %>
+<h4>Datos para auditoría:</h4>
+<% @selection_process.category.each do |category| %>
+ <div><%= category.ballots.inspect %> </div>
+<% end %>
+</div><!-- /collapse -->
+
 
 
