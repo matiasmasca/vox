@@ -24,6 +24,7 @@ Escenario: agrego dato que faltaba
 
 #Casos extremos
 Esquema del escenario: problemas con datos obligatorios
+  Dado existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com"
   Dado existe un premio llamado "Premios ACME43" que se realizara en "Av. Siempre Viva 742"
   Y que estoy en la pantalla de "administración de procesos"
   Cuando yo edito el premio

@@ -1,4 +1,7 @@
 # encoding: utf-8
+
+
+
 Dado(/^escribo "(.*?)" en Nombre$/) do |nombre|
 	fill_in "selection_process_name_process", :with => nombre
 end
@@ -27,7 +30,6 @@ Dado(/^escribo "(.*?)" en ID Organización$/) do |organizer_id|
  fill_in "selection_process_organizer_id", :with => organizer_id
  #save_and_open_page
 end
-
 
 Entonces(/^se crea el premio y me muestra el mensaje "(.*?)"$/) do |msg|
   #save_and_open_page

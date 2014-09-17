@@ -63,8 +63,6 @@ Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, em
   #email = 'testing@man.net'
   #password = 'secretpass'
   #User.new(:email => email, :password => password, :password_confirmation => password).save!
-
-
 end
 
 Dado(/^existen (\d+) usuarios A y B$/) do |cantidad|
@@ -82,7 +80,11 @@ Cuando(/^hago click en "(.*?)"$/) do |button|
   find_button(button).click
 end
 Cuando(/^(?:presiono|que presione) el botón "(.*?)"$/) do |button|
-  #save_and_open_page
+  #if button == "Guardar cambios"
+   #puts("current_user: #{@selection_process.organizer.user_id}#")
+   #puts("Weeeep!!!: #{current_user.id}#")
+   #save_and_open_page 
+  #end
   #click_button button #me da problemas con Capybara.
   #find_button(button).click #me da problemas con Capybara.
   click_on(button) # clicks on either links or buttons
@@ -164,17 +166,20 @@ end
 Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   #'Administrador'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'
   case tipo_usuario
-  when "Organizador"
-   step %{existe un Usuario: "ONG shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
-   step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
-   #step %{que estoy en la pantalla de "dashboard usuario"}
+    when "Organizador"
+     step %{existe un Usuario: "ONG shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
+     step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
+     #step %{que estoy en la pantalla de "dashboard usuario"}
 
-  when "Jurado"
-   step %{existe un Usuario: "Jurado shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
-  when "Administrador"
-   step %{existe un Usuario: "Admin shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "1"}
-  else
-    visit("/¿Quien sos?¡A donde queres ir!")
+    when "Jurado"
+     step %{existe un Usuario: "Jurado shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
+    
+    when "Administrador"
+     step %{existe un Usuario: "Admin shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "1"}
+     #step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
+
+    else
+      visit("/¿Quien sos?¡A donde queres ir!")
   end
 
   visit '/users/sign_out' #Sugieren cerrar la sesión por las dudas.
@@ -185,10 +190,10 @@ Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   fill_in("Clave", with: 'neogenesis', :match => :prefer_exact)
   #save_and_open_page
   click_button "Iniciar sesión"
-
+  
+  @current_user = User.find_by_email('shinji@ikari.com.ar')
   #login_as(user, :scope => :user, :run_callbacks => false)
   page.should have_content("Ha iniciado sesión satisfactoriamente.")
-
 end
 
 #Casos extremos, errores y problemas.

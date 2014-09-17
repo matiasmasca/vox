@@ -113,9 +113,9 @@ candidates = [
     {:name => "Cohete 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "2"},
     {:name => "Cohete 1" , :bios => "Cohete marca ACME con volante", :category_id => "2"},
     {:name => "Cohete 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"},
-    {:name => "Caída 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "2"},
-    {:name => "Caída 1" , :bios => "Cohete marca ACME con volante", :category_id => "2"},
-    {:name => "Caída 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"}
+    {:name => "Caída 0" , :bios => "Coyote muestra cartelito mientras cae.", :category_id => "4"},
+    {:name => "Caída 1" , :bios => "Anti gravedad. Coyote agarrado a un pedaso de piedra que se desprendio del precipicio.", :category_id => "4"},
+    {:name => "Caída 2" , :bios => "Undido en el piso", :category_id => "4"}
 ]
 
 candidates.each do |candidate|
@@ -123,10 +123,20 @@ candidates.each do |candidate|
 end
 
 voters = [
-   {:user_id => '11', :selection_process_id => '1', :estado => '1'},
-   {:user_id => '12', :selection_process_id => '1', :estado => '2'},
-   {:user_id => '13', :selection_process_id => '1', :estado => '3'}
-   ]
+  {:user_id => '1', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '2', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '3', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '4', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '5', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '6', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '7', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '8', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '9', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '10', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '11', :selection_process_id => '1', :estado => '1'},
+  {:user_id => '12', :selection_process_id => '1', :estado => '2'},
+  {:user_id => '13', :selection_process_id => '1', :estado => '3'}
+ ]
 
 voters.each do |voter|
   VoterList.create!(voter)

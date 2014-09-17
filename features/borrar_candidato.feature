@@ -3,12 +3,13 @@ Característica: borrar un candidato
   Con la finalidad de borrar un candidato que ya no participará
   como un usuario administrador
   Quiero poder eliminar un candidato de una categoría del sistema
+
 Antecedentes:
   Dado que estoy logueado como "Administrador"
+
 #Camino feliz
 # Borrar desde listado
 Escenario: borrar categoría
-
   Dado existe un candidato llamado "Pepe Argento"
   Y que estoy en la pantalla de "administración de Candidatos"
   Cuando hago click en "Eliminar", para eliminar el candidato

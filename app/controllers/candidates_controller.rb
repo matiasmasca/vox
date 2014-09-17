@@ -4,7 +4,7 @@ class CandidatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
   before_action :set_category
-  before_action :check_property,  only: [:index, :edit, :update, :destroy]
+  before_action :check_property, except: [:show] #,  only: [:index, :edit, :update, :destroy]
 
   # GET /candidates
   # GET /candidates.json
@@ -13,7 +13,7 @@ class CandidatesController < ApplicationController
     if !params[:category_id].blank? #|| ADMIN
       @candidates = Candidate.where(category_id: @category)
     else
-      @candidates = Candidate.all if current_user.is_admin?
+      return @candidates = Candidate.all if current_user.is_admin?
     end
     
     if !params[:selection_process_id].blank?

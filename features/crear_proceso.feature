@@ -11,6 +11,7 @@ Antecedentes:
 
 #Camino feliz
 Escenario: crear premio
+  Dado existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com"
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
   Y escribo "30" en Duracion

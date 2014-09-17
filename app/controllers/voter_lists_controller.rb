@@ -32,14 +32,13 @@ class VoterListsController < ApplicationController
 
     respond_to do |format|
       if @voter_list.save
-        if current_user.is_admin? || current_user.is_organizer?
+        if current_user.is_admin? || @selection_process.is_owner?(current_user.id)
           format.html { redirect_to selection_process_voter_lists_path(@selection_process), notice: 'Usuario agregado al padrón correctamente.' }
         else
-          format.html { redirect_to :back, notice: 'agregado al padrón correctamente.' }
-
+          format.html { redirect_to paginas_dashboard_path, notice: 'Solicitud, para ser agregado al padrón, enviada correctamente.' }
         end 
       else
-        format.html { redirect_to :back, alert: 'Elector NO se agrego al padrón.' }
+        format.html { redirect_to paginas_dashboard_path, alert: 'Elector NO se agrego al padrón.' }
       end
     end
   end
