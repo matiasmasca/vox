@@ -9,7 +9,7 @@
 <% end %>
 
 <% unless user_session.nil? || user_session[:selection_process_id].nil? || current_user.is_jury?  %>
- <% if @selection_process  %>
+ <% if @selection_process && @selection_process.is_owner?(current_user.id)   %>
   <div class="list-group"> <!--Por proceso-->
     <p class="list-group-item active"><b>Proceso seleccionado:</b> <%= @selection_process.name_process %></p>
       <%= render partial: "selection_processes/menu_selected_process", object: @selection_process %> 
@@ -57,12 +57,10 @@
    </div>
   
   <% if @selection_process %>
-  <div class="list-group"><!--Categorias-->
-  <% if @selection_process.is_elector?(current_user) %>
-    <%= render partial: "voter/menu_categorias", object: @selection_process %>
-  <% end %>
-
-   
+  <div class="list-group"><!--Categorias para Votar-->
+   <% if @selection_process.is_elector?(current_user) %>
+     <%= render partial: "voter/menu_categorias", object: @selection_process %>
+   <% end %>
   </div>
   <% end %>
 

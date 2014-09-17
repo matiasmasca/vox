@@ -112,7 +112,7 @@ candidates = [
     {:name => "Tunel falso" , :bios => "Pintar un tunel falso sobre una pared, y luego redirigir las lineas del trafico hacia él.", :category_id => "5"},
     {:name => "Cohete 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "2"},
     {:name => "Cohete 1" , :bios => "Cohete marca ACME con volante", :category_id => "2"},
-    {:name => "Cohete 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"}
+    {:name => "Cohete 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"},
     {:name => "Caída 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "2"},
     {:name => "Caída 1" , :bios => "Cohete marca ACME con volante", :category_id => "2"},
     {:name => "Caída 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"}

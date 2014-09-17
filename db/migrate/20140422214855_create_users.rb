@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :clave
       t.string :facebook
       t.string :twitter
-      t.integer :tipo_usuario_id, default: 3, null: false
+      t.integer :tipo_usuario_id, default: 2, null: false #2= Jurado.
 
       t.timestamps
     end

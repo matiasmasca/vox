@@ -34,7 +34,7 @@
 
    <% unless @current_user.organizer.nil? %>    
     <tr>
-      <td><%= link_to ' Mi Organización',  user_organizer_path(@current_user, @current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer %>
+      <td><%= link_to ' Mi Organización',  user_organizer_path(@current_user, @current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-info-sign' if @current_user.organizer %>
         <td><%= link_to ' Modificar mi Organización',  edit_user_organizer_path(@current_user, @current_user.organizer), :class => 'btn btn-default btn glyphicon glyphicon-pencil' if @current_user.organizer %>
       </tr>
     <% else %>
