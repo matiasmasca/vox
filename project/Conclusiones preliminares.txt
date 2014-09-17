@@ -47,6 +47,11 @@ Por ejemplo cree un application_helper para mostrar un mensaje en una tabla, y
 
 - Si se abandona la técnica, por un momento y el programador agrega funsionalidades sin hacer antes las pruebas entonces esta documentación viva sufre el mismo problema de desactualización que la documentación tradicional.
 
+- Es muy facíl salirse de la técnica, de las pruebas primero, cuando la funsionalidad a agregar parece pequeña. Sobre todo porque uno piensa que gana en velocidad (producción); lo cual en el corto plazo (lo inmediato) es cierto, pero cuando haya cambios más adelante apareceran los problemas.
+
+- Cuando hubo que cambiar una bandera de Permisos (autorización) de "is_organizer?" a "is_owner?", en toda la aplicación, las pruebas ayudaron a comprobar que todo siga funcionando bien luego del cambio.
+
+
 # Rails y BDD/TDD.
 - En el caso del framework, es condición necesaria conocer el MVC y su funsionamiento, para entender como deberían funcionar las cosas. Cuando uno entiende como fusionan las cosas o como debería funcionar es más facil crear las pruebas primero antes que el código, porque uno sabe a donde quiere llegar, donde se van a estar presentando los errores y el código que uno le gustaría tener (concepto: "Code we wish we had" o CWWWH); uno sabe en que pasos intermedios uno puede ir definiendo cosas que aun no existe. Por ejemplo al crear una acción en un modelo, uno puede ir partiendo de la vista, el controlador y llegar con pruebas hasta el método del modelo.
 - El paso de refactor, de la práctica, es dificil de realizar para un usuario novicio, ya que no se sabe donde estan los problemas. Con que funcione, pasando las pruebas de aceptación, se pasa a la siguiente caracteristica (feature) desperdiciando parte del esfuerzo.
@@ -84,6 +89,9 @@ Por ejemplo: en la features "listado_entidades_organizadoras.feature" tenia una 
 - Las pruebas de integración, de comportamiento con Cucumber, me dan la posibilidad de comprobar el funsionamiento del sistema si surgen cambios en el framework de una manera muy simple y presica. En lenguajes como Ruby donde hay problemas de compatibilidad hacia atras, esto resulta muy útil.
 - Como regla, debe haber al menos 1 prueba de integración de alto nivel para cada acción de los controladores.
 - Las pruebas de integración (cukes) fallan primero, o más rapidamente, que las de más bajo nivel; ya que en la interacción entre partes se pueden dar fallas o problemas que no fueron contemplados a más bajo nivel.
+
+- Las pruebas de comportamiento pueden pasar incluso cuando un camino logico sea incorrecto, por ejemplo un IF que da falso en situaciones que se esperaba de positivo. Entonces si la prueba de Integración, solo comprueba que la informacón se muestre y no prueba todos los caminos, el error puede seguir estando presente sin ser notado. En cambio la prueba de más bajo nivel deberia de probar necesariamente esa bifurcación y comprobar ambos caminos en varias pruebas.
+
 
 # Cucumber vs. RSpec.
 - Probar el comportamiento de la vista (Interfaz), en el caso donde habia Asociaciones de datos, se volvio un poco engorroso y dificil en RSpec comparado en el primer intento de la prueba de la misma funsionalidad con Cucumber.

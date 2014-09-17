@@ -50,7 +50,7 @@
 
 
 <hr>
-<% if current_user && (current_user.is_admin? || current_user.is_organizer?) %>
+<% if current_user && (current_user.is_admin? || @selection_process.is_owner?(current_user.id)) %>
 <h3>Habilitar votaciones.</h3>
 <%= link_to ' Abrir votaciones', edit_selection_process_path(@selection_process, cambiar_estado: "abrir"), :class => 'btn btn-link btn glyphicon glyphicon-folder-open' %> | <%= link_to ' Cerrar votaciones', edit_selection_process_path(@selection_process, cambiar_estado: "cerrar"), :class => 'btn btn-link btn glyphicon glyphicon-folder-close' %> 
 <br>

@@ -12,7 +12,7 @@ class VoterListsController < ApplicationController
     return @voter_list = VoterList.all if current_user.is_admin?
 
   	#Mostrar el padron del proceso actual.
-    return @voter_list = VoterList.includes(:selection_process).where(:selection_process_id => user_session[:selection_process_id] ) if current_user.is_organizer?
+    return @voter_list = VoterList.includes(:selection_process).where(selection_process_id: user_session[:selection_process_id] ) if @selection_process.is_owner?(current_user.id) && current_user.is_organizer?
   end
 
   def show

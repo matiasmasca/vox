@@ -36,12 +36,12 @@
          subject: "VOX: contacto.", :class => 'btn btn-default btn glyphicon glyphicon-pencil' , :role => "button"  %>
 
 <br>
-<% if current_user.is_admin? || current_user.is_organizer? %>
+<% if current_user.is_admin? || current_user.id == @organizer.user_id %>
 <%= link_to 'Editar', edit_organizer_path(@organizer), :class => 'btn btn-default' %> |
 <% end %>
 <%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>
 
-<% if current_user.is_admin? || current_user.is_organizer? %>
+<% if current_user.is_admin? || current_user.id == @organizer.user_id %>
   <% if @organizer.user %>
         <h3>Usuario Administrador:</h3>
         <ol class="user">    

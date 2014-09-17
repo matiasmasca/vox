@@ -18,7 +18,7 @@
 </p>
 <%= link_to 'Atrás', :back, :class => 'btn btn-link btn glyphicon glyphicon-arrow-left' %>
 
-<% if current_user.is_admin? || current_user.is_organizer? %>
+<% if current_user.is_admin? || @candidate.category.selection_process.is_owner?(current_user.id) %>
 <%= link_to ' Editar', edit_candidate_path(@candidate), :class => 'btn btn-link btn glyphicon glyphicon-pencil' %> |
 <%= link_to ' Ir a candidatos', category_candidates_path(@candidate.category_id), :class => 'btn btn-link btn glyphicon glyphicon-list' %>
 <% end %>

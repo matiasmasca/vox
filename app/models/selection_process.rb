@@ -30,8 +30,8 @@ class SelectionProcess < ActiveRecord::Base
 	  	end
 	end
 
-	def is_owner?(user_id)
-	  self.organizer.user_id == user_id 
+	def is_owner?(current_user_id)
+	  self.organizer.user_id == current_user_id
 	end
 
 	def is_public?
