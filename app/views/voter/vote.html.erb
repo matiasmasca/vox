@@ -8,8 +8,10 @@
 <div>
 	<%= render partial: "voter/categories_buttons", object: @selection_process %>
 </div>
+<div>
+  <h2>Candidatos a <%= @category.name unless @category.nil? %> </h2>
+</div>
 <!-- Candidatos categoría seleccionada -->
-
 <%= form_for @ballot,:html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
   <% if @ballot.errors.any? %>
     <div id="error_explanation">
@@ -30,6 +32,7 @@
   <% unless @category.already_vote?(current_user.id) %>
   <div>
     <div class="input-group">
+     <div class="btn-group" data-toggle="buttons">
 	<% @category.candidate.each do |candidate| 
       @candidate = candidate       
 	 %>  
@@ -49,11 +52,17 @@
 	              <p><%= @candidate.bios %></p>
 	            </div>
 	            <p><%= link_to ' Info', category_candidate_path(@candidate.category_id, @candidate), :class => 'btn btn-default btn glyphicon glyphicon-plus', :role => "button" %>
-	          </div><!-- caption -->
-	           <div  class="well"><h2> 
-	        	    <%= f.radio_button :candidate_id, "#{candidate.id}" %>
-  					    <%= label :candidate_name, "#{candidate.name}" %></h2>
+	          </div><!-- caption -->            
+	           <div  class="well"><h3> 
+             <label class="btn btn-primary btn glyphicon glyphicon-thumbs-up">
+	        	    <%= f.radio_button :candidate_id, "#{candidate.id}", :class => 'btn btn-default btn-lg btn glyphicon glyphicon-thumbs-up' %>
+  					    <%= label :candidate_name, "#{candidate.name}" %></label></h3>
+                
         	   </div>
+
+
+
+
       </div><!-- thumbnail --> 
 	  </div><!-- col-sm-6 -->
 	<% end %><!-- if candidato -->
@@ -61,14 +70,10 @@
   </div><!-- /input-group -->
    <!-- registrar voto -->
 <div class="actions">
- <%= f.submit ' Votar seleccionado', data: { confirm: "Esta seguro que desea Votar el candidato seleccionado? NO podrá cambiar su elección una vez precionado el botón Aceptar." },  class: 'btn btn-success btn glyphicon glyphicon-envelope' %>
+ <%= f.submit ' Votar seleccionado', data: { confirm: "Esta seguro que desea Votar el candidato seleccionado? NO podrá cambiar su elección una vez precionado el botón Aceptar." },  class: 'btn btn-success btn-lg btn glyphicon glyphicon-envelope' %>
 </div>
   </div><!-- /.col-lg-6 -->
 	<% end %><!-- ya voto en categoria -->
-	
-      
-	
-
 
 <%  end %><!-- /category -->
   </div><!-- /.row -->

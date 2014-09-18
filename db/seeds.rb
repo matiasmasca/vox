@@ -93,11 +93,15 @@ categories.each do |category|
 end
 
 candidates = [
-    {:name => "Famishus Vulgarus" , :bios => "Del capitulo Boas Manerias", :category_id => "1"},
-    {:name => "Famishius Fantasticus" , :bios => "Del capitulo Fast and Furry-ous", :category_id => "1"},
-    {:name => "Carnivorous Vulgaris" , :bios => "Del capitulo Beep, Beep", :category_id => "1"},
-    {:name => "Road-Runnerus Digestus" , :bios => "Del capitulo Zipping Along", :category_id => "1"},
-    {:name => "Poultrius Devourius" , :bios => "Del capitulo Wild Kingdumb", :category_id => "1"},
+    {:name => "Carnivorous vulgaris 49'" , :bios => "Del capitulo Fast and Furry-ous, 1949·9·17, utilizo ACME Super Outfit", :category_id => "1"},
+    {:name => "Carnivorous Vulgaris 52'" , :bios => "Del capitulo Beep, Beep, 1952·5·24, utilizo Aspirin, Matches, Rocket-Powered Roller Skates.", :category_id => "1"},
+    {:name => "Carnivorous Vulgaris" , :bios => "Del capitulo Going! Going! Gosh!, 1952·8·23, utilizo an anvil, a weather balloon, a street cleaner's bin, and a fan.", :category_id => "1"},
+    {:name => "Eatibus anythingus" , :bios => "Del capitulo Stop! Look! And Hasten!, 14 08 1954, utilizo Bird Seed, Triple Strength Fortified Leg Muscle Vitamins. Y leyo el libro 'How to Build a Burmese Tiger Trap'.", :category_id => "1"},
+    {:name => "Famishus-Famishus" , :bios => "Del capitulo Ready, Set, Zoom!, 30 04 1955, utilizo Glue.", :category_id => "1"},
+    {:name => "Eatibus almost anythingus" , :bios => "Del capitulo Guided Muscle, 10 12 1955, utilizo ACME Grease.", :category_id => "1"},
+    {:name => "Eatius birdius" , :bios => "Del capitulo Gee Whiz-z-z-z-z-z-z, 05 05 1956, utilizo ACME Triple Strength Battleship Steel Armor Plate, Rubber Band, Jet Bike.", :category_id => "1"},
+    {:name => "Famishius vulgaris ingeniusi" , :bios => "Del capitulo Whoa, Be-Gone!, 12 04 1958, utilizo Tornado Seeds.", :category_id => "1"},
+    {:name => "Hardheadipus oedipus" , :bios => "Del capitulo Wild About Hurry, 1959·10·10, utilizo Giant Elastic Rubber Band, 5 Miles of Railroad Track, Rocket Sled, Bird Seed, Iron Pellets, Indestructo Steel Ball.", :category_id => "1"},
     {:name => "Rocket sled" , :bios => "Cohete con volante", :category_id => "3"},
     {:name => "Rocket skates" , :bios => "patines con cohetes", :category_id => "3"},
     {:name => "Spherical Bomb" , :bios => "bomba esferica", :category_id => "3"},
@@ -110,9 +114,9 @@ candidates = [
     {:name => "Piedra gigante" , :bios => "Atar una piedra gigante con una cuerda, elevarla 3 metros y poner comida debajo.", :category_id => "5"},
     {:name => "Comida con hierro" , :bios => "Colocar comida con pelotitas de hierro, luego usar un íman grande para atrapar a la presa.", :category_id => "5"},
     {:name => "Tunel falso" , :bios => "Pintar un tunel falso sobre una pared, y luego redirigir las lineas del trafico hacia él.", :category_id => "5"},
-    {:name => "Cohete 0" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "2"},
-    {:name => "Cohete 1" , :bios => "Cohete marca ACME con volante", :category_id => "2"},
-    {:name => "Cohete 2" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"},
+    {:name => "ACME Giant Firecrackers" , :bios => "Cohete marca ACME tipo cañita voladora", :category_id => "2"},
+    {:name => "ACME Rocket Sled" , :bios => "(ACME Little Giant Do-it-Yourself Rocket-Sled Kit)", :category_id => "2"},
+    {:name => "ACME Missile-Bombs" , :bios => "Cohete marca ACME con volante y alerones", :category_id => "2"},
     {:name => "Caída 0" , :bios => "Coyote muestra cartelito mientras cae.", :category_id => "4"},
     {:name => "Caída 1" , :bios => "Anti gravedad. Coyote agarrado a un pedaso de piedra que se desprendio del precipicio.", :category_id => "4"},
     {:name => "Caída 2" , :bios => "Undido en el piso", :category_id => "4"}

@@ -1,12 +1,12 @@
 <!--Lista de Categorías del Proceso seleccionado-->
 <% unless @selection_process.category.nil? %>
- <p class="list-group-item active"><b>Categorías: <%= "#{@selection_process.name_process}"  %></b></p>
+ <p title="Cuando ya hayas votado, se podrán en verde." class="list-group-item active" ><b>Categorías a Votar: de <%= "#{@selection_process.name_process}"  %></b></p>
 <div class="list-group">
  <% unless @selection_process.category.nil? %>
    <!-- Contrala las categorias, si voto o no en ellas-->
    <% @selection_process.category.each do |category| %>
    <% if category.already_vote?(current_user.id)  %>
-           <%= link_to " #{category.name}", selection_process_vote_path(@selection_process), :class => 'list-group-item list-group-item-success glyphicon glyphicon-check' %>
+           <%= link_to " #{category.name}", selection_process_vote_path(@selection_process), :class => 'list-group-item list-group-item-success glyphicon glyphicon-check', title: "Ya has votado en esta categoría" %>
     <% else %> 
            <%= link_to " #{category.name}", selection_process_vote_path(@selection_process, :category_id => category.id), :class => 'list-group-item list-group-item-warning glyphicon glyphicon-unchecked'%>
    <% end %>

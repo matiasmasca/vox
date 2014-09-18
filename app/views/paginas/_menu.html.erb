@@ -1,5 +1,16 @@
-
 <div>
+<!--Votante-->
+<% if user_signed_in?  %>
+<!--Categorias para Votar-->
+  <% if @selection_process %>
+  <div class="list-group"><!--Categorias para Votar-->
+   <% if @selection_process.is_elector?(current_user) && @selection_process.state == "abierto" %>
+     <%= render partial: "voter/menu_categorias", object: @selection_process %>
+   <% end %>
+  </div>
+  <% end %>
+<% end %>
+
 <% unless @current_user.nil? || @current_user.organizer.nil? %>
   <div class="list-group"> <!--De los procesos.-->
     <p class="list-group-item"><b>Mis Procesos</b></p>
@@ -54,16 +65,7 @@
       <%= link_to " Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'btn btn-default btn glyphicon glyphicon-log-out list-group-item'  %>
     </div>
   </div>
-   </div>
-  
-  <% if @selection_process %>
-  <div class="list-group"><!--Categorias para Votar-->
-   <% if @selection_process.is_elector?(current_user) %>
-     <%= render partial: "voter/menu_categorias", object: @selection_process %>
-   <% end %>
-  </div>
-  <% end %>
-
+ </div> 
 <% end %>
 </div>
 
