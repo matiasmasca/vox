@@ -1,7 +1,8 @@
+# encoding: utf-8
 class BallotsController < ApplicationController
   before_action :authenticate_user!
-  
-  before_action :set_ballot, only: [:show, :edit, :update, :destroy]
+  before_action :set_ballot, only: [:show]
+  before_action :check_property, only: [:show, :index]
 
   # GET /ballots
   # GET /ballots.json
@@ -19,10 +20,6 @@ class BallotsController < ApplicationController
     @ballot = Ballot.new
   end
 
-  # GET /ballots/1/edit
-  def edit
-  end
-
   # POST /ballots
   # POST /ballots.json
   def create
@@ -36,35 +33,11 @@ class BallotsController < ApplicationController
         format.html { redirect_to :back, notice: 'Voto registrado correctamente.' }
         format.json { render action: 'show', status: :created, location: @ballot }
       else
-        format.html { render action: 'new' }
         format.json { render json: @ballot.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /ballots/1
-  # PATCH/PUT /ballots/1.json
-  def update
-    respond_to do |format|
-      if @ballot.update(ballot_params)
-        format.html { redirect_to @ballot, notice: 'Ballot was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @ballot.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /ballots/1
-  # DELETE /ballots/1.json
-  def destroy
-    @ballot.destroy
-    respond_to do |format|
-      format.html { redirect_to ballots_url }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -76,4 +49,21 @@ class BallotsController < ApplicationController
     def ballot_params
       params.require(:ballot).permit(:selection_process_id, :category_id, :candidate_id, :digital_signature)
     end
+
+    def check_property
+      return true if @current_user.is_admin?
+      security_exit
+    end
+
+    def security_exit
+        respond_to do |format|
+        format.html do
+           user_session[:selection_process_id] = nil
+           user_session[:category_id] = nil
+           redirect_to(:back, alert: "Solo puedes operar sobre las categorías del proceso seleccionado.")
+           return false
+        end
+      end
+    end
+
 end

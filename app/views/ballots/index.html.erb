@@ -21,8 +21,6 @@
         <td><%= ballot.candidate %></td>
         <td><%= ballot.digital_signature %></td>
         <td><%= link_to 'Show', ballot %></td>
-        <td><%= link_to 'Edit', edit_ballot_path(ballot) %></td>
-        <td><%= link_to 'Destroy', ballot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +28,3 @@
 
 <br>
 
-<%= link_to 'New Ballot', new_ballot_path %>

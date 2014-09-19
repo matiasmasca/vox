@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @emitted_vote.user %>
+  <%= @emitted_vote.user_id %>
 </p>
 
 <p>
@@ -10,10 +10,4 @@
   <%= @emitted_vote.category %>
 </p>
 
-<p>
-  <strong>Candidate:</strong>
-  <%= @emitted_vote.candidate %>
-</p>
-
-<%= link_to 'Edit', edit_emitted_vote_path(@emitted_vote) %> |
 <%= link_to 'Back', emitted_votes_path %>

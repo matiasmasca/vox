@@ -4,9 +4,8 @@
   <thead>
     <tr>
       <th>User</th>
+      <th> ... </th>
       <th>Category</th>
-      <th>Candidate</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -15,12 +14,10 @@
   <tbody>
     <% @emitted_votes.each do |emitted_vote| %>
       <tr>
-        <td><%= emitted_vote.user %></td>
-        <td><%= emitted_vote.category %></td>
-        <td><%= emitted_vote.candidate %></td>
+        <td><%= emitted_vote.user_id %></td>
+        <td></td>
+        <td><%= emitted_vote.category_id %></td>
         <td><%= link_to 'Show', emitted_vote %></td>
-        <td><%= link_to 'Edit', edit_emitted_vote_path(emitted_vote) %></td>
-        <td><%= link_to 'Destroy', emitted_vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +25,3 @@
 
 <br>
 
-<%= link_to 'New Emitted vote', new_emitted_vote_path %>

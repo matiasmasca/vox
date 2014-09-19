@@ -1,6 +1,4 @@
 Vox::Application.routes.draw do
-  resources :emitted_votes
-
   devise_for :users, :path_prefix => 'my'
 
   #paginas estaticas
@@ -68,7 +66,11 @@ Vox::Application.routes.draw do
     get '/voter/results'  => 'voter#results', as: :results    
   end
 
-  resources :ballots #Registrar votos! ojo
+  #Votos. OJO!
+  resources :ballots, only: [:index, :new, :create, :show]
+  #Categorias votadas. 
+  resources :emitted_votes, only: [:index, :new, :create, :show] 
+
 
   resources :categories do
     resources :candidates
