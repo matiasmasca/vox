@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Procesos</h3>
+    1. Premio - 2. Certamen 3. Votación
+      <%= pie_chart @procesos_por_tipo %>
+      <%= bar_chart @procesos_por_tipo %>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Estado Procesos</h3>
+      <%= pie_chart SelectionProcess.group(:state).count %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Tipos de usuario:</h3>
+    1. Admin - 2. Jurado 3. Organizador
+      <%= pie_chart @usuarios_por_tipo %>
+	  <%= column_chart @usuarios_por_tipo, library: {fontSize: 20, hAxis: {title: 'Tipo'}, vAxis: {title: 'Usuarios registrados'},} %>
+
+  </div>
+</div>
+
+<!--
+< title "Stats" %>
+<= column_chart Song.unscoped.order("year").group(:year).count, library: {fontSize: 20, hAxis: {title: 'Year'}, vAxis: {title: 'Number of songs'},} %>
+<= column_chart Language.unscoped.order("name").joins(:translations).group("name").count, library: {fontSize: 20, hAxis: {title: 'Language'}, vAxis: {title: 'Number of translations'},} %>
+<= column_chart Genre.unscoped.order("name").joins(:songs).group("name").count, library: {fontSize: 20, hAxis: {title: 'Genre'}, vAxis: {title: 'Number of songs'},} %>
+<= column_chart Song.unscoped.group(:translations_count).count, library: {fontSize: 20, hAxis: {title: 'Number of translations'}, vAxis: {title: 'Number of songs'},} %>
+-->

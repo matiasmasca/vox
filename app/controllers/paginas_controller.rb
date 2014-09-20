@@ -67,6 +67,20 @@ class PaginasController < ApplicationController
     render html: ENV["loaderio"].to_s if Rails.env.production?
   end
   
+  def stats
+    #Procesos por tipo
+    @procesos_por_tipo = {}
+    @procesos_por_tipo[:premio] = SelectionProcess.where(process_type_id: "1").count
+    @procesos_por_tipo[:certamen] = SelectionProcess.where(process_type_id: "2").count
+    @procesos_por_tipo[:votación] = SelectionProcess.where(process_type_id: "3").count
+
+    #Cantidad por Tipo de usuario.
+    @usuarios_por_tipo = {}
+    @usuarios_por_tipo[:Administrador] = User.where(tipo_usuario_id: "1").count
+    @usuarios_por_tipo[:Jurado] = User.where(tipo_usuario_id: "2").count
+    @usuarios_por_tipo[:Organizador] = User.where(tipo_usuario_id: "3").count
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -5,6 +5,7 @@ Vox::Application.routes.draw do
   get "paginas/home" 
   get "paginas/about"
   get "paginas/contact" 
+  get 'stats' => 'paginas#stats'
 
   #para prueba de stress
   if Rails.env.production?
