@@ -41,12 +41,13 @@
       Obtuvo <strong><%= candidato[1] %></strong> votos.
     </div>
   <% end %>
-   <!-- Columanas 3D -->
-   <% votos_candidate = @category.ballots_candidate %>
-    <%= column_chart votos_candidate, library: {title: "Resultado #{@category.name}"}, height: "300px" %>
-
+   
+   <div><!-- Columanas 3D -->
+    <% votos_candidate = @category.ballots_candidate %>
+    <%= column_chart votos_candidate, height: "500px" %>
     <!-- Pastel 3D -->
-   <%= pie_chart votos_candidate, library: {title: "Resultado #{@category.name}", is3D: true, pieSliceText: 'Ganador', slices: {0=>  {:offset =>  0.1},}}, id: "#{@category.id}", height: "300px" %><!-- /Pastel 3D -->
+   <%= pie_chart votos_candidate, library: {title: "Resultado #{@category.name}", is3D: true, pieSliceText: 'Ganador', slices: {0=>  {:offset =>  0.1},}} %><!-- /Pastel 3D -->
+   </div>
   <br>
 
 <h4>Datos para auditoría:</h4>
