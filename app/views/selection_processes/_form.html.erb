@@ -14,7 +14,6 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.hidden_field :organizer_id, value: params[:organizer_id] %>
     <%= f.label :name_process, "Nombre del proceso", class: 'control-label' %><br>
     <%= f.text_field :name_process, placeholder: "ingrese el nombre del proceso, que verá el público.",  class: 'form-control' %>
   </div>
@@ -47,11 +46,11 @@
   <hr>
   <div class="form-group">
     Organiza:
-  <% unless @organizer.nil? %>
-      <b><%= @organizer.name %></b></div>
+  <% unless @selection_process.organizer.nil? %>
+      <b><%= @selection_process.organizer.name %></b></div>
     <li>
       <span ><%= @organizer.address %></span>
-      <%= link_to 'Más información', organizer_path(@organizer) %>
+      <%= link_to 'Más información', organizer_path(@selection_process.organizer) %>
       <p>
     </li>
   <% else %>
