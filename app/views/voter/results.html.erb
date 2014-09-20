@@ -9,8 +9,8 @@
 	<p>Cantidad electores: <%= @cantidad_electores %> | 
 	Cantidad categorías: <%= @cantidad_categorias %>
 </div>
-<br>
 
+<br>
 <% @recuento_proceso.each do |category, candidates| %>
 <hr>
  <% @category = @selection_process.category.find_by_id(category) %>
@@ -34,24 +34,29 @@
 </button>
 
 <div id="<%= @category.id %>" class="collapse"><!-- collapse -->
- <% candidates = candidates.sort_by {|k,v| v}.reverse %>
-
- <% candidates.each_with_index do |candidato, index| %>
+ <% candidates = candidates.sort_by {|k,v| v}.reverse %>    
+  <% candidates.each_with_index do |candidato, index| %>
     <div>
       <p>Puesto Nro. <strong><%= index + 1 %></strong> | <%= @category.candidate.find_by_id(candidato[0]).name %> |
       Obtuvo <strong><%= candidato[1] %></strong> votos.
-      
     </div>
   <% end %>
+   <!-- Columanas 3D -->
+   <% votos_candidate = @category.ballots_candidate %>
+    <%= column_chart votos_candidate, library: {title: "Resultado #{@category.name}"}, height: "300px" %>
+
+    <!-- Pastel 3D -->
+   <%= pie_chart votos_candidate, library: {title: "Resultado #{@category.name}", is3D: true, pieSliceText: 'Ganador', slices: {0=>  {:offset =>  0.1},}}, id: "#{@category.id}", height: "300px" %><!-- /Pastel 3D -->
   <br>
-  <h4>Datos para auditoría:</h4>
+
+<h4>Datos para auditoría:</h4>
   <p>Recuento votos categoría: <%= candidates %>
   <p>Votos categoría:<%= @category.ballots.inspect %> 
 </div><!-- /collapse -->
 <% end %>
 
-
 <hr>
+
 <br>
 <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#AllBallots">
   Ver votos
@@ -61,7 +66,8 @@
 
 <p>Recuento votos (en crudo):<br>
 A continucación figuran la Categoría, el candidato y los votos recibidos por candidato.
-<p><%= @recuento_proceso.inspect %>
+<p><%= @recuento_proceso.inspect  %>
+
 <h4>Datos para auditoría:</h4>
 <% @selection_process.category.each do |category| %>
  <div><%= category.ballots.inspect %> </div>
@@ -69,4 +75,4 @@ A continucación figuran la Categoría, el candidato y los votos recibidos por c
 </div><!-- /collapse -->
 
 
-
+ 

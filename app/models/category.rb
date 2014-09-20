@@ -42,4 +42,14 @@ class Category < ActiveRecord::Base
     def ballots
     	@ballots = Ballot.all.where(category_id: self.id)
     end
+
+    def ballots_candidate
+    	votos_candidato_categoria = {}
+    	votos_categoria = Ballot.where(category_id: self.id).group(:candidate_id).count
+    	votos_categoria.each do |candidato_id, votos|
+    		nombre = Candidate.find_by(id: candidato_id).name
+    		votos_candidato_categoria[nombre] = votos
+    	end
+    	return votos_candidato_categoria
+    end
 end
