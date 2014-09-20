@@ -59,7 +59,10 @@
       <%= f.label :organizer_id, "ID Organización", class: 'control-label' %><br>
       <%= f.text_field :organizer_id, placeholder: "ingrese el ID del organizador del proceso.", class: 'form-control' %>
       </div>
+      <%  else %>
+    <%= f.hidden_field :organizer_id, value: params[:organizer_id] %>
     <%  end %>
+
   <% end %>
 
   <div><br></div>
