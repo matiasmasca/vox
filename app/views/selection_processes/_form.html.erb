@@ -23,7 +23,7 @@
   </div>
   <div class="form-group">
     <%= f.label :duration, "Duración", class: 'control-label' %><br>
-    <%= f.text_field :duration, placeholder: "ingrese la cantidad de dias", onchange: "alert('cambio la duraccion');" , class: 'form-control' %> días.
+    <%= f.text_field :duration, placeholder: "ingrese la cantidad de dias", class: 'form-control' %> días.
   </div>  
   <div class="form-group">
     <%= f.label :start_date, "Fecha de inicio", class: 'control-label' %><br>
@@ -46,11 +46,12 @@
   <hr>
   <div class="form-group">
     Organiza:
-  <% unless @selection_process.organizer.nil? %>
-      <b><%= @selection_process.organizer.name %></b></div>
+  <% unless @organizer.nil? %>
+      <b><%= @organizer.name %></b></div>
     <li>
       <span ><%= @organizer.address %></span>
-      <%= link_to 'Más información', organizer_path(@selection_process.organizer) %>
+      <%= link_to 'Más información', organizer_path(@organizer) %>
+      <%= f.hidden_field :organizer_id, value: @organizer.id %>
       <p>
     </li>
   <% else %>
@@ -60,7 +61,7 @@
       <%= f.text_field :organizer_id, placeholder: "ingrese el ID del organizador del proceso.", class: 'form-control' %>
       </div>
       <%  else %>
-    <%= f.hidden_field :organizer_id, value: params[:organizer_id] %>
+      <%= f.hidden_field :organizer_id, value: params[:organizer_id] %>
     <%  end %>
 
   <% end %>
