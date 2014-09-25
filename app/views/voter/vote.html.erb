@@ -53,7 +53,7 @@
 	            </div>
 	          </div><!-- caption -->            
 	           <div > <!-- well -->
-              <label class="btn btn-primary btn glyphicon glyphicon-thumbs-up btn btn-justified">
+              <label class="btn btn-default btn glyphicon glyphicon-thumbs-up btn btn-justified btn-block">
 	        	    <%= f.radio_button :candidate_id, "#{candidate.id}", :style=>"display:none;" %>
   					    <%= "#{candidate.name}" %>
                 </label>
@@ -67,7 +67,7 @@
   </div><!-- /input-group -->
    <!-- registrar voto -->
 <div class="actions">
- <%= f.submit ' Votar seleccionado', data: { confirm: "Esta seguro que desea Votar el candidato seleccionado? NO podrá cambiar su elección una vez precionado el botón Aceptar." }, class: "btn btn-success btn-lg btn glyphicon glyphicon-envelope" %>
+ <%= f.submit ' Votar seleccionado', data: { confirm: "Esta seguro que desea Votar el candidato seleccionado? NO podrá cambiar su elección una vez precionado el botón Aceptar." }, class: "btn btn-success btn-lg btn glyphicon glyphicon-envelope btn-block" %>
 </div>
 
   </div><!-- /.col-lg-6 -->
