@@ -48,7 +48,9 @@
 	rake db:setup
 	rake db:test:prepare
 
-
+* Ejecutar la aplicación:
+	rails s
+	luego ingresar a la url: http://0.0.0.0:3000/
 
 ================== 
 Editor de texto Sublime Text 3 (Entorno desarrollo 32/64bit)
@@ -61,5 +63,5 @@ Editor de texto Sublime Text 3 (Entorno desarrollo 32/64bit)
 
 =============
 Editor Atom. (Entorno desarrollo 64bit)
-	- La primer prueba que hice fallo.
+	- La primer prueba que hice fallo, sin embargo a otros colegas si les funciono.
 
