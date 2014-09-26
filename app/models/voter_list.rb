@@ -4,7 +4,7 @@ class VoterList < ActiveRecord::Base
   has_many :user, autosave: true
 
   validates :user_id, uniqueness: { scope: :selection_process_id, message: "ese usuario ya está agregado al padrón." }
-  
+
   def is_enable?
       self.estado == 1
   end
@@ -22,10 +22,12 @@ class VoterList < ActiveRecord::Base
 				"pendiente"
 			when 3
 				"rechazado"
+      else
+         "Desconocido"
 	  	end
   end
 
- 
+
     #t.integer  "user_id"
     #t.integer  "selection_process_id"
     #t.integer  "estado"

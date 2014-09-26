@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Candidate < ActiveRecord::Base
 	 belongs_to :category, autosave: true
-   
+
    #obligatoriedad
 	 validates :name, presence: { message: "es un dato obligatorio."}
    #Longitudes.
@@ -11,17 +11,17 @@ class Candidate < ActiveRecord::Base
 
    #Nombre Unico.
    validates :name, uniqueness: { scope: :category_id, message: "ese nombre ya está siendo utilizado." }
-   
+
    #Controlar Candidatos por Categoria.
    #TO-DO: si el count de candidatos = bench de la categoria, tiene que dar un error de que ya esta completo el cupo.
 
 
    #Gestión de avatars de candidatos.
    AVATAR = File.join Rails.root, 'public','images','uploads', 'avatars', 'candidatos'
-   
-   after_save :guardar_imagen 
-   
-   
+
+   after_save :guardar_imagen
+
+
    #TO-DO: refactorizar para cumplir con DRY
    def avatar_file=(file_data)
     unless file_data.blank?
@@ -30,8 +30,8 @@ class Candidate < ActiveRecord::Base
       @file_data = file_data
       #extension = "nombre.jpg".split('.').last.downcase
       self.url_image = extension
-      #puts("MODEL-image: #{self.inspect}") 
-    end    
+      #puts("MODEL-image: #{self.inspect}")
+    end
   end
 
   def imagen_filename
@@ -54,7 +54,7 @@ class Candidate < ActiveRecord::Base
   private
   def guardar_imagen
     logger.debug ("AVATAR es: #{AVATAR}")
-    #@to-do: borrar imagen anterior. 
+    #@to-do: borrar imagen anterior.
   	if @file_data
   		#FileUtils.mkdir_p AVATAR
   		Dir.mkdir AVATAR unless File.directory? AVATAR

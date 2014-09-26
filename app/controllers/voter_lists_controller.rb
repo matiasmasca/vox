@@ -19,7 +19,7 @@ class VoterListsController < ApplicationController
   end
 
   def new
-  	@voter_list = VoterList.new 
+  	@voter_list = VoterList.new
   end
 
   def edit
@@ -36,7 +36,7 @@ class VoterListsController < ApplicationController
           format.html { redirect_to selection_process_voter_lists_path(@selection_process), notice: 'Usuario agregado al padrón correctamente.' }
         else
           format.html { redirect_to paginas_dashboard_path, notice: 'Solicitud, para ser agregado al padrón, enviada correctamente.' }
-        end 
+        end
       else
         format.html { redirect_to paginas_dashboard_path, alert: 'Elector NO se agrego al padrón.' }
       end
@@ -64,13 +64,13 @@ class VoterListsController < ApplicationController
 
   def admission_voter
     if params[:admission] == "aprobado"
-       @voter_list.update!(estado: 1) 
+       @voter_list.update!(estado: 1)
     end
 
     if params[:admission] == "rechazado"
-       @voter_list.update!(estado: 3) 
+       @voter_list.update!(estado: 3)
     end
-    redirect_to :back, notice: "La admisión del elector fue #{params[:admission]} correctamente." 
+    redirect_to :back, notice: "La admisión del elector fue #{params[:admission]} correctamente."
   end
 
   def enable_voter
@@ -84,7 +84,7 @@ class VoterListsController < ApplicationController
 
   def search_voter
     @user_list = User.search_by_email(params[:search]).order("created_at DESC")
-    
+
     if @user_list.size == 0
      respond_to do |format|
       format.html { redirect_to :back, status: 303, alert: 'No se encontró Elector con ese correo electrónico.' }
@@ -114,7 +114,7 @@ class VoterListsController < ApplicationController
  def check_property
     #Si es Admin. puede ver y modificar el padron.
     #Si es un Jurado, no puede ver el padron.
-    #Si es Organizador pero no es el dueño, no debe ver el padron.    
+    #Si es Organizador pero no es el dueño, no debe ver el padron.
 
  end
 

@@ -24,11 +24,11 @@ class PaginasController < ApplicationController
       #if user_signed_in?
         #logger.debug "Current User hash: #{current_user.inspect}"
         #logger.debug "User session hash: #{user_session.inspect}"
-        #@user = current_user  
+        #@user = current_user
       #end
-      
+
       #Aca podrias redirigir para otro lado si no hay usuario con ese ID, y cosas asi
-            
+
   end
 
   def admin_dashboard
@@ -54,7 +54,7 @@ class PaginasController < ApplicationController
     @selection_processes = SelectionProcess.all
     #aca mostraría los que puede participar
     @selection_processes = SelectionProcess.includes(:voter_list).where(:state => "nuevo") if current_user.is_jury? || current_user.is_admin?
-    
+
   end
 
   def votante
@@ -66,7 +66,7 @@ class PaginasController < ApplicationController
     #render :text => ENV["loaderio"].to_s if Rails.env.production?
     render html: ENV["loaderio"].to_s if Rails.env.production?
   end
-  
+
   def stats
     #Procesos por tipo
     @procesos_por_tipo = {}
@@ -87,7 +87,7 @@ class PaginasController < ApplicationController
     #en desuso por Devise
     def set_user
       if user_signed_in?
-        @current_user = current_user  
+        @current_user = current_user
       end
     end
 

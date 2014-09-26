@@ -3,9 +3,9 @@ class VoterController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_selection_process
 	before_action :set_status
-	
+
 	def vote
-		if @selection_process.state == "abierto"	
+		if @selection_process.state == "abierto"
 		check_voter
 		set_category
 
@@ -32,7 +32,7 @@ class VoterController < ApplicationController
 
 	def results
 		if @selection_process.state == "cerrado"
-			#En futuras versiones, deberia guardar el resultado final en una tabla para ahorrar procesamiento. Una vez cerrado el proceso.	
+			#En futuras versiones, deberia guardar el resultado final en una tabla para ahorrar procesamiento. Una vez cerrado el proceso.
 			@candidatos = @selection_process.category.first.candidate.first
 			recuento(@selection_process)
 			porcentaje_avance
@@ -77,7 +77,7 @@ private
 
     def recuento_categoria(categoria)
 	  @recuento_categoria = {}
-      categoria.candidate.each do |candidate| 
+      categoria.candidate.each do |candidate|
 	 	 #for candidato
 	 	 #agregar a un hash candidato:votos
 	 	 @recuento_categoria[candidate.id.to_s.to_sym] = cantidad_votos(categoria.id, candidate.id)
@@ -93,7 +93,7 @@ private
 
 	def set_selection_process
 		if user_session[:selection_process_id] ||  params[:selection_process_id] && !@selection_process
-			selection_process =  user_session[:selection_process_id] if user_session[:selection_process_id] 
+			selection_process =  user_session[:selection_process_id] if user_session[:selection_process_id]
 			selection_process = params[:selection_process_id] if params[:selection_process_id]
 			@selection_process = SelectionProcess.find_by(id: selection_process)
 			user_session[:selection_process_id] = @selection_process.id if @selection_process
@@ -103,7 +103,7 @@ private
 	def set_category
 		category_id = user_session[:voter_category_id] unless user_session[:voter_category_id].nil?
         category_id = params[:category_id] unless params[:category_id].nil?
-		
+
         if category_id
           @category = Category.find_by_id(category_id)
           user_session[:voter_category_id] = @category.id unless @category.nil?
@@ -123,11 +123,11 @@ private
 		#Chequear si el usuario esta habilitado para votar en el proceso, en teoria sí. Pero igual chequear.
 		# El Current_user, esta registrado en en voter_list del proceso.
 		usuario_elector = VoterList.find_by(selection_process_id: @selection_process.id, user_id: current_user.id)
-		
+
 		unless usuario_elector
 		  security_exit
 		  return false
-		end  
+		end
 
 		case usuario_elector.estado
 			when 2

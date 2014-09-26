@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      if !params[:id].blank? 
+      if !params[:id].blank?
         @user = User.find_by_id(params[:id])
       end
     end
@@ -84,17 +84,17 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:usuario, :nombre, :apellido, :email, :facebook, :twitter, :tipo_usuario_id, :password, :password_confirmation)
     end
-    
+
     def check_property
       return true if @current_user.is_admin?
 
-      if !params[:id].blank? 
+      if !params[:id].blank?
           @user = User.find_by_id(params[:id])
         else
           @user = nil
       end
 
-      unless @user == @current_user 
+      unless @user == @current_user
           respond_to do |format|
             format.html do
               unless @user == @current_user

@@ -27,6 +27,9 @@ Integración Continua: con Travis-ci.org
 Dependency Status:
     [![Dependency Status](https://gemnasium.com/matiasmasca/vox.svg)](https://gemnasium.com/matiasmasca/vox)
 
+CodeReview - TODOs:
+[![PullReview stats](https://www.pullreview.com/github/matiasmasca/vox/badges/master.svg?)](https://www.pullreview.com/github/matiasmasca/vox/reviews/master)
+
 * Ruby version:
     ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]
 

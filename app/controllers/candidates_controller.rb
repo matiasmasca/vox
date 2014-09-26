@@ -15,7 +15,7 @@ class CandidatesController < ApplicationController
     else
       return @candidates = Candidate.all if current_user.is_admin?
     end
-    
+
     if !params[:selection_process_id].blank?
       #<!--Candidatos where: category.selection_process_id == selection_process -->
       @categories = Category.where(selection_process_id: params[:selection_process_id])
@@ -79,13 +79,13 @@ class CandidatesController < ApplicationController
     @candidate.destroy
     respond_to do |format|
       format.html { redirect_to :back, status: 303, notice: 'Candidato borrado correctamente.' }
-      #if !params[:category_id].nil? 
-          #format.html {  redirect_to(category_candidates_path(@category), notice: 'Categoría borrada correctamente.')          
+      #if !params[:category_id].nil?
+          #format.html {  redirect_to(category_candidates_path(@category), notice: 'Categoría borrada correctamente.')
        # else
           #format.html { redirect_to candidates_url, notice: 'Candidato borrado correctamente.' }
       #end
       format.json { head :no_content }
-       
+
     end
   end
 
@@ -128,7 +128,7 @@ class CandidatesController < ApplicationController
       #Cambiar parametro arriba.
       if !params[:category_id].blank? && @candidate #|| ADMIN
       #@user = User.find_by_id(params[:category_id])
-      #logger.debug "CANDIDATE: #{@candidate} " 
+      #logger.debug "CANDIDATE: #{@candidate} "
       respond_to do |format|
         format.html do
           unless @candidate.category_id == @category.id
@@ -141,14 +141,14 @@ class CandidatesController < ApplicationController
 
       #Primero si puede ver el proceso.
       set_selection_process if @selection_process.nil?
-      unless @selection_process.is_owner?(current_user.id) 
+      unless @selection_process.is_owner?(current_user.id)
         security_exit
         return false
       end
-      
+
       @organizer = @organizer.selection_process.find_by_id(@selection_process)
-      
-      if @selection_process.organizer != @current_user.organizer && !@current_user.is_admin? 
+
+      if @selection_process.organizer != @current_user.organizer && !@current_user.is_admin?
         respond_to do |format|
           format.html do
             unless @selection_process == @category.selection_process
@@ -170,6 +170,6 @@ class CandidatesController < ApplicationController
            return false
         end
       end
-    end      
+    end
 
 end

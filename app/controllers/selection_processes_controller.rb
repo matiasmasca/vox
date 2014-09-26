@@ -6,27 +6,27 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process
   # GET /selection_process.json
-  def index     
+  def index
     if check_property
       if @current_user.is_admin?
         if params[:organizer_id].blank?
           @selection_processes = SelectionProcess.all
-          return 
+          return
         else
           @organizer = Organizer.find_by_id(params[:organizer_id])
           @selection_processes = @organizer.selection_process
-        end  
+        end
       else
-        if params[:organizer_id].blank? 
+        if params[:organizer_id].blank?
            @organizer = Organizer.find_by_id(@current_user.organizer.id)
            @selection_processes = @organizer.selection_process
           else
             if @current_user.organizer.id.to_i == params[:organizer_id].to_i
-              @organizer = Organizer.find_by_id(params[:organizer_id]) 
+              @organizer = Organizer.find_by_id(params[:organizer_id])
               #@organizer = Organizer.find_by_id(@current_user.organizer.id)
               @selection_processes = @organizer.selection_process
             end
-          end   
+          end
         end
     end
   end
@@ -40,7 +40,7 @@ class SelectionProcessesController < ApplicationController
   def new
     #user_session[:selection_processes_id] = nil
     set_organizer if @organizer.nil?
-    @selection_process = SelectionProcess.new 
+    @selection_process = SelectionProcess.new
     user_session[:selection_process_id] = @selection_process.id
   end
 
@@ -103,12 +103,12 @@ class SelectionProcessesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_selection_process
       selection_process_id = user_session[:selection_process_id] unless user_session.nil? || user_session[:selection_process_id].nil?
-      selection_process_id = params[:id] unless params[:id].nil? 
-      
+      selection_process_id = params[:id] unless params[:id].nil?
+
       if selection_process_id
        @selection_process = SelectionProcess.find_by_id(selection_process_id)
-       @organizer = @selection_process.organizer unless @selection_process.nil?           
-       user_session[:selection_process_id] = @selection_process.id unless user_session.nil? || @selection_process.nil?        
+       @organizer = @selection_process.organizer unless @selection_process.nil?
+       user_session[:selection_process_id] = @selection_process.id unless user_session.nil? || @selection_process.nil?
 
         respond_to do |format|
           format.html do
@@ -141,7 +141,7 @@ class SelectionProcessesController < ApplicationController
     def check_property
       #logger.info(@current_user.is_admin?)
       return true if @current_user.is_admin?
-      
+
       if current_user.organizer.nil?
         security_exit
         return false
@@ -152,7 +152,7 @@ class SelectionProcessesController < ApplicationController
         user_session[:organizer_id] = @organizer.id
       else
         @organizer = @current_user.organizer unless @current_user.is_admin?
-        params[:organizer_id] = @organizer.id if @organizer     
+        params[:organizer_id] = @organizer.id if @organizer
       end
 
       unless @selection_process.nil?

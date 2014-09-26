@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
       @categories = Category.where(selection_process_id: @selection_process.id)
     else
       @categories = Category.all if current_user.is_admin?
-    end     
+    end
   end
 
   # GET /categories/1
@@ -85,7 +85,7 @@ class CategoriesController < ApplicationController
         else
           @categories = Category.where(selection_process_id: @selection_process.id)
         end
-        
+
       if category_id
         @category = Category.find_by_id(category_id)
         user_session[:category_id] = @category.id unless @category.nil?
@@ -108,9 +108,9 @@ class CategoriesController < ApplicationController
 
       if selection_process_id
          @selection_process = SelectionProcess.find_by_id(selection_process_id)
-         @organizer = @selection_process.organizer unless @selection_process.nil?           
-         user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?    
-      end 
+         @organizer = @selection_process.organizer unless @selection_process.nil?
+         user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -125,11 +125,11 @@ class CategoriesController < ApplicationController
 
       #Primero si puede ver el proceso.
       set_selection_process if @selection_process.nil?
-      unless @selection_process.is_owner?(current_user.id) 
+      unless @selection_process.is_owner?(current_user.id)
         security_exit
         return false
       end
-      
+
       @organizer = @organizer.selection_process.find_by_id(@selection_process)
 
       #Luego si la categoria es del proceso seleccionado.
@@ -137,14 +137,14 @@ class CategoriesController < ApplicationController
         @organizer = Organizer.find_by_id(params[:organizer_id])
       else
         @organizer = @current_user.organizer unless @current_user.is_admin?
-        params[:organizer_id] = @organizer.id     
+        params[:organizer_id] = @organizer.id
       end
 
-        #puts("ACAAAAAAAAAAAAA!!!!!!!!!!! <<<<<=======") 
+        #puts("ACAAAAAAAAAAAAA!!!!!!!!!!! <<<<<=======")
         #puts("@selection_process = #{@selection_process}")
         #puts("@category.selection_process = #{@category.selection_process}")
 
-      if @selection_process.organizer != @current_user.organizer && !@current_user.is_admin? 
+      if @selection_process.organizer != @current_user.organizer && !@current_user.is_admin?
         respond_to do |format|
           format.html do
             unless @selection_process == @category.selection_process
@@ -166,5 +166,5 @@ class CategoriesController < ApplicationController
            return false
         end
       end
-    end   
+    end
 end

@@ -17,7 +17,7 @@ class OrganizersController < ApplicationController
   # GET /organizers/1.json
   def show
   end
-  
+
   # GET /organizers/new
   def new
     @organizer = Organizer.new
@@ -25,7 +25,7 @@ class OrganizersController < ApplicationController
 
   # GET /organizers/1/edit
   # GET /users/1/organizer/1/edit
-  def edit      
+  def edit
   end
 
   # POST /organizer
@@ -76,11 +76,11 @@ class OrganizersController < ApplicationController
     def set_organizer
       organizer_id = user_session[:organizer_id] unless user_session[:organizer_id].nil?
       organizer_id = params[:id] unless params[:id].nil?
-       
+
       if organizer_id
         @organizer = Organizer.find_by_id(organizer_id.to_i)
         @user = @organizer.user
-        user_session[:organizer_id] = @organizer.id if @organizer 
+        user_session[:organizer_id] = @organizer.id if @organizer
       end
 
       if !current_user.is_admin? && params[:user_id].blank? && !organizer_id
@@ -103,7 +103,7 @@ class OrganizersController < ApplicationController
       return true if @current_user.is_admin?
 
       if !params[:user_id].blank? #|| ADMIN
-         if @current_user.nil? 
+         if @current_user.nil?
             @user = User.find_by_id(params[:user_id])
           else
             @user =  @current_user
