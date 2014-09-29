@@ -2,16 +2,16 @@
 language: ruby
 rvm:
   - 1.9.3
-#before_install: 
+#before_install:
 #  - bundle exec gem update
 #  - bundle exec update thread_safe
 bundler_args: --without production
 script:
-  - RAILS_ENV=test 
+  - RAILS_ENV=test
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rspec
-  - bundle exec rake cucumber  
+  - bundle exec rake cucumber
 #Deploy en Heroku
 #Esto es un mix de lo que genero Travis, con otras opciones.
 deploy:
@@ -22,8 +22,8 @@ deploy:
   app: tfa-vox
   on:
     repo: matiasmasca/vox
-    all_branches: true
-    
+    #all_branches: true #Para que haga deploy ante cualquier rama, sino solo cuando cambia la master.
+
   run:
     - "rake db:drop"
     - "rake db:schema:load --trace"
