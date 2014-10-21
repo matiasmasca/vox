@@ -1,19 +1,25 @@
-vox
+***vox***
 ===
+Repositorio para la edición comunitaria (software libre) de VOX, un sistema gestor de contenidos para procesos de selección; desarrollado con Ruby on Rails.
 
-Repositorio para la edición comunitaria (software libre) de Vox, un sistema gestor de contenidos para procesos de selección.
+El alcance del proyecto es poder crear y gestionar un proceso de selección completo (creación, apertura, votación, cierre) con sus usuarios asociados: organizador y jurado. Administrando un padrón y teniendo acceso al escrutinio de los votos.
 
-El alcance del proyecto es poder crear y gestionar un proceso completo (creación, apertura, votación, cierre) con sus usuarios asociados.
+**El Origen.**
+En esencia es un experimento de aplicación y practica de los conceptos de BDD y TDD utilizando el lenguaje de programación Ruby y el framework Ruby on Rails.
+Algunos de los archivos no siguen exactamente las buenas practicas, en algunos casos por desconocimiento y en otros como parte del experimento; ya que es la primera experiencia con Rails y la metodología seguida.
+Como es parte la parte practica de mi "trabajo final de carrera". No se pueden aceptar contribuciones mayores hasta no completar un proceso de evaluación en la universidad a la que asisto; sin embargo toda contribución (sugerencias de cambio), consejo, critica constructiva, consultas son bienvenidas.
 
+**Herramientas**.
+  - Para las Historias de Usuario se utilizará: **PivotalTracker**
+  - Para BDD, se utiliza: **Cucumber**, **Capybara**.
+  - Para TDD, se utiliza: **RSpec**.
+  - Para probar continuamente, se utiliza: **Guard**
+  - Para la Integración Continua: **Travis-ci**
+  - Para el deploy, el servicio de hosting: **Heroku**
 
-En escencia es un experimento de aplicación y practica de los conceptos de BDD y TDD utilizando el lenguaje de programción Ruby y el framework Ruby on Rails.
-Algunos de los archivos no siguen exactamente las buenas practicas, en algunos casos por desconocimiento y en otros como parte del experimento.
-No se pueden aceptar contribuciones mayores hasta no completar un proceso de evaluación en la universidad a la que asisto; sin embargo toda contribución (sugerencias de cambio), consejo, critica constructiva, consultas son bienvenidas. 
-
-  - Para las Historias de Usuario se ulizará: PivotalTracker
-  - Para BDD, se utiliza: Cucumber, Capybara.
-  - Para TDD, se utiliza: RSpec.
-
+**Servicios Externos.**
+-----------------------
+VOX esta siendo integrado con servicios externos para mejorar la calidad de su código. A continuación puede ver una lista de ellos.
 
 Calidad del Código, seǵun CodeClimate
     [![Code Climate](https://codeclimate.com/github/matiasmasca/vox.png)](https://codeclimate.com/github/matiasmasca/vox)
@@ -29,6 +35,11 @@ Dependency Status:
 
 CodeReview - TODOs:
 [![PullReview stats](https://www.pullreview.com/github/matiasmasca/vox/badges/master.svg?)](https://www.pullreview.com/github/matiasmasca/vox/reviews/master)
+
+
+
+**Notas Técnicas**
+===========
 
 * Ruby version:
     ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]
@@ -49,7 +60,7 @@ CodeReview - TODOs:
     rake db:migrate
 
 * Database initialization:
-    rake db:seed 
+    rake db:seed
     rake db:test:prepare
 
 * How to run the test suite:
@@ -62,11 +73,9 @@ CodeReview - TODOs:
 
 * Deployment instructions:
   - cambiar el token ejecutando: rake secret
-  - Crear las variables de entorno: 
+  - Crear las variables de entorno:
     * DATABASE_NAME
     * DATABASE_USER
     * DATABASE_PASS
     * SECRET_KEY_BASE para el secret token
  - cambiar los .yml de Travis y de Coveralls.
-
-
