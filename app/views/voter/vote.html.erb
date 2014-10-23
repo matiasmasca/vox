@@ -24,8 +24,8 @@
       </ul>
     </div>
   <% end %>
-<%= f.hidden_field :selection_process_id, value: @selection_process.id %> 
-<%= f.hidden_field :category_id, value: @category.id unless @category.nil? %> 
+<%= f.hidden_field :selection_process_id, value: @selection_process.id %>
+<%= f.hidden_field :category_id, value: @category.id unless @category.nil? %>
 <div>
   <div class="row">
 <% unless @category.nil? %>
@@ -33,9 +33,9 @@
   <div>
     <div class="btn-group btn-group-justified">
      <div class="btn-group" data-toggle="buttons"> <!-- Botones como radio -->
-	<% @category.candidate.each do |candidate| 
-      @candidate = candidate       
-	 %>  
+	<% @category.candidate.each do |candidate|
+      @candidate = candidate
+	 %>
 	<% unless @candidate.nil? %>
 	  <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
@@ -44,14 +44,14 @@
         	alt: "Avatar #{@candidate.id}",
         	id: "imgAvatar-#{@candidate.id}",
         	class: "img-responsive"
-        	), 
+        	),
         	category_candidate_path(@candidate.category_id, @candidate)) %>
             <div class="caption">
 	            <h3><%= @candidate.name %></h3>
 	            <div style="white-space: pre-line; text-align: justify; ">
 	              <p><%= @candidate.bios %></p>
 	            </div>
-	          </div><!-- caption -->            
+	          </div><!-- caption -->
 	           <div > <!-- well -->
               <label class="btn btn-default btn glyphicon glyphicon-thumbs-up btn btn-justified btn-block">
 	        	    <%= f.radio_button :candidate_id, "#{candidate.id}", :style=>"display:none;" %>
@@ -59,7 +59,7 @@
                 </label>
               </a>
         	   </div><!-- /well -->
-      </div><!-- thumbnail --> 
+      </div><!-- thumbnail -->
 	  </div><!-- col-sm-6 -->
 	<% end %><!-- if candidato -->
   <% end %><!-- candidatos x categoria -->
@@ -80,7 +80,7 @@
 <% end %>
 <hr>
 <div class="row">
-Comparte: 
+Comparte:
 
 <% texto_adicional = "Vos también podes votar en #{@selection_process.name_process} por tu favorito, como yo lo hice." %>
 
@@ -89,8 +89,7 @@ Comparte:
 <a class="btn btn-default" target="_blank" href="http://www.facebook.com/sharer.php?u=<%= request.original_url %>&t=<%= texto_adicional %>"><img class="img" src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/yQ/r/7GFXgco-uzw.png" alt="" style="top: 0px;" height="14" width="14"> Facebook</a>
 
 <!--Twitter -->
-<a class="btn btn-default" href="http://twitter.com/share?url=<%= request.original_url %>&text=<%= texto_adicional %>&via=tfa-vox"><img src="https://dev.twitter.com/sites/default/files/images_documentation/bird_blue_16.png" alt="Share on Twitter" target="_blank"/> Tweet</a>
-
+<a class="btn btn-default" href="http://twitter.com/share?url=<%= request.original_url %>&text=<%= texto_adicional %>&via=tfa-vox"><img src="https://abs.twimg.com/favicons/favicon.ico" alt="Share on Twitter" target="_blank"/> Tweet</a>
 
 <!--Google plus -->
 <a class="btn btn-default" href="https://plus.google.com/share?url=<%= request.original_url %>" target="_blank"><img src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Share on Google+"/> Google Plus</a>
@@ -98,9 +97,9 @@ Comparte:
 <!--Pinterest -->
 <a  class="btn btn-default"
     target="_blank"
-    title="Pin It" 
+    title="Pin It"
     href="http://www.pinterest.com/pin/create/button/?url=<%= request.original_url %>&description=<%= texto_adicional %>&media=<% @selection_process.organizer.image_path %>"
-  ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /> Pinterest</a>    
+  ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /> Pinterest</a>
 
 
 </div>
