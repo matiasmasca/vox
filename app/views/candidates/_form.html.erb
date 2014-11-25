@@ -10,11 +10,11 @@
       </ul>
     </div>
   <% end %>
-  
+
   <% unless @category.nil? %>
    <div class="field">Pertenece al proceso:
     <b><%= link_to @category.selection_process.name_process, selection_process_path(@category.selection_process) %></b>
-    <% #= f.hidden_field :selection_process_id, value: @category.selection_process_id #= f.hidden_field :selection_process_id, value: params[:selection_process_id] //cuando creo no entiende este parametro %> 
+    <% #= f.hidden_field :selection_process_id, value: @category.selection_process_id #= f.hidden_field :selection_process_id, value: params[:selection_process_id] //cuando creo no entiende este parametro %>
     </div>
   <% end %>
 
@@ -22,7 +22,7 @@
     <div class="field">
       <%= f.label :category_id, "Para la categoría: ", class: 'control-label' %>
       <%= @category.name %>
-      <%= f.hidden_field :category_id, value: @category.id %> 
+      <%= f.hidden_field :category_id, value: @category.id %>
     </div>
   <% else %>
   <div>
@@ -33,14 +33,14 @@
       <%= f.text_field :category_id,  class: "form-control", size: "10", placeholder: "Ingrese el cod. de categoría a la que pertenecerá este candidato."  %>
     </div>
     <% if !params[:selection_process_id].nil? %>
-    <% 
+    <%
     process_id = params[:selection_process_id].to_i
     categories = SelectionProcess.find_by_id(process_id).category
     categories_list = {}
-    categories.each do |categoria| 
+    categories.each do |categoria|
       categories_list["#{categoria.name}"] = categoria.id
     end
-    
+
     %>
       <% if !categories.blank?  %>
        <div class="field">
@@ -63,7 +63,7 @@
     <%= f.text_area :bios, class: "form-control", :cols => "30", :rows => "10", placeholder: "ingrese una descripción sobre el postulante (candidato, nominado) para que vea el público." %>
   </div>
   <div class="field">
-      <%= f.label :avatar_file, "Avatar usuario:", class: 'control-label' %><br>
+      <%= f.label :avatar_file, "Avatar postulante:", class: 'control-label' %><br>
       <%= f.file_field :avatar_file , accept: 'image/png,image/gif,image/jpeg' %>
   </div>
   <div class="actions">
