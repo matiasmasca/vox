@@ -16,6 +16,11 @@
            <% unless user_signed_in? %>         
           <p> <%= link_to "Crear usuario", new_user_registration_path, :class => 'btn btn-lg btn-warning'  %>
           <%= link_to "Iniciar sesión", new_user_session_path, :class => 'btn btn-lg btn-success'  %></p>
+          <p><%= link_to image_tag('https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png', alt: "Iniciar sesión con Twitter"), user_omniauth_authorize_path(:twitter) %>
+          </p>
+          <p><%= link_to "Iniciar sesión con Facebook", user_omniauth_authorize_path(:facebook), id: "sign_in" %>
+
+
            <% end %>
         </div>
       </div>

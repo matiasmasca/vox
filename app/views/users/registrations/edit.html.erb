@@ -17,6 +17,7 @@
     </div>
 </div>
 
+<% if f.object.encrypted_password.present? %>
 <div class="form-group">
     <%= f.label :password, "Clave de acceso", class: 'col-sm-2 control-label'  %><i>(deje el campo en blanco si no quiere cambiar su clave)</i><br/>
     <div class="col-sm-6">
@@ -30,7 +31,7 @@
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
     </div>
 </div>
-
+<% end %>
 
 <hr>
   <div class="form-group">
@@ -70,6 +71,7 @@
     <% end %>
   </div>
 <hr>
+<% if f.object.encrypted_password.present? %>
 <div class="form-group">
     <%= f.label :current_password,"Su clave actual", class: 'col-sm-2 control-label' %>
     <div class="col-sm-6">
@@ -77,6 +79,7 @@
         <span class="help-block">Necesitamos tu clave actual, para salvar los cambios.</span>
     </div>
 </div>
+<% end %>
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">

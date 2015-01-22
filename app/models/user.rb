@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   #Asociaciones
   has_one :organizer, dependent: :nullify, autosave: true
@@ -69,6 +69,58 @@ class User < ActiveRecord::Base
   def self.search_by_email(query)
       where("email like ?", "%#{query}%")
   end
+
+  def password_required? #Para que no pida pass si viene de autenticacion externa.
+    super && provider.blank?
+  end
+
+
+ private
+  def self.process_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.password = Devise.friendly_token[0,20]
+      #Twitter.
+      if auth.provider == "twitter"
+        user.usuario = auth.info.nickname
+        user.nombre = auth.info.name.split[0]
+        user.apellido = auth.info.name.split[1]
+        user.twitter = auth.info.nickname 
+      end  
+      
+      #Facebook
+      if auth.provider == "facebook"
+        user.usuario = auth.info.first_name + auth.info.last_name
+        user.email = auth.info.email
+        user.nombre = auth.info.first_name
+        user.apellido = auth.info.last_name
+        user.facebook = auth.info.urls['Facebook']
+      #user.image = auth.info.image # assuming the user model has an image
+      end
+      #raise ''
+     end
+  end
+
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
+      end
+    else
+      super
+    end
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank? && provider.present?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
+
 
 
 
