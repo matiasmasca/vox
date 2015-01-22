@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908135247) do
+ActiveRecord::Schema.define(version: 20150122123308) do
 
   create_table "ballots", force: true do |t|
     t.integer  "selection_process_id"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20140908135247) do
     t.string   "email"
     t.string   "facebook"
     t.string   "twitter"
-    t.integer  "tipo_usuario_id",        default: 2,  null: false #2 Jurado.
+    t.integer  "tipo_usuario_id",        default: 2,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false
@@ -118,6 +118,9 @@ ActiveRecord::Schema.define(version: 20140908135247) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "username"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

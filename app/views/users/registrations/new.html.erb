@@ -18,6 +18,7 @@
     </div>
 </div>
 
+<% if f.object.password_required? %>
 <div class="form-group">
     <%= f.label :password, "Clave de acceso", class: 'col-sm-2 control-label'  %>
     <div class="col-sm-6">
@@ -31,6 +32,7 @@
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
     </div>
 </div>
+<% end %>
 
 <hr>
 <h3> Puede completarlos más tarde:</h3>

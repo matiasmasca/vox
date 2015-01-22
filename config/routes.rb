@@ -1,5 +1,6 @@
 Vox::Application.routes.draw do
-  devise_for :users, :path_prefix => 'my'
+  devise_for :users, :path_prefix => 'my', controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
 
   #paginas estaticas
   get "paginas/home" 

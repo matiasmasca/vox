@@ -6,8 +6,17 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   #config.secret_key = '7222c52febb8f51a9f61944b323e3bc012aa179e10c1779750756758dccc5024bffa224e89b96e02985ac43436b921241e3390d615bce6daea15e75e0c953586'
   #config.secret_key = ENV["SECRET_KEY_BASE"] if Rails.env == 'production'
-  config.secret_key = ENV['SECRET_KEY_BASE'] if Rails.env.production?
+  if Rails.env.production?
+    config.secret_key = ENV['SECRET_KEY_BASE']
+    config.omniauth :twitter, ENV['TW_Consumer_key'], ENV['TW_Consumer_secret']
+    config.omniauth :facebook, ENV['FB_App_id'], ENV['FB_App_secret']
+  else
+    # LocalHost
+    #config.omniauth :twitter, '', ''
+    #config.omniauth :facebook, '', ''
   
+  end
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
