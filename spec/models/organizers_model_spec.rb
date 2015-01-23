@@ -7,22 +7,22 @@ describe Organizer do
     end
 
     it "es invalido, name debe ser mayor que 1" do
-        organizer = Organizer.new({ "name" => "A" , "address" => "UnaDireccionCualquiera", "email" => "UnaDireccionCualquiera@test.com"})
+        organizer = Organizer.new({ "name" => "A" , "address" => "UnaDireccionCualquiera" , "email" => "UnaDireccionCualquiera@test.com"})
         organizer.should_not be_valid
     end
 
     it "es invalido, address debe ser mayor que 8" do
-        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDire", "email" => "UnaDireccionCualquiera@test.com"})
+        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDire" , "email" => "UnaDireccionCualquiera@test.com"})
         organizer.should_not be_valid
     end
 
     it "es invalido, email debe ser mayor que 8" do
-        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "me@g.ws"})
+        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera" , "email" => "me@g.ws"})
         organizer.should_not be_valid
     end
 
     it "es invalido, web debe ser mayor que 3" do
-        organizer = Organizer.new({ "name" => "ACME", "address" => "UnaDireccionCualquiera", "email" => "UnaDireccionCualquiera@test.com", "web" => ".ws"})
+        organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera" , "email" => "UnaDireccionCualquiera@test.com" , "web" => ".ws"})
         organizer.should_not be_valid
     end
 
@@ -32,28 +32,28 @@ describe Organizer do
        correo = "A" * 251
        web = "A" * 251
        
-       organizer = Organizer.new({ "name" => nombre , "address" => "UnaDireccionCualquiera", "email" => "UnaDireccionCualquiera@test.com"})
+       organizer = Organizer.new({ "name" => nombre , "address" => "UnaDireccionCualquiera" , "email" => "UnaDireccionCualquiera@test.com"})
        organizer.should_not be_valid
 
        organizer = Organizer.new({ "name" => "ACME" , "address" => direccion, "email" => "UnaDireccionCualquiera@test.com"})
        organizer.should_not be_valid
 
-       organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => correo})
+       organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera" , "email" => correo})
        organizer.should_not be_valid
 
-       organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "web" => web, "email" => "UnaDireccionCualquiera@test.com"})
+       organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera" , "web" => web , "email" => "UnaDireccionCualquiera@test.com"})
        organizer.should_not be_valid
     end
 
     it "nombre debe ser unico" do
-      organizer = Organizer.create!({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "UnaDireccionCualquiera@test.com"})
-      organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera2", "email" => "UnaDireccionCualquiera2@test.com"})
+      organizer = Organizer.create!({ "name" => "ACME" , "address" => "UnaDireccionCualquiera" , "email" => "UnaDireccionCualquiera@test.com"})
+      organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera2" , "email" => "UnaDireccionCualquiera2@test.com"})
       organizer.should_not be_valid
     end
 
     it "tiene asignada un Usuario del sistema." do
-      user = User.create!({ "usuario" => "MyString" ,"nombre" => "MyString" ,"apellido" => "MyString" ,"email" => "MyString@MyString.com", "password" => "MiClaveEs123" ,"facebook" => "MyString" ,"twitter" => "@MyString" ,"tipo_usuario_id" => 3 }) 
-      organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera", "email" => "Una@test.com", "user_id" => user.id })
+      user = User.create!({ "usuario" => "MyString" , "nombre" => "MyString" , "apellido" => "MyString" , "email" => "MyString@MyString.com" , "password" => "MiClaveEs123" , "facebook" => "MyString" , "twitter" => "@MyString" , "tipo_usuario_id" => 3 }) 
+      organizer = Organizer.new({ "name" => "ACME" , "address" => "UnaDireccionCualquiera" , "email" => "Una@test.com" , "user_id" => user.id })
       organizer.should belong_to(:user)
     end
 
