@@ -138,6 +138,8 @@ private
 			 #fuiste rechazado
 			 redirect_to(:back, alert: "Fuiste RECHAZADO para votar en este proceso por el organizador. Ante la duda contactate con él.")
              return false
+         	else
+             return false
 		end
 
 		unless current_user.id == usuario_elector.user_id

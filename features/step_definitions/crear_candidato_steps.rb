@@ -46,7 +46,7 @@ Entonces(/^me muestra la imagen del "(.*?)" recién subida$/) do |imagen_de|
   #le saque el public a esta url
   #file = "#{@candidato.id + 1}.jpg"
   file = "#{1}.jpg"
-  puts("#{Rails.root}/public/images/uploads/avatars/candidatos/#{file}")
+  #puts("#{Rails.root}/public/images/uploads/avatars/candidatos/#{file}")
   # esta el archivo en su lugar.
   File.exist?("#{Rails.root}/public/images/uploads/avatars/candidatos/#{file}").should be_true
   

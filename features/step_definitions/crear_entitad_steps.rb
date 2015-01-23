@@ -32,7 +32,7 @@ Entonces(/^me muestra la imagen recién subida$/) do
   
   #le saque el public a esta url
   file = "#{@organizer.id}.jpg"
-  puts("#{Rails.root}/public/images/uploads/isologos/#{file}")
+  #puts("#{Rails.root}/public/images/uploads/isologos/#{file}")
   # esta el archivo en su lugar.
   File.exist?("#{Rails.root}/public/images/uploads/isologos/#{file}").should be_true
   
