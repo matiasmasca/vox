@@ -5,7 +5,7 @@ describe CategoriesController do
   login_admin
   
   #Atributos validos minimos. (es decir datos obligatorios)
-  let(:valid_attributes) { { "name" => "Mejor ACME" , "bench" => "5", "selection_process_id" => "1"}}
+  let(:valid_attributes) { { "name" => "Mejor ACME" , "bench" => "5", "selection_process_id" => "1" } }
   #Sesión valida. Devolver los minimos atributos para que una sesión sea valida.
   let(:valid_session) { {} }
 
