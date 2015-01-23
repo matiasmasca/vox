@@ -20,23 +20,27 @@
       <tr>
         <% voter.user_id = 1 if voter.user_id.nil? %>
         <% user = User.find_by_id(voter.user_id) %>
-        <td><%= "#{user.nombre} #{user.apellido}" %></td>
+        <td><%= '#{user.nombre} #{user.apellido}' %></td>
         
-        <td><%= "#{user.email}" %></td>
+        <td><%= '#{user.email}' %></td>
         <td><%= voter.selection_process_id %></td>
         <% 
         case voter.estado
           when 1
-            estado = "aprobado" %>
+            estado = 'aprobado' %>
             <td><p class="label label-success"><%=  estado %></p></td>
          <%  when 2
-            estado = "pendiente" %>
+            estado = 'pendiente' %>
             <td><%= link_to '', selection_process_admission_voter_path(voter.selection_process_id, voter, :admission => 'aprobado' ), :class => 'btn btn-success btn-xs btn glyphicon glyphicon-ok active', :method => :post, data: { confirm: "Esta seguro que desea APROBAR el elector: #{user.nombre} #{user.apellido} para este padrón?"} %> 
                 <%= link_to '', selection_process_admission_voter_path(voter.selection_process_id, voter, :admission => 'rechazado' ), :class => 'btn btn-warning btn-xs btn glyphicon glyphicon-remove active', :method => :post, data: { confirm: "Esta seguro que desea RECHAZAR el elector: #{user.nombre} #{user.apellido} para este padrón?"} %>
             </td>
         <%   when 3
-            estado = "rechazado" %>
+            estado = 'rechazado' %>
             <td><span class="label label-danger"><%=  estado %></span></td>
+        <% else
+            estado = '' %>
+            <p>Resultado  Admisión: <span class="label label-danger"><%=  estado %></span>
+        
         <% end %>
         
        <% unless params[:selection_process_id].nil? %>
