@@ -57,7 +57,6 @@ describe Organizer do
       organizer.should belong_to(:user)
     end
 
-
 	#@to-do
   it "Guarda el archivo que recibe" 
     #Que al recibir el archivo, lo ponga en su lugar y demás yerbas.

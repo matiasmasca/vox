@@ -51,7 +51,6 @@ describe OrganizersController do
     end
    end
 
-
   describe "GET index" do
       it "asigna todos los registros a @organizers" do
         organizers = Organizer.create! valid_attributes
@@ -127,8 +126,6 @@ describe OrganizersController do
         put :update, {:id => organizer.to_param, :organizer => { "name_process" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
-
     end
   end
-
 end

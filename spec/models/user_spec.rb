@@ -124,5 +124,4 @@ describe User do
         user.should have_one(:organizer)
         organizer.should belong_to(:user)
     end
-
 end

@@ -7,7 +7,6 @@ require 'rails/test_help'
 require 'coveralls'
 Coveralls.wear!
 
-
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 

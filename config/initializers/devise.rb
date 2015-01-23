@@ -13,8 +13,7 @@ Devise.setup do |config|
   else
     # LocalHost
     #config.omniauth :twitter, '', ''
-    #config.omniauth :facebook, '', ''
-  
+    #config.omniauth :facebook, '', ''  
   end
 
   # ==> Mailer Configuration

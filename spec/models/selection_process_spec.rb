@@ -61,7 +61,6 @@ describe SelectionProcess do
     #       raise_error(ActiveRecord::RecordNotFound)
 end
 
-
 # Cuando borran la asociacion.
 #it "should nuke reviews when movie deleted" do
 #   @movie = @movie.create!(...)
