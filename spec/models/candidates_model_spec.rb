@@ -35,8 +35,8 @@ describe Candidate do
       candidate.should_not be_valid
     end
 
-    it "es invalido, si category_id es mayor que 16" do
-      category_id = 92_23_372_036_854_775_809
+    it "es invalido, si category_id es mayor que 19" do
+      category_id = 1_000_000_000_000_000_000_000
       candidate = Candidate.new({ "name" => "Nombre" , "bios" => "la bios del tipo", "category_id" => category_id})
       candidate.should_not be_valid
     end
