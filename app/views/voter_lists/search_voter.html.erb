@@ -10,20 +10,20 @@
 <!-- Resultado de la busqueda-->
 <% if @user_list %>
   <% @user_list.each do |user| %>
-	<%= form_for [@selection_process, @selection_process.voter_list.build], :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>     
+  <%= form_for [@selection_process, @selection_process.voter_list.build], :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>     
      <div class="row">
-  		<div class="col-lg-6">
-    	<div class="input-group">
+      <div class="col-lg-6">
+      <div class="input-group">
       <%= f.hidden_field :user_id, value: user.id %>
-	    <%= f.hidden_field :estado, value: 1 %>
-	      <div class="form-control">
-	      <%= "#{user.nombre} #{user.apellido}" %></div>
-	      <span class="input-group-btn">
-	        <button class="btn btn-default btn glyphicon glyphicon-plus-sign" type="submit"> Agregar Usuario</button>
-	      </span>
-		      </div><!-- /input-group -->
-		  </div><!-- /.col-lg-6 -->
-		</div><!-- /.row -->
+      <%= f.hidden_field :estado, value: 1 %>
+        <div class="form-control">
+        <%= "#{user.nombre} #{user.apellido}" %></div>
+        <span class="input-group-btn">
+          <button class="btn btn-default btn glyphicon glyphicon-plus-sign" type="submit"> Agregar Usuario</button>
+        </span>
+          </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
       <br>
     <% end %>
   <% end %>

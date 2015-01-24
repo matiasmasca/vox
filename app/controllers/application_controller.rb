@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
 
  private
   def load_sidebar
-  	#Aca tendrías que poner todo lo que necesitas pre-cargar en la barra lateral.
-  	#Ojo que se ejecuta en cada llamado...
-  	set_selection_process  if user_signed_in?
+    #Aca tendrías que poner todo lo que necesitas pre-cargar en la barra lateral.
+    #Ojo que se ejecuta en cada llamado...
+    set_selection_process  if user_signed_in?
   end
 
   def set_selection_process

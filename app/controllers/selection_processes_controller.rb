@@ -155,20 +155,20 @@ class SelectionProcessesController < ApplicationController
         params[:organizer_id] = @organizer.id if @organizer
       end
 
-      unless @selection_process.nil?
+      if @selection_process.nil?
+        if @organizer.selection_process.find_by_id(@selection_process) == @selection_process
+          return true
+        else
+          security_exit
+          return false
+        end
+      else
         if @selection_process.organizer != @current_user.organizer && !@current_user.is_admin?
             security_exit
             return false
           else
             return true
         end
-      else
-        unless @organizer.selection_process.find_by_id(@selection_process) == @selection_process
-          security_exit
-          return false
-        else
-          return true
-      end
       end
     end
 

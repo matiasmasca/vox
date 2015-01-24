@@ -5,17 +5,17 @@
 <% @selection_process.category.each do |category| %>        
        <%= link_to selection_process_category_path(@selection_process, category), :class => "list-group-item" do %>
            <%= category.name %>
-         	<% case 
-				when category.candidate.size == category.bench %>
-  					<span class="badge pull-right alert-success">
-			<% 	when category.candidate.size < category.bench %>
-  					<span class="badge pull-right alert-warning">
-			<%  when category.candidate.size > category.bench %>
-  					<span class="badge pull-right alert-danger">
-			<%  else %>
-  					<span class="badge pull-right alert-error"> %>
-			<% end %>
-           	<%= category.candidate.size %> / <%= category.bench %></span>
+          <% case 
+        when category.candidate.size == category.bench %>
+            <span class="badge pull-right alert-success">
+      <%  when category.candidate.size < category.bench %>
+            <span class="badge pull-right alert-warning">
+      <%  when category.candidate.size > category.bench %>
+            <span class="badge pull-right alert-danger">
+      <%  else %>
+            <span class="badge pull-right alert-error"> %>
+      <% end %>
+            <%= category.candidate.size %> / <%= category.bench %></span>
       <% end %>
 <% end %>
 <% if current_user %>

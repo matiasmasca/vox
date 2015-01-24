@@ -1,12 +1,12 @@
 <!-- Infor Proceso -->
 <div>
-	<div class="row">
-		<%= render partial: "voter/selection_process_public_info", object: @selection_process %>
-	</div><!-- /.row -->
+  <div class="row">
+    <%= render partial: "voter/selection_process_public_info", object: @selection_process %>
+  </div><!-- /.row -->
 </div>
 <!-- Categoria -->
 <div>
-	<%= render partial: "voter/categories_buttons", object: @selection_process %>
+  <%= render partial: "voter/categories_buttons", object: @selection_process %>
 </div>
 <div>
   <h2>Candidatos a <%= @category.name unless @category.nil? %> </h2>
@@ -33,35 +33,35 @@
   <div>
     <div class="btn-group btn-group-justified">
      <div class="btn-group" data-toggle="buttons"> <!-- Botones como radio -->
-	<% @category.candidate.each do |candidate|
+  <% @category.candidate.each do |candidate|
       @candidate = candidate
-	 %>
-	<% unless @candidate.nil? %>
-	  <div class="col-sm-6 col-md-4">
+   %>
+  <% unless @candidate.nil? %>
+    <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
            <%= link_to(image_tag(@candidate.image_path,
-        	size: "242x200",
-        	alt: "Avatar #{@candidate.id}",
-        	id: "imgAvatar-#{@candidate.id}",
-        	class: "img-responsive"
-        	),
-        	category_candidate_path(@candidate.category_id, @candidate)) %>
+          size: "242x200",
+          alt: "Avatar #{@candidate.id}",
+          id: "imgAvatar-#{@candidate.id}",
+          class: "img-responsive"
+          ),
+          category_candidate_path(@candidate.category_id, @candidate)) %>
             <div class="caption">
-	            <h3><%= @candidate.name %></h3>
-	            <div style="white-space: pre-line; text-align: justify; ">
-	              <p><%= @candidate.bios %></p>
-	            </div>
-	          </div><!-- caption -->
-	           <div > <!-- well -->
+              <h3><%= @candidate.name %></h3>
+              <div style="white-space: pre-line; text-align: justify; ">
+                <p><%= @candidate.bios %></p>
+              </div>
+            </div><!-- caption -->
+             <div > <!-- well -->
               <label class="btn btn-default btn glyphicon glyphicon-thumbs-up btn btn-justified btn-block">
-	        	    <%= f.radio_button :candidate_id, "#{candidate.id}", :style=>"display:none;" %>
-  					    <%= "#{candidate.name}" %>
+                <%= f.radio_button :candidate_id, "#{candidate.id}", :style=>"display:none;" %>
+                <%= "#{candidate.name}" %>
                 </label>
               </a>
-        	   </div><!-- /well -->
+             </div><!-- /well -->
       </div><!-- thumbnail -->
-	  </div><!-- col-sm-6 -->
-	<% end %><!-- if candidato -->
+    </div><!-- col-sm-6 -->
+  <% end %><!-- if candidato -->
   <% end %><!-- candidatos x categoria -->
     </div>
   </div><!-- /input-group -->
@@ -71,7 +71,7 @@
 </div>
 
   </div><!-- /.col-lg-6 -->
-	<% end %><!-- ya voto en categoria -->
+  <% end %><!-- ya voto en categoria -->
 
 <%  end %><!-- /category -->
   </div><!-- /.row -->
@@ -100,6 +100,4 @@ Comparte:
     title="Pin It"
     href="http://www.pinterest.com/pin/create/button/?url=<%= request.original_url %>&description=<%= texto_adicional %>&media=<% @selection_process.organizer.image_path %>"
   ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /> Pinterest</a>
-
-
 </div>
