@@ -1,5 +1,5 @@
 # encoding: utf-8
-# Modelo relativo a los procesos de selección. Con sus métodos: 
+# Modelo relativo a los procesos de selección. Con sus métodos:
 # is_owner? : para saber si el usuario es el Organizador del evento.
 # is_public? : para saber si es un evento publico.
 # is_elector?(current_user) : para saber si el usuario esta habilitado a votar en este proceso de selección.
@@ -26,14 +26,14 @@ class SelectionProcess < ActiveRecord::Base
 
     def type
         case self.process_type_id
-            when 1
-                'premio'
-            when 2
-                'certamen'
-            when 3
-                'votación'
-            else
-                nil
+        when 1
+            'premio'
+        when 2
+            'certamen'
+        when 3
+            'votación'
+        else
+            nil
         end
     end
 
