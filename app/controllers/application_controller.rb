@@ -1,21 +1,21 @@
 # encoding: utf-8
-#Nota mental: todos los controller heredan de aca.
+# Nota mental: todos los controller heredan de aca.
 # Ojo con los before y after action que se ejecutaran en cada acción de las subclases.
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  #Parametros para formularios de Devise.
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  # Parametros para formularios de Devise.
+  before_filter :configure_permitted_parameters , if: :devise_controller?
 
   before_action :set_user
   before_filter :load_sidebar
 
  private
   def load_sidebar
-    #Aca tendrías que poner todo lo que necesitas pre-cargar en la barra lateral.
-    #Ojo que se ejecuta en cada llamado...
+    # Aca tendrías que poner todo lo que necesitas pre-cargar en la barra lateral.
+    # Ojo que se ejecuta en cada llamado...
     set_selection_process  if user_signed_in?
   end
 
@@ -33,13 +33,12 @@ class ApplicationController < ActionController::Base
         end
       end
 
-      #Set_organizer
+      # Set_organizer
       if !@selection_process.nil?
         @organizer = @selection_process.organizer
         user_session[:organizer_id] = @organizer.id if @organizer
       end
   end
-
 
   def set_user
       if user_signed_in?
@@ -48,7 +47,7 @@ class ApplicationController < ActionController::Base
         if current_user.tipo_usuario_id == 3 && current_user.organizer
           user_session[:organizer_id] = current_user.organizer.id
         end
-        #logger.info(user_session[:organizer_id])
+        # logger.info(user_session[:organizer_id])
       else
         current_user = User.new
       end
@@ -57,14 +56,13 @@ class ApplicationController < ActionController::Base
   def security_exit
         respond_to do |format|
         format.html do
-           redirect_to(root_path, alert: "Operación no permitida.")
-           #return false
+           redirect_to(root_path, alert: 'Operación no permitida.')
+           # return false
         end
       end
     end
 
   protected
-
   # A donde va cuando inicia la sesión.
   def after_sign_in_path_for(resource)
     # return the path based on resource
@@ -75,31 +73,26 @@ class ApplicationController < ActionController::Base
       path = "/paginas/jury_dashboard/#{current_user.id}"
     when 3
       path = "/paginas/user_dashboard/#{current_user.id}"
-      #redirect(path)
-      #redirect paginas_user_dashboard_path(@current_user)
     else
       request.referrer
     end
-    #Redirecciona a este path...
+    # Redirecciona a este path...
     path
   end
 
   # A donde va cuando finaliza la sesión.
   def after_sign_out_path_for(resource_or_scope)
-    #request.referrer
+    # request.referrer
     "/"
   end
 
-  #Parametros para formularios de Devise.
+  # Parametros para formularios de Devise.
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:usuario, :nombre, :apellido, :email, :facebook, :twitter, :tipo_usuario_id, :password, :password_confirmation)
+      u.permit( :usuario , :nombre , :apellido , :email , :facebook , :twitter , :tipo_usuario_id , :password , :password_confirmation )
     end
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:usuario, :nombre, :apellido, :email, :facebook, :twitter, :tipo_usuario_id, :password, :password_confirmation, :current_password)
+      u.permit( :usuario , :nombre , :apellido , :email, :facebook , :twitter , :tipo_usuario_id , :password , :password_confirmation , :current_password )
     end
   end
-
-
-
 end

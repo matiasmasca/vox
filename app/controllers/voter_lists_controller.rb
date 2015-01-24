@@ -3,15 +3,15 @@ class VoterListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_voter_list
   before_action :set_selection_process
-  #before_action :set_category , only: [:index, :show, :edit, :update, :destroy]
-  #before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
+  # before_action :set_category , only: [:index, :show, :edit, :update, :destroy]
+  # before_action :check_property, only: [:index, :show, :edit, :update, :destroy]
 
-  #Estado: 1. = "aprobado", 2. = "pendiente", 3. "rechazado"
+  # Estado: 1. = "aprobado", 2. = "pendiente", 3. "rechazado"
 
   def index
     return @voter_list = VoterList.all if current_user.is_admin?
 
-  	#Mostrar el padron del proceso actual.
+    # Mostrar el padron del proceso actual.
     return @voter_list = VoterList.includes(:selection_process).where(selection_process_id: user_session[:selection_process_id] ) if @selection_process.is_owner?(current_user.id) && current_user.is_organizer?
   end
 
@@ -19,14 +19,14 @@ class VoterListsController < ApplicationController
   end
 
   def new
-  	@voter_list = VoterList.new
+    @voter_list = VoterList.new
   end
 
   def edit
   end
 
   def create
-  	@voter_list = @selection_process.voter_list.create(voter_list_params)
+    @voter_list = @selection_process.voter_list.create(voter_list_params)
     @voter_list.estado = 2 if @voter_list.estado.nil?
     user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?
 
@@ -48,16 +48,15 @@ class VoterListsController < ApplicationController
 
   def destroy
     @voter_list.destroy
-    #raise ''
     respond_to do |format|
       format.html { redirect_to :back, status: 303, notice: 'Elector borrado del padrón correctamente.' }
-      #format.html { redirect_to users_url, notice: 'Usuario borrado correctamente.' }
+      # format.html { redirect_to users_url, notice: 'Usuario borrado correctamente.' }
       format.json { head :no_content }
     end
   end
 
   def add_voter
-  	@selection_process = SelectionProcess.find(params[:selection_process_id])
+    @selection_process = SelectionProcess.find(params[:selection_process_id])
     @voter_list = @selection_process.voter_list.create(voter_list_params)
     redirect_to voter_list_path(@voter_list)
   end
@@ -88,13 +87,11 @@ class VoterListsController < ApplicationController
     if @user_list.size == 0
      respond_to do |format|
       format.html { redirect_to :back, status: 303, alert: 'No se encontró Elector con ese correo electrónico.' }
-      #format.html { redirect_to users_url, notice: 'Usuario borrado correctamente.' }
+      # format.html { redirect_to users_url, notice: 'Usuario borrado correctamente.' }
       format.json { head :no_content }
       end
     end
   end
-
-
 
  private
  # Never trust parameters from the scary internet, only allow the white list through.
@@ -111,12 +108,11 @@ class VoterListsController < ApplicationController
   @selection_process = SelectionProcess.find_by(id: params[:selection_process_id])
  end
 
- def check_property
+ # def check_property
     #Si es Admin. puede ver y modificar el padron.
     #Si es un Jurado, no puede ver el padron.
     #Si es Organizador pero no es el dueño, no debe ver el padron.
-
- end
+ # end
 
 end
 
