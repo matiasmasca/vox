@@ -14,7 +14,7 @@
               Tiene una duracción de <%= @selection_process.duration %> días. Empieza el <%= @selection_process.start_date %> hasta el <%= @selection_process.end_date %>.
               <p>Es organizado por <%= @selection_process.organizer.name %>
 
-			        <p>Estado: <%= @selection_process.state %>
+              <p>Estado: <%= @selection_process.state %>
               <p>Tipo: <%= @selection_process.type %>
               
               <% @voter_list = @selection_process.voter_list.find_by(user_id: current_user) %></p>

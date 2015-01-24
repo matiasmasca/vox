@@ -36,7 +36,8 @@ Dependency Status:
 CodeReview - TODOs:
 [![PullReview stats](https://www.pullreview.com/github/matiasmasca/vox/badges/master.svg?)](https://www.pullreview.com/github/matiasmasca/vox/reviews/master)
 
-
+Gitter - Chat:
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/matiasmasca/vox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **Notas Técnicas**
 ===========

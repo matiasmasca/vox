@@ -5,9 +5,9 @@
     <%= @porcentaje_avance %>%
   </div>
 </div>
-	<p>Votos: <%= @cantidad_votos %> de <%= @total_votos_teorico %> ( <%= @porcentaje_avance %>%)
-	<p>Cantidad electores: <%= @cantidad_electores %> | 
-	Cantidad categorías: <%= @cantidad_categorias %>
+  <p>Votos: <%= @cantidad_votos %> de <%= @total_votos_teorico %> ( <%= @porcentaje_avance %>%)
+  <p>Cantidad electores: <%= @cantidad_electores %> | 
+  Cantidad categorías: <%= @cantidad_categorias %>
 </div>
 
 <br>
@@ -17,13 +17,13 @@
 <h3>Categoría:  <%= @category.name %></h3>
 <div class="progress">
   <% if @category.porcentaje_categoria < 100 %>
-	  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
+    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
        <span class="sr-only"><%= @category.porcentaje_categoria %>% Complete</span>
   <% elsif @category.porcentaje_categoria > 100 %>
-		<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
        <span class="sr-only"><%= @category.porcentaje_categoria %>% Complete</span>
   <% else %>
-		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @category.porcentaje_categoria %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @category.porcentaje_categoria %>%">
        <span class="sr-only"><%= @category.porcentaje_categoria %>% Complete</span>
   <% end %>
   <%= @category.porcentaje_categoria %>%
@@ -74,6 +74,3 @@ A continucación figuran la Categoría, el candidato y los votos recibidos por c
  <div><%= category.ballots.inspect %> </div>
 <% end %>
 </div><!-- /collapse -->
-
-
- 

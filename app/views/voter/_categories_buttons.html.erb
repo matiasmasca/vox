@@ -9,7 +9,7 @@
            <%= link_to " #{category.name}", selection_process_vote_path, :class => 'btn btn-default btn glyphicon glyphicon-check disabled', :role => "button" %>
     </div>
     <% else %>
-    	<div class="btn-group"><p>     
+      <div class="btn-group"><p>     
            <%= link_to " #{category.name}", selection_process_vote_path(@selection_process, :category_id => category.id), :class => 'btn btn-warning btn glyphicon glyphicon-unchecked', :role => "button" %>
     </div>
    <% end %>

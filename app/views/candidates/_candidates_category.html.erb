@@ -4,22 +4,22 @@
 <% unless @category.nil? %>
 <div>
   <div class="row">
-	<% @category.candidate.each do |candidate| 
-	    @candidate = candidate       
-	 %>  
-	<%= render partial: "candidates/candidate", object: @candidate %>
-	<%  end %>
-	  <!-- ahora agregar (+) para que sumen los candidatos que faltan -->
-	  <% if current_user.is_admin? || @category.selection_process.is_owner?(current_user.id) %>
- 	   <% if @category.candidate.size <= @category.bench %>
-	    <div class="col-sm-6 col-md-4">
-	     <% (@category.bench - @category.candidate.size ).times do |candi|  %>
-	      <%= link_to ' Agregar Candidato', new_category_candidate_path(@category), :class => "list-group-item btn glyphicon glyphicon-plus-sign" %>
-	        </span>
-	     <% end %>  
-	   <% end %>
-	   </div>
-	  <% end %>
-	<% end %>
+    <% @category.candidate.each do |candidate| 
+        @candidate = candidate       
+     %>  
+    <%= render partial: "candidates/candidate", object: @candidate %>
+    <%  end %>
+      <!-- ahora agregar (+) para que sumen los candidatos que faltan -->
+      <% if current_user.is_admin? || @category.selection_process.is_owner?(current_user.id) %>
+       <% if @category.candidate.size <= @category.bench %>
+        <div class="col-sm-6 col-md-4">
+         <% (@category.bench - @category.candidate.size ).times do |candi|  %>
+          <%= link_to ' Agregar Candidato', new_category_candidate_path(@category), :class => "list-group-item btn glyphicon glyphicon-plus-sign" %>
+            </span>
+         <% end %>  
+       <% end %>
+       </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

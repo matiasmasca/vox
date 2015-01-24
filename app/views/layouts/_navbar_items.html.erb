@@ -1,19 +1,19 @@
 
 <% if user_signed_in? %>
 
-	<li class="active"><%= link_to ' Inicio',  paginas_dashboard_path, class: "glyphicon glyphicon-home" %></li>
+    <li class="active"><%= link_to ' Inicio',  paginas_dashboard_path, class: "glyphicon glyphicon-home" %></li>
 
-	<% if current_user.is_admin? %>
-	<li class="active"><%= link_to ' Escritorio',  paginas_admin_dashboard_path, class: "glyphicon glyphicon-dashboard" %></li>
-	<% end %>
+    <% if current_user.is_admin? %>
+    <li class="active"><%= link_to ' Escritorio',  paginas_admin_dashboard_path, class: "glyphicon glyphicon-dashboard" %></li>
+    <% end %>
 
-	<% if current_user.is_organizer? %>
-	<li class="active"><%= link_to ' Escritorio',  paginas_user_dashboard_path, class: "glyphicon glyphicon-dashboard" %></li>
-	<% end %>
+    <% if current_user.is_organizer? %>
+    <li class="active"><%= link_to ' Escritorio',  paginas_user_dashboard_path, class: "glyphicon glyphicon-dashboard" %></li>
+    <% end %>
 
-	<% if current_user.is_jury? %>
-	<li class="active"><%= link_to ' Escritorio',  paginas_jury_dashboard_path, class: "glyphicon glyphicon-dashboard" %></li>
-	<% end %>
+    <% if current_user.is_jury? %>
+    <li class="active"><%= link_to ' Escritorio',  paginas_jury_dashboard_path, class: "glyphicon glyphicon-dashboard" %></li>
+    <% end %>
 
 <% else %>
 <li class="active"><%= link_to ' Inicio',  paginas_home_path, class: "glyphicon glyphicon-home" %></li>

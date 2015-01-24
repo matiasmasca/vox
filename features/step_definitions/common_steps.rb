@@ -1,34 +1,33 @@
 # encoding: utf-8
 Dado(/^existe un premio llamado "(.*?)" que se realizara en "(.*?)"$/) do |name_process, place|
   step %{existe una Organización: "ComunidadTIC", "Internet, La Plata, Buenos Aires, Argentina", "" y "contacto@comunidadtic.com.ar"} if @organizer == nil
-    
-    unless @organizer.nil?
-      organizer_id = @organizer.id.to_i
-    else
-      organizer_id = 1
+    if @organizer.nil?
+        organizer_id = 1
+      else
+        organizer_id = @organizer.id.to_i    
     end
 
-  @selection_process = SelectionProcess.create!({ 
-  	:name_process => name_process, 
-  	:place => place,
-  	:duration => 30,
-  	:start_date => '2014-07-01',
-  	:end_date => '2014-09-01',
-    :process_type_id => '1',
-    :state => 'nuevo',
-    :organizer_id => organizer_id
-  	})
+   @selection_process = SelectionProcess.create!( { 
+    	:name_process => name_process, 
+    	:place => place,
+    	:duration => 30,
+    	:start_date => '2014-07-01',
+    	:end_date => '2014-09-01',
+      :process_type_id => '1',
+      :state => 'nuevo',
+      :organizer_id => organizer_id
+  	} )
 end
 
 Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |name_entity, address, web, email|
-  @organizer = Organizer.create!({ 
-    :name => name_entity, 
-    :address => address,
-    :web => web,
-    :email => email,
-    :logo => nil,
-    :user_id => 1
-    })
+  @organizer = Organizer.create!( { 
+      :name => name_entity, 
+      :address => address,
+      :web => web,
+      :email => email,
+      :logo => nil,
+      :user_id => 1
+    } )
 end
 
 Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)" asociada al usuario "(.*?)".$/) do |name_entity, address, web, email, usuario|
@@ -39,25 +38,25 @@ Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)" asociada al
       user_id = 1
     end
 
-    @organizer = Organizer.create!({ 
-    :name => name_entity, 
-    :address => address,
-    :web => web,
-    :email => email,
-    :logo => nil,
-    :user_id => user_id
-    })
+    @organizer = Organizer.create!( { 
+      :name => name_entity, 
+      :address => address,
+      :web => web,
+      :email => email,
+      :logo => nil,
+      :user_id => user_id
+    } )
 end
 
 
 Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, email, clave, tipo|
-    @user = User.create!({ 
+    @user = User.create!( { 
     :usuario => usuario, 
     :email => email,
     :password => clave,
     :password_confirmation => clave,
     :tipo_usuario_id => tipo
-    })
+    } )
 
   #Para Devise podes probar con:
   #email = 'testing@man.net'
@@ -66,8 +65,8 @@ Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, em
 end
 
 Dado(/^existen (\d+) usuarios A y B$/) do |cantidad|
-  @usuarioA = User.create!({"usuario" => "usuario01","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioA.com", "password" => "clave12345", :password_confirmation => "clave12345", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
-  @usuarioB = User.create!({"usuario" => "usuario02","nombre" => "nombre","apellido" => "apellido", "email" => "email@usuarioB.com", "password" => "clave12345", :password_confirmation => "clave12345", "facebook" => "facebook", "twitter" => "twitter", "tipo_usuario_id" => 3 })
+  @usuarioA = User.create!( { "usuario" => "usuario01" , "nombre" => "nombre" , "apellido" => "apellido" , "email" => "email@usuarioA.com" , "password" => "clave12345" , :password_confirmation => "clave12345" , "facebook" => "facebook" , "twitter" => "twitter" , "tipo_usuario_id" => 3 } )
+  @usuarioB = User.create!( { "usuario" => "usuario02" , "nombre" => "nombre" , "apellido" => "apellido" , "email" => "email@usuarioB.com" , "password" => "clave12345" , :password_confirmation => "clave12345" , "facebook" => "facebook" , "twitter" => "twitter" , "tipo_usuario_id" => 3 } )
 end
 
 Dado(/^existe una Organización llamada "(.*?)" con domicilio en "(.*?)" y email "(.*?)"$/) do |name, address, email|
@@ -106,34 +105,34 @@ end
 
 Dado(/^que estoy en la pantalla de "(.*?)"$/) do |pantalla|
     case pantalla
-    when "administración de Usuarios"
-      visit("/users")
-    when "Administración de Organizaciones"
-      visit("/organizers")
-    when "administración de procesos"
-      visit("/selection_processes")
-    when "administración de Categorías"
-      visit("/categories")
-    when "administración de Candidatos"
-      visit("/candidates")
-    when "Modificar Organización"
-      visit("/paginas/user_dashboard")
-    when "dashboard usuario"
+    when 'administración de Usuarios'
+      visit('/users')
+    when 'Administración de Organizaciones'
+      visit('/organizers')
+    when 'administración de procesos'
+      visit('/selection_processes')
+    when 'administración de Categorías'
+      visit('/categories')
+    when 'administración de Candidatos'
+      visit('/candidates')
+    when 'Modificar Organización'
+      visit('/paginas/user_dashboard')
+    when 'dashboard usuario'
       #Ojo User y SelecctionProcess tiene que estar definido.
       #puts(@user.inspect)
       visit("/paginas/user_dashboard/#{@user.id}")
-    when "Mis procesos"
+    when 'Mis procesos'
       visit("/organizers/#{@user.id}/selection_processes")
-    when "Modificar Proceso"
+    when 'Modificar Proceso'
       visit("/organizers/#{@user.id}/selection_processes")  
       #save_and_open_page
-    when "Modificar Mi Proceso"
+    when 'Modificar Mi Proceso'
       visit("/organizers/#{@user.id}/selection_processes/#{@selection_process.id}")  
       #save_and_open_page
-    when "Ingreso"
+    when 'Ingreso'
       visit(user_session_path)
     else
-      visit("/¿A donde queres ir?")
+      visit('/¿A donde queres ir?')
     end
 #Esto se puede refactorizar en el archivo: support/paths.rb
 #when /la pagina de logueo/

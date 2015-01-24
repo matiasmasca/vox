@@ -14,20 +14,20 @@
 
 <body>
   <div class="navbar navbar-inverse" role="navigation">
-	 <div class="container">
-	  <div class="navbar-header navbar-left">
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	      <span class="sr-only">Toggle navigation</span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </button>
-	    <a class="navbar-brand" href="<%= paginas_home_path %>">VOX:  <small>CMS para Procesos de Selección</small></a>
-	  </div>
-	  <div class="navbar-collapse collapse">
-	    <ul class="nav navbar-nav navbar-left">
+   <div class="container">
+    <div class="navbar-header navbar-left">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= paginas_home_path %>">VOX:  <small>CMS para Procesos de Selección</small></a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-left">
           <%= render partial: "layouts/navbar_items" %>
-	    </ul>
+      </ul>
       
       <!--/Login -->
       <% if user_signed_in? %>
@@ -40,8 +40,8 @@
       <% end %>
       <!--/login -->
 
-	  </div><!--/.nav-collapse -->
-	 </div><!-- /.container -->
+    </div><!--/.nav-collapse -->
+   </div><!-- /.container -->
   </div><!-- /.navbar -->
 
   <div class="container-fluid">
