@@ -1,8 +1,8 @@
 # encoding: utf-8
 class OrganizersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_organizer, only: [:index, :show, :edit, :update, :destroy]
-  before_action :check_property, only: [:index, :edit, :update, :destroy]
+  before_action :set_organizer , only: [ :index , :show , :edit , :update , :destroy ]
+  before_action :check_property , only: [ :index , :edit , :update , :destroy ]
   # GET /organizers
   # GET /organizers.json
   def index
@@ -36,7 +36,7 @@ class OrganizersController < ApplicationController
     respond_to do |format|
       if @organizer.save
         format.html { redirect_to @organizer, notice: 'Organización dada de alta correctamente.' }
-        format.json { render action: 'show', status: :created, location: @organizer }
+        format.json { render action: 'show', status: :created , location: @organizer }
       else
         format.html { render action: 'new' }
         format.json { render json: @organizer.errors, status: :unprocessable_entity }
@@ -49,11 +49,11 @@ class OrganizersController < ApplicationController
   def update
     respond_to do |format|
       if @organizer.update(organizer_params)
-        format.html { redirect_to @organizer, notice: 'Organización actualizada correctamente.' }
+        format.html { redirect_to @organizer , notice: 'Organización actualizada correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @organizer.errors, status: :unprocessable_entity }
+        format.json { render json: @organizer.errors , status: :unprocessable_entity }
       end
     end
   end
@@ -64,8 +64,8 @@ class OrganizersController < ApplicationController
     user_session[:organizer_id] = nil
     @organizer.destroy
     respond_to do |format|
-      format.html { redirect_to :back, status: 303, notice: 'Organización borrada correctamente.' }
-      #format.html { redirect_to organizers_url, notice: 'Organización borrada correctamente.' }
+      format.html { redirect_to :back , status: 303 , notice: 'Organización borrada correctamente.' }
+      # format.html { redirect_to organizers_url, notice: 'Organización borrada correctamente.' }
       format.json { head :no_content }
     end
   end
@@ -87,7 +87,7 @@ class OrganizersController < ApplicationController
         @organizer = current_user.organizer
         @user = current_user
       else
-        #@organizer = nil
+        # @organizer = nil
       end
 
     end
@@ -97,7 +97,7 @@ class OrganizersController < ApplicationController
       params.require(:organizer).permit(:name, :address, :web, :email, :image, :user, :user_id)
     end
 
-    #Filtro de Propiedad.
+    # Filtro de Propiedad.
     # Un usuario solo puede modificar operar con las Organizaciones que haya creado.
     def check_property
       return true if @current_user.is_admin?
@@ -108,26 +108,26 @@ class OrganizersController < ApplicationController
           else
             @user =  @current_user
           end
-        #respond_to do |format|
-          #format.html do
+        # respond_to do |format|
+          # format.html do
             unless @user.organizer.id == @organizer.id
               security_exit
-              #redirect_to(root_path(@user, @user.organizer), alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+              # redirect_to(root_path(@user, @user.organizer), alert: 'Solo puedes operar sobre la organización que tu hayas creado.')
               return
             end
-          #end
-       #end
+          # end
+       # end
      end
 
       if @organizer && !@current_user.is_admin?
         if @organizer.user != @current_user && !@current_user.is_admin?
           security_exit
-          #redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+          # redirect_to(root_path, alert: 'Solo puedes operar sobre la organización que tu hayas creado.')
           return
         end
       else
         security_exit
-        #redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+        # redirect_to(root_path, alert: 'Solo puedes operar sobre la organización que tu hayas creado.')
          return
       end
     end
@@ -136,10 +136,9 @@ class OrganizersController < ApplicationController
         respond_to do |format|
         format.html do
            user_session[:organizer_id] =  nil
-           redirect_to(root_path, alert: "Solo puedes operar sobre la organización que tu hayas creado.")
+           redirect_to(root_path, alert: 'Solo puedes operar sobre la organización que tu hayas creado.')
            return false
         end
       end
     end
-
 end

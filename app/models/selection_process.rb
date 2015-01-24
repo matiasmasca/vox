@@ -6,23 +6,23 @@
 # abrir_elecciones y cerrar_elecciones : para cambiar el estado a abierto o cerrado, y permitir que se pueda votar.
 class SelectionProcess < ActiveRecord::Base
     # Asociaciones
-    belongs_to :organizer, autosave: true
-    has_many :category, autosave: true
-    has_many :voter_list, autosave: true
-    has_many :users, through: :voter_list
-    has_many :ballot, through: :ballot
+    belongs_to :organizer , autosave: true
+    has_many :category , autosave: true
+    has_many :voter_list , autosave: true
+    has_many :users , through: :voter_list
+    has_many :ballot , through: :ballot
 
     # datos obligatorios
-    validates :name_process, :place, presence: { message: "es un dato obligatorio." }
-    validates :organizer_id, presence: { message: "es un dato obligatorio." }
+    validates :name_process , :place , presence: { message: "es un dato obligatorio." }
+    validates :organizer_id , presence: { message: "es un dato obligatorio." }
     # longitud de datos
-    validates :name_process, length: { in: 8..250, message: "debe ser entre 8 y 250 caracteres" }
-    validates :place, length: { in: 8..250, message: "debe ser entre 8 y 250 caracteres" }, :allow_blank => true
+    validates :name_process , length: { in: 8..250 , message: "debe ser entre 8 y 250 caracteres" }
+    validates :place , length: { in: 8..250 , message: "debe ser entre 8 y 250 caracteres" } , :allow_blank => true
 
-    validates :duration, inclusion: { in: 1..365, message: "%{value} debe ser entre 1 y 365" }, :allow_blank => true, numericality: { only_integer: true }
+    validates :duration , inclusion: { in: 1..365 , message: "%{value} debe ser entre 1 y 365" } , :allow_blank => true , numericality: { only_integer: true }
 
     # datos unicos.
-    validates :name_process, uniqueness: { message: "ya está siendo utilizado.", :case_sensitive => false }
+    validates :name_process , uniqueness: { message: "ya está siendo utilizado.", :case_sensitive => false }
 
     def type
         case self.process_type_id
@@ -60,10 +60,10 @@ class SelectionProcess < ActiveRecord::Base
     end
 
     def abrir_elecciones
-        self.state = "abierto"
+        self.state = 'abierto'
     end
 
     def cerrar_elecciones
-        self.state = "cerrado"
+        self.state = 'cerrado'
     end
 end

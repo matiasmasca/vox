@@ -1,8 +1,8 @@
 # encoding: utf-8
 class SelectionProcessesController < ApplicationController
-  before_action :authenticate_user!, except:[:show]
-  before_action :check_property, only: [:index, :edit, :update, :destroy]
-  before_action :set_selection_process, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user! , except:[:show]
+  before_action :check_property , only: [ :index , :edit , :update , :destroy ]
+  before_action :set_selection_process , only: [ :show , :edit , :update , :destroy ]
 
   # GET /selection_process
   # GET /selection_process.json
@@ -23,7 +23,7 @@ class SelectionProcessesController < ApplicationController
           else
             if @current_user.organizer.id.to_i == params[:organizer_id].to_i
               @organizer = Organizer.find_by_id(params[:organizer_id])
-              #@organizer = Organizer.find_by_id(@current_user.organizer.id)
+              # @organizer = Organizer.find_by_id(@current_user.organizer.id)
               @selection_processes = @organizer.selection_process
             end
           end
@@ -38,7 +38,7 @@ class SelectionProcessesController < ApplicationController
 
   # GET /selection_process/new
   def new
-    #user_session[:selection_processes_id] = nil
+    # user_session[:selection_processes_id] = nil
     set_organizer if @organizer.nil?
     @selection_process = SelectionProcess.new
     user_session[:selection_process_id] = @selection_process.id
@@ -47,9 +47,9 @@ class SelectionProcessesController < ApplicationController
   # GET /selection_process/1/edit
   # GET /organizers/1/selection_processes/1/edit
   def edit
-    #Para abrir o cerrar las votaciones por enlace
-    @selection_process.abrir_elecciones if params[:cambiar_estado] == "abrir"
-    @selection_process.cerrar_elecciones if params[:cambiar_estado] == "cerrar"
+    # Para abrir o cerrar las votaciones por enlace
+    @selection_process.abrir_elecciones if params[:cambiar_estado] == 'abrir'
+    @selection_process.cerrar_elecciones if params[:cambiar_estado] == 'cerrar'
   end
 
   # POST /selection_process
@@ -94,7 +94,7 @@ class SelectionProcessesController < ApplicationController
     @selection_process.destroy
     respond_to do |format|
       format.html { redirect_to :back, status: 303, notice: 'Proceso borrado correctamente.' }
-      #format.html { redirect_to selection_processes_url, notice: 'Proceso borrado correctamente.' }
+      # format.html { redirect_to selection_processes_url, notice: 'Proceso borrado correctamente.' }
       format.json { head :no_content }
     end
   end
@@ -114,7 +114,7 @@ class SelectionProcessesController < ApplicationController
           format.html do
             if @selection_process.nil?
                user_session[:selection_process_id] = nil
-               redirect_to(root_path, alert: "No se encontró proceso de selección con ese ID.") and return
+               redirect_to(root_path, alert: 'No se encontró proceso de selección con ese ID.') and return
             end
           end
         end
@@ -123,7 +123,7 @@ class SelectionProcessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def selection_process_params
-      params.require(:selection_process).permit(:id, :name_process, :place, :duration, :start_date, :end_date, :process_type_id, :state, :organizer_id)
+      params.require(:selection_process).permit( :id , :name_process , :place , :duration , :start_date , :end_date , :process_type_id , :state , :organizer_id )
     end
 
     def set_organizer
@@ -139,7 +139,7 @@ class SelectionProcessesController < ApplicationController
     # Filtro.
     # para que solo pueda operar sobre sus propios procesos.
     def check_property
-      #logger.info(@current_user.is_admin?)
+      # logger.info(@current_user.is_admin?)
       return true if @current_user.is_admin?
 
       if current_user.organizer.nil?
@@ -176,11 +176,9 @@ class SelectionProcessesController < ApplicationController
         respond_to do |format|
         format.html do
            user_session[:selection_process_id] = nil
-           redirect_to(root_path, alert: "Solo puedes operar sobre los procesos que tu hayas creado.")
+           redirect_to(root_path, alert: 'Solo puedes operar sobre los procesos que tu hayas creado.')
            return false
         end
       end
     end
-
 end
-
