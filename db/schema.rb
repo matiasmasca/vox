@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20150122123308) do
     t.integer "candidate_id"
   end
 
+  add_index "candidates_categories", ["category_id"], name: "index_category_on_candidates"
+
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.string   "description"

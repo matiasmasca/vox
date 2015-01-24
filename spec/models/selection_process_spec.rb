@@ -52,21 +52,22 @@ describe SelectionProcess do
         selection_process.organizer_id.should eql(organizer.id)
     end
 
-    it 'debe quedar null cuando borran un organizer' 
+    it 'debe quedar null cuando borran un organizer' do
     #   @organizer = Organizer.new({ 'name' => 'ACME' , 'address' => 'UnaDireccionCualquiera', 'email' => 'Una@test.com', 'user_id' => 1 })
     #   @selection_process = SelectionProcess.create!({  'name_process' => 'MyString' , 'place' => 'MyString' , 'organizer_id' => organizer.id }) 
     #   selection_process_id = @selection_process.id
     #   @organizer.destroy
     #   lambda { SelectionProcess.find_by_id(selection_process_id) }.should
     #       raise_error(ActiveRecord::RecordNotFound)
+    end
 end
 
 # Cuando borran la asociacion.
-#it 'should nuke reviews when movie deleted' do
+# it 'should nuke reviews when movie deleted' do
 #   @movie = @movie.create!(...)
 #   @review = @movie.reviews.create!(...)
 #   review_id = @review.id
 #   @movie.destroy
 #   lambda { Review.find(review_id) }.should
 #       raise_error(ActiveRecord::RecordNotFound)
-#end
+# end
