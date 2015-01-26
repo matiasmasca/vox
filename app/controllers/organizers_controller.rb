@@ -70,7 +70,6 @@ class OrganizersController < ApplicationController
     end
   end
 
-
  private
     # Para evitar repetir este código en cada acción.
     def set_organizer

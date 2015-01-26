@@ -9,7 +9,8 @@ describe CandidatesController do
  
     # Crear Proceso y Category
     before :each do     
-        selection_process = SelectionProcess.create! ({ "name_process" => "MyString" , "place" => "MyString" , "organizer_id" => "1" })
+        # comentado por CodeReview.
+        # selection_process = SelectionProcess.create! ({ "name_process" => "MyString" , "place" => "MyString" , "organizer_id" => "1" })
         category = Category.create! ({  "name" => "Mejor ACME" , "bench" => "5" , "selection_process_id" => "1" })
     end
 

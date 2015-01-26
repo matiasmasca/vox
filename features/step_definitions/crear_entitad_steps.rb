@@ -30,7 +30,7 @@ Entonces(/^me muestra la imagen recién subida$/) do
   File.exist?("#{Rails.root}/public/images/uploads/isologos/#{file}").should be_true
   
   # esta la imagen en la pagina
-  img_src="/images/uploads/isologos/#{file}"
+  img_src = "/images/uploads/isologos/#{file}"
 
   page.find('img')['src'].include?(img_src).should be_true
   # TO-Do:
@@ -46,7 +46,7 @@ Entonces(/^me muestra la imagen de logo generica$/) do
   # la pagina muestra 1 imagen. Se podria mejorar con un Scope.
   page.should have_selector(:xpath, '//img[1]') #hay 1 imagen.
   # la pagina muestra la imagen correcta.
-  img_src="/images/uploads/isologos/escudo-generico.jpg"
+  img_src = "/images/uploads/isologos/escudo-generico.jpg"
   page.find('img')['src'].include?(img_src).should be_true
 end
 

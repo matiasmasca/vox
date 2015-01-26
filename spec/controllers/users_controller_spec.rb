@@ -29,7 +29,7 @@ describe UsersController do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # UsersController. Be sure to keep this updated too.
-  let(:valid_session) { {"warden.user.user.key" => session["warden.user.user.key"]} }
+  let(:valid_session) { { "warden.user.user.key" => session["warden.user.user.key"] } }
 
   # def login_user
   #    @request.env["devise.mapping"] = Devise.mappings[:admin]
@@ -81,18 +81,18 @@ describe UsersController do
     describe "with valid params" do
       it "creates a new User" do
         expect {
-          post :create, { :user => valid_attributes} 
+          post :create, { :user => valid_attributes } 
         }.to change(User, :count).by(1)
       end
 
       it "assigns a newly created user as @user" do
-        post :create, { :user => valid_attributes}
+        post :create, { :user => valid_attributes }
          assigns(:user).should be_a(User)
         assigns(:user).should be_persisted
       end
 
       it "redirects to the created user" do
-        post :create, { :user => valid_attributes}
+        post :create, { :user => valid_attributes }
          response.should redirect_to(User.last)
       end
     end
@@ -128,13 +128,13 @@ describe UsersController do
 
       it "assigns the requested user as @user" do
         user = User.create! valid_attributes
-          put :update, { :id => user.to_param,  :user => valid_attributes}
+          put :update, { :id => user.to_param,  :user => valid_attributes }
         assigns(:user).should eq(user)
       end
 
       it "redirects to the user" do
         user = User.create! valid_attributes
-          put :update, { :id => user.to_param,  :user => valid_attributes}
+          put :update, { :id => user.to_param,  :user => valid_attributes }
         response.should redirect_to(user)
       end
     end

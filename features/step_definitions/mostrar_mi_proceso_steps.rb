@@ -19,7 +19,6 @@ Cuando(/^B trata de ver el premio de A$/) do
     :user_id => @usuarioB.id
     })
 
-  usuario_id = @usuarioB.id
   org_id = @organizer.id
   process_id = @selection_process.id
   

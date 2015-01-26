@@ -20,7 +20,7 @@
 
 <h3>Candidatos/Postulantes:</h3>
 <div><!--Candidatos-->
-    <%= render "candidates/candidates_category", object: @category %> 
+    <%= render "candidates/candidates_category", object: @category %>
 </div>
 
 <% if current_user.is_admin? || @selection_process.is_owner?(current_user.id) %>
