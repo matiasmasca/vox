@@ -35,7 +35,7 @@ describe Category do
        category = Category.new({ 'name' => nombre , 'description' => 'Una descripción' , 'bench' => '1' , 'selection_process_id' => '1' })
        category.should_not be_valid
 
-       category = Category.new({ 'name' => 'Categoria' , 'description' => 'Una descripción' , 'bench' => bench , 'selection_process_id' => '1'})
+       category = Category.new({ 'name' => 'Categoria' , 'description' => 'Una descripción' , 'bench' => bench , 'selection_process_id' => '1' })
        category.should_not be_valid
 
        category = Category.new({ 'name' => 'Categoria' , 'description' => 'Una descripción' , 'bench' => '1' , 'selection_process_id' => proceso_id })

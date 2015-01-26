@@ -48,7 +48,6 @@ Dado(/^existe una Organización: "(.*?)", "(.*?)", "(.*?)" y "(.*?)" asociada al
     })
 end
 
-
 Dado(/^existe un Usuario: "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |usuario, email, clave, tipo|
     @user = User.create!({ 
     :usuario => usuario, 
@@ -93,7 +92,7 @@ Dado(/^que estoy en la pantalla de administración y hago click en "(.*?)"$/) do
 end
 
 Cuando(/^selecciono el link con el texto "(.*?)"$/) do |button|
-  first("", :text => button) #Esto NO hace click!
+  first("", :text => button) # Esto NO hace click!
 end
 
 Dado(/^se lee el texto "(.*?)"$/) do |texto|
@@ -157,17 +156,17 @@ end
 Dado(/^que estoy logueado como "(.*?)"$/) do |tipo_usuario|
   # 'Administrador'=> '1', 'Jurado'=> '2', 'Organizador'=> '3'
   case tipo_usuario
-    when "Organizador"
+  when "Organizador"
      step %{existe un Usuario: "ONG shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "3"}
      step %{existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com" asociada al usuario "#{@user.usuario}".}
 
-    when "Jurado"
+  when "Jurado"
      step %{existe un Usuario: "Jurado shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "2"}
     
-    when "Administrador"
+  when "Administrador"
      step %{existe un Usuario: "Admin shinjiikari", "shinji@ikari.com.ar", "neogenesis" y "1"}
 
-    else
+  else
       visit("/¿Quien sos?¡A donde queres ir!")
   end
 

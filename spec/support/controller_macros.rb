@@ -1,4 +1,6 @@
 module ControllerMacros
+# @TO-Do: refatorizar estos dos metodos en 1 solo.
+
   def login_admin
     before(:each) do
       @request.env['devise.mapping'] = Devise.mappings[:admin]

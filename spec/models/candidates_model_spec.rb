@@ -25,10 +25,10 @@ describe Candidate do
 
   describe 'longitudes maximas' do
   # s/ PO longitudes máximas
-  #- id 1 int, solo numeros. (16 digitos maximo)
-  #- name: 110 (varchar)
-  #- bios: sin limite. [En postgresql es posible no tener limites en text ]
-  #- category_id: numero 16 digitos.
+  # - id 1 int, solo numeros. (16 digitos maximo)
+  # - name: 110 (varchar)
+  # - bios: sin limite. [En postgresql es posible no tener limites en text ]
+  # - category_id: numero 16 digitos.
     it 'es invalido, si name es mayor que 110' do
       nombre = 'A' * 111
       candidate = Candidate.new({ 'name' => nombre , 'bios' => 'la bios del tipo' , 'category_id' => '1' })
@@ -50,17 +50,17 @@ describe Candidate do
 
   it 'tiene asignado una category_id' do
     category = Category.create!({ 'name' => 'La gran categoria' , 'description' => 'Una descripción' , 'bench' => '1' , 'selection_process_id' => '1' }) 
-    candidate = Candidate.new({  'name' => 'Pepe Argento' , 'bios' => 'la bios del tipo' , 'category_id' => category.id})
+    candidate = Candidate.new({  'name' => 'Pepe Argento' , 'bios' => 'la bios del tipo' , 'category_id' => category.id })
     category.should have_many(:candidate)
     candidate.should belong_to(:category)
-    #candidate.should have_and_belong_to_many(:categories)
+    # candidate.should have_and_belong_to_many(:categories)
     # esto se hace distinto porque es una colección.
   end
   
-  #@to-do
+  # @to-do
   it 'Guarda el archivo que recibe' 
-    #Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
-      # describe 'POST create con foto' do
+    # Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
+    # describe 'POST create con foto' do
     #    before :each do
     #      @file = fixture_file_upload('images/uploads/isologos/no-borrar.jpg', 'image/jpg')
     #    end
@@ -68,7 +68,7 @@ describe Candidate do
     #      ...
     #      response.should be_success
     #    end
-    #end
+    # end
 
   # it 'nueva imagen tiene extensión distinta'
     # si la foto tiene una extensión distinta, entonces hay que borrar la que tiene la vieja extensión, porque en este caso no pisa el archivo . 

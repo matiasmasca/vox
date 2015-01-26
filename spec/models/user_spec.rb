@@ -120,7 +120,7 @@ describe User do
     it 'puede estar asociado a una Organización para editar procesos' do
         user = User.create!({ 'usuario' => 'MyString' , 'nombre' => 'MyString' , 'apellido' => 'MyString' , 'email' => 'MyString@MyString.com', 'password' => 'MipasswordEs123' , 'facebook' => 'MyString' , 'twitter' => '@MyString' , 'tipo_usuario_id' => 3 }) 
         organizer = Organizer.new({ 'name' => 'ACME' , 'address' => 'UnaDireccionCualquiera', 'email' => 'Una@test.com', 'user_id' => user.id })
-        #puts(user.inspect) 
+        # puts(user.inspect) 
         user.should have_one(:organizer)
         organizer.should belong_to(:user)
     end

@@ -57,9 +57,9 @@ describe Organizer do
       organizer.should belong_to(:user)
     end
 
-  #@to-do
+  # @to-do
   it 'Guarda el archivo que recibe' 
-    #Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
+  # Que al recibir el archivo, lo ponga en su lugar y demás yerbas.
   # describe 'POST create con foto' do
     #    before :each do
     #      @file = fixture_file_upload('images/uploads/isologos/no-borrar.jpg', 'image/jpg')
@@ -68,7 +68,7 @@ describe Organizer do
     #      ...
     #      response.should be_success
     #    end
-    #end
+    # end
 
   # it 'nueva imagen tiene extensión distinta'
   # si la foto tiene una extensión distinta, entonces hay que borrar la que tiene la vieja extensión, porque en este caso no pisa el archivo . 

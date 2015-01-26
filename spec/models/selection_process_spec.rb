@@ -37,7 +37,7 @@ describe SelectionProcess do
     end
 
     it 'name_process debe ser unico' do
-      name_process = SelectionProcess.create!({ 'name_process' => 'MyString' , 'place' => 'MyString' , 'organizer_id' => 1 })
+      name_process1 = SelectionProcess.create!({ 'name_process' => 'MyString' , 'place' => 'MyString' , 'organizer_id' => 1 })
       name_process = SelectionProcess.new({ 'name_process' => 'MyString' , 'place' => 'MyString' , 'organizer_id' => 1 })
       name_process.should_not be_valid
     end
@@ -46,7 +46,7 @@ describe SelectionProcess do
         user = User.create({ 'usuario' => 'MyString' , 'nombre' => 'MyString' , 'apellido' => 'MyString' , 'email' => 'MyString@MyString.com' , 'password' => 'MiClaveEs123' , 'facebook' => 'MyString' , 'twitter' => '@MyString' , 'tipo_usuario_id' => 3 })
         organizer = Organizer.create!({ 'name' => 'ACME-test' , 'address' => 'UnaDireccionCualquiera' , 'email' => 'Una@test.com' , 'user_id' => user.id })
         selection_process = SelectionProcess.create!({ 'name_process' => 'MyString' , 'place' => 'MyString' , 'organizer_id' => user.organizer.id }) 
-        #puts(selection_process.inspect) 
+        # puts(selection_process.inspect) 
         organizer.should have_many(:selection_process)
         selection_process.should belong_to(:organizer)
         selection_process.organizer_id.should eql(organizer.id)

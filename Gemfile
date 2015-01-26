@@ -35,7 +35,6 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
-
 group :assets do
   #Agrega Bootstrap-saas
   #gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2

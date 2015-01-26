@@ -97,7 +97,7 @@ describe OrganizersController do
 
       it "redirects to the organizer" do
         organizer = Organizer.create! valid_attributes
-        put :update , { :id => organizer.to_param , :organizer => valid_attributes} , valid_session
+        put :update , { :id => organizer.to_param , :organizer => valid_attributes } , valid_session
         response.should redirect_to(organizer)
       end
     end
