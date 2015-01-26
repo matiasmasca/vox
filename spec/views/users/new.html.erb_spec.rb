@@ -1,23 +1,23 @@
 require 'spec_helper'
 
-describe "users/new" do
+describe 'users/new' do
   login_admin
   
   before(:each) do
     assign(:user, stub_model(User,
-      :usuario => "MyString",
-      :nombre => "MyString",
-      :apellido => "MyString",
-      :email => "MyString",
-      :password => "MyString",
-      :password_confirmation => "MyString",
-      :facebook => "MyString",
-      :twitter => "MyString",
+      :usuario => 'MyString',
+      :nombre => 'MyString',
+      :apellido => 'MyString',
+      :email => 'MyString',
+      :password => 'MyString',
+      :password_confirmation => 'MyString',
+      :facebook => 'MyString',
+      :twitter => 'MyString',
       :tipo_usuario_id => 3
     ).as_new_record)
   end
 
-  it "renders new user form" do
+  it 'renders new user form' do
     render
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
@@ -30,7 +30,7 @@ describe "users/new" do
       assert_select "input#user_password_confirmation[name=?]", "user[password_confirmation]"
       assert_select "input#user_facebook[name=?]", "user[facebook]"
       assert_select "input#user_twitter[name=?]", "user[twitter]"
-      assert_select "select#user_tipo_usuario_id option[selected]", text: "Organizador"
+      assert_select "select#user_tipo_usuario_id option[selected]", text: 'Organizador'
     end
   end
 end

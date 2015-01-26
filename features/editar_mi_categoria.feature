@@ -10,7 +10,7 @@
 #   Y que estoy en la pantalla de "administración de Categorías"
 #   Cuando yo edito una Categoría 
 
-# #Camino feliz
+# # Camino feliz
 # Escenario: editar una Categoría
 #   Y cambio el nombre por "otra Categoría", el nro. de plazas por "5"
 #   Entonces veo que el nombre cambio y el nro. de plazas cambio.
@@ -22,7 +22,7 @@
 #   Y cambio la descripción por "Premia  a las mejores Categorías del año"
 #   Entonces veo que la descripción cambio, sin afectar al nombre de usuario o la cantidad de plazas.
 
-# #Casos extremos
+# # Casos extremos
 # Esquema del escenario: problemas con datos
 #   Y modifico de la categoría los datos "<name>", "<description>", "<bench>" y "<selection_process_id>"  
 #   Entonces me muestra el mensaje de error que "faltan o están mal esos datos"
@@ -44,7 +44,7 @@
 
 # Escenario: nombre único
 #   Dado que existe una Categoría con: "Categoría B", "Una descripción", "3", "1"
-#   #Y que existe una Categoría con: "Categoría B", "Una descripción", "3", "1"
+#   # Y que existe una Categoría con: "Categoría B", "Una descripción", "3", "1"
 #   Y que estoy en la pantalla de "administración de Categorías"
 #   Cuando yo edito la 2da. Categoría
 #   Y modifico de la categoría los datos "Categoría A", "otra descripción", "5" y "1" 

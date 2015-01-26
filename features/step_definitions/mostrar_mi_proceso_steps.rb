@@ -1,8 +1,6 @@
-#encoding: utf-8
+# encoding: utf-8
 
 Cuando(/^B trata de ver el premio de A$/) do
-#http://0.0.0.0:3000/organizers/9/selection_processes/17
-
     @organizer = Organizer.create!({ 
     :name => "Oranizacion Pepito", 
     :address => "una dirección",
@@ -21,16 +19,9 @@ Cuando(/^B trata de ver el premio de A$/) do
     :user_id => @usuarioB.id
     })
 
-  #puts(@usuarioB.id)
-  #puts(@organizer.id)
-
   usuario_id = @usuarioB.id
   org_id = @organizer.id
   process_id = @selection_process.id
   
   visit(organizer_selection_process_path(org_id, process_id))
-  # /organizers/:organizer_id/selection_processes/:id
-  #save_and_open_page
 end
-
-

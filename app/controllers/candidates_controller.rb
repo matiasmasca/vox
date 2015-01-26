@@ -50,9 +50,9 @@ class CandidatesController < ApplicationController
     respond_to do |format|
       if @candidate.save
         format.html { redirect_to @candidate , notice: 'Candidato creado correctamente.' }
-        format.json { render action: 'show', status: :created , location: @candidate }
+        format.json { render 'show', status: :created , location: @candidate }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @candidate.errors , status: :unprocessable_entity }
       end
     end
@@ -66,7 +66,7 @@ class CandidatesController < ApplicationController
         format.html { redirect_to @candidate , notice: 'Información actualizada correctamente.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @candidate.errors , status: :unprocessable_entity }
       end
     end

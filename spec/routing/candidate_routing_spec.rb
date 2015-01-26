@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe CandidatesController do
   describe 'routing' do
-
     it 'routes to #index' do
       get('/candidates').should route_to('candidates#index')
     end
@@ -30,6 +29,5 @@ describe CandidatesController do
     it 'routes to #destroy' do
       delete('/candidates/1').should route_to('candidates#destroy', :id => '1')
     end
-
   end
 end

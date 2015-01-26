@@ -11,12 +11,12 @@
 #   Dado que existe una Categoría: "Miss Simpatia del Desierto" asociado a mi proceso "Reina del Desierto".
 #   Dado que estoy en la pantalla de mis categorías
 
-# #Camino feliz
+# # Camino feliz
 # Escenario: mostrar categoría 
 #   Cuando hago click en Mostrar para categoría "Miss Simpatia del Desierto"
 #   Entonces veo toda la información de la categoría.
 
-# #Casos extremos.
+# # Casos extremos.
 # Escenario: ver la categoría de otra organización
 #   Dado existen 2 usuarios A y B
 #   Dado existe una Organización: "ACME-A", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "usuario01".
@@ -24,11 +24,8 @@
 #   Cuando B trata de ver el categoría de A
 #   Entonces me muestra el mensaje "Solo puedes operar sobre los procesos que tu hayas creado."
 
-
-
-# #@to-do
-# #El proceso no existe.
-# #por ejemplo Ingresa un ID que no existe en la url.
+# # @to-do
+# # El proceso no existe.
+# # por ejemplo Ingresa un ID que no existe en la url.
 
 # #Trata de ver detalles de un proceso que el no creo.
-

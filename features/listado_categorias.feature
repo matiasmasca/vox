@@ -3,7 +3,7 @@ Característica: listar categorías
   Con la finalidad de poder ver todas las categorías del sistema, ya sea para modificarlas, borrarlas o agregar nuevas.
   como un usuario administrador
   Quiero poder ver un listado de las categorías, junto con los links para editarlas o borrarlas.
-#Ejemplo de datos:
+# Ejemplo de datos:
 #    | Nombre         | Descripción | Nro. de Plazas | 
 #    | Mejor Actor    | prueba      | 5      | 
 #    | Mejor Director | prueba      | 5      | 
@@ -11,7 +11,7 @@ Característica: listar categorías
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 Escenario: listar una categoría
   Dado que he creado 1 categoría:
     | name         | description | bench | selection_process_id |
@@ -38,7 +38,7 @@ Escenario: tiene el mismo contenido
     | Mejor Actor    | prueba      | 5              | 
     | Mejor Director | prueba      | 5              | 
 
-#Casos Extremos.
+# Casos Extremos.
 Escenario: no tiene categorías creadas.
   Dado que no he creado ningúna categoría
   Y que estoy en la pantalla de "administración de Categorías"

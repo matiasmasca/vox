@@ -6,18 +6,18 @@ Característica: editar mi premio
 
 Antecedentes:
   Dado que estoy logueado como "Organizador"
-  #Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
-  #Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
+  # Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
+  # Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
   Dado que existe un Proceso: "Mejor batalla", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
   Y que estoy en la pantalla de "Modificar Mi Proceso"
   Cuando yo edito mi Proceso 
 
-#Camino feliz
+# Camino feliz
 Escenario: editar premio
   Dado cambio el nombre por "Premios ACME" y el lugar por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
   Entonces veo que el nombre cambio y la dirección cambio.
 
-#Casos extremos
+# Casos extremos
 Esquema del escenario: problemas con datos obligatorios
   Y cambio "<name_process>", "<place>" o "<duration>"  
   Entonces me muestra el mensaje de error que "faltan esos datos"

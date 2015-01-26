@@ -10,7 +10,7 @@ Antecedentes:
   Y que estoy en la pantalla de Administración de Organizaciones
   Cuando yo edito una Organización 
 
-#Camino feliz
+# Camino feliz
 Escenario: editar una organización 
   Y cambio el nombre por "ACME", el domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
   Entonces veo que el nombre cambio y el domicilio cambio.
@@ -22,8 +22,7 @@ Escenario: agrego dato que faltaba
   Y cambio web por "www.acme.org"
   Entonces veo que la web cambio, sin afectar a nombre o dirección.
 
-
-#Casos extremos
+# Casos extremos
 Esquema del escenario: problemas con datos obligatorios
   Y cambio "<name>", "<address>", "<web>" y "<email>"  
   Entonces me muestra el mensaje de error que "faltan esos datos"
@@ -34,7 +33,6 @@ Esquema del escenario: problemas con datos obligatorios
    | ACME |                      | www.web.com | contact@acme.org |
    | ACME | Av. Siempre Viva 742 | www.web.com |                  |
   
-
   Ejemplos: datos muy cortos
    | name | address              | web         | email            | 
    | A    | Av. Siempre Viva 742 | www.web.com | contact@acme.org |

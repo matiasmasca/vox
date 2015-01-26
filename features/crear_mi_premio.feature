@@ -9,14 +9,14 @@ Antecedentes:
   Y que estoy en la pantalla de "dashboard usuario" 
   Y presiono el botón "Nuevo proceso de selección" 
 
-#Camino feliz
+# Camino feliz
 Escenario: crear premio
   Y completo los datos del premio
   Cuando presiono el botón "Guardar cambios"
   Entonces se crea el premio y me muestra el mensaje "Premio creado correctamente"
   Y el premio pertenece a la organización del usuario
 
-#Casos extremos.
+# Casos extremos.
 Esquema del escenario: faltan datos
   # s/ PO obligatorios son: nombre, lugar
   Y completo los datos del proceso con "<name_process>", "<place>", "<duration>"
@@ -50,7 +50,6 @@ Esquema del escenario: faltan datos
     | Premio Prueba | Av. Siempre Viva | 366      |
     | Premio Prueba | Av. Siempre Viva | 366aa    |
 
-
 Escenario: nombre premio repetido.
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
@@ -65,16 +64,12 @@ Escenario: Premio repetido, case sensitive: Oscares y oscares.
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
-#Escenario: fechas seleccionadas incoherentes.
-#Escenario: tipo de evento incorrecto.
-
-
+# Escenario: fechas seleccionadas incoherentes.
+# Escenario: tipo de evento incorrecto.
 
 # Pasan para otra iteración.
-#@to-do
-#Escenario: calcula fecha cierre automaticamente
+# @TO-Do:
+# Escenario: calcula fecha cierre automaticamente
 #  Dado que selecciono "2014/08/13" en Fecha Inicio
 #  Y la duración es de "30" días.
 #  Entonces me sugiere la fecha de cierre, autocompletando "12/09/2014" en Fecha Cierre
-
-

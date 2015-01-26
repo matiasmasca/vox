@@ -10,7 +10,7 @@ Antecedentes:
   Y que estoy en la pantalla de "Modificar Organización"
   Cuando yo edito mi Organización 
 
-#Camino feliz
+# Camino feliz
 Escenario: editar una organización 
   Y cambio el nombre por "ACME", el domicilio por "6925 Hollywood Blvd, Hollywood, CA 90028, Estados Unidos"
   Entonces veo que el nombre de mi organización cambio y el domicilio cambio.
@@ -25,8 +25,7 @@ Escenario: agrego foto que faltaba
   Entonces me muestra el mensaje "Organización actualizada correctamente."
   Y me muestra la imagen recién subida
 
-
-#Casos extremos
+# Casos extremos
 Esquema del escenario: problemas con datos obligatorios
   Y cambio "<name>", "<address>", "<web>" y "<email>"  
   Entonces me muestra el mensaje de error que "faltan esos datos"
@@ -64,7 +63,6 @@ Escenario: modificar la organizacion de otro usuario
   Cuando A trata de modificar la organizacion de B
   Entonces me muestra el mensaje "Solo puedes operar sobre la organización que tu hayas creado."
 
-
 @to-do
 Escenario: cambiar la imagen
 #  Dado que ya tiene una imagen
@@ -73,6 +71,3 @@ Escenario: cambiar la imagen
 #  Y sube actualiza a la nueva
 
 # si la foto tiene una extensión distinta, entonces hay que borrar la que tiene la vieja extensión, porque no la pisa.
-
-
-

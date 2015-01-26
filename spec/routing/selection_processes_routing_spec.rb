@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe SelectionProcessesController do
   describe 'routing' do
-
     it 'routes to #index' do
       get('/selection_processes').should route_to('selection_processes#index')
     end
@@ -30,6 +29,5 @@ describe SelectionProcessesController do
     it 'routes to #destroy' do
       delete('/selection_processes/1').should route_to('selection_processes#destroy', :id => '1')
     end
-
   end
 end

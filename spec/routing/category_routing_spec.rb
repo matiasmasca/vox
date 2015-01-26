@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe CategoriesController do
   describe 'routing' do
-
     it 'routes to #index' do
       get('/categories').should route_to('categories#index')
     end
@@ -30,6 +29,5 @@ describe CategoriesController do
     it 'routes to #destroy' do
       delete('/categories/1').should route_to('categories#destroy', :id => '1')
     end
-
   end
 end

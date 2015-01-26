@@ -36,9 +36,9 @@ class OrganizersController < ApplicationController
     respond_to do |format|
       if @organizer.save
         format.html { redirect_to @organizer, notice: 'Organización dada de alta correctamente.' }
-        format.json { render action: 'show', status: :created , location: @organizer }
+        format.json { render 'show', status: :created , location: @organizer }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @organizer.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +52,7 @@ class OrganizersController < ApplicationController
         format.html { redirect_to @organizer , notice: 'Organización actualizada correctamente.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @organizer.errors , status: :unprocessable_entity }
       end
     end

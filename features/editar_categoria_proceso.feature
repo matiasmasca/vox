@@ -11,7 +11,7 @@ Antecedentes:
   Y que estoy en la pantalla de "administración de Categorías"
   Cuando yo edito una Categoría 
 
-#Camino feliz
+# Camino feliz
 Escenario: editar una Categoría
   Y cambio el nombre por "otra Categoría", el nro. de plazas por "5"
   Entonces veo que el nombre cambio y el nro. de plazas cambio.
@@ -23,7 +23,7 @@ Escenario: agrego dato que faltaba
   Y cambio la descripción por "Premia  a las mejores Categorías del año"
   Entonces veo que la descripción cambio, sin afectar al nombre de usuario o la cantidad de plazas.
 
-#Casos extremos
+# Casos extremos
 Esquema del escenario: problemas con datos
   Y modifico de la categoría los datos "<name>", "<description>", "<bench>" y "<selection_process_id>"  
   Entonces me muestra el mensaje de error que "faltan o estan mal esos datos"

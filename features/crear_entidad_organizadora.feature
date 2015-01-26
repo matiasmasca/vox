@@ -10,7 +10,7 @@ Antecedentes:
   Y que presione el botón "Crear nueva Organización"  
   Y completo los datos de la organización con "Nombre A", "Dirección", "Sitio Web" y "contacto@email.com"
 
-#Camino feliz
+# Camino feliz
 Escenario: crear organización
   Cuando presiono el botón "Guardar cambios"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
@@ -23,9 +23,9 @@ Escenario: crear organización con foto
   Y me muestra los datos recien creados  
   Y me muestra la imagen recién subida
 
-#Casos Extremos.
+# Casos Extremos.
 Esquema del escenario: problemas con datos obligatorios
-  #Cuales son obligatorios? el PO, dijo que son: Nombre, Dirección y email. 
+  # Cuales son obligatorios? el PO, dijo que son: Nombre, Dirección y email. 
   Y completo los datos de la organización con "<name>", "<address>", "<web>" y "<email>"  
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "faltan esos datos"
@@ -51,7 +51,7 @@ Esquema del escenario: problemas con datos obligatorios
    | AC   | Av. Siempre Viva 742 | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | contact@g.ws          |
    | AC   | Av. Siempre Viva 742 | www.web.com | 251CARACTERESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA          |
  
-#Cuales son los tamaños minimos y maximos? el PO, dijo que:
+# Cuales son los tamaños minimos y maximos? el PO, dijo que:
 #   Nombre: mínimo 2, máximo 250. 
 #   8 minimo y 250 máximo, address y email. 
 #   Web:
@@ -61,7 +61,7 @@ Esquema del escenario: problemas con datos obligatorios
 #     - permitir dejar en blanco
 
 Escenario: si no hay foto
-  #PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
+  # PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
   Y completo los datos de la organización con "Nombre B", "Dirección", "Sitio Web" y "contacto@email.com"
   Cuando presiono el botón "Guardar cambios"
   Entonces se crea la organización y me muestra el mensaje "Organización dada de alta correctamente."
@@ -77,10 +77,10 @@ Escenario: nombre de organización unico.
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
 
-
 @to-do
 Escenario: archivo de foto incorrecto
+# @TO-Do:
 # Que archivo se permitirá? jpg, png
-#muy grande, muy chico.
-#no es una foto.
-#no tiene adentro una foto, por más que tiene extensión jpg, png.
+# muy grande, muy chico.
+# no es una foto.
+# no tiene adentro una foto, por más que tiene extensión jpg, png.

@@ -5,11 +5,9 @@ end
 
 Dado(/^completo mi email y contraseña$/) do
   visit '/users/sign_out'
-  #step %{tengo mi usuario registrado}
-  #visit user_session_path
   visit '/users/sign_in'
-  #Esto es para evitar el Ambiguous match
+  # Esto es para evitar el Ambiguous match
   fill_in("Correo electrónico", with: "shinji@ikari.com.ar", :match => :prefer_exact)
   fill_in("Clave", with: "neogenesis", :match => :prefer_exact)
-  #save_and_open_page
+  # save_and_open_page
 end

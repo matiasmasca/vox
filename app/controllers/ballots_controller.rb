@@ -31,7 +31,7 @@ class BallotsController < ApplicationController
     respond_to do |format|
       if @ballot.save
         format.html { redirect_to :back , notice: 'Voto registrado correctamente.' }
-        format.json { render action: 'show' , status: :created , location: @ballot }
+        format.json { render 'show' , status: :created , location: @ballot }
       else
         format.json { render json: @ballot.errors , status: :unprocessable_entity }
       end
