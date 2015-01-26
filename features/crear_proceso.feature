@@ -9,7 +9,7 @@ Antecedentes:
   Y que estoy en la pantalla de "administración de procesos"
   Y presiono el botón "Nuevo proceso de selección"
 
-#Camino feliz
+# Camino feliz
 Escenario: crear premio
   Dado existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com"
   Y escribo "Premios ACME" en Nombre
@@ -22,7 +22,7 @@ Escenario: crear premio
   Cuando presiono el botón "Guardar cambios"
   Entonces se crea el premio y me muestra el mensaje "Premio creado correctamente"
 
-#Casos extremos
+# Casos extremos
 Escenario: se olvido un dato
   Y dejo en blanco Nombre
   Y dejo en blanco Lugar
@@ -41,7 +41,6 @@ Escenario: muchos dias, más de 366.
   Y escribo "366" en Duracion
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "son muchos dias"
-
 
 Escenario: dias es solo numeros
   Y escribo "Premios ACME" en Nombre
@@ -64,12 +63,12 @@ Escenario: Premio repetido, Oscar y oscar.
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
-#@to-do
-#Escenario: agregar imagen que faltaba
+# @to-do
+# Escenario: agregar imagen que faltaba
 
 # Pasan para otra iteración.
-#@to-do
-#Escenario: calcula fecha cierre automaticamente
+# @to-do
+# Escenario: calcula fecha cierre automaticamente
 #  Dado que selecciono "2014/08/13" en Fecha Inicio
 #  Y la duración es de "30" días.
 #  Entonces me sugiere la fecha de cierre, autocompletando "12/09/2014" en Fecha Cierre
@@ -77,11 +76,11 @@ Escenario: Premio repetido, Oscar y oscar.
 # Escenario:
 # Organizador: entidad a la que pertenece el usuario. El premio debe estar asociado a la Organización a la que pertenece el usuario.
 
-#-- Sobre este archivo.--
-#Esta fue mi Primera experiencia de llevar a la practica lo estudiado sobre Cucumber y BDD sobre un caso real e independiente a los estudiadios. Son muchas las mejoras que se pueden hacer a los mismos, sobre todo DRY.
+# -- Sobre este archivo.--
+# Esta fue mi Primera experiencia de llevar a la practica lo estudiado sobre Cucumber y BDD sobre un caso real e independiente a los estudiadios. Son muchas las mejoras que se pueden hacer a los mismos, sobre todo DRY.
 
-#Se modifico un poco al integrar Devise. Agregando el antecendete para quitar algunos duplicados:
-#Antecedentes:
+# Se modifico un poco al integrar Devise. Agregando el antecendete para quitar algunos duplicados:
+# Antecedentes:
 #  Dado que estoy logueado como "Administrador"
 #  Y que estoy en la pantalla de "administración de procesos"
 #  Y presiono el botón "Nuevo proceso de selección"

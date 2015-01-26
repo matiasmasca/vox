@@ -7,7 +7,7 @@ Característica: borrar una categoría
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 # Borrar desde listado
 Escenario: borrar categoría
   Dado existe una categoría llamada "Mejor director"

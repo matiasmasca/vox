@@ -10,7 +10,7 @@ Antecedentes:
   Y que estoy en la pantalla de "administración de Usuarios"
   Cuando yo edito un Usuario 
 
-#Camino feliz
+# Camino feliz
 Escenario: editar un Usuario 
   Y cambio el nombre por "moniargento", el correo electrónico por "moni@argentos.com.ar"
   Entonces veo que el nombre cambio y el correo electrónico cambio.
@@ -22,38 +22,38 @@ Escenario: agrego dato que faltaba
   Y cambio el nombre por "Monica" y el apellido por "de Argento"
   Entonces veo que el nombre y apellido cambio, sin afectar a nombre de usuario o el correo electrónico.
 
-#Casos extremos
+# Casos extremos
 Esquema del escenario: problemas con datos obligatorios
   Y modifico "<usuario>", "<email>", "<password>" y "<tipo>"  
   Entonces me muestra el mensaje de error que "faltan o estan mal esos datos"
 
   Ejemplos: faltan datos obligatorios
-   | usuario 	   | email               | password   | tipo        | 
-   |         	   | pepe@argento.com.ar | clave12345 | Organizador |
+   | usuario     | email               | password   | tipo        | 
+   |             | pepe@argento.com.ar | clave12345 | Organizador |
    | pepeargento |                     | clave12345 | Organizador |
   
   Ejemplos: datos obligatorios muy cortos
-   | usuario 	   | email               | password   | tipo        | 
+   | usuario     | email               | password   | tipo        | 
    | pepearg     | pepe@argento.com.ar | clave12345 | Organizador | 
    | pepeargento | @g.ws               | clave12345 | Organizador |
    | pepeargento | pepe@argento.com.ar | 1234567    | Organizador |
 
-#Cuales son las longitudes minimas y maximas? el PO, dijo que:
-#- usuario: 8 chr ~ 110
-#- nombre: 2 chr ~ 110, allow blank
-#- apellido: 2 chr ~ 110, allow blank
-#- email: 6 chr ~ 110
-#- clave: 9 chr ~ 110
-#- facebook: 2 chr ~ 110, allow blank
-#- twitter: 2 chr ~ 15, allow blank (incluido el arroba)
-#- tipo_usuario_id: 1 (por ahora solo habrá 3 tipos de usuarios: 1,2,3)
+# Cuales son las longitudes minimas y maximas? el PO, dijo que:
+# - usuario: 8 chr ~ 110
+# - nombre: 2 chr ~ 110, allow blank
+# - apellido: 2 chr ~ 110, allow blank
+# - email: 6 chr ~ 110
+# - clave: 9 chr ~ 110
+# - facebook: 2 chr ~ 110, allow blank
+# - twitter: 2 chr ~ 15, allow blank (incluido el arroba)
+# - tipo_usuario_id: 1 (por ahora solo habrá 3 tipos de usuarios: 1,2,3)
 
 Esquema del escenario: problemas con datos no-obligatorios
   Y modifico datos "<nombre>", "<apellido>", "<facebook>" y "<twitter>"  
   Entonces me muestra el mensaje de error que "estan mal esos datos"
 
   Ejemplos: datos muy cortos
-   | nombre | apellido | facebook   						   | twitter | 
+   | nombre | apellido | facebook                  | twitter | 
    | p      | Argento  | https://www.facebook.com/Comunidadtic | @pepe   | 
    | pepe   | A        | https://www.facebook.com/Comunidadtic | @pepe   |
    | pepe   | Argento  | h                                     | @pepe   |
@@ -69,5 +69,5 @@ Escenario: nombre unico
   Y modifico "kakaroto", "pepe@argentos.com.ar", "sevieneeltiburon" y "Organizador" 
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado"
 
-  @to-do
-Escenario: agregar imagen que faltaba
+# @to-do
+# Escenario: agregar imagen que faltaba

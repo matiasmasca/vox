@@ -6,11 +6,11 @@ describe "selection_processes/edit" do
   
   before(:each) do
     @selection_process = assign(:selection_process, stub_model(SelectionProcess,
-      :name_process => "Premios ACME",
-      :place => "Los Angeles, CA, USA",
-      :duration => "90",
-      :organizer_id => "1",
-      :state => "nuevo"
+      :name_process => 'Premios ACME',
+      :place => 'Los Angeles, CA, USA',
+      :duration => '90',
+      :organizer_id => '1',
+      :state => 'nuevo'
     ))
   end
 
@@ -21,13 +21,9 @@ describe "selection_processes/edit" do
       assert_select "input#selection_process_name_process[name=?]", "selection_process[name_process]"
       assert_select "input#selection_process_place[name=?]", "selection_process[place]"
       assert_select "input#selection_process_duration[name=?]", "selection_process[duration]"
-      #assert_select "input#selection_process_state[name=?]", "selection_process[state]"
-      assert_select "select#selection_process_state option[selected]", text: "nuevo"
+      # assert_select "input#selection_process_state[name=?]", "selection_process[state]"
+      assert_select "select#selection_process_state option[selected]", text: 'nuevo'
       assert_select "input#selection_process_organizer_id[name=?]", "selection_process[organizer_id]"
     end
-  end
-
-  it "que se vean los Select Option" do
-    pending "controlar que se vean los select box"
   end
 end

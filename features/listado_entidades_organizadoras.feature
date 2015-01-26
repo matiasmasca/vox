@@ -7,28 +7,27 @@ Característica: listar Organizadores
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 Escenario: listar un organizaciones
   Dado que he creado 1 organización:
-   | name | address              | web			| email			   | 
+   | name | address              | web      | email        | 
    | ACME | Av. Siempre Viva 742 | www.acme.org | contact@acme.org |
   Y que estoy en la pantalla de Administración de Organizaciones
   Entonces veo una lista de las Organizaciones con 1 de ellas.
 
 Escenario: más de un proceso, mantien el contenido de cada uno
   Dado que he creado 2 organizaciones:
-   | name | address                 | web			     | email			      | 
+   | name | address                 | web          | email            | 
    | ACME | Av. Siempre Viva 742    | www.acme.org | contact@acme.org |
    | MECA | Av. Siempre Zombies 742 | www.meca.org | contact@meca.org |
   Y que estoy en la pantalla de Administración de Organizaciones
   Entonces veo una lista con exactamente la información de las 2 Organizaciones.
-   | Nombre Organización | Domicilio 			         | Sitio web 	  | Correo electrónico |  
-   | ACME 				       | Av. Siempre Viva 742    | www.acme.org | contact@acme.org 	 |
+   | Nombre Organización | Domicilio               | Sitio web    | Correo electrónico |  
+   | ACME                | Av. Siempre Viva 742    | www.acme.org | contact@acme.org   |
    | MECA                | Av. Siempre Zombies 742 | www.meca.org | contact@meca.org   |
 
-#Casos Extremos.
+# Casos Extremos.
 Escenario: no tiene procesos creados.
   Dado que no he creado ningúna Organización
   Y que estoy en la pantalla de Administración de Organizaciones
-  Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."
-
+    Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."

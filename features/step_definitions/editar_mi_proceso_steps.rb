@@ -1,12 +1,6 @@
-#encoding: utf-8
+# encoding: utf-8
 Cuando(/^yo edito mi Proceso$/) do
-  #modificar cuando este el front end de usuarios.}
-  #save_and_open_page
-  click_on("Editar")
-  #save_and_open_page
-  #first(:link, 'Modificar Proceso').click
-  
-
+  click_on("Editar") 
 end
 
 Dado(/^que existe un Proceso: "(.*?)", "(.*?)", "(.*?)" asociado a mi organizacion "(.*?)"\.$/) do |name_process, place, duration, organizer_name|
@@ -31,10 +25,8 @@ end
 
 Cuando(/^yo edito el (\d+)do\. premio$/) do |nro_proceso|
   @segundo_premio = SelectionProcess.last
-  #path = "edit_organizer_selection_process_path(#{@segundo_premio.organizer_id},#{@segundo_premio.id})"
   path = "/organizers/#{@segundo_premio.organizer_id}/selection_processes/#{@segundo_premio.id}/edit"
   visit(path)
-
 end
 
 Cuando(/^cambio, de mi proceso: "(.*?)", "(.*?)" o "(.*?)"$/) do |nombre, place, duration|
@@ -50,7 +42,6 @@ Cuando(/^cambio, de mi proceso: "(.*?)", "(.*?)" o "(.*?)"$/) do |nombre, place,
     fill_in "selection_process_duration", :with => duration
   end
 
-  #save_and_open_page
   click_on("Guardar cambios")
 end
 
@@ -73,14 +64,9 @@ Cuando(/^B trata de modificar el premio de A$/) do
     :user_id => @usuarioB.id
     })
 
-  #puts(@usuarioB.id)
-  #puts(@organizer.id)
-
   usuario_id = @usuarioB.id
   org_id = @organizer.id
   process_id = @selection_process.id
   
   visit(edit_organizer_selection_process_path(org_id, process_id))
-  #save_and_open_page
 end
-

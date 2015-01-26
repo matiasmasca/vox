@@ -7,7 +7,7 @@ Característica: listar procesos
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 Escenario: listar un proceso
   Dado que he creado 1 proceso de selección:
    | name_process   | place                                 | duration| organizer_id|
@@ -34,9 +34,8 @@ Escenario: tiene el mismo contenido
    | Premio Roberto     | Av. Siempre Viva 742                  | 90      |||||
    | Miss Galaxia       | Planeta alfacentauris Av. Galaxy 2304 | 350     |||||
 
-#Casos Extremos.
+# Casos Extremos.
 Escenario: no tiene procesos creados.
   Dado que no he creado ningún proceso de selección
   Y que estoy en la pantalla de mis procesos electorales
   Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."
-

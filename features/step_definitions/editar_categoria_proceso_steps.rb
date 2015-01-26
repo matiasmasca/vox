@@ -1,12 +1,12 @@
-#encoding: utf-8
+# encoding: utf-8
 Dado(/^que existe una Categoría con: "(.*?)", "(.*?)", "(.*?)", "(.*?)"$/) do |nombre, descripcion, plazas, proceso_id|
-    #step %{existe un premio llamado "Premios cacatua del año" que se realizara en "Av. Siempre Viva 742"}
-    #puts(@selection_process.inspect)
+    # step %{existe un premio llamado "Premios cacatua del año" que se realizara en "Av. Siempre Viva 742"}
+    # puts(@selection_process.inspect)
     @category = Category.create!({ 
     :name => nombre, 
     :description => descripcion,
     :bench => plazas,
-    :selection_process_id => @selection_process.id #Aca tendria que ir un proceso mockeado.
+    :selection_process_id => @selection_process.id # Aca tendria que ir un proceso mockeado.
     })
 end
 
@@ -17,7 +17,7 @@ end
 Cuando(/^cambio el nombre por "(.*?)", el nro\. de plazas por "(.*?)"$/) do |nombre, plazas|
   @update_name = nombre
   @update_plazas = plazas
-  @category.update_attributes!({ :name => @update_name,:bench => @update_plazas })
+  @category.update_attributes!({ :name => @update_name , :bench => @update_plazas })
 
   if nombre
     fill_in "category_name", :with => nombre
@@ -32,9 +32,8 @@ end
 
 Entonces(/^veo que el nombre cambio y el nro\. de plazas cambio\.$/) do
   step %{que estoy en la pantalla de "administración de Categorías"}
-  #save_and_open_page
   find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should have_content(@update_name)
-  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should	have_content(@update_plazas)
+  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should have_content(@update_plazas)
 end
 
 Cuando(/^modifico de la categoría los datos "(.*?)", "(.*?)", "(.*?)" y "(.*?)"$/) do |nombre, descripcion, plazas, proceso_id|
@@ -57,11 +56,8 @@ Cuando(/^modifico de la categoría los datos "(.*?)", "(.*?)", "(.*?)" y "(.*?)"
   click_on("Guardar Cambios")
 end
 
-
-Cuando(/^yo edito la (\d+)da\. Categoría$/) do |arg1|
-  #save_and_open_page	
+Cuando(/^yo edito la (\d+)da\. Categoría$/) do |arg1| 
   find("table#categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6)").click_on('Editar')
-             #categories-list > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6) > a:nth-child(1)
 end
 
 Dado(/^que existe una Categoría llamada "(.*?)" con "(.*?)" plazas, sin descripción definida$/) do |nombre, plazas|
@@ -70,17 +66,12 @@ end
 
 Cuando(/^cambio la descripción por "(.*?)"$/) do |descripcion|
   @update_description = descripcion
-  @category.update_attributes!({ :description => @update_description})
+  @category.update_attributes!({ :description => @update_description })
 end
 
 Entonces(/^veo que la descripción cambio, sin afectar al nombre de usuario o la cantidad de plazas\.$/) do
   step %{que estoy en la pantalla de "administración de Categorías"}
-  #save_and_open_page
   find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should have_content(@category.name)
-  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)").should	have_content(@update_description)
+  find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)").should have_content(@update_description)
   find("table#categories-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should have_content(@category.bench)
 end
-
-
-
-

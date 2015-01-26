@@ -10,7 +10,7 @@ Antecedentes:
   Y existe un premio llamado "Premios cacatua del año" que se realizara en "Av. Siempre Viva 742"
   Y que existe una Categoría con: "Categoría A", "Una descripción", "3", "1"
 
-#Camino feliz.
+# Camino feliz.
 Escenario: crear candidatos.
   Y completo los datos del candidato con "Nombre Candidato", "la bios"
   Cuando presiono el botón "Guardar Cambios"
@@ -25,10 +25,9 @@ Escenario: crear candidatos con foto.
   Y me muestra los datos del candidato recien creado
   Y me muestra la imagen del "candidato" recién subida
 
-
-#Casos extremos.
+# Casos extremos.
 Escenario: crear candidatos sin foto
-  #PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
+  # PO: si no hay foto no tiene que mostrar una foto generica tipo silueta.
   Y completo los datos del candidato con "Nombre C", "la bios"
   Cuando presiono el botón "Guardar Cambios"
   Entonces se crea el candidato y me muestra el mensaje "Candidato creado correctamente."
@@ -43,14 +42,14 @@ Esquema del escenario: faltan datos
 
   Ejemplos: faltan datos
     | name | bios   | 
-    | 	   | prueba | 
+    |      | prueba | 
 
 # Datos cortos.
 # s/ PO longitudes mínimas
-#- id 1 int, solo numeros.
-#- nombre: 2 letras.
-#- bios: blank o 5.
-#- category_id: numero de 1 digito entero, mayor que 0.
+# - id 1 int, solo numeros.
+# - nombre: 2 letras.
+# - bios: blank o 5.
+# - category_id: numero de 1 digito entero, mayor que 0.
   Ejemplos: datos cortos
     | name | bios   | 
     | N    | prueba |
@@ -63,4 +62,3 @@ Escenario: nombre de candidatos debe ser unico para el proceso.
   Pero como ya existe un candidato con ese nombre "Nombre C"
   Cuando presiono el botón "Guardar Cambios"
   Entonces me muestra el mensaje de error que "ese nombre ya está siendo utilizado."
-

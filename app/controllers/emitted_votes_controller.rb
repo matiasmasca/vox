@@ -29,7 +29,7 @@ class EmittedVotesController < ApplicationController
     respond_to do |format|
       if @emitted_vote.save
         format.html { redirect_to @emitted_vote , notice: 'Emitted vote was successfully created.' }
-        format.json { render action: 'show' , status: :created , location: @emitted_vote }
+        format.json { render 'show' , status: :created , location: @emitted_vote }
       else
         format.json { render json: @emitted_vote.errors , status: :unprocessable_entity }
       end

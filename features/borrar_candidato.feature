@@ -7,7 +7,7 @@ Característica: borrar un candidato
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 # Borrar desde listado
 Escenario: borrar categoría
   Dado existe un candidato llamado "Pepe Argento"

@@ -85,7 +85,7 @@ describe OrganizersController do
         # specifies that the Organizer created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Organizer.any_instance.should_receive(:update).with( { "name" => "MyString" , "address" => "MyString" } )
+        Organizer.any_instance.should_receive(:update).with({ "name" => "MyString" , "address" => "MyString" })
         put :update, { :id => organizer.to_param, :organizer => { "name" => "MyString" , "address" => "MyString" } } , valid_session
       end
 

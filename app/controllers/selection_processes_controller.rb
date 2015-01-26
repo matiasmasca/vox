@@ -61,9 +61,9 @@ class SelectionProcessesController < ApplicationController
         user_session[:selection_process_id] = @selection_process.id unless @selection_process.nil?
         user_session[:organizer_id] = @selection_process.organizer_id
         format.html { redirect_to @selection_process, notice: 'Premio creado correctamente.' }
-        format.json { render action: 'show', status: :created, location: @selection_process }
+        format.json { render 'show', status: :created, location: @selection_process }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         user_session[:selection_processes_id] = nil
         user_session[:organizer_id] = nil
         format.json { render json: @selection_process.errors, status: :unprocessable_entity }
@@ -81,7 +81,7 @@ class SelectionProcessesController < ApplicationController
         format.html { redirect_to @selection_process, notice: 'Proceso actualizado correctamente.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @selection_process.errors, status: :unprocessable_entity }
       end
     end

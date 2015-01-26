@@ -1,7 +1,5 @@
-#encoding: utf-8
+# encoding: utf-8
 Cuando(/^yo edito mi Organización$/) do
-  #modificar cuando este el front end de usuarios.}
-  #save_and_open_page
   click_on("Modificar mi Organización")
 end
 
@@ -24,21 +22,15 @@ Cuando(/^A trata de modificar la organizacion de B$/) do
     :user_id => @usuarioB.id
     })
 
-  #puts(@usuarioB.id)
-  #puts(@organizer.id)
-
   usuario_id = @usuarioB.id
   org_id = @organizer.id
   
   visit(edit_user_organizer_path(usuario_id , org_id))
-  #visit("/users/#{usuario_id}/organizers/#{org_id}/edit")
-  #save_and_open_page
 end
 
 Entonces(/^veo que el nombre de mi organización cambio y el domicilio cambio\.$/) do
  click_on("Guardar cambios")
  step %{veo el mensaje "Organización actualizada correctamente."}
- #save_and_open_page
  find("div.col-xs-12:nth-child(3) > p:nth-child(2)").should have_content("Nombre de la Organización: #{@update_name}")
  find("div.col-xs-12:nth-child(3) > p:nth-child(3)").should have_content("Lugar: #{@update_address}")
 
@@ -47,6 +39,5 @@ end
 Entonces(/^veo que mi sitio web cambio, sin afectar a nombre o dirección\.$/) do
  click_on("Guardar cambios")
  step %{veo el mensaje "Organización actualizada correctamente."}
- #save_and_open_page
  find("div.col-xs-12:nth-child(3) > p:nth-child(4) > a:nth-child(2)").should have_content("#{@update_web}")
 end

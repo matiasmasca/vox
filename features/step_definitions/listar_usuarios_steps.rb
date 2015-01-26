@@ -11,7 +11,7 @@ end
 Entonces(/^veo una lista con exactamente la información de los (\d+) usuarios\.$/) do |count, expected_table|
   # table is a Cucumber::Ast::Table
   
-  #Seria la tabla, pero sin la columna password.
+  # Seria la tabla, pero sin la columna password.
   rows = find("table#users-list").all('tr')
   table = rows.map { |r| r.all('th,td').map { |c| c.text.strip } }
   expected_table.diff!(table)

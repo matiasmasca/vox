@@ -1,10 +1,10 @@
 # encoding: utf-8
 Dado(/^que existe un candidato: "(.*?)", "(.*?)"\.$/) do |nombre, bios|
-  #debe existir proceso y categoria primero.
+  # debe existir proceso y categoria primero.
     @candidato = Candidate.create!({ 
     :name => nombre, 
     :bios => bios,
-    :category_id => @category.id.to_i #Aca tendria que ir una categoria mockeado.
+    :category_id => @category.id.to_i # Aca tendria que ir una categoria mockeado.
     })
 end
 
@@ -21,12 +21,11 @@ Dado(/^modifico del candidato los datos "(.*?)", "(.*?)"$/) do |nombre, bios|
   
   @update_name = nombre
   @update_bios = bios
-  @candidato.update_attributes!({:name => @update_name,:bios => @update_bios })
-  #save_and_open_page 
+  @candidato.update_attributes!({ :name => @update_name , :bios => @update_bios })
 end
 
 Dado(/^modifico del candidato: "(.*?)", "(.*?)"$/) do |nombre, bios|
-  #Esto esta como repetido, porque daba error en las validaciones, cuando le ponemos el update.
+  # Esto esta como repetido, porque daba error en las validaciones, cuando le ponemos el update.
   if nombre
     fill_in "candidate_name", :with => nombre
   end
@@ -43,14 +42,8 @@ Dado(/^cambio el nombre$/) do
 end
 
 Entonces(/^veo que el "(.*?)" cambio\.$/) do |atributo|
-  #step %{que estoy en la pantalla de "administración de Candidatos"}
-  #save_and_open_page
   find("div.col-xs-12:nth-child(3) > p:nth-child(3)").should have_content(@update_name) if atributo == "nombre"
   find("div.container:nth-child(2) > p:nth-child(3)").should have_content(@update_bios) if atributo == "bios"
-
-  #find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)").should have_content(@category.name)
-  #find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)").should have_content(@update_description)
-  #find("table#candidates-list > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(3)").should have_content(@category.bench)
 end
 
 Dado(/^que existe un candidato, sin foto\.$/) do

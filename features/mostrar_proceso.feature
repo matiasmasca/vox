@@ -7,7 +7,7 @@ Característica: mostrar información de un premio
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 Escenario: mostrar premio
   Dado existe un Usuario: "pepeargento", "pepe@argentos.com.ar", "sevieneeltiburon" y "1"
   Dado existe una Organización: "ACME-ARG", "Av. Siempre Viva 742", "ong.org.ar" y "info@email.com" asociada al usuario "pepeargento".
@@ -16,8 +16,7 @@ Escenario: mostrar premio
   Cuando hago click en Mostrar para "Premios ACME 2014"
   Entonces veo toda la información del premio.
 
-#Casos extremos.
-#@to-do
-#El proceso no existe.
-#por ejemplo Ingresa un ID que no existe en la url.
-
+# Casos extremos.
+# @to-do
+# El proceso no existe.
+# por ejemplo Ingresa un ID que no existe en la url.

@@ -7,7 +7,7 @@ Característica: editar un proceso
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 Escenario: editar premio
   Dado existe un premio llamado "Premios ACME43" que se realizara en "Av. Siempre Viva 742"
   Y que estoy en la pantalla de "administración de procesos"
@@ -22,7 +22,7 @@ Escenario: agrego dato que faltaba
   Y cambio el duracion por "30"
   Entonces veo que la duración cambio, sin afectar a nombre o lugar.
 
-#Casos extremos
+# Casos extremos
 Esquema del escenario: problemas con datos obligatorios
   Dado existe una Organización: "Nerv Corp.", "Nueva nueva tokio", "" y "eva01@nerv.com"
   Dado existe un premio llamado "Premios ACME43" que se realizara en "Av. Siempre Viva 742"
@@ -57,4 +57,4 @@ Escenario: Nombre de premio, debe ser unico.
 Escenario: cambia las fechas de inicio, cuando cambia duracción.
 # En la versión futura, debería de cambiar las fechas de inicio y cierre cuando cambia la duración.
 
-#Esto se puede refactorizar para aplicar DRY, con background.
+# Esto se puede refactorizar para aplicar DRY, con background.

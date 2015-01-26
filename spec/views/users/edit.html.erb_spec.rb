@@ -1,22 +1,22 @@
 require 'spec_helper'
 
-describe "users/edit" do
+describe 'users/edit' do
   login_admin
   
   before(:each) do
     @user = assign(:user, stub_model(User,
-      :usuario => "MyString",
-      :nombre => "MyString",
-      :apellido => "MyString",
-      :email => "MyString",
-      :current_password => "MyString",
-      :facebook => "MyString",
-      :twitter => "MyString",
+      :usuario => 'MyString',
+      :nombre => 'MyString',
+      :apellido => 'MyString',
+      :email => 'MyString',
+      :current_password => 'MyString',
+      :facebook => 'MyString',
+      :twitter => 'MyString',
       :tipo_usuario_id => 3
     ))
   end
 
-  it "renders the edit user form" do
+  it 'renders the edit user form' do
     render
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
@@ -28,7 +28,7 @@ describe "users/edit" do
       assert_select "input#user_password[name=?]", "user[password]"
       assert_select "input#user_facebook[name=?]", "user[facebook]"
       assert_select "input#user_twitter[name=?]", "user[twitter]"
-      assert_select "select#user_tipo_usuario_id option[selected]", text: "Organizador"
+      assert_select "select#user_tipo_usuario_id option[selected]", text: 'Organizador'
     end
   end
 end

@@ -34,7 +34,7 @@
 <% if @selection_process.organizer %>
       <h3>Organiza:</h3>
       <ol class="organizer">    
-         <%= render partial: "organizador"  %>
+         <%= render "organizador"  %>
       </ol>
 <% elsif current_user.is_admin?  %>
     <h3>Organiza:</h3>
@@ -45,7 +45,7 @@
 
 <hr>
 <div class="list-group"><!--Categorias-->
-    <%= render partial: "categories/menu_categorias_proceso", object: @selection_process %> 
+    <%= render "categories/menu_categorias_proceso", object: @selection_process %> 
 </div>
 
 

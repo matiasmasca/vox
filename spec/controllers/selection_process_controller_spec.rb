@@ -24,17 +24,17 @@ describe SelectionProcessesController do
   # This should return the minimal set of attributes required to create a valid
   # SelectionProcess. As you add validations to SelectionProcess, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name_process" => "MyString" , "place" => "MyString", "organizer_id" => "1"} }
+  let(:valid_attributes) { { "name_process" => "MyString" , "place" => "MyString", "organizer_id" => "1" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # SelectionProcessController. Be sure to keep this updated too.
-  let(:valid_session) { {"warden.user.user.key" => session["warden.user.user.key"]} }
+  let(:valid_session) { { "warden.user.user.key" => session["warden.user.user.key"] } }
 
   describe "GET index" do
     it "assigns all selection_processes as @selection_processes" do
       selection_processes = SelectionProcess.create! valid_attributes
-      get :index, {} #, valid_session
+      get :index, { } #, valid_session
       assigns(:selection_processes).should eq([selection_processes])
     end
   end
@@ -42,7 +42,7 @@ describe SelectionProcessesController do
   describe "GET show" do
     it "assigns the requested selection_process as @selection_process" do
       selection_process = SelectionProcess.create! valid_attributes
-      get :show, {:id => selection_process.to_param} #, valid_session
+      get :show, { :id => selection_process.to_param } #, valid_session
       assigns(:selection_process).should eq(selection_process)
     end
   end
@@ -57,7 +57,7 @@ describe SelectionProcessesController do
   describe "GET edit" do
     it "assigns the requested selection_process as @selection_process" do
       selection_process = SelectionProcess.create! valid_attributes
-      get :edit, {:id => selection_process.to_param} #, valid_session
+      get :edit, { :id => selection_process.to_param } #, valid_session
       assigns(:selection_process).should eq(selection_process)
     end
   end
@@ -66,18 +66,18 @@ describe SelectionProcessesController do
     describe "with valid params" do
       it "creates a new SelectionProcess" do
         expect {
-          post :create, {:selection_process => valid_attributes} #, valid_session
+          post :create, { :selection_process => valid_attributes } #, valid_session
         }.to change(SelectionProcess, :count).by(1)
       end
 
       it "assigns a newly created selection_process as @selection_process" do
-        post :create, {:selection_process => valid_attributes} #, valid_session
+        post :create, { :selection_process => valid_attributes } #, valid_session
         assigns(:selection_process).should be_a(SelectionProcess)
         assigns(:selection_process).should be_persisted
       end
 
       it "redirects to the created selection_process" do
-        post :create, {:selection_process => valid_attributes} #, valid_session
+        post :create, { :selection_process => valid_attributes } #, valid_session
         response.should redirect_to(SelectionProcess.last)
       end
     end
@@ -86,14 +86,14 @@ describe SelectionProcessesController do
       it "assigns a newly created but unsaved selection_process as @selection_process" do
         # Trigger the behavior that occurs when invalid params are submitted
         SelectionProcess.any_instance.stub(:save).and_return(false)
-        post :create, {:selection_process => { "name_process" => "invalid value" }} #, valid_session
+        post :create, { :selection_process => { "name_process" => "invalid value" } } #, valid_session
         assigns(:selection_process).should be_a_new(SelectionProcess)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         SelectionProcess.any_instance.stub(:save).and_return(false)
-        post :create, {:selection_process => { "name_process" => "invalid value" }} #, valid_session
+        post :create, { :selection_process => { "name_process" => "invalid value" } } #, valid_session
         response.should render_template("new")
       end
     end
@@ -108,18 +108,18 @@ describe SelectionProcessesController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         SelectionProcess.any_instance.should_receive(:update).with({ "name_process" => "MyString", "place" => "MyString" })
-        put :update, {:id => selection_process.to_param, :selection_process => { "name_process" => "MyString", "place" => "MyString" }} #, valid_session
+        put :update, { :id => selection_process.to_param, :selection_process => { "name_process" => "MyString", "place" => "MyString" } } #, valid_session
       end
 
       it "assigns the requested selection_process as @selection_process" do
         selection_process = SelectionProcess.create! valid_attributes
-        put :update, {:id => selection_process.to_param, :selection_process => valid_attributes} #, valid_session
+        put :update, { :id => selection_process.to_param, :selection_process => valid_attributes } #, valid_session
         assigns(:selection_process).should eq(selection_process)
       end
 
       it "redirects to the selection_process" do
         selection_process = SelectionProcess.create! valid_attributes
-        put :update, {:id => selection_process.to_param, :selection_process => valid_attributes} #, valid_session
+        put :update, { :id => selection_process.to_param, :selection_process => valid_attributes } #, valid_session
         response.should redirect_to(selection_process)
       end
     end
@@ -129,7 +129,7 @@ describe SelectionProcessesController do
         selection_process = SelectionProcess.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         SelectionProcess.any_instance.stub(:save).and_return(false)
-        put :update, {:id => selection_process.to_param, :selection_process => { "name_process" => "invalid value" }} #, valid_session
+        put :update, { :id => selection_process.to_param, :selection_process => { "name_process" => "invalid value" } } #, valid_session
         assigns(:selection_process).should eq(selection_process)
       end
 
@@ -137,7 +137,7 @@ describe SelectionProcessesController do
         selection_process = SelectionProcess.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         SelectionProcess.any_instance.stub(:save).and_return(false)
-        put :update, {:id => selection_process.to_param, :selection_process => { "name_process" => "invalid value" }} #, valid_session
+        put :update, { :id => selection_process.to_param, :selection_process => { "name_process" => "invalid value" } } #, valid_session
         response.should render_template("edit")
       end
     end
@@ -151,13 +151,13 @@ describe SelectionProcessesController do
     it "destroys the requested selection_process" do
       selection_process = SelectionProcess.create! valid_attributes
       expect {
-        delete :destroy, {:id => selection_process.to_param} #, valid_session
+        delete :destroy, { :id => selection_process.to_param } #, valid_session
       }.to change(SelectionProcess, :count).by(-1)
     end
 
     it "redirects to the selection_process list" do
       selection_process = SelectionProcess.create! valid_attributes
-      delete :destroy, {:id => selection_process.to_param} #, valid_session
+      delete :destroy, { :id => selection_process.to_param } #, valid_session
       response.should redirect_to(selection_processes_url)
     end
   end

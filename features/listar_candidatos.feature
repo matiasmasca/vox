@@ -3,8 +3,7 @@ Característica: listar candidatos
   Con la finalidad de poder ver todos las candidatos del sistema
   como un usuario administrador
   Quiero poder ver un listado de las candidatos, junto con los links para editarlos o borrarlos.
-#Ejemplo de datos:
-#                           
+# Ejemplo de datos:                          
 #    | Nombre         | Bios     | Url Avatar | 
 #    | Mejor Actor    | pruebas  | jpg        | 
 #    | Mejor Director | pruebas  | png        | 
@@ -12,7 +11,7 @@ Característica: listar candidatos
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 Escenario: listar una categoría
   Dado que he creado 1 candidato:
     | name         | bios                           | url_image | category_id |
@@ -39,7 +38,7 @@ Escenario: tiene el mismo contenido
     | Pepe Actor  | ganador de muchos premios    | /images/uploads/avatars/candidatos/1.jpg |   1            |
     | Caro Actriz | participo en muchas peliculas| /images/uploads/avatars/candidatos/2.jpg |   1            |    
 
-#Casos Extremos.
+# Casos Extremos.
 Escenario: no tiene candidatos creadas.
   Dado que no he creado ningúna candidato
   Y que estoy en la pantalla de "administración de Candidatos"

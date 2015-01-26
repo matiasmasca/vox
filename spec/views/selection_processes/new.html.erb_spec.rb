@@ -1,15 +1,15 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe "selection_processes/new" do
+describe 'selection_processes/new' do
   login_admin
   
   before(:each) do
     assign(:selection_process, stub_model(SelectionProcess,
-      :name_process => "Premios ACME",
-      :place => "Los Angeles, CA, USA",
-      :duration => "90",
-      :state => "nuevo"
+      :name_process => 'Premios ACME',
+      :place => 'Los Angeles, CA, USA',
+      :duration => '90',
+      :state => 'nuevo'
     ).as_new_record)
   end
 
@@ -21,14 +21,10 @@ describe "selection_processes/new" do
       assert_select "input#selection_process_name_process[name=?]", "selection_process[name_process]"
       assert_select "input#selection_process_place[name=?]", "selection_process[place]"
       assert_select "input#selection_process_duration[name=?]", "selection_process[duration]"
-      #assert_select "input#selection_process_state[name=?]", "selection_processes[state]"
-      assert_select "select#selection_process_state option[selected]", text: "nuevo"
+      # assert_select "input#selection_process_state[name=?]", "selection_processes[state]"
+      assert_select "select#selection_process_state option[selected]", text: 'nuevo'
       assert_select "input#selection_process_organizer_id[name=?]", "selection_process[organizer_id]"
 
     end
-  end
-  
-  it "que se vean los Select Option" do
-    pending "falta probar los Select Option"
   end
 end

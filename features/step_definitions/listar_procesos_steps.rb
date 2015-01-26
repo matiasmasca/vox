@@ -15,7 +15,6 @@ Entonces(/^veo una lista con exactamente la información de los (\d+) procesos\.
   expected_table.diff!(table)
 end
 
-
 Dado(/^que no he creado ningún proceso de selección$/) do
   @selection_process = nil
 end
@@ -24,24 +23,20 @@ Entonces(/^veo una una tabla vacía, con el mensaje "(.*?)"$/) do |mensaje|
   step %{se lee el texto "#{mensaje}"}
 end
 
-
-
-
-
-#Then I should see a table with the following rows:
+# Then I should see a table with the following rows:
 #  | Premio Roberto       | Av. Siempre Viva 742    | 30 |
 #  | Miss Galaxia   | Planeta alfacentauris Av. Galaxy 2304 | 350 |
 #  | El Mejor amigo | Escuela Manuel Belgrano, Corrientes | 15 |
 
-#Then /^I should see a table with the following rows:$/ do |table_results|
-#table_results = page.find('#games_results_table tr').map do |row|
+# Then /^I should see a table with the following rows:$/ do |table_results|
+# table_results = page.find('#games_results_table tr').map do |row|
 #    row.children.map do |cell|
 #        cell.text
 #    end
-#end
-#end
+# end
+# end
 
-#Según Coke.info, la manera de comparar una tabla de Garkin con capybara es:
+# Según Coke.info, la manera de comparar una tabla de Garkin con capybara es:
 # rows = find("table#selector").all('tr')
 # table = rows.map { |r| r.all('th,td').map { |c| c.text.strip } }
 # expected_table.diff!(table)

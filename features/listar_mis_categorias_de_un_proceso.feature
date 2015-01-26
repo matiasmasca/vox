@@ -7,8 +7,7 @@
 # # Condiciones preliminares.
 # # Usuario, Organizacion, Proceso, Categorias...
 
-
-# #Camino feliz
+# # Camino feliz
 # Escenario: listar una categoría
 #   Dado que he creado 1 categoría:
 #     | name         | description | bench | selection_process_id |
@@ -35,7 +34,7 @@
 #     | Mejor Actor    | prueba      | 5              | 
 #     | Mejor Director | prueba      | 5              | 
 
-# #Casos Extremos.
+# # Casos Extremos.
 # Escenario: no tiene categorías creadas.
 #   Dado que no he creado ninguna categoría
 #   Y que estoy en la pantalla de "administración de Categorías"

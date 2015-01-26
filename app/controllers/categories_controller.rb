@@ -42,9 +42,9 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category , notice: 'Categoría creada correctamente.' }
-        format.json { render action: 'show' , status: :created, location: @category }
+        format.json { render 'show' , status: :created, location: @category }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @category.errors , status: :unprocessable_entity }
       end
     end
@@ -58,7 +58,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category , notice: 'Información actualizada correctamente.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @category.errors , status: :unprocessable_entity }
       end
     end

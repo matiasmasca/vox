@@ -4,14 +4,14 @@ Característica: listar usuarios
   como un usuario administrador
   Quiero poder ver un listado de los usuarios, junto con los links para editarlos o borrarlos.
 
-#Ejemplo de datos:
-#| usuario    | nombre | apellido | email                        | clave   |  facebook | twitter | tipo_usuario_id |
-#|pepeargento | pepe   | argento  | pepeargento@argentina.com.ar | moni12345           | @pepe  | 1               |
+# Ejemplo de datos:
+# | usuario    | nombre | apellido | email                        | clave   |  facebook | twitter | tipo_usuario_id |
+# |pepeargento | pepe   | argento  | pepeargento@argentina.com.ar | moni12345           | @pepe  | 1               |
 
 Antecedentes:
   Dado que estoy logueado como "Administrador"
 
-#Camino feliz
+# Camino feliz
 Escenario: listar un usuario
   Dado que he creado 1 usuario:
     | usuario    | nombre | apellido | email                        | password   | facebook  | twitter | tipo_usuario_id |
@@ -38,11 +38,10 @@ Escenario: tiene el mismo contenido
     | Admin shinjiikari |        |          | shinji@ikari.com.ar           |           |         | 1            |    
     | pepeargento       | pepe   | argento  | pepeargento@argentina.com.ar  |           | @pepe   | 1            |
     | coquiargento      | coqui  | argento  | coquiargento@argentina.com.ar |           | @coqui  | 3            |
-#shinjiikari es el usuario admin. de prueba 
+# shinjiikari es el usuario admin. de prueba 
 
-
-#Casos Extremos.
-#Escenario: no tiene usuarios creados.
+# Casos Extremos.
+# Escenario: no tiene usuarios creados.
 #  Dado que no he creado ningún usuario
 #  Y que estoy en la pantalla de "administración de Usuarios"
 #  Entonces veo una una tabla vacía, con el mensaje "Ud. no tiene registros creados."
@@ -50,7 +49,3 @@ Escenario: tiene el mismo contenido
 
 # @to-do
 # Ver link a las organizaciones del usuario.
-
-
-
-                  
