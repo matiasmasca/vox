@@ -36,7 +36,8 @@ Dependency Status:
 CodeReview - TODOs:
 [![PullReview stats](https://www.pullreview.com/github/matiasmasca/vox/badges/master.svg?)](https://www.pullreview.com/github/matiasmasca/vox/reviews/master)
 
-
+Heroku App - Demo:
+    [![Heroku](http://heroku-badge.herokuapp.com/?app=tfa-vox&root=/paginas/home.html)]
 
 **Notas Técnicas**
 ===========
@@ -74,8 +75,16 @@ CodeReview - TODOs:
 * Deployment instructions:
   - cambiar el token ejecutando: rake secret
   - Crear las variables de entorno:
-    * DATABASE_NAME
-    * DATABASE_USER
-    * DATABASE_PASS
-    * SECRET_KEY_BASE para el secret token
+  * COVERALL
+  * DATABASE_NAME
+  * DATABASE_USER
+  * DATABASE_PASS
+  * DATABASE_URL
+  * FB_App_id
+  * FB_App_secret
+  * HEROKU_POSTGRESQL_VIOLET_URL
+  * loaderio
+  * SECRET_KEY_BASE para el secret token
+  * TW_Consumer_key
+  * TW_Consumer_secret
  - cambiar los .yml de Travis y de Coveralls.
