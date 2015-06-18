@@ -57,6 +57,7 @@ Escenario: nombre premio repetido.
   Cuando presiono el botón "Guardar cambios"
   Entonces me muestra el mensaje de error que "el nombre del premio ya existe"
 
+@wip
 Escenario: Premio repetido, Oscar y oscar.
   Y escribo "Premios ACME" en Nombre
   Y escribo "Av. Siempre Viva 742" en Lugar,
