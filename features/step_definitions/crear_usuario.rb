@@ -25,4 +25,5 @@ Dado(/^como ya existe un usuario con ese "(.*?)"$/) do |arg1|
    # Crear registro en la db
    @Usuario = User.new({ "usuario" => "usuario01" , "nombre" => "nombre" , "apellido" => "apellido" , "email" => "email" , "password" => "clave1234" , "facebook" => "facebook" , "twitter" => "twitter" , "tipo_usuario_id" => 3 })
   end
+  save_and_open_page
 end

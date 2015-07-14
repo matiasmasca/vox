@@ -22,7 +22,7 @@ Escenario: borrar premio el 2do. premio
   Dado que existe un Proceso: "Premios Reina del Desierto 2014", "Alguna ciudad", "15" asociado a mi organizacion "Nerv Corp.".
   Cuando hago click en Borrar para "Premios ACME"
   Entonces se borra el premio "Premios ACME"
-  Entonces me muestra el mensaje "Proceso borrado correctamente."
+  Entonces me muestra el mensaje "Proceso borrado correctamente. "
 
 # IceBox
 # Borrar desde otro lugar?

@@ -5,3 +5,5 @@ module AuthenticationHelper
 end
 
 World(AuthenticationHelper)
+
+#Esto crear una variable global para poder acceder a los valores de current_user de Devise. 
