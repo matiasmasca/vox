@@ -1,3 +1,4 @@
+[![Beerpay](http://test.beerpay.io/matiasmasca/vox/badge.svg?style=flat-square)](http://test.beerpay.io/matiasmasca/vox)
 ***vox***
 ===
 Repositorio para la edición comunitaria (software libre) de VOX, un sistema gestor de contenidos para procesos de selección; desarrollado con Ruby on Rails.
