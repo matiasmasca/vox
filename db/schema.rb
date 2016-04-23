@@ -42,9 +42,6 @@ ActiveRecord::Schema.define(version: 20150122123308) do
     t.integer "candidate_id"
   end
 
-  add_index "candidates_categories", ["category_id"], name: "index_category_on_candidates"
-
-
   create_table "categories", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -82,7 +79,7 @@ ActiveRecord::Schema.define(version: 20150122123308) do
   create_table "selection_processes", force: true do |t|
     t.string   "name_process"
     t.string   "place"
-    t.integer  "duration"
+    t.integer  "duration",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.string   "state"
