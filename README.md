@@ -1,6 +1,8 @@
 [![Beerpay](http://test.beerpay.io/matiasmasca/vox/badge.svg?style=flat-square)](http://test.beerpay.io/matiasmasca/vox)
 ***vox***
 ===
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/matiasmasca/vox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Repositorio para la edición comunitaria (software libre) de VOX, un sistema gestor de contenidos para procesos de selección; desarrollado con Ruby on Rails.
 
 El alcance del proyecto es poder crear y gestionar un proceso de selección completo (creación, apertura, votación, cierre) con sus usuarios asociados: organizador y jurado. Administrando un padrón y teniendo acceso al escrutinio de los votos.
